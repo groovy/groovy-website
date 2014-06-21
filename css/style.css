@@ -1,0 +1,48 @@
+body {
+}
+
+#header nav#navigation ul li a {
+    font-size: 18px;
+}
+
+#header nav#navigation ul li a:hover, ul.nav-sidebar li a:hover, ul.nav-sidebar li.active a:hover, ul.nav-sidebar li.active a:hover {
+    background-color: #db4800;
+    color: white;
+}
+
+#band {
+    background: url(../img/groovy-logo-white.png) no-repeat;
+    background-color: #4298b8;
+    background-attachment: fixed;
+    background-position: 50% 10%;
+}
+
+#they-use-groovy {
+    height: 450px;
+    background-color: #db4800;
+    margin-bottom: 20px;
+}
+
+#they-use-groovy .item {
+    text-align: center;
+    color: white;
+}
+
+#logos {
+    text-align: center;
+    width: 100%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.event-img {
+    margin: -20px -20px 20px -20px;
+    background-position: left top;
+    height: 180px;
+}
+
+article .content time {
+    font-weight: bold;
+}

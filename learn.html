@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Groovy programming language -- Learn</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="img/favicon.ico" type="image/x-ico" rel="icon"/>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+
+
+<div id="st-container" class="st-container st-effect-9">
+
+    <nav class="st-menu st-effect-9" id="menu-12">
+        <h2 class="icon icon-lab">Socialize</h2>
+        <ul>
+            <li>
+                <a class="icon" href="mailing-lists.html">
+                    <span class="fa fa-envelope"></span>
+                    Mailling list
+                </a>
+            </li>
+            <li>
+                <a class="icon" href="http://bit.ly/groovy-weekly-subscribe">
+                    <span class="fa fa-envelope-o"></span>
+                    Groovy Weekly newsletter
+                </a>
+            </li>
+            <li>
+                <a class="icon" href="https://github.com/groovy/groovy-core">
+                    <span class="fa fa-github"></span>
+                    Github
+                </a>
+            </li>
+            <li>
+                <a class="icon" href="http://jira.codehaus.org/browse/GROOVY">
+                    <span class="fa fa-tasks"></span>
+                    Jira
+                </a>
+            </li>
+            <li>
+                <a class="icon" href="https://google.com/+groovy">
+                    <span class="fa fa-google-plus"></span>
+                    Google+ Groovy Page
+                </a>
+            </li>
+            <li>
+                <a class="icon" href="http://bit.ly/g-community">
+                    <span class="fa fa-google-plus"></span>
+                    Google+ Groovy Community
+                </a>
+            </li>
+            <li>
+                <a class="icon" href="http://stackoverflow.com/questions/tagged/groovy">
+                    <span class="fa fa-stack-overflow"></span>
+                    Stack Overflow
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- content push wrapper -->
+    <div class="st-pusher">
+
+        <div class="st-content"><!-- this is the wrapper for the content -->
+            <div class="st-content-inner">
+
+                <!--[if lt IE 7]>
+                    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                <![endif]-->
+
+                <!-- Content -->
+                <div>
+                    <header id="header">
+                        <div class="row">
+                            <h1 id="logo"><a href="index.html">Groovy</a></h1>
+                            <nav id="navigation">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="learn.html">Learn</a></li>
+                                    <li><a href="download.html">Download</a></li>
+                                    <li><a href="community.html">Community</a></li>
+                                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                                    <li><a data-effect="st-effect-9" class="st-trigger" href="#">Socialize</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </header>
+                    <div id="content" class="page-1">
+                        <div class="row">
+                            <div class="row-fluid">
+                                <div class="col-lg-3">
+                                    <ul class="nav-sidebar">
+                                        <li class="active"><a>Quick Start</a></li>
+                                        <li><a>Using groovy</a></li>
+                                        <li><a href="download.html">Download groovy</a></li>
+                                        <li><a>Cookbook Examples </a></li>
+                                        <li><a>Advanced Usage</a></li>
+                                        <li><a>Testing with Groovy</a></li>
+                                        <li><a>Developing with Groovy</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-8 col-lg-pull-0">
+                                    <h1>Documentation</h1>
+                                    <article>
+                                        <h1>Quick Start</h1>
+                                        <p class="desc">Installation and quickstart instructions, tutorials, feature overview.</p>
+
+                                        <p>These instructions describe how to install a binary distribution of <strong>Groovy</strong>.</p>
+                                        <ul>
+                                            <li>first, Download a binary distribution of <strong>Groovy</strong> and unpack it into some file on your local file system</li>
+                                            <li>set your <code>GROOVY_HOME</code> environment variable to the directory you unpacked the distribution</li>
+                                            <li>add <code>GROOVY_HOME/bin</code> to your <code>PATH</code> environment variable</li>
+                                            <li>set your <code>JAVA_HOME</code> environment variable to point to your JDK. On OS X this is <code>/Library/Java/Home</code>, on other unixes its often <code>/usr/java</code> etc. If you've already installed tools like Ant or Maven you've probably already done this step.</li>
+                                            <li>You should now have <strong>Groovy</strong> installed properly. You can test this by typing the following in a command shell:</li>
+                                        </ul>
+
+                                        <pre><code>groovysh</code></pre>
+                                        <p>Which should create an interactive groovy shell where you can type Groovy statements. Or to run the Swing interactive console type:</p>
+
+                                        <pre><code>groovyConsole</code></pre>
+                                        <p>To run a specific Groovy script type:</p>
+
+                                        <pre><code>groovy SomeScript.groovy</code></pre>
+                                        <p>Alternative Installation on Mac OSX, Linux or Cygwin</p>
+
+                                        <p>For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use GVM (the Groovy enVironment Manager) to download and configure any Groovy version of your choice. Basic instructions can be found here.</p>
+                                    </article>
+                                    <hr class="divider" />
+                                    <article>
+                                        <h1>Running</h1>
+                                        <p>Bean scripting, compile-time metaprogramming, AST transformations, dynamic features, IDE support, XML processing, GUI programming, Ant integration, more.</p>
+
+
+
+                                        <p>Groovy scripts are a number of statements and class declarations in a text file. Groovy scripts can be used similarly to other scripting languages. There are various ways of running Groovy scripts</p>
+
+
+                                        <h3>Using the interactive console</h3>
+                                        <p>Groovy has a Swing interactive console that allows you to type in commands and execute them rather like using an SQL query tool. History is available and such like so you can move forwards and backwards through commands etc.</p>
+
+                                        <p>If you install a binary distribution of Groovy then you can run the Groovy Swing console by typing this on the command line.</p>
+
+                                        <pre><code>groovyConsole</code></pre>
+                                        <p>For a command line interactive shell type</p>
+
+                                        <pre><code>groovysh</code></pre>
+                                        <p>To see how to add things to the classpath see below.</p>
+
+
+                                        <h3>Running Groovy scripts from your IDE</h3>
+                                        <p>There is a helper class called GroovyShell which has a main(String[]) method for running any Groovy script. You can run any groovy script as follows</p>
+
+                                        <pre><code>java groovy.lang.GroovyShell foo/MyScript.groovy [arguments]</code></pre>
+                                        <p>You can then run the above Groovy main() in your IDE to run or debug any Groovy script.</p>
+
+
+                                        <h3>Running Groovy scripts from the command line</h3>
+                                        <p>There are shell scripts called 'groovy' or 'groovy.bat' depending on your platform which is part of the Groovy runtime.</p>
+
+                                        <p>Once the runtime is installed you can just run groovy like any other script...</p>
+
+                                        <pre><code>groovy foo/MyScript.groovy [arguments]</code></pre>
+                                        <p>If you are using Groovy built from CVS Head (after Beta-5, see below if you want to upgrade), apart from Groovy scripts, you may also now run different kind of classes from the command-line.</p>
+
+                                        <ul>
+                                            <li>Classes with a main method of course,</li>
+                                            <li>Classes extending GroovyTestCase are run with JUnit's test runner,</li>
+                                            <li>Classes implementing the Runnable interface are instanciated either with a constructor with String[] as argument, or with a no-args constructor, then their run() method is called.</li>
+                                            <li>To work from the latest and greatest Groovy see Building Groovy from Source. Once built you'll then have a full binary distribution made for you in groovy/target/install. You can then add groovy/target/install/bin to your path and you can then run groovy scripts easily from the command line.</li>
+                                        </ul>
+                                        <p>To see how to add things to the classpath see below.</p>
+
+                                        <h3>Creating Unix scripts with Groovy</h3>
+                                        <p>You can write unix scripts with Groovy and execute them directly on the command line as if they were normal unix shell scripts. Providing you have installed the Groovy binary distribution (see above) and 'groovy' is on your PATH then the following should work.</p>
+
+                                        <p>The following is a sample script, which you should copy and save as helloWorld.groovy.</p>
+
+                                        <pre><code>#!/usr/bin/env groovy
+println("Hello world")
+for (a in this.args) {
+    println("Argument: " + a)
+}</code></pre>
+                                        <p>Then to run the script from the command line, just make sure the script is executable then you can call it.</p>
+
+                                        <pre><code>chmod +x helloWorld
+./helloWorld</code></pre>
+
+                                        <p>Note that you will not be able to provided any arguments to groovy when running with the shebang(#!) on Linux because the arguments are treated as part of the name of the command to run. Mac OS X will interpret additional arguments correctly.</p>
+
+                                        <h3>Adding things to the classpath</h3>
+                                        <p>When running command line scripts or interactive shells you might want to add things to your classpath such as JDBC drivers or JMS implementations etc. To do this, you have a few choices:</p>
+
+                                        <ul>
+                                            <li>Add things to your CLASSPATH environment variable</li>
+                                            <li>Pass -classpath (or -cp) into the command you used to create the shell or run the script</li>
+                                            <li>It's also possible to create a ~/.groovy/lib directory and add whatever jars you need in there.</li>
+                                            <li>If the jars you need are in a Maven or Ivy repository, you can "grab" them with Grape.</li>
+                                        </ul>
+
+                                        <h3>Increasing Groovy's JVM Heap Size</h3>
+                                        <p>To increase the amount of memory allocated to your groovy scripts, set your JAVA_OPTS environment variable. JAVA_OPTS="-Xmx..."</p>
+
+                                        <h3>Avoiding PermGen out of memory</h3>
+                                        <p>Groovy creates classes dynamically, but the default Java VM does not GC the PermGen. If you are using Java 6 or later, add -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC. UseConcMarkSweepGC is needed to enable CMSClassUnloadingEnabled.</p>
+
+                                        <h3>Groovy and the Cloud</h3>
+                                        <p>Groovy can run anywhere the JVM runs - including many cloud platforms, likewise, continuous integration is just as easy. You can kick the tyres at CloudBees for hosting your groovy app, this quick start will get you going (with the correct settings and permgen):</p>
+
+                                        <p>This will setup a CI job (running tests and build, in Jenkins) and deploy the "pet store" app that uses the grails "pet store" demo app (you can use it for free). Prefer to set it up yourself, read here for details.</p>
+
+                                    </article>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer id="footer">
+                        <div class="row">
+                            <div class="colset-3-footer">
+                                <div class="col-1">
+                                    <h1>Groovy</h1>
+                                    <ul>
+                                        <li><a href="#">Learn</a></li>
+                                        <li><a href="#">Download</a></li>
+                                        <li><a href="#">Community</a></li>
+                                        <li><a href="#">Ecosystem</a></li>
+                                        <li><a href="#">Socialize</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-2">
+                                    <h1>About</h1>
+                                    <ul>
+                                        <li><a href="#">Contributing</a></li>
+                                        <li><a href="#">Source Code</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-3">
+                                    <h1>Socialize</h1>
+                                    <ul>
+                                        <li><a href="#">Github</a></li>
+                                        <li><a href="#">Twitter</a></li>
+                                        <li><a href="#">Jira</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-right">
+                                    <p>
+                                        The Groovy programming language<br />
+                                        is supported by <a href="http://gopivotal.com">Pivotal</a><br />
+                                        and the Groovy Community<br />
+                                    </p>
+                                    <img src="img/pivotal.png" title="Pivotal" alt="Pivotal" />
+                                </div>
+                            </div>
+                            <div class="clearfix">&copy; 2014 the Groovy project &mdash; Groovy is Open Source, Apache 2 License</div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,200' rel='stylesheet' type='text/css'>
+<script src="js/vendor/jquery-1.10.2.min.js"></script>
+<script src="js/vendor/classie.js"></script>
+<script src="js/vendor/sidebarEffects.js"></script>
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

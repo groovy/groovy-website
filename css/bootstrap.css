@@ -2134,7 +2134,8 @@ h8 {
     list-style: 0 none;
     list-style-type: none;
     margin: 0;
-    padding: 0
+    padding: 0;
+    padding-right: 60px;
 }
 
 #header nav#navigation ul {

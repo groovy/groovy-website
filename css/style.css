@@ -52,3 +52,9 @@ html {
 article .content time {
     font-weight: bold;
 }
+
+.doc-embed {
+    border: 0;
+    width: 100%;
+    min-height: 100%;
+}

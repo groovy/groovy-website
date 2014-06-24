@@ -58,3 +58,12 @@ article .content time {
     width: 100%;
     min-height: 100%;
 }
+
+.download-table {
+    width: 100%;
+    text-align: center;
+}
+
+.download-table td {
+    width: 20%;
+}

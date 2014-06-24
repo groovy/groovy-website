@@ -101,58 +101,73 @@
                             <div class="row-fluid">
                                 <div class="col-lg-3">
                                     <ul class="nav-sidebar">
-                                        <li><a href="learn.html">Quick Start</a></li>
-                                        <li><a href="#">Using groovy</a></li>
-                                        <li class="active"><a href="#">Download groovy</a></li>
-                                        <li><a href="#">Cookbook Examples </a></li>
-                                        <li><a href="#">Advanced Usage</a></li>
-                                        <li><a href="#">Testing with Groovy</a></li>
-                                        <li><a href="#">Developing with Groovy</a></li>
+                                        <li class="active"><a href="download.html"><strong>Download Groovy</strong></a></li>
+                                        <li><a href="download.html#distro">Distributions</a></li>
+                                        <li><a href="download.html#gvm">Through GVM</a></li>
+                                        <li><a href="download.html#buildtools">From your build tool</a></li>
+                                        <li><a href="download.html#otherways">Other ways to get Groovy</a></li>
+                                        <li><a href="versioning.html">Versioning</a></li>
+                                        <li><a href="indy.html">Invoke dynamic support</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-8 col-lg-pull-0">
                                     <h1>Download</h1>
                                     <article>
-                                        <p>In this download area, you will be able to download the distribution (binary and source), the Windows installer (for some of the versions) and the documentation for Groovy.</p>
-                                        <p>For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use GVM (the Groovy enVironment Manager) to download and configure any Groovy version of your choice. Basic instructions can be found below.</p>
+                                        <p>
+                                            In this download area, you will be able to download the distribution (binary and source),
+                                            the Windows installer (for some of the versions) and the documentation for Groovy.
+                                        </p>
+                                        <p>
+                                            For a quick and effortless start on Mac OSX, Linux or Cygwin,
+                                            you can use <a href="http://gvmtool.net/">GVM (the Groovy enVironment Manager)</a>
+                                            to download and configure any Groovy version of your choice. Basic instructions can be found below.
+                                        </p>
 
-                                        <h1>Groovy 2.1</h1>
-                                        <p>Groovy 2 is the latest official major version of Groovy.<br />
-                                        Learn more about Groovy 2.1 in the <a href="#">release notes.</a></p>
-
-                                        <h2>Groovy 2.1.8</h2>
-                                        <p>Download zip: <a href="#">Binary Release</a> | <a href="#">Source Release</a></p>
-                                        <p>Download documentation: <a href="#">JavaDoc and zipped online documentation</a><br />
-                                        Combined binary / source / documentation bundle: <a href="#">Distribution bundle</a><br />
-                                        You can have a look at the <a href="#">JIRA release notes</a>.<br />
-                                        If you plan on using invokedynamic support, <a href="#">read those notes</a>.</p>
-
-                                        <h2>Older releases</h2>
-                                        <p>You can download previous releases.</p>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span style="padding-right: 40px">Select a major release</span> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu" style="min-width:300px">
-                                                <li><a href="#">Groovy 1</a></li>
-                                                <li><a href="#">Groovy 2</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span style="padding-right: 40px">Select a release</span> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Groovy 1</a></li>
-                                                <li><a href="#">Groovy 2</a></li>
-                                            </ul>
-                                        </div>
                                     </article>
                                     <hr class="divider" />
+
+                                    <a name="distro"></a>
                                     <article>
-                                        <h1>Maven Repositories</h1>
-                                        <p>If you wish to embed Groovy in your application, you may just prefer to point to your favourite maven repositories or the codehaus maven repository. You should consult the individual pom files for the exact details but here is a summary of the main supported artifactIds and groupIds:</p>
-                                        <h2>Groovy 2.0.X  and newer</h2>
+                                        <h1>Distributions</h1>
+                                        <p>
+                                            You can download a binary, a source, a documentation bundle,
+                                            as well as a bundle of the three.
+                                        </p>
+                                        <h2>Groovy 2.4</h2>
+                                        <p>
+                                            Groovy
+                                        </p>
+                                        <h2>Groovy 2.3</h2>
+                                        <p>
+
+                                        </p>
+                                    </article>
+                                    <hr class="divider" />
+
+                                    <a name="gvm"></a>
+                                    <article>
+                                        <h1>GVM (the Groovy enVironment Manager)</h1>
+                                        <p>This tool makes installing Groovy on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.<br />
+                                            Simply open a new terminal and enter:</p>
+                                        <pre><code>$ curl -s get.gvmtool.net | bash</code></pre>
+                                        <p>Follow the instructions on-screen to complete installation.<br />
+                                            Open a new terminal or type the command:</p>
+                                        <pre><code>$ source "$HOME/.gvm/bin/gvm-init.sh"</code></pre>
+                                        <p>Then install the latest stable Groovy:</p>
+                                        <pre><code>$ gvm install groovy</code></pre>
+                                        <p>After installation is complete and you've made it your default version, test it with:</p>
+                                        <pre><code>$ groovy -version</code></pre>
+                                        <p>That's all there is to it!</p>
+                                    </article>
+                                    <hr class="divider" />
+
+                                    <a name="buildtools"></a>
+                                    <article>
+                                        <h1>From your build tools</h1>
+                                        <p>
+                                            If you wish to add Groovy as a dependency in your projects,
+                                            you can refer to the Groovy JARs in the dependency section of your project build file descriptor:
+                                        </p>
                                         <table class="table">
                                             <thead>
                                             <tr>
@@ -169,7 +184,10 @@
                                                     <code>&lt;artifactId&gt;groovy&lt;/artifactId&gt; </code><br />
                                                     <code>&lt;version&gt;x.y.z&lt;/version&gt;</code>
                                                 </td>
-                                                <td>Just the core of groovy without the modules (see below). Treats Antlr, ASM, etc. as standard dependencies. Only useful if you happen to also use the same versions of these jars yourself as it will save you having two copies of these jars.</td>
+                                                <td>
+                                                    Just the core of Groovy without the modules (see below).
+                                                    Also includes <em>jarjar'ed</em> versions of Antlr, ASM, and Commons-CLI.
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><code>org.codehaus.groovy:groovy-$module:x.y.z</code></td>
@@ -178,7 +196,12 @@
                                                     <code>&lt;artifactId&gt;groovy-$module&lt;/artifactId&gt; </code><br />
                                                     <code>&lt;version&gt;x.y.z&lt;/version&gt;</code>
                                                 </td>
-                                                <td><code>"$module"</code> stands for the different optional groovy modules "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx", "json", "jsr223", "servlet", "sql", "swing", "test", "testng" and "xml". Example: <code>&lt;artifactId&gt;groovy-sql&lt;/artifactId&gt;</code></td>
+                                                <td>
+                                                    <code>"$module"</code> stands for the different optional groovy modules
+                                                    "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx",
+                                                    "json", "jsr223", "servlet", "sql", "swing", "test", "testng" and "xml".
+                                                    Example: <code>&lt;artifactId&gt;groovy-sql&lt;/artifactId&gt;</code>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><code>org.codehaus.groovy:groovy-all:x.y.z</code></td>
@@ -187,59 +210,30 @@
                                                     <code>&lt;artifactId&gt;groovy-all&lt;/artifactId&gt; </code><br />
                                                     <code>&lt;version&gt;x.y.z&lt;/version&gt;</code>
                                                 </td>
-                                                <td>The core plus all the modules. Also includes jarjar versions of Antlr, ASM, Commons-CLI and Retrotranslator runtime. Allows you or your other dependencies (e.g. Hibernate) to use other versions of these jars. Optional dependencies are marked as optional. You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans, etc.</td>
+                                                <td>
+                                                    The core plus all the modules.
+                                                    Also includes <em>jarjar'ed</em> versions of Antlr, ASM, Commons-CLI runtime.
+                                                    Allows you or your other dependencies (e.g. Hibernate) to use other versions of these jars.
+                                                    Optional dependencies are marked as optional.
+                                                    You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans, etc.</td>
                                             </tr>
                                             </tbody>
                                         </table>
+                                    </article>
+                                    <hr class="divider" />
 
-                                        <h2>Older releases</h2>
-                                        <p>You can download previous releases.</p>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span style="padding-right: 40px">Select a major release</span> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu" style="min-width:300px">
-                                                <li><a href="#">Groovy 1</a></li>
-                                                <li><a href="#">Groovy 2</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                                <span style="padding-right: 40px">Select a release</span> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Groovy 1</a></li>
-                                                <li><a href="#">Groovy 2</a></li>
-                                            </ul>
-                                        </div>
-                                    </article>
-                                    <hr class="divider" />
-                                    <article>
-                                        <h1>GVM (the Groovy enVironment Manager)</h1>
-                                        <p>This tool makes installing Groovy on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.<br />
-                                        Simply open a new terminal and enter:</p>
-                                        <pre><code>$ curl -s get.gvmtool.net | bash</code></pre>
-                                        <p>Follow the instructions on-screen to complete installation.<br />
-                                            Open a new terminal or type the command:</p>
-                                        <pre><code>$ source "$HOME/.gvm/bin/gvm-init.sh"</code></pre>
-                                        <p>Then install the latest stable Groovy:</p>
-                                        <pre><code>$ gvm install groovy</code></pre>
-                                        <p>After installation is complete and you've made it your default version, test it with:</p>
-                                        <pre><code>$ groovy -version</code></pre>
-                                        <p>That's all there is to it!</p>
-                                    </article>
-                                    <hr class="divider" />
+                                    <a name="otherways"></a>
                                     <article>
                                         <h1>Other ways to get Groovy</h1>
                                         <p>
-                                        If you're on MacOS and have Homebrew installed, you can run "<code>brew install groovy</code>" to install <strong>Groovy</strong>.<br />
-                                        If you're on MacOS and have MacPorts installed, you can run "<code>sudo port install groovy</code>" to install the latest Groovy release.<br />
+                                        If you're on MacOS and have <a href="http://brew.sh/">Homebrew</a> installed, you can install Groovy with:
+                                        <pre><code>brew install groovy</code></pre>
+                                        If you're on MacOS and have <a href="http://www.macports.org/">MacPorts</a> installed, you can install Groovy with:
+                                        <pre><code>sudo port install groovy</code></pre>
                                         If you're on Windows, you can also use the <a href="#">NSIS Windows installer</a>.<br />
-                                        You may download other distributions of Groovy from <a href="#">this site</a>.<br />
-                                        If you prefer to live on the bleeding edge, you can also grab the <a href="#">source code from SVN</a>.<br />
+                                        If you prefer to live on the bleeding edge, you can also grab the <a href="http://github.com/groovy/groovy-core">source code from Git</a>.<br />
                                         If you are an IDE user, you can just grab the latest <a href="#">IDE plugin</a> and follow the plugin installation instructions.
                                         </p>
-
                                     </article>
                                 </div>
                             </div>

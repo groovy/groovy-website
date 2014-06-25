@@ -1,0 +1,61 @@
+import groovy.text.markup.MarkupTemplateEngine
+import groovy.text.markup.TemplateConfiguration
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.codehaus.groovy:groovy:2.3.3'
+        classpath 'org.codehaus.groovy:groovy-templates:2.3.3'
+    }
+}
+
+apply plugin:'groovy'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.3.3'
+    compile 'org.codehaus.groovy:groovy-templates:2.3.3'
+}
+
+task copyAssets(type:Copy) {
+    from file('src/site/assets')
+    into file("$buildDir/site")
+}
+
+task generateSite(dependsOn: copyAssets) << {
+
+    def root = file('src/site')
+    def outputDir = file("$buildDir/site")
+    def tplConf = new TemplateConfiguration()
+    tplConf.with {
+        autoIndent = true
+        autoNewLine = true
+    }
+    def tplEngine = new MarkupTemplateEngine(this.class.classLoader, root, tplConf)
+
+    def render = { String page, String target=null, Map model = [:] ->
+        target = target?:page
+        file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(),'utf-8')
+    }
+
+    render 'index'
+    render 'learn'
+
+    def docPages = [
+            ['single-page-documentation', 'Single page documentation', 'index'],
+            ['getting-started', 'Getting stared', 'core-getting-started'],
+            ['syntax', 'Syntax', 'core-syntax'],
+            ['semantics', 'Semantics', 'core-semantics'],
+    ]
+
+    docPages.each { output, title, iframeTarget ->
+        render 'docpage', output, [title: title, iframeTarget: "http://beta.groovy-lang.org/docs/latest/html/documentation/${iframeTarget}.html"]
+    }
+
+}

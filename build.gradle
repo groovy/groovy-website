@@ -44,18 +44,16 @@ task generateSite(dependsOn: copyAssets) << {
         file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(),'utf-8')
     }
 
+    def siteMap = SiteMap.from(file('sitemap.groovy'))
+
     render 'index'
-    render 'learn'
+    render 'learn', 'learn', [docSections:siteMap.documentationSections]
 
-    def docPages = [
-            ['single-page-documentation', 'Single page documentation', 'index'],
-            ['getting-started', 'Getting stared', 'core-getting-started'],
-            ['syntax', 'Syntax', 'core-syntax'],
-            ['semantics', 'Semantics', 'core-semantics'],
-    ]
-
-    docPages.each { output, title, iframeTarget ->
-        render 'docpage', output, [title: title, iframeTarget: "http://beta.groovy-lang.org/docs/latest/html/documentation/${iframeTarget}.html"]
+    siteMap.documentationSections.each { Section section ->
+        section.items.each { SectionItem item ->
+            logger.info("Generating documentation page [$item.name]")
+            render 'docpage', item.targetFilename, [title: item.name, iframeTarget: "http://beta.groovy-lang.org/docs/latest/html/documentation/${item.sourceFilename}.html"]
+        }
     }
 
 }

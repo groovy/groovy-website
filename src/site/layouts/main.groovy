@@ -68,56 +68,58 @@ html {
             // 'content push wrapper'
 
             div(class: 'st-pusher') {
-                div(class: 'st-content-inner') {
-                    yieldUnescaped '''<!--[if lt IE 7]>
-                    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-                <![endif]-->'''
+                div(class: 'st-content') {
+                    div(class: 'st-content-inner') {
+                        yieldUnescaped '''<!--[if lt IE 7]>
+                        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                    <![endif]-->'''
 
-                    // 'Content'
-                    div {
-                        header(id: 'header') {
-                            div(class: 'row') {
-                                h1(id: 'logo') { a(href: 'index.html', 'Groovy') }
-                                nav(id: 'navigation') {
-                                    ul {
-                                        socializeLinks.each { text, url ->
-                                            li { a(href: url, text) }
-                                        }
-                                        li {
-                                            a('data-effect': 'st-effect-9', class: 'st-trigger', href: '#', 'Socialize')
+                        // 'Content'
+                        div {
+                            header(id: 'header') {
+                                div(class: 'row') {
+                                    h1(id: 'logo') { a(href: 'index.html', 'Groovy') }
+                                    nav(id: 'navigation') {
+                                        ul {
+                                            socializeLinks.each { text, url ->
+                                                li { a(href: url, text) }
+                                            }
+                                            li {
+                                                a('data-effect': 'st-effect-9', class: 'st-trigger', href: '#', 'Socialize')
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                        // main contents goes here!
-                        contents()
+                            // main contents goes here!
+                            contents()
 
-                        // footer
-                        footer(id: 'footer') {
-                            div(class: 'row') {
-                                div(class: 'colset-3-footer') {
-                                    div(class: 'col-1') {
-                                        h1('Groovy')
-                                        ul {
-                                            socializeLinks.each { text, url -> li { a(href: url, text) } }
+                            // footer
+                            footer(id: 'footer') {
+                                div(class: 'row') {
+                                    div(class: 'colset-3-footer') {
+                                        div(class: 'col-1') {
+                                            h1('Groovy')
+                                            ul {
+                                                socializeLinks.each { text, url -> li { a(href: url, text) } }
+                                            }
                                         }
-                                    }
-                                    div(class: 'col-2') {
-                                        h1('About')
-                                    }
-                                    div(class: 'col-3') {
-                                        h1('Socialize')
-                                    }
-                                    div(class: 'col-right') {
-                                        p {
-                                            yield "The Groovy programming language"; br()
-                                            yield "is supported by "; a(href: 'http://gopivotal.com', 'Pivotal'); br()
-                                            yield "and the Groovy community"; br()
+                                        div(class: 'col-2') {
+                                            h1('About')
                                         }
-                                        img(src: 'img/pivotal.png', title: 'Pivotal', alt: 'Pivotal')
+                                        div(class: 'col-3') {
+                                            h1('Socialize')
+                                        }
+                                        div(class: 'col-right') {
+                                            p {
+                                                yield "The Groovy programming language"; br()
+                                                yield "is supported by "; a(href: 'http://gopivotal.com', 'Pivotal'); br()
+                                                yield "and the Groovy community"; br()
+                                            }
+                                            img(src: 'img/pivotal.png', title: 'Pivotal', alt: 'Pivotal')
+                                        }
+                                        div(class: 'clearfix', '&copy; 2014 the Groovy project &mdash; Groovy is Open Source, Apache 2 License')
                                     }
-                                    div(class: 'clearfix', '&copy; 2014 the Groovy project &mdash; Groovy is Open Source, Apache 2 License')
                                 }
                             }
                         }

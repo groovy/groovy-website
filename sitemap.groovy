@@ -23,9 +23,11 @@ documentation {
         item 'Working with JMX', 'jmx', 'jmx'
     }
 
-    section ('API documentation', 'fa-code') {
-        item 'GroovyDoc documentation of the Groovy APIs', 'groovydoc', 'groovydoc'
-        item 'The Groovy Development Kit enhancements', 'gdk', 'gdk'
+    section ('Tools','fa-gears') {
+        item 'groovyc — the Groovy compiler', 'groovyc', 'tools-groovyc'
+        item 'groovysh — the Groovy command -like shell', 'groovysh', 'tools-groovysh'
+        item 'groovyConsole — the Groovy Swing console', 'groovyconsole', 'tools-groovyconsole'
+        item 'IDE integration', 'ide', 'tools-ide'
     }
 
     section ('Language Specification', 'fa-graduation-cap') {
@@ -37,12 +39,8 @@ documentation {
         item 'Semantics', 'semantics', 'core-semantics'
     }
 
-    section ('Tools','fa-gears') {
-        item 'groovyc — the Groovy compiler', 'groovyc', 'tools-groovyc'
-        item 'groovysh — the Groovy command -like shell', 'groovysh', 'tools-groovysh'
-        item 'groovyConsole — the Groovy Swing console', 'groovyconsole', 'tools-groovyconsole'
-        item 'IDE integration', 'ide', 'tools-ide'
+    section ('API documentation', 'fa-code') {
+        item 'GroovyDoc documentation of the Groovy APIs', 'groovydoc', 'groovydoc'
+        item 'The Groovy Development Kit enhancements', 'gdk', 'gdk'
     }
-
-
 }

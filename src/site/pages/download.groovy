@@ -22,7 +22,7 @@ layout 'layouts/main.groovy',
                                     a(href: '#otherways', 'Other ways to get Groovy')
                                 }
                                 li {
-                                    a(href: 'versioning.html', 'Versioning')
+                                    a(href: 'versioning.html', 'Groovy version scheme')
                                 }
                                 li {
                                     a(href: 'indy.html', 'Invoke dynamic support')

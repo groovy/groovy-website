@@ -7,7 +7,7 @@ layout 'layouts/main.groovy',
                         div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
                                 li(class: 'active') {
-                                    a(href: 'download.html') { strong('Download') }
+                                    a(href: 'download.html') { strong('Download Groovy') }
                                 }
                                 li {
                                     a(href: '#distro', 'Distributions')
@@ -19,7 +19,7 @@ layout 'layouts/main.groovy',
                                     a(href: '#buildtools', 'From your build tools')
                                 }
                                 li {
-                                    a(href: '#otherways', 'Other ways')
+                                    a(href: '#otherways', 'Other ways to get Groovy')
                                 }
                                 li {
                                     a(href: 'versioning.html', 'Versioning')

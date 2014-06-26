@@ -40,7 +40,7 @@ task generateSite(dependsOn: copyAssets) << {
     def tplEngine = new MarkupTemplateEngine(this.class.classLoader, root, tplConf)
 
     def render = { String page, String target=null, Map model = [:] ->
-        target = target?:page
+        target = target ?: page
         file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(),'utf-8')
     }
 
@@ -56,4 +56,5 @@ task generateSite(dependsOn: copyAssets) << {
         }
     }
 
+    render 'download', 'download'
 }

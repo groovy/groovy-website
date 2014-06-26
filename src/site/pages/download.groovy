@@ -46,111 +46,144 @@ layout 'layouts/main.groovy',
                             }
                             hr(class: 'divider')
 
+                            a(name: 'distro') {}
+                            article {
+                                h1 'Distributions'
+                                p 'You can download a binary, a source, a documentation bundle, as well as a bundle of the three.'
+
+                                h2 'Groovy 2.4'
+                                p {
+                                    yield 'Groovy 2.4 is currently in beta testing. If you want a stable version, please choose Groovy 2.3 which is our latest official '
+                                    a(href: 'versioning.html', 'version')
+                                    yield ' of Groovy.'
+                                }
+
+                                h3 'Groovy 2.4.0-beta-1 distributions'
+                                table(width: '100%', class: 'download-table') {
+                                    tr {
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-binary-2.4.0-beta-1.zip") {
+                                                i(class: 'fa fa-gears fa-4x') {}
+                                                br()
+                                                yield 'binary'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-src-2.4.0-beta-1.zip") {
+                                                i(class: 'fa fa-code fa-4x') {}
+                                                br()
+                                                yield ' source'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-docs-2.4.0-beta-1.zip") {
+                                                i(class: 'fa fa-file-text fa-4x') {}
+                                                br()
+                                                yield ' documentation'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-2.4.0-beta-1.zip") {
+                                                i(class: 'fa fa-file-zip-o fa-4x') {}
+                                                br()
+                                                yield ' SDK bundle'
+                                            }
+                                        }
+                                        td {}
+                                    }
+                                }
+                                p {
+                                    yield 'Consult the '
+                                    a(href: 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20369', 'JIRA release notes')
+                                    yield '.'
+                                    br()
+                                    yield 'Read the '
+                                    a(href: "indy.html", 'invoke dynamic support information')
+                                    yield ' if you wish to use it on JDK 7+'
+                                }
+
+                                h2 'Groovy 2.3'
+                                p {
+                                    yield 'Groovy 2.3 is our latest official '
+                                    a(href: 'versioning.html', 'version')
+                                    yield ' of Groovy.'
+                                }
+
+                                h3 'Groovy 2.3.3 distributions'
+                                table(width: '100%', class: 'download-table') {
+                                    tr {
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-binary-2.3.3.zip") {
+                                                i(class: 'fa fa-gears fa-4x') {}
+                                                br()
+                                                yield 'binary'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-src-2.3.3.zip") {
+                                                i(class: 'fa fa-code fa-4x') {}
+                                                br()
+                                                yield ' source'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-docs-2.3.3.zip") {
+                                                i(class: 'fa fa-file-text fa-4x') {}
+                                                br()
+                                                yield ' documentation'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-2.3.3.zip") {
+                                                i(class: 'fa fa-file-zip-o fa-4x') {}
+                                                br()
+                                                yield ' SDK bundle'
+                                            }
+                                        }
+                                        td {
+                                            a(href: "http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.3-installer.exe") {
+                                                i(class: 'fa fa-windows fa-4x') {}
+                                                br()
+                                                yield ' Windows installer'
+                                            }
+                                        }
+                                    }
+                                }
+                                p {
+                                    yield 'Consult the '
+                                    a(href: 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20415', 'JIRA release notes')
+                                    yield '.'
+                                    br()
+                                    yield 'Read the '
+                                    a(href: "indy.html", 'invoke dynamic support information')
+                                    yield ' if you wish to use it on JDK 7+'
+                                }
+                            }
+                            hr(class: 'divider')
+
+                            a(name: 'gvm') {}
+                            article {
+                                h1 'GVM (the Groovy enVironment Manager)'
+                                p {
+                                    yield 'This tool makes installing Groovy on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.'
+                                    br()
+                                    yield 'Simply open a new terminal and enter:'
+                                }
+                                pre { code '$ curl -s get.gvmtool.net | bash' }
+                                p {
+                                    yield 'Follow the instructions on-screen to complete installation.'
+                                    br()
+                                    yield 'Open a new terminal or type the command:'
+                                }
+                                pre { code '$ source "$HOME/.gvm/bin/gvm-init.sh"' }
+                                p 'Then install the latest stable Groovy:'
+                                pre { code '$ gvm install groovy' }
+                                p 'After installation is complete and you\'ve made it your default version, test it with:'
+                                pre { code '$ groovy -version' }
+                                p 'That\'s all there is to it!'
+                            }
+                            hr(class: 'divider')
 /*
-                            <a name="distro"></a>
-                                    <article>
-                                        <h1>Distributions</h1>
-                            <p>
-                                    You can download a binary, a source, a documentation bundle,
-                            as well as a bundle of the three.
-                                    </p>
-                                        <h2>Groovy 2.4</h2>
-                            <p>
-                                    Groovy 2.4 is currently in beta testing. If you want a stable version,
-                            please choose Groovy 2.3 which is our latest official
-                            <a href="versioning.html">version</a> of Groovy.
-                                        </p>
-                            <h3>Groovy 2.4.0-beta-1 distributions</h3>
-                                        <table width="100%" class="download-table">
-                                            <tr>
-                                                <td>
-                                                    <a href="http://dl.bintray.com/groovy/maven/groovy-binary-2.4.0-beta-1.zip">
-                            <i class="fa fa-gears fa-4x"></i><br/> binary
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-src-2.4.0-beta-1.zip">
-                            <i class="fa fa-code fa-4x"></i><br/> source
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-docs-2.4.0-beta-1.zip">
-                            <i class="fa fa-file-text fa-4x"></i><br/> documentation
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-sdk-2.4.0-beta-1.zip">
-                            <i class="fa fa-file-zip-o fa-4x"></i><br/> bundle
-                            </a>
-                                                </td>
-                            <td>
-
-                            </td>
-                                            </tr>
-                            </table>
-                                        <p>
-                                            Consult the <a href="https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20369">JIRA release notes</a>.<br>
-                            Read the <a href="indy.html">invoke dynamic support information</a> if you wish to use it on JDK 7+.
-                                        </p>
-
-                            <h2>Groovy 2.3</h2>
-                                        <p>
-                                            Groovy 2.3 is our latest official <a href="versioning.html">version</a> of Groovy.
-                                    </p>
-                                        <h3>Groovy 2.3.3 distributions</h3>
-                            <table width="100%" class="download-table">
-                            <tr>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-binary-2.3.3.zip">
-                            <i class="fa fa-gears fa-4x"></i><br/> binary
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-src-2.3.3.zip">
-                            <i class="fa fa-code fa-4x"></i><br/> source
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-docs-2.3.3.zip">
-                            <i class="fa fa-file-text fa-4x"></i><br/> documentation
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dl.bintray.com/groovy/maven/groovy-sdk-2.3.3.zip">
-                            <i class="fa fa-file-zip-o fa-4x"></i><br/> bundle
-                            </a>
-                                                </td>
-                            <td>
-                            <a href="http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.3-installer.exe">
-                            <i class="fa fa-windows fa-4x"></i><br/> windows installer
-                            </a>
-                                                </td>
-                            </tr>
-                                        </table>
-                            <p>
-                                    Consult the <a href="https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20369">JIRA release notes</a>.<br>
-                                            Read the <a href="indy.html">invoke dynamic support information</a> if you wish to use it on JDK 7+.
-                            </p>
-
-                                    </article>
-                            <hr class="divider" />
-
-                            <a name="gvm"></a>
-                                    <article>
-                                        <h1>GVM (the Groovy enVironment Manager)</h1>
-                            <p>This tool makes installing Groovy on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.<br />
-                            Simply open a new terminal and enter:</p>
-                                        <pre><code>$ curl -s get.gvmtool.net | bash</code></pre>
-                                        <p>Follow the instructions on-screen to complete installation.<br />
-                                    Open a new terminal or type the command:</p>
-                                        <pre><code>$ source "$HOME/.gvm/bin/gvm-init.sh"</code></pre>
-                            <p>Then install the latest stable Groovy:</p>
-                                        <pre><code>$ gvm install groovy</code></pre>
-                                        <p>After installation is complete and you've made it your default version, test it with:</p>
-                            <pre><code>$ groovy -version</code></pre>
-                            <p>That's all there is to it!</p>
-                            </article>
-                                    <hr class="divider" />
 
                             <a name="buildtools"></a>
                                     <article>

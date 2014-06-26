@@ -9,20 +9,20 @@
 
 // main variables
 def socializeLinks = [
-        ['Learn', 'learn.html'],
-        ['Download', 'download.html'],
-        ['Community', 'community.html'],
-        ['Ecosystem', 'ecosystem.html']]
+        ['Learn',       'learn.html'],
+        ['Download',    'download.html'],
+        ['Community',   'community.html'],
+        ['Ecosystem',   'ecosystem.html']]
 
 // socialize popup items
 def entries = [
-        ['Mailling list', 'mailing-lists.html', 'fa-envelope'],
-        ['Groovy Weekly newsletter', 'http://bit.ly/groovy-weekly-subscribe', 'fa-envelope-o'],
-        ['GitHub', 'https://github.com/groovy/groovy-core', 'fa-github'],
-        ['Jira', 'http://jira.codehaus.org/browse/GROOVY', 'fa-tasks'],
-        ['Google+ Groovy Page', 'https://google.com/+groovy', 'fa-google-plus'],
-        ['Google+ Groovy Community', 'http://bit.ly/g-community', 'fa-google-plus'],
-        ['Stack overflow', 'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow']
+        ['Mailling list',               'mailing-lists.html',                               'fa-envelope'],
+        ['Groovy Weekly newsletter',    'http://bit.ly/groovy-weekly-subscribe',            'fa-envelope-o'],
+        ['GitHub',                      'https://github.com/groovy/groovy-core',            'fa-github'],
+        ['Jira',                        'http://jira.codehaus.org/browse/GROOVY',           'fa-tasks'],
+        ['Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'],
+        ['Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'],
+        ['Stack overflow',              'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow']
 ]
 
 // main layout
@@ -136,5 +136,4 @@ html {
     ['vendor/jquery-1.10.2.min.js', 'vendor/classie.js', 'vendor/sidebarEffects.js', 'plugins.js', 'main.js', *scripts].each {
         yieldUnescaped "<script src='js/$it'></script>"
     }
-
 }

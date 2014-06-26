@@ -52,7 +52,7 @@ task generateSite(dependsOn: copyAssets) << {
     siteMap.documentationSections.each { Section section ->
         section.items.each { SectionItem item ->
             logger.info("Generating documentation page [$item.name]")
-            render 'docpage', item.targetFilename, [title: item.name, iframeTarget: "http://beta.groovy-lang.org/docs/latest/html/documentation/${item.sourceFilename}.html"]
+            render 'docpage', item.targetFilename, [title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
         }
     }
 

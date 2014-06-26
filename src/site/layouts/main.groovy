@@ -107,7 +107,7 @@ html {
                                     div(class: 'col-right') {
                                         p {
                                             yield "The Groovy programming language"; br()
-                                            yield "is supported by "; a(href: 'http://gopivotal.com', 'Pivotal')
+                                            yield "is supported by "; a(href: 'http://gopivotal.com', 'Pivotal'); br()
                                             yield "and the Groovy community"; br()
                                         }
                                         img(src: 'img/pivotal.png', title: 'Pivotal', alt: 'Pivotal')

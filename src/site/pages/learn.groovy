@@ -33,7 +33,7 @@ layout 'layouts/main.groovy',
                                             div(class: 'col-md-6') {
                                                 a(name: section.anchor) {}
                                                 h2 {
-                                                    i(class: "fa ${section.icon}", section.name)
+                                                    i(class: "fa ${section.icon}", " $section.name")
                                                 }
                                                 ul {
                                                     section.getItems().each { item ->

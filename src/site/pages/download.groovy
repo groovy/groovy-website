@@ -183,86 +183,93 @@ layout 'layouts/main.groovy',
                                 p 'That\'s all there is to it!'
                             }
                             hr(class: 'divider')
-/*
 
-                            <a name="buildtools"></a>
-                                    <article>
-                                        <h1>From your build tools</h1>
-                            <p>
-                                    If you wish to add Groovy as a dependency in your projects,
-                            you can refer to the Groovy JARs in the dependency section of your project build file descriptor:
-                            </p>
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th>Gradle</th>
-                            <th>Maven</th>
-                                                <th>Explanation</th>
-                            </tr>
-                                            </thead>
-                            <tbody>
-                            <tr>
-                            <td><code>org.codehaus.groovy:groovy:x.y.z</code></td>
-                            <td>
-                            <code>&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt; </code><br />
-                            <code>&lt;artifactId&gt;groovy&lt;/artifactId&gt; </code><br />
-                            <code>&lt;version&gt;x.y.z&lt;/version&gt;</code>
-                            </td>
-                                                <td>
-                                                    Just the core of Groovy without the modules (see below).
-                                                    Also includes <em>jarjar'ed</em> versions of Antlr, ASM, and Commons-CLI.
-                                    </td>
-                                            </tr>
-                            <tr>
-                            <td><code>org.codehaus.groovy:groovy-$module:x.y.z</code></td>
-                            <td>
-                            <code>&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt; </code><br />
-                            <code>&lt;artifactId&gt;groovy-$module&lt;/artifactId&gt; </code><br />
-                            <code>&lt;version&gt;x.y.z&lt;/version&gt;</code>
-                            </td>
-                                                <td>
-                                                    <code>"$module"</code> stands for the different optional groovy modules
-                            "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx",
-                            "json", "jsr223", "servlet", "sql", "swing", "test", "testng" and "xml".
-                            Example: <code>&lt;artifactId&gt;groovy-sql&lt;/artifactId&gt;</code>
-                            </td>
-                                            </tr>
-                            <tr>
-                            <td><code>org.codehaus.groovy:groovy-all:x.y.z</code></td>
-                            <td>
-                            <code>&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt; </code><br />
-                            <code>&lt;artifactId&gt;groovy-all&lt;/artifactId&gt; </code><br />
-                            <code>&lt;version&gt;x.y.z&lt;/version&gt;</code>
-                            </td>
-                                                <td>
-                                                    The core plus all the modules.
-                                                    Also includes <em>jarjar'ed</em> versions of Antlr, ASM, Commons-CLI runtime.
-                            Allows you or your other dependencies (e.g. Hibernate) to use other versions of these jars.
-                            Optional dependencies are marked as optional.
-                            You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans, etc.</td>
-                                            </tr>
-                            </tbody>
-                                        </table>
-                            </article>
-                                    <hr class="divider" />
+                            a(name: 'buildtools') {}
+                            article {
+                                h1 'From your build tools'
+                                p 'If you wish to add Groovy as a dependency in your projects, you can refer to the Groovy JARs in the dependency section of your project build file descriptor:'
+                                table(class: 'table') {
+                                    thead {
+                                        tr {
+                                            th 'Gradle'
+                                            th 'Maven'
+                                            th 'Explanation'
+                                        }
+                                    }
+                                    tbody {
+                                        tr {
+                                            td {
+                                                code 'org.codehaus.groovy:groovy:x.y.z'
+                                            }
+                                            td {
+                                                code '&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;'
+                                                br()
+                                                code '&lt;artifactId&gt;groovy&lt;/artifactId&gt;'
+                                                br()
+                                                code '&lt;version&gt;x.y.z&lt;/version&gt;'
+                                            }
+                                            td 'Just the core of Groovy without the modules (see below). Also includes jarjar\'ed versions of Antlr, ASM, and Commons-CLI.'
+                                        }
+                                        tr {
+                                            td {
+                                                code 'org.codehaus.groovy:groovy-$module:x.y.z'
+                                            }
+                                            td {
+                                                code '&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;'
+                                                br()
+                                                code '&lt;artifactId&gt;groovy-$module&lt;/artifactId&gt;'
+                                                br()
+                                                code '&lt;version&gt;x.y.z&lt;/version&gt;'
+                                            }
+                                            td {
+                                                code '"$module"'
+                                                yield ' stands for the different optional groovy modules "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx", "json", "jsr223", "servlet", "sql", "swing", "test", "testng" and "xml".'
+                                                br()
+                                                yield 'Example: '
+                                                code '&lt;artifactId&gt;groovy-sql&lt;/artifactId&gt;'
+                                            }
+                                        }
+                                        tr {
+                                            td {
+                                                code 'org.codehaus.groovy:groovy-all:x.y.z'
+                                            }
+                                            td {
+                                                code '&lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;'
+                                                br()
+                                                code '&lt;artifactId&gt;groovy-all&lt;/artifactId&gt;'
+                                                br()
+                                                code '&lt;version&gt;x.y.z&lt;/version&gt;'
+                                            }
+                                            td 'The core plus all the modules. Also includes <em>jarjar\'ed</em> versions of Antlr, ASM, Commons-CLI runtime.\n ' +
+                                                    'Allows you or your other dependencies (e.g. Hibernate) to use other versions of these jars.\n ' +
+                                                    'Optional dependencies are marked as optional.\n ' +
+                                                    'You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans, etc.'
+                                        }
+                                    }
+                                }
+                            }
+                            hr(class: 'divider')
 
-                            <a name="otherways"></a>
-                                    <article>
-                                        <h1>Other ways to get Groovy</h1>
-                            <p>
-                                    If you're on MacOS and have <a href="http://brew.sh/">Homebrew</a> installed, you can install Groovy with:
-                            <pre><code>brew install groovy</code></pre>
-                            If you're on MacOS and have <a href="http://www.macports.org/">MacPorts</a> installed, you can install Groovy with:
-                            <pre><code>sudo port install groovy</code></pre>
-                                    If you're on Windows, you can also use the <a href="#">NSIS Windows installer</a>.<br />
-                            If you prefer to live on the bleeding edge, you can also grab the <a href="http://github.com/groovy/groovy-core">source code from Git</a>.<br />
-                                    If you are an IDE user, you can just grab the latest <a href="#">IDE plugin</a> and follow the plugin installation instructions.
-                                        </p>
-                            </article>
-*/
-
-
-
+                            a(name: 'otherways') {}
+                            article {
+                                h1 'Other ways to get Groovy'
+                                p {
+                                    yield 'If you\'re on MacOS and have '
+                                    a(href: 'http://brew.sh/', 'Homebrew')
+                                    yield ' installed, you can install Groovy with:'
+                                    pre { code 'brew install groovy' }
+                                    yield 'If you\'re on MacOS and have '
+                                    a(href: 'http://www.macports.org/', 'MacPorts')
+                                    yield ' installed, you can install Groovy with:'
+                                    pre { code 'sudo port install groovy' }
+                                    yield 'If you prefer to live on the bleeding edge, you can also grab the '
+                                    a(href: 'http://github.com/groovy/groovy-core', 'source code from GitHub')
+                                    br()
+                                    yield 'If you are an IDE user, you can just grab the latest '
+                                    a(href: 'ides.html', 'IDE plugin')
+                                    yield ' and follow the plugin installation instructions.'
+                                }
+                            }
                         }
                     }
                 }

@@ -118,8 +118,8 @@ html {
                                             }
                                             img(src: 'img/pivotal.png', title: 'Pivotal', alt: 'Pivotal')
                                         }
-                                        div(class: 'clearfix', '&copy; 2014 the Groovy project &mdash; Groovy is Open Source, Apache 2 License')
                                     }
+                                    div(class: 'clearfix', '&copy; 2014 the Groovy project &mdash; Groovy is Open Source, Apache 2 License')
                                 }
                             }
                         }

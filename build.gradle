@@ -57,4 +57,5 @@ task generateSite(dependsOn: copyAssets) << {
     }
 
     render 'download', 'download'
+    render 'versioning', 'versioning'
 }

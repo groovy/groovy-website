@@ -1,5 +1,6 @@
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
+import org.gradle.logging.ConsoleRenderer
 
 buildscript {
     repositories {
@@ -61,4 +62,71 @@ task generateSite(dependsOn: copyAssets) << {
     render 'download', 'download', [distributions: siteMap.distributions]
     render 'versioning', 'versioning'
     render 'indy', 'indy'
+}
+
+task checkDeadLinks(dependsOn: generateSite) << {
+    def deadLinks = [:]
+
+    def isDead = [:].withDefault { String link ->
+        try {
+            URL url
+            try {
+                url = URI.create(link).toURL()
+            } catch (e) {
+                if (e.message.contains('URI is not absolute')) {
+                    url = URI.create("file://${file("$buildDir/site/$link")}").toURL()
+                }
+            }
+            def stream = url.openStream()
+            stream.close()
+        } catch (e) {
+            return true
+        }
+        return false
+    }
+
+    def checkLink = { List dead, int line, String link ->
+        if (isDead[link]) {
+            dead << "at line $line: $link"
+        }
+    }
+
+    def checkPage = { File f ->
+        f.eachLine('utf-8') { String line, int nb ->
+            def dead = []
+            [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
+                def matcher = line =~ regex
+                if (matcher) {
+                    matcher.each {
+                        checkLink(dead, nb, it[1])
+                    }
+                }
+            }
+            if (dead) {
+                deadLinks[f] = dead
+            }
+        }
+    }
+
+    file("$buildDir/site").eachFileRecurse {
+        if (it.name.endsWith('.html')) {
+            checkPage(it)
+        }
+    }
+
+    def outputDir = file("$buildDir/reports")
+    outputDir.mkdirs()
+    def tplConf = new TemplateConfiguration()
+    tplConf.with {
+        autoIndent = true
+        autoNewLine = true
+    }
+    def tplEngine = new MarkupTemplateEngine(this.class.classLoader, file('gradle/templates'), tplConf)
+
+    def report = tplEngine.createTemplateByPath("deadlinks.groovy").make(deadLinks: deadLinks).toString()
+
+    def reportFile = file("$outputDir/deadlinks.html")
+    reportFile.write(report,'utf-8')
+    def reportURL = new ConsoleRenderer().asClickableFileUrl(reportFile)
+    logger.lifecycle "Dead links report written at $reportURL"
 }

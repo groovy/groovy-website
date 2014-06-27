@@ -51,114 +51,69 @@ layout 'layouts/main.groovy',
                                 h1 'Distributions'
                                 p 'You can download a binary, a source, a documentation bundle, as well as a bundle of the three.'
 
-                                h2 'Groovy 2.4'
-                                p {
-                                    yield 'Groovy 2.4 is currently in beta testing. If you want a stable version, please choose Groovy 2.3 which is our latest official '
-                                    a(href: 'versioning.html', 'version')
-                                    yield ' of Groovy.'
-                                }
-
-                                h3 'Groovy 2.4.0-beta-1 distributions'
-                                table(width: '100%', class: 'download-table') {
-                                    tr {
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-binary-2.4.0-beta-1.zip") {
-                                                i(class: 'fa fa-gears fa-4x') {}
-                                                br()
-                                                yield 'binary'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-src-2.4.0-beta-1.zip") {
-                                                i(class: 'fa fa-code fa-4x') {}
-                                                br()
-                                                yield ' source'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-docs-2.4.0-beta-1.zip") {
-                                                i(class: 'fa fa-file-text fa-4x') {}
-                                                br()
-                                                yield ' documentation'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-2.4.0-beta-1.zip") {
-                                                i(class: 'fa fa-file-zip-o fa-4x') {}
-                                                br()
-                                                yield ' SDK bundle'
-                                            }
-                                        }
-                                        td {}
-                                    }
-                                }
-                                p {
-                                    yield 'Consult the '
-                                    a(href: 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20369', 'JIRA release notes')
-                                    yield '.'
-                                    br()
-                                    yield 'Read the '
-                                    a(href: "indy.html", 'invoke dynamic support information')
-                                    yield ' if you wish to use it on JDK 7+'
-                                }
-
-                                h2 'Groovy 2.3'
-                                p {
-                                    yield 'Groovy 2.3 is our latest official '
-                                    a(href: 'versioning.html', 'version')
-                                    yield ' of Groovy.'
-                                }
-
-                                h3 'Groovy 2.3.3 distributions'
-                                table(width: '100%', class: 'download-table') {
-                                    tr {
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-binary-2.3.3.zip") {
-                                                i(class: 'fa fa-gears fa-4x') {}
-                                                br()
-                                                yield 'binary'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-src-2.3.3.zip") {
-                                                i(class: 'fa fa-code fa-4x') {}
-                                                br()
-                                                yield ' source'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-docs-2.3.3.zip") {
-                                                i(class: 'fa fa-file-text fa-4x') {}
-                                                br()
-                                                yield ' documentation'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-2.3.3.zip") {
-                                                i(class: 'fa fa-file-zip-o fa-4x') {}
-                                                br()
-                                                yield ' SDK bundle'
-                                            }
-                                        }
-                                        td {
-                                            a(href: "http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.3-installer.exe") {
-                                                i(class: 'fa fa-windows fa-4x') {}
-                                                br()
-                                                yield ' Windows installer'
-                                            }
+                                distributions.each { dist ->
+                                    h2 dist.name
+                                    if (dist.description) {
+                                        p {
+                                            dist.description.rehydrate(this, this, this)()
                                         }
                                     }
-                                }
-                                p {
-                                    yield 'Consult the '
-                                    a(href: 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20415', 'JIRA release notes')
-                                    yield '.'
-                                    br()
-                                    yield 'Read the '
-                                    a(href: "indy.html", 'invoke dynamic support information')
-                                    yield ' if you wish to use it on JDK 7+'
+                                    dist.packages.each { pkg ->
+                                        h3 "${pkg.version} distributions"
+                                        table(width: '100%', class: 'download-table') {
+                                            tr {
+                                                td {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-binary-${pkg.version}.zip") {
+                                                        i(class: 'fa fa-gears fa-4x') {}
+                                                        br()
+                                                        yield 'binary'
+                                                    }
+                                                }
+                                                td {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-src-${pkg.version}.zip") {
+                                                        i(class: 'fa fa-code fa-4x') {}
+                                                        br()
+                                                        yield ' source'
+                                                    }
+                                                }
+                                                td {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-docs-${pkg.version}.zip") {
+                                                        i(class: 'fa fa-file-text fa-4x') {}
+                                                        br()
+                                                        yield ' documentation'
+                                                    }
+                                                }
+                                                td {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-${pkg.version}.zip") {
+                                                        i(class: 'fa fa-file-zip-o fa-4x') {}
+                                                        br()
+                                                        yield ' SDK bundle'
+                                                    }
+                                                }
+                                                if (pkg.windowsInstaller) {
+                                                    td {
+                                                        a(href: "http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-${pkg.version}-installer.exe") {
+                                                            i(class: 'fa fa-windows fa-4x') {}
+                                                            br()
+                                                            yield ' Windows installer'
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        p {
+                                            yield 'Consult the '
+                                            a(href: pkg.releaseNotes, 'JIRA release notes')
+                                            yield '.'
+                                            br()
+                                            yield 'Read the '
+                                            a(href: "indy.html", 'invoke dynamic support information')
+                                            yield ' if you wish to use it on JDK 7+'
+                                        }
+                                    }
                                 }
                             }
+
                             hr(class: 'divider')
 
                             a(name: 'gvm') {}

@@ -63,8 +63,8 @@ documentation {
     }
 
     section ('API documentation', 'fa-code') {
-        item 'GroovyDoc documentation of the Groovy APIs',  'groovydoc',    'groovydoc'
-        item 'The Groovy Development Kit enhancements',     'gdk',          'gdk'
+        item 'GroovyDoc documentation of the Groovy APIs',  'api',    'api'
+        item 'The Groovy Development Kit enhancements',     'gdk',    'gdk'
     }
 }
 

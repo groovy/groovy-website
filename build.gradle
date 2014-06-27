@@ -67,6 +67,8 @@ task generateSite(dependsOn: copyAssets) {
         render 'download', 'download', [distributions: siteMap.distributions]
         render 'versioning', 'versioning'
         render 'indy', 'indy'
+        render 'api', 'api', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
+        render 'gdk', 'gdk', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
     }
 }
 

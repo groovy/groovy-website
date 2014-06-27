@@ -21,7 +21,7 @@ layout 'layouts/main.groovy',
                             p {
                                 yield 'The documentation is available as a '
                                 a(href: "single-page-documentation.html", 'single-page document')
-                                yield ', or feel free to pick at a direct sections below.'
+                                yield ', or feel free to pick at a direct section below.'
                             }
                             hr(class: 'divider')
 

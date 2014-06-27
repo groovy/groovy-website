@@ -29,104 +29,116 @@ task copyAssets(type:Copy) {
     into file("$buildDir/site")
 }
 
-task generateSite(dependsOn: copyAssets) << {
+task generateSite(dependsOn: copyAssets) {
 
-    def root = file('src/site')
-    def outputDir = file("$buildDir/site")
-    def tplConf = new TemplateConfiguration()
-    tplConf.with {
-        autoIndent = true
-        autoNewLine = true
-    }
-    def tplEngine = new MarkupTemplateEngine(this.class.classLoader, root, tplConf)
+    ext.sources = file('src/site')
+    ext.outputDir = file("$buildDir/site")
 
-    def siteMap = SiteMap.from(file('sitemap.groovy'))
+    inputs.files fileTree(sources)
+    outputs.files fileTree(outputDir)
 
-    def render = { String page, String target=null, Map model = [:] ->
-        model.menu = siteMap.menu
-        target = target ?: page
-        file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(),'utf-8')
-    }
-
-
-    render 'index'
-    render 'learn', 'learn', [docSections:siteMap.documentationSections]
-
-    siteMap.documentationSections.each { Section section ->
-        section.items.each { SectionItem item ->
-            logger.info("Generating documentation page [$item.name]")
-            render 'docpage', item.targetFilename, [title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
+    doLast {
+        def tplConf = new TemplateConfiguration()
+        tplConf.with {
+            autoIndent = true
+            autoNewLine = true
         }
-    }
+        def tplEngine = new MarkupTemplateEngine(this.class.classLoader, sources, tplConf)
 
-    render 'download', 'download', [distributions: siteMap.distributions]
-    render 'versioning', 'versioning'
-    render 'indy', 'indy'
+        def siteMap = SiteMap.from(file('sitemap.groovy'))
+
+        def render = { String page, String target = null, Map model = [:] ->
+            model.menu = siteMap.menu
+            target = target ?: page
+            file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(), 'utf-8')
+        }
+
+
+        render 'index'
+        render 'learn', 'learn', [docSections: siteMap.documentationSections]
+
+        siteMap.documentationSections.each { Section section ->
+            section.items.each { SectionItem item ->
+                logger.info("Generating documentation page [$item.name]")
+                render 'docpage', item.targetFilename, [title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
+            }
+        }
+
+        render 'download', 'download', [distributions: siteMap.distributions]
+        render 'versioning', 'versioning'
+        render 'indy', 'indy'
+    }
 }
 
-task checkDeadLinks(dependsOn: generateSite) << {
-    def deadLinks = [:]
+task checkDeadLinks(dependsOn: generateSite) {
+    ext.outputDir = file("$buildDir/reports")
+    ext.reportFile = file("$outputDir/deadlinks.html")
 
-    def isDead = [:].withDefault { String link ->
-        try {
-            URL url
+    inputs.files fileTree(generateSite.outputDir)
+    outputs.file reportFile
+
+    doLast {
+        def deadLinks = [:]
+
+        def isDead = [:].withDefault { String link ->
             try {
-                url = URI.create(link).toURL()
-            } catch (e) {
-                if (e.message.contains('URI is not absolute')) {
-                    url = URI.create("file://${file("$buildDir/site/$link")}").toURL()
-                }
-            }
-            def stream = url.openStream()
-            stream.close()
-        } catch (e) {
-            return true
-        }
-        return false
-    }
-
-    def checkLink = { List dead, int line, String link ->
-        if (isDead[link]) {
-            dead << "at line $line: $link"
-        }
-    }
-
-    def checkPage = { File f ->
-        f.eachLine('utf-8') { String line, int nb ->
-            def dead = []
-            [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
-                def matcher = line =~ regex
-                if (matcher) {
-                    matcher.each {
-                        checkLink(dead, nb, it[1])
+                URL url
+                try {
+                    url = URI.create(link).toURL()
+                } catch (e) {
+                    if (e.message.contains('URI is not absolute')) {
+                        url = URI.create("file://${file("${generateSite.outputDir}/$link")}").toURL()
                     }
                 }
+                def stream = url.openStream()
+                stream.close()
+            } catch (e) {
+                return true
             }
-            if (dead) {
-                deadLinks[f] = dead
+            return false
+        }
+
+        def checkLink = { List dead, int line, String link ->
+            if (isDead[link]) {
+                dead << "at line $line: $link"
             }
         }
-    }
 
-    file("$buildDir/site").eachFileRecurse {
-        if (it.name.endsWith('.html')) {
-            checkPage(it)
+        def checkPage = { File f ->
+            f.eachLine('utf-8') { String line, int nb ->
+                def dead = []
+                [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
+                    def matcher = line =~ regex
+                    if (matcher) {
+                        matcher.each {
+                            checkLink(dead, nb, it[1])
+                        }
+                    }
+                }
+                if (dead) {
+                    deadLinks[f] = dead
+                }
+            }
         }
+
+        file(generateSite.outputDir).eachFileRecurse {
+            if (it.name.endsWith('.html')) {
+                checkPage(it)
+            }
+        }
+
+        outputDir.mkdirs()
+        def tplConf = new TemplateConfiguration()
+        tplConf.with {
+            autoIndent = true
+            autoNewLine = true
+        }
+        def tplEngine = new MarkupTemplateEngine(this.class.classLoader, file('gradle/templates'), tplConf)
+
+        def report = tplEngine.createTemplateByPath("deadlinks.groovy").make(deadLinks: deadLinks).toString()
+
+        reportFile.write(report, 'utf-8')
+        def reportURL = new ConsoleRenderer().asClickableFileUrl(reportFile)
+        logger.lifecycle "Dead links report written at $reportURL"
     }
-
-    def outputDir = file("$buildDir/reports")
-    outputDir.mkdirs()
-    def tplConf = new TemplateConfiguration()
-    tplConf.with {
-        autoIndent = true
-        autoNewLine = true
-    }
-    def tplEngine = new MarkupTemplateEngine(this.class.classLoader, file('gradle/templates'), tplConf)
-
-    def report = tplEngine.createTemplateByPath("deadlinks.groovy").make(deadLinks: deadLinks).toString()
-
-    def reportFile = file("$outputDir/deadlinks.html")
-    reportFile.write(report,'utf-8')
-    def reportURL = new ConsoleRenderer().asClickableFileUrl(reportFile)
-    logger.lifecycle "Dead links report written at $reportURL"
 }

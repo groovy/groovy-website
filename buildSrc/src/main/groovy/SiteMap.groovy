@@ -5,6 +5,7 @@ import org.codehaus.groovy.control.CompilerConfiguration
 class SiteMap {
     final List<Section> documentationSections = []
     final List<Distribution> distributions = []
+    final Menu menu = new Menu()
 
     private SiteMap() {}
 
@@ -43,6 +44,11 @@ class SiteMap {
         def clone = distSpec.rehydrate(dist, dist, dist)
         clone()
         distributions.add(dist)
+    }
+
+    private void menu(Closure menuSpec) {
+        def clone = menuSpec.rehydrate(menu,menu,menu)
+        clone()
     }
 
 }

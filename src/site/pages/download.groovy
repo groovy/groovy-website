@@ -1,4 +1,5 @@
 layout 'layouts/main.groovy',
+        menu: menu,
         pageTitle: 'The Groovy programming language - Download',
         contents: contents {
             div(id: 'content', class: 'page-1') {

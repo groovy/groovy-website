@@ -1,3 +1,26 @@
+menu {
+    group('Groovy') {
+        item 'Learn',                       'learn.html'
+        item 'Download',                    'download.html'
+        item 'Community',                   'community.html'
+        item 'Ecosystem',                   'ecosystem.html'
+    }
+    group('About') {
+        item 'Contributing',                'contribute.html'
+        item 'Source code',                 'https://github.com/groovy/groovy-core'
+        item 'FAQ',                         'faq.html'
+    }
+    group('Socialize') {
+        item 'Mailling list',               'mailing-lists.html',                               'fa-envelope'
+        item 'Groovy Weekly newsletter',    'http://bit.ly/groovy-weekly-subscribe',            'fa-envelope-o'
+        item 'GitHub',                      'https://github.com/groovy/groovy-core',            'fa-github'
+        item 'Jira',                        'http://jira.codehaus.org/browse/GROOVY',           'fa-tasks'
+        item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
+        item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
+        item 'Stack overflow',              'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
+    }
+}
+
 documentation {
     section('Getting started','fa-graduation-cap') {
         item 'Download Groovy',                             'download',         'download'

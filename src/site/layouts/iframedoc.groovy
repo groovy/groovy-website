@@ -16,7 +16,5 @@ layout 'layouts/page.groovy',
             div {
                 include template: 'includes/topmenu.groovy'
             }
-        },
-        extraFooter: contents {
-            iframe class: 'doc-embed', frameborder: '0', height: '100%', width: '100%', src: iframeTarget
+            iframe(class: 'doc-embed', frameborder: '0', height: '100%', width: '100%', src: iframeTarget) {}
         }

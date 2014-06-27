@@ -2567,12 +2567,17 @@ html, body, .st-container, .st-pusher, .st-content {
     overflow: auto
 }
 
+#st-container {
+    height: 100%;
+}
+
 .st-content {
     background: white
 }
 
 .st-content, .st-content-inner {
-    position: relative
+    position: relative;
+    height: 100%;
 }
 
 .st-container {

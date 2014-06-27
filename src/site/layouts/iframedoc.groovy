@@ -4,7 +4,6 @@
  * @param pageTitle the page title
  * @param extraStyles , a list of CSS files to be added in the header
  * @param scripts , a list of scripts to be imported
- * @param extraFooter, a section to be added before closing body
  */
 
 // main variables
@@ -91,42 +90,14 @@ html {
                                     }
                                 }
                             }
-                            // main contents goes here!
-                            contents()
-
-                            // footer
-                            footer(id: 'footer') {
-                                div(class: 'row') {
-                                    div(class: 'colset-3-footer') {
-                                        div(class: 'col-1') {
-                                            h1('Groovy')
-                                            ul {
-                                                socializeLinks.each { text, url -> li { a(href: url, text) } }
-                                            }
-                                        }
-                                        div(class: 'col-2') {
-                                            h1('About')
-                                        }
-                                        div(class: 'col-3') {
-                                            h1('Socialize')
-                                        }
-                                        div(class: 'col-right') {
-                                            p {
-                                                yield "The Groovy programming language"; br()
-                                                yield "is supported by "; a(href: 'http://gopivotal.com', 'Pivotal'); br()
-                                                yield "and the Groovy community"; br()
-                                            }
-                                            img(src: 'img/pivotal.png', title: 'Pivotal', alt: 'Pivotal')
-                                        }
-                                    }
-                                    div(class: 'clearfix', '&copy; 2014 the Groovy project &mdash; Groovy is Open Source, Apache 2 License')
-                                }
-                            }
                         }
                     }
                 }
             }
         }
+        // main contents goes here!
+        contents()
+
         // bottom styles
         link href: 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,200', rel: 'stylesheet', type: 'text/css'
 

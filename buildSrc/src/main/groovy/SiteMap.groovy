@@ -4,6 +4,7 @@ import org.codehaus.groovy.control.CompilerConfiguration
 @ToString(includeNames=true)
 class SiteMap {
     final List<Section> documentationSections = []
+    final List<Distribution> distributions = []
 
     private SiteMap() {}
 
@@ -32,5 +33,16 @@ class SiteMap {
         documentationSections.add(section)
     }
 
+    private void downloads(Closure dlSpec) {
+        def clone = dlSpec.rehydrate(this,this,this)
+        clone()
+    }
+
+    private void distribution(String name, Closure distSpec) {
+        Distribution dist = new Distribution(name: name)
+        def clone = distSpec.rehydrate(dist, dist, dist)
+        clone()
+        distributions.add(dist)
+    }
 
 }

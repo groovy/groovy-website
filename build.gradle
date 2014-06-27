@@ -56,7 +56,7 @@ task generateSite(dependsOn: copyAssets) << {
         }
     }
 
-    render 'download', 'download'
+    render 'download', 'download', [distributions: siteMap.distributions]
     render 'versioning', 'versioning'
     render 'indy', 'indy'
 }

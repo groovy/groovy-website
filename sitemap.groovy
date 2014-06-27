@@ -44,3 +44,29 @@ documentation {
         item 'The Groovy Development Kit enhancements',     'gdk',          'gdk'
     }
 }
+
+downloads {
+    distribution('Groovy 2.4') {
+        description {
+            yield 'Groovy 2.4 is currently in beta testing. If you want a stable version, please choose Groovy 2.3 which is our latest official '
+            a(href: 'versioning.html', 'version')
+            yield ' of Groovy.'
+        }
+
+        version('2.4.0-beta-1') {
+            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20369'
+        }
+    }
+    distribution('Groovy 2.3') {
+        description {
+            yield 'Groovy 2.3 is our latest official '
+            a(href: 'versioning.html', 'version')
+            yield ' of Groovy.'
+        }
+
+        version('2.3.3') {
+            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20415'
+            windowsInstaller 'http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.3-installer.exe'
+        }
+    }
+}

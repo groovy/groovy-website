@@ -71,3 +71,14 @@ article .content time {
 .download-table td {
     width: 20%;
 }
+
+#mc-embedded-subscribe {
+    width: 200px;
+    font-weight: bold;
+}
+
+#mc-embedded-subscribe:hover {
+    color: white;
+    background-color: #db4800;
+    font-weight: bold;
+}

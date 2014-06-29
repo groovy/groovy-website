@@ -21,7 +21,7 @@ html {
         meta 'http-equiv': 'X-UA-Compatible', content: 'IE=edge'
         title(pageTitle)
         def styles = extraStyles ?: []
-        ['bootstrap.css', 'font-awesome.min.css', 'style.css', *styles].each {
+        ['bootstrap.css', 'bootstrap-forms.css', 'font-awesome.min.css', 'style.css', *styles].each {
             link rel: 'stylesheet', type: 'text/css', href:
                     "css/$it"
         }

@@ -12,7 +12,7 @@ menu {
     }
     group('Socialize') {
         item 'Mailling list',               'mailing-lists.html',                               'fa-envelope'
-        item 'Groovy Weekly newsletter',    'http://bit.ly/groovy-weekly-subscribe',            'fa-envelope-o'
+        item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
         item 'GitHub',                      'https://github.com/groovy/groovy-core',            'fa-github'
         item 'Jira',                        'http://jira.codehaus.org/browse/GROOVY',           'fa-tasks'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'

@@ -69,6 +69,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'versioning', 'versioning'
         render 'indy', 'indy'
         render 'community', 'community'
+        render 'groovyweekly', 'groovy-weekly'
         render 'api', 'api', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
         render 'gdk', 'gdk', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
     }

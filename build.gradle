@@ -75,6 +75,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'faq', 'faq'
         render 'api', 'api', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
         render 'gdk', 'gdk', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
+        render 'singlepagedocumentation', 'single-page-documentation', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
     }
 }
 

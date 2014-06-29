@@ -13,7 +13,7 @@ menu {
     group('Socialize') {
         item 'Discuss on the mailing-list', 'mailing-lists.html',                               'fa-envelope'
         item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
-        item 'Code source on GitHub',       'https://github.com/groovy/groovy-core',            'fa-github'
+        item 'Source code on GitHub',       'https://github.com/groovy/groovy-core',            'fa-github'
         item 'Report issues in Jira',       'http://jira.codehaus.org/browse/GROOVY',           'fa-tasks'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'

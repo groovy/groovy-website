@@ -17,7 +17,7 @@ menu {
         item 'Report issues in Jira',       'http://jira.codehaus.org/browse/GROOVY',           'fa-tasks'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
-        item 'Stack overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
+        item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
     }
 }
 

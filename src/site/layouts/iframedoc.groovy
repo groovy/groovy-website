@@ -11,7 +11,8 @@ layout 'layouts/page.groovy',
         pageTitle: pageTitle,
         extraStyles: extraStyles,
         scripts: scripts,
-        menu:menu,
+        menu: menu,
+        category: category,
         contents: contents {
             div {
                 include template: 'includes/topmenu.groovy'

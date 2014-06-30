@@ -1,5 +1,6 @@
 layout 'layouts/main.groovy',
         menu: menu,
+        category: category,
         pageTitle: 'The Groovy programming language - FAQ - Frequently Asked Questions',
         contents: contents {
             div(id: 'content', class: 'page-1') {

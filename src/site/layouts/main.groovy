@@ -12,7 +12,8 @@ layout 'layouts/page.groovy',
         extraStyles: extraStyles,
         scripts: scripts,
         extraFooter: extraFooter,
-        menu:menu,
+        menu: menu,
+        category: category,
         contents: contents {
 
             // 'Content'

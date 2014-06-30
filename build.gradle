@@ -55,27 +55,27 @@ task generateSite(dependsOn: copyAssets) {
 
 
         render 'index'
-        render 'ecosystem', 'ecosystem', [ecosys: siteMap.ecosystem]
-        render 'learn', 'learn', [docSections: siteMap.documentationSections]
+        render 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: siteMap.ecosystem]
+        render 'learn', 'learn', [category: 'Learn', docSections: siteMap.documentationSections]
 
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->
                 logger.info("Generating documentation page [$item.name]")
-                render 'docpage', item.targetFilename, [title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
+                render 'docpage', item.targetFilename, [category: 'Learn', title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
             }
         }
 
-        render 'download', 'download', [distributions: siteMap.distributions]
-        render 'versioning', 'versioning'
-        render 'indy', 'indy'
-        render 'community', 'community'
-        render 'groovyweekly', 'groovy-weekly'
-        render 'mailinglists', 'mailing-lists'
-        render 'contribute', 'contribute'
-        render 'faq', 'faq'
-        render 'api', 'api', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
-        render 'gdk', 'gdk', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
-        render 'singlepagedocumentation', 'single-page-documentation', [iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
+        render 'download', 'download', [category: 'Download', distributions: siteMap.distributions]
+        render 'versioning', 'versioning', [category: 'Download']
+        render 'indy', 'indy', [category: 'Download']
+        render 'community', 'community', [category: 'Community']
+        render 'groovyweekly', 'groovy-weekly', [category: 'Community']
+        render 'mailinglists', 'mailing-lists', [category: 'Community']
+        render 'contribute', 'contribute', [category: 'Community']
+        render 'faq', 'faq', [category: 'Community']
+        render 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
+        render 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
+        render 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
     }
 }
 

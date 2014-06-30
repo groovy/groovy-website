@@ -2,7 +2,7 @@ layout 'layouts/main.groovy',
         menu: menu,
         category: category,
         pageTitle: 'The Groovy programming language - Ecosystem',
-        contents: contents {
+        mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 section(class: 'row') {
                     div(class: 'row-fluid') {

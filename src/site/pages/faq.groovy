@@ -2,7 +2,7 @@ layout 'layouts/main.groovy',
         menu: menu,
         category: category,
         pageTitle: 'The Groovy programming language - FAQ - Frequently Asked Questions',
-        contents: contents {
+        mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {

@@ -14,14 +14,13 @@ layout 'layouts/page.groovy',
         extraFooter: extraFooter,
         menu: menu,
         category: category,
-        contents: contents {
-
+        mainContent: contents {
             // 'Content'
             div {
                 include template: 'includes/topmenu.groovy'
 
                 // main contents goes here!
-                contents()
+                mainContent()
 
                 include template: 'includes/bottommenu.groovy'
             }

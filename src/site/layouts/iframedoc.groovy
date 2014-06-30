@@ -13,7 +13,7 @@ layout 'layouts/page.groovy',
         scripts: scripts,
         menu: menu,
         category: category,
-        contents: contents {
+        mainContent: contents {
             div {
                 include template: 'includes/topmenu.groovy'
             }

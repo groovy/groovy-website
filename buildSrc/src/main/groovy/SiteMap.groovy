@@ -7,6 +7,7 @@ class SiteMap {
     final List<Distribution> distributions = []
     final Menu menu = new Menu()
     final Ecosystem ecosystem = new Ecosystem()
+    final Events allEvents = new Events()
 
     private SiteMap() {}
 
@@ -48,13 +49,17 @@ class SiteMap {
     }
 
     private void menu(Closure menuSpec) {
-        def clone = menuSpec.rehydrate(menu,menu,menu)
+        def clone = menuSpec.rehydrate(menu, menu, menu)
         clone()
     }
 
     private void ecosystem(Closure ecoSpec) {
-        def clone = ecoSpec.rehydrate(ecosystem,ecosystem,ecosystem)
+        def clone = ecoSpec.rehydrate(ecosystem, ecosystem, ecosystem)
         clone()
     }
 
+    private void allEvents(Closure eventsSpec) {
+        def clone = eventsSpec.rehydrate(allEvents, allEvents, allEvents)
+        clone()
+    }
 }

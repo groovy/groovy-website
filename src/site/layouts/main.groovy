@@ -14,6 +14,7 @@ layout 'layouts/page.groovy',
         extraFooter: extraFooter,
         menu: menu,
         category: category,
+        allEvents: allEvents,
         mainContent: contents {
             // 'Content'
             div {

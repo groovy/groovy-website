@@ -30,7 +30,7 @@ layout 'layouts/main.groovy',
                                 h2 'What are the differences between Groovy and Java?'
                                 p {
                                     yield 'Learn more about the '
-                                    a(href: 'differences.html', 'differences between Groovy and Java.')
+                                    a(href: 'differences.html', 'differences between Groovy and Java')
                                     yield '.'
                                 }
                             }

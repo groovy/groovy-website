@@ -39,7 +39,7 @@ layout 'layouts/main.groovy',
                                             }
                                             p(item.description)
                                         }
-                                        a(href: item.url, "Learn more...")
+                                        a(href: item.url, target:'_blank', "Learn more...")
                                     }
                                 }
                                 hr(class: 'divider')

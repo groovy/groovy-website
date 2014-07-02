@@ -8,8 +8,14 @@ layout 'layouts/main.groovy',
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
+                                li {
+                                    a(href: 'learn.html', 'Documentation')
+                                }
+                                docSections.each { section ->
+                                    li { a(href: "#${section.anchor}", section.name) }
+                                }
                                 li(class: 'active') {
-                                    a(href: 'faq.html') { strong('Frequently Asked Questions') }
+                                    a(href: 'faq.html') { strong('FAQ') }
                                 }
                             }
                         }

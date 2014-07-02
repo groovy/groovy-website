@@ -72,7 +72,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'groovyweekly', 'groovy-weekly', [category: 'Community']
         render 'mailinglists', 'mailing-lists', [category: 'Community']
         render 'contribute', 'contribute', [category: 'Community']
-        render 'faq', 'faq', [category: 'Community']
+        render 'faq', 'faq', [category: 'Learn', docSections: siteMap.documentationSections]
         render 'events', 'events', [category: 'Community', allEvents: siteMap.allEvents]
         render 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
         render 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']

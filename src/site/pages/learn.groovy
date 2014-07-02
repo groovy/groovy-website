@@ -14,6 +14,9 @@ layout 'layouts/main.groovy',
                                 docSections.each { section ->
                                     li { a(href: "#${section.anchor}", section.name) }
                                 }
+                                li {
+                                    a(href: 'faq.html', 'FAQ')
+                                }
                             }
                         }
 

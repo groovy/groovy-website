@@ -26,13 +26,21 @@ layout 'layouts/main.groovy',
                             }
                             hr(class: 'divider')
 
-                            ecosys.each {
-                                def (name, item) = [it.key, it.value]
+                            ecosys.eachWithIndex { e, index ->
+                                def (name, item) = [e.key, e.value]
                                 article {
                                     a(name: "${name}") {}
-                                    h2(name)
-                                    p(item.description)
-                                    a(href: item.url, "Learn more...")
+                                    div(class:"content-heading clearfix media") {
+                                        div {
+                                            if (item.logo) {
+                                                img class: "pull-${(index % 2 == 0) ? 'left' : 'right'}", src: item.logo, alt:name
+                                            } else {
+                                                h2(name)
+                                            }
+                                            p(item.description)
+                                        }
+                                        a(href: item.url, "Learn more...")
+                                    }
                                 }
                                 hr(class: 'divider')
                             }

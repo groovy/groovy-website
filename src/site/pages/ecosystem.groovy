@@ -33,7 +33,7 @@ layout 'layouts/main.groovy',
                                     div(class:"content-heading clearfix media") {
                                         div {
                                             if (item.logo) {
-                                                img class: "pull-${(index % 2 == 0) ? 'left' : 'right'}", src: item.logo, alt:name
+                                                img class: "pull-${(index % 2 == 0) ? 'left' : 'right'}", src: item.logo, alt: name, hspace: '20px'
                                             } else {
                                                 h2(name)
                                             }

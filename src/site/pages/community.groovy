@@ -21,6 +21,8 @@ layout 'layouts/main.groovy',
                                     a(href: 'events.html', 'Events')
                                 }
                             }
+                            br()
+                            include unescaped: 'html/twittersearch.html'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {

@@ -15,6 +15,9 @@ buildscript {
 
 apply plugin:'groovy'
 
+// The following dependencies are only used for IDE support
+// because libraries from buildscript do not appear on classpath :(
+// -----------------------------------------------------------------
 repositories {
     jcenter()
 }
@@ -23,6 +26,7 @@ dependencies {
     compile 'org.codehaus.groovy:groovy:2.3.3'
     compile 'org.codehaus.groovy:groovy-templates:2.3.3'
 }
+// -----------------------------------------------------------------
 
 task copyAssets(type:Copy) {
     from file('src/site/assets')
@@ -31,10 +35,14 @@ task copyAssets(type:Copy) {
 
 task generateSite(dependsOn: copyAssets) {
 
+    description = 'Generates the Groovy Website'
+
     ext.sources = file('src/site')
     ext.outputDir = file("$buildDir/site")
+    ext.sitemapFile = file('sitemap.groovy')
 
     inputs.files fileTree(sources)
+    inputs.file sitemapFile
     outputs.files fileTree(outputDir)
 
     doLast {
@@ -45,7 +53,7 @@ task generateSite(dependsOn: copyAssets) {
         }
         def tplEngine = new MarkupTemplateEngine(this.class.classLoader, sources, tplConf)
 
-        def siteMap = SiteMap.from(file('sitemap.groovy'))
+        def siteMap = SiteMap.from(sitemapFile)
 
         def render = { String page, String target = null, Map model = [:] ->
             model.menu = siteMap.menu
@@ -81,6 +89,8 @@ task generateSite(dependsOn: copyAssets) {
 }
 
 task checkDeadLinks(dependsOn: generateSite) {
+    description = "Checks for dead links in the generated Groovy website"
+
     ext.outputDir = file("$buildDir/reports")
     ext.reportFile = file("$outputDir/deadlinks.html")
 
@@ -103,6 +113,10 @@ task checkDeadLinks(dependsOn: generateSite) {
                 def stream = url.openStream()
                 stream.close()
             } catch (e) {
+                if (link.startsWith('https')) {
+                    // workaround to be found
+                    return false
+                }
                 return true
             }
             return false
@@ -150,5 +164,18 @@ task checkDeadLinks(dependsOn: generateSite) {
         reportFile.write(report, 'utf-8')
         def reportURL = new ConsoleRenderer().asClickableFileUrl(reportFile)
         logger.lifecycle "Dead links report written at $reportURL"
+    }
+}
+
+task webzip(type:Zip, dependsOn: checkDeadLinks) {
+    description = "Creates a zip with the generated website and the deadlink report"
+
+    baseName = 'groovy'
+    appendix = 'website'
+    from(generateSite.outputDir) {
+        into 'site'
+    }
+    from (checkDeadLinks.outputDir) {
+        into 'reports'
     }
 }

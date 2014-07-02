@@ -26,6 +26,8 @@ layout 'layouts/main.groovy',
                         div(class: 'col-lg-8 col-lg-pull-0') {
                             h1 'Mailing-lists'
                             p '''The Groovy mailing-lists is the main means of interaction with the Groovy developers and Groovy users.'''
+                            hr(class: 'divider')
+
                             article {
                                 h1 'Subscribing to the lists'
                                 p {
@@ -38,6 +40,8 @@ layout 'layouts/main.groovy',
                                     yield 'Once you have got this link you can manage your subscriptions by going to the Groovy project page: '
                                     a(href: 'http://xircles.codehaus.org/projects/groovy', 'http://xircles.codehaus.org/projects/groovy')
                                 }
+                                hr(class: 'divider')
+
                                 h2 'Available lists'
                                 table(class: 'table') {
                                     tr {
@@ -71,6 +75,7 @@ layout 'layouts/main.groovy',
                                         td 'medium volume list that logs commits'
                                     }
                                 }
+                                hr(class: 'divider')
 
                                 h2 'Mailing-lists archive on Nabble'
                                 p '''

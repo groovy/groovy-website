@@ -20,6 +20,7 @@ html {
         meta charset: 'utf-8'
         meta 'http-equiv': 'X-UA-Compatible', content: 'IE=edge'
         title(pageTitle)
+        link(href: "img/favicon.ico", type: "image/x-ico", rel: "icon")
         def styles = extraStyles ?: []
         ['bootstrap.css', 'bootstrap-forms.css', 'font-awesome.min.css', 'style.css', *styles].each {
             link rel: 'stylesheet', type: 'text/css', href:

@@ -35,15 +35,13 @@ documentation {
         item 'Design patterns in Groovy',                   'design-patterns',  'design-pattern-in-groovy'
     }
 
-    section('Groovy module guides', 'fa-cubes') {
-        item 'Parsing and producing JSON',          'json',             'json-userguide'
-        item 'Working with a relational database',  'databases',        'databases'
-        item 'Processing XML',                      'processing-xml',   'processing-xml'
-        item 'Scripting Ant tasks',                 'scripting-ant',    'scripting-ant'
-        item 'Template engines',                    'templating',       'template-engines'
-        item 'Creating Swing UIs',                  'swing',            'swing'
-        item 'Servlet support',                     'servlet',          'servlet'
-        item 'Working with JMX',                    'jmx',              'jmx'
+    section ('Language Specification', 'fa-graduation-cap') {
+        item 'Syntax',              'syntax',               'core-syntax'
+        item 'Operators',           'operators',            'core-operators'
+        item 'Program structure',   'structure',            'core-program-structure'
+        item 'Object orientation',  'objectorientation',    'core-object-orientation'
+        item 'Closures',            'closures',             'core-closures'
+        item 'Semantics',           'semantics',            'core-semantics'
     }
 
     section ('Tools','fa-gears') {
@@ -53,13 +51,15 @@ documentation {
         item 'IDE integration', 'ide', 'tools-ide'
     }
 
-    section ('Language Specification', 'fa-graduation-cap') {
-        item 'Syntax',              'syntax',               'core-syntax'
-        item 'Operators',           'operators',            'core-operators'
-        item 'Program structure',   'structure',            'core-program-structure'
-        item 'Object orientation',  'objectorientation',    'core-object-orientation'
-        item 'Closures',            'closures',             'core-closures'
-        item 'Semantics',           'semantics',            'core-semantics'
+    section('Groovy module guides', 'fa-cubes') {
+        item 'Parsing and producing JSON',          'json',             'json-userguide'
+        item 'Working with a relational database',  'databases',        'databases'
+        item 'Processing XML',                      'processing-xml',   'processing-xml'
+        item 'Scripting Ant tasks',                 'scripting-ant',    'scripting-ant'
+        item 'Template engines',                    'templating',       'template-engines'
+        item 'Creating Swing UIs',                  'swing',            'swing'
+        item 'Servlet support',                     'servlet',          'servlet'
+        item 'Working with JMX',                    'jmx',              'jmx'
     }
 
     section ('API documentation', 'fa-code') {

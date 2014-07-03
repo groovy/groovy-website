@@ -1,6 +1,7 @@
 menu {
     group('Groovy') {
         item 'Learn',                       'learn.html'
+        item 'Documentation',               'documentation.html'
         item 'Download',                    'download.html'
         item 'Community',                   'community.html'
         item 'Ecosystem',                   'ecosystem.html'

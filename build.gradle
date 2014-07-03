@@ -65,7 +65,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'index', 'index', [allEvents: siteMap.allEvents]
         render 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: siteMap.ecosystem]
         render 'learn', 'learn', [category: 'Learn', docSections: siteMap.documentationSections]
-        render 'documentation', 'documentation', [category: 'Learn', docSections: siteMap.documentationSections]
+        render 'documentation', 'documentation', [category: 'Documentation', docSections: siteMap.documentationSections]
 
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->
@@ -81,7 +81,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'groovyweekly', 'groovy-weekly', [category: 'Community']
         render 'mailinglists', 'mailing-lists', [category: 'Community']
         render 'contribute', 'contribute', [category: 'Community']
-        render 'faq', 'faq', [category: 'Learn', docSections: siteMap.documentationSections]
+        render 'faq', 'faq', [category: 'Documentation', docSections: siteMap.documentationSections]
         render 'events', 'events', [category: 'Community', allEvents: siteMap.allEvents]
         render 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
         render 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']

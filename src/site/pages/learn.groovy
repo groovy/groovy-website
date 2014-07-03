@@ -15,36 +15,28 @@ layout 'layouts/main.groovy',
                                 li {
                                     a(href: '#books', 'Books')
                                 }
-                                li {
-                                    a(href: 'documentation.html', 'Documentation')
-                                }
-                                docSections.each { section ->
-                                    li { a(href: "documentation.html#${section.anchor}", section.name) }
-                                }
-                                li {
-                                    a(href: 'faq.html', 'FAQ')
-                                }
                             }
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
                             h1('Learn')
                             article {
-                                p '''
-                                    This learning section of the Groovy project website gives you key pointers
-                                    to the following documentation resources:'''
-                                ul {
-                                    li { a(href: 'documentation.html#gettingstarted', 'reference documentation') }
-                                    ul {
-                                        li { a(href: 'documentation.html#gettingstarted', 'getting started guides') }
-                                        li { a(href: 'documentation.html#languagespecification', 'language specification') }
-                                        li { a(href: 'documentation.html#tools', 'tools documentation') }
-                                        li { a(href: 'documentation.html#groovymoduleguides', 'Groovy module user guides') }
-                                        li { a(href: 'documentation.html#groovymoduleguides', 'Groovy module user guides') }
-                                    }
-                                    li { a(href: 'gdk.html', 'Groovy GDK documentation') }
-                                    li { a(href: 'api.html', 'GroovyDoc of the Groovy APIs') }
-                                    li { a(href: 'faq.html', 'Frequently Asked Questions') }
+                                p 'Welcome to the learning section of the Groovy website.'
+                                p {
+                                    yield 'First of all, you will need to '
+                                    a(href: 'documentation.html#gettingstarted', 'get started')
+                                    yield ' by installing Groovy on your system or project.'
+                                }
+                                p {
+                                    yield 'Once all set up, we invite you to have a look at the Groovy '
+                                    a(href: 'documentation.html', 'documentation')
+                                    yield ', explaining all the '
+                                    a(href: 'documentation.html#languagespecification', 'details of the language')
+                                    yield ', how to use the '
+                                    a(href: 'documentation.html#tools', 'tools')
+                                    yield ' coming with a Groovy installation, and showing how to tackle more complex tasks with the various '
+                                    a(href: 'documentation.html#groovymoduleguides', 'module user guides')
+                                    yield '.'
                                 }
                                 hr(class: 'divider')
 

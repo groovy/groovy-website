@@ -8,12 +8,6 @@ layout 'layouts/main.groovy',
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
-                                li {
-                                    a(href: 'learn.html', 'Learn')
-                                }
-                                li {
-                                    a(href: 'learn.html#books', 'Books')
-                                }
                                 li(class: 'active') {
                                     a(href: '#') { strong('Documentation') }
                                 }

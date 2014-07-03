@@ -25,11 +25,11 @@ menu {
 documentation {
     section('Getting started','fa-graduation-cap') {
         item 'Download Groovy',                             'download',         'download'
-        item 'Install Groovy',                              'install',          'install'
+        item 'Install Groovy',                              'install',          'core-getting-started'
         item 'Differences with Java',                       'differences',      'core-differences-java'
         item 'The Groovy Development Kit',                  'gdk',              'core-gdk'
         item 'Runtime and compile-time metaprogramming',    'metaprogramming',  'core-metaprogramming'
-        item 'The Grape dependency manager',                'grapes',           'core-grapes'
+        item 'The Grape dependency manager',                'grape',            'grape'
         item 'Testing guide',                               'testing',          'core-testing-guide'
         item 'Domain-Specific Languages',                   'dsls',             'core-domain-specific-languages'
         item 'Security',                                    'security',         'security'
@@ -49,7 +49,7 @@ documentation {
         item 'groovyc — the Groovy compiler',               'groovyc',          'tools-groovyc'
         item 'groovysh — the Groovy command -like shell',   'groovysh',         'tools-groovysh'
         item 'groovyConsole — the Groovy Swing console',    'groovyconsole',    'tools-groovyconsole'
-        item 'IDE integration', 'ide', 'tools-ide'
+        item 'IDE integration', 'ides', 'tools-ide'
     }
 
     section('Groovy module guides', 'fa-cubes') {

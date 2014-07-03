@@ -8,6 +8,7 @@ html {
         if (!deadLinks) {
             p("No dead link found. All green!")
         } else {
+            p("Found a total of ${deadLinks.values().sum { it.size()}} dead links")
             p("The following files contain dead links:")
         }
         deadLinks.each { entry ->

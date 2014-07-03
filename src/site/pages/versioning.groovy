@@ -12,16 +12,16 @@ layout 'layouts/main.groovy',
                                     a(href: 'download.html', 'Download Groovy')
                                 }
                                 li {
-                                    a(href: '#distro', 'Distributions')
+                                    a(href: 'download.html#distro', 'Distributions')
                                 }
                                 li {
-                                    a(href: '#gvm', 'Through GVM')
+                                    a(href: 'download.html#gvm', 'Through GVM')
                                 }
                                 li {
-                                    a(href: '#buildtools', 'From your build tools')
+                                    a(href: 'download.html#buildtools', 'From your build tools')
                                 }
                                 li {
-                                    a(href: '#otherways', 'Other ways to get Groovy')
+                                    a(href: 'download.html#otherways', 'Other ways to get Groovy')
                                 }
                                 li(class: 'active') {
                                     a(href: 'versioning.html') {

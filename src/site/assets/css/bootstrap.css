@@ -2206,6 +2206,10 @@ h8 {
     text-align: left
 }
 
+#footer .colset-3-footer .col-3 {
+    width: 24%;
+}
+
 #footer .colset-3-footer .col-1 h1, #footer .colset-3-footer .col-2 h1, #footer .colset-3-footer .col-3 h1 {
     font-weight: 600;
     font-size: 15px;

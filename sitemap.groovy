@@ -184,3 +184,36 @@ allEvents {
         '''
     }
 }
+
+books {
+    book('Groovy in Action, 2nd edition') {
+        authors "Dierk König, Guillaume Laforge, Paul King, Cédric Champeau, Hamlet D'Arcy, Erik Pragt, and Jon Skeet"
+        cover 'img/books/regina.png'
+        url 'http://www.manning.com/koenig2/'
+        description 'The undisputed definitive reference on the Groovy programming language, authored by core members of the development team.'
+    }
+    book('Programming Groovy 2') {
+        authors 'Venkat Subramaniam'
+        cover 'img/books/vslg2.jpg'
+        url 'http://pragprog.com/book/vslg2/programming-groovy-2'
+        description 'Dynamic productivity for the Java developer'
+    }
+    book('Groovy 2 Cookbook') {
+        authors 'Andrey Adamovitch, Luciano Fiandeso'
+        cover 'img/books/g2cook.jpg'
+        url 'http://www.packtpub.com/groovy-2-cookbook/book'
+        description 'Over 90 recipes that provide solutions to everyday programming challenges using the powerful features of Groovy 2'
+    }
+    book('Groovy for Domain-Specific Languages') {
+        authors 'Fregal Dearle'
+        cover 'img/books/gdsl.jpg'
+        url 'http://www.packtpub.com/groovy-for-domain-specific-languages-dsl/book'
+        description 'Enhance and extend your Java applications with Domain-Specific Languages in Groovy'
+    }
+    book('Groovy Goodness Notebook') {
+        authors 'Hubert A. Klein Ikkink'
+        cover 'img/books/ggood.jpg'
+        url 'https://leanpub.com/groovy-goodness-notebook'
+        description 'Experience the Groovy programming language through code snippets. Learn more about (hidden) Groovy features with code snippets and short articles. The articles and code will get you started quickly and will give more insight in Groovy.'
+    }
+}

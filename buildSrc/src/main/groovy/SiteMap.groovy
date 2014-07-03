@@ -8,6 +8,7 @@ class SiteMap {
     final Menu menu = new Menu()
     final Ecosystem ecosystem = new Ecosystem()
     final Events allEvents = new Events()
+    final Library library = new Library()
 
     private SiteMap() {}
 
@@ -60,6 +61,11 @@ class SiteMap {
 
     private void allEvents(Closure eventsSpec) {
         def clone = eventsSpec.rehydrate(allEvents, allEvents, allEvents)
+        clone()
+    }
+
+    private void books(Closure booksSpec) {
+        def clone = booksSpec.rehydrate(library, library, library)
         clone()
     }
 }

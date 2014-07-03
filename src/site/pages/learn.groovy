@@ -46,7 +46,37 @@ layout 'layouts/main.groovy',
                                     Another great approach to learning Groovy is to read the various books published
                                     on the language:'''
 
-                                include unescaped: 'html/books.html'
+                                allBooks.each {
+                                    String title = it.key
+                                    Book book = it.value
+
+                                    figure(class: 'book') {
+                                        ul(class: 'hardcover_front') {
+                                            li {
+                                                img(src: book.cover, width: '100%', height: '100%')
+                                            }
+                                            li {}
+                                        }
+                                        ul(class: 'page') {
+                                            li {}
+                                            li {
+                                                a(class: 'btn', href: book.url, target: '_blank', 'More info')
+                                            }
+                                            3.times { li {} }
+                                        }
+                                        ul(class: 'hardcover_back') {
+                                            2.times { li {} }
+                                        }
+                                        ul(class: 'book_spine') {
+                                            2.times { li {} }
+                                        }
+                                        figcaption {
+                                            h1 book.title
+                                            span "By ${book.authors}"
+                                            p book.description
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

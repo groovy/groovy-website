@@ -632,13 +632,13 @@ figcaption h1 {
 }
 
 figcaption span {
-    color: #db4800;
+    color: #245f78;
     padding: 0.6em 0 1em 0;
     display: block;
 }
 
 figcaption p {
-    color: #63707d;
+    color: black;
     line-height: 1.3;
 }
 

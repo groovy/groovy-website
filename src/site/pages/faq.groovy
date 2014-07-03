@@ -9,10 +9,16 @@ layout 'layouts/main.groovy',
                         div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
                                 li {
-                                    a(href: 'learn.html', 'Documentation')
+                                    a(href: 'learn.html', 'Learn')
+                                }
+                                li {
+                                    a(href: 'learn.html#books', 'Books')
+                                }
+                                li {
+                                    a(href: 'documentation.html', 'Documentation')
                                 }
                                 docSections.each { section ->
-                                    li { a(href: "#${section.anchor}", section.name) }
+                                    li { a(href: "documentation.html#${section.anchor}", section.name) }
                                 }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }

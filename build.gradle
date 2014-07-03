@@ -65,6 +65,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'index', 'index', [allEvents: siteMap.allEvents]
         render 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: siteMap.ecosystem]
         render 'learn', 'learn', [category: 'Learn', docSections: siteMap.documentationSections]
+        render 'documentation', 'documentation', [category: 'Learn', docSections: siteMap.documentationSections]
 
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->

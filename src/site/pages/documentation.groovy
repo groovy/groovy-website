@@ -1,13 +1,19 @@
 layout 'layouts/main.groovy',
         menu: menu,
         category: category,
-        pageTitle: 'The Groovy programming language - Learning',
+        pageTitle: 'The Groovy programming language - Documentation',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
+                                li {
+                                    a(href: 'learn.html', 'Learn')
+                                }
+                                li {
+                                    a(href: 'learn.html#books', 'Books')
+                                }
                                 li(class: 'active') {
                                     a(href: '#') { strong('Documentation') }
                                 }

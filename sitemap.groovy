@@ -27,7 +27,7 @@ documentation {
         item 'Download Groovy',                             'download',         'download'
         item 'Install Groovy',                              'install',          'core-getting-started'
         item 'Differences with Java',                       'differences',      'core-differences-java'
-        item 'The Groovy Development Kit',                  'gdk',              'core-gdk'
+        item 'The Groovy Development Kit',                  'groovy-dev-kit',   'core-gdk'
         item 'Runtime and compile-time metaprogramming',    'metaprogramming',  'core-metaprogramming'
         item 'The Grape dependency manager',                'grape',            'grape'
         item 'Testing guide',                               'testing',          'core-testing-guide'

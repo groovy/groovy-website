@@ -41,7 +41,7 @@
   $.fn.hipChatPanel = function (options) {
     options.container = this[0];
     var panel = $.createHipChat(options);
-    this.html('Your name: <input id="username" name="username" type="text" length="25"><button class="show-hipchat ' + options.buttonClasses + '">' + (options.buttonTitle || 'Chat') + '</button>')
+    this.html('<button class="show-hipchat ' + options.buttonClasses + '">' + (options.buttonTitle || 'Chat') + '</button>')
         .find('.show-hipchat').click(function (e) { panel.show(); });
   };
 

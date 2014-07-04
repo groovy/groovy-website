@@ -9,6 +9,11 @@ header(id: 'header') {
                 li {
                     a('data-effect': 'st-effect-9', class: 'st-trigger', href: '#', 'Socialize')
                 }
+                li {
+                    a(href: 'search.html') {
+                        i(class:'fa fa-search') {}
+                    }
+                }
             }
         }
     }

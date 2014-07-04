@@ -1,7 +1,7 @@
 layout 'layouts/main.groovy',
         menu: menu,
         category: category,
-        pageTitle: 'The Groovy programming language - Download',
+        pageTitle: 'The Groovy programming language - Community',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {

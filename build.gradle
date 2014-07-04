@@ -57,6 +57,7 @@ task generateSite(dependsOn: copyAssets) {
 
         def render = { String page, String target = null, Map model = [:] ->
             model.menu = siteMap.menu
+            model.currentPage=target
             target = target ?: page
             file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(), 'utf-8')
         }
@@ -81,6 +82,7 @@ task generateSite(dependsOn: copyAssets) {
         render 'groovyweekly', 'groovy-weekly', [category: 'Community']
         render 'mailinglists', 'mailing-lists', [category: 'Community']
         render 'contribute', 'contribute', [category: 'Community']
+        render 'hipchat', 'hipchat', [category: 'Community']
         render 'faq', 'faq', [category: 'Documentation', docSections: siteMap.documentationSections]
         render 'events', 'events', [category: 'Community', allEvents: siteMap.allEvents]
         render 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']

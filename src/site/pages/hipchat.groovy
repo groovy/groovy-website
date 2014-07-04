@@ -16,16 +16,17 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Chatting with the Groovy development team'
+                            h1 'Chat'
                             article {
+                                p 'Here you can chat with the Groovy Development Team and other members of the Groovy community.'
                                 p {
                                     yieldUnescaped '''
-                                        Here you can chat with the Groovy Development Team. This chatroom is <strong>not</strong> a way to get
-                                        support (please use the <a href="mailing-lists.html">mailing lists</a> for this) but a discussion channel
-                                        around the Groovy language and future developments. You can use it to ask questions related to the development
-                                        of the language itself, but in any case, answers are left to the discretion of people on the channel.
+                                        This chat-room is <strong>not</strong> a way to get support (please use the
+                                        <a href="mailing-lists.html">mailing lists</a> for this) but a discussion channel
+                                        around the Groovy language and future developments.
                                         '''
                                 }
+                                p 'You can use it to ask questions related to the development of the language itself, but in any case, answers are left to the discretion of people on the channel.'
                             }
                             hr(class: 'divider')
                             div id:'hipchatpanel', class:'hipchatpanel'

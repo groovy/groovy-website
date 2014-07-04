@@ -1,4 +1,5 @@
 layout 'layouts/main.groovy',
+        currentPage: currentPage,
         menu: menu,
         category: category,
         pageTitle: 'The Groovy programming language - Contribute',
@@ -7,20 +8,7 @@ layout 'layouts/main.groovy',
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            ul(class: 'nav-sidebar') {
-                                li {
-                                    a(href: 'community.html', 'Community')
-                                }
-                                li(class: 'active') {
-                                    a(href: 'contribute.html') { strong('Contribute') }
-                                }
-                                li {
-                                    a(href: 'mailing-lists.html', 'Mailing-lists')
-                                }
-                                li {
-                                    a(href: 'events.html', 'Events')
-                                }
-                            }
+                            include template: 'includes/community-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {

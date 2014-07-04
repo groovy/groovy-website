@@ -57,6 +57,7 @@ task generateSite(dependsOn: copyAssets) {
 
         def render = { String page, String target = null, Map model = [:] ->
             model.menu = siteMap.menu
+            model.currentPage=target
             target = target ?: page
             file("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(), 'utf-8')
         }

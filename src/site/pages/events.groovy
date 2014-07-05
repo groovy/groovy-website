@@ -29,8 +29,10 @@ layout 'layouts/main.groovy',
                                         a(href: event.url, eventName)
                                     }
                                     h3 {
-                                        yield event.location
-                                        yieldUnescaped ' &mdash; '
+                                        i(class: 'fa fa-globe') {}
+                                        yieldUnescaped " &nbsp;${event.location} &nbsp; &mdash; &nbsp; "
+                                        i(class: 'fa fa-calendar') {}
+                                        yieldUnescaped " &nbsp;"
                                         em event.date
                                     }
                                     div {

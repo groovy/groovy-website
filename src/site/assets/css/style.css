@@ -82,3 +82,7 @@ article .content time {
     background-color: #db4800;
     font-weight: bold;
 }
+
+#footer .colset-3-footer .col-1 h1, #footer .colset-3-footer .col-2 h1, #footer .colset-3-footer .col-3 h1 {
+    font-size: 15px !important;
+}

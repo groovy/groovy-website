@@ -41,7 +41,10 @@ layout 'layouts/main.groovy',
                                 hr(class: 'divider')
 
                                 a(name: 'books') {}
-                                h2 'Books'
+                                h2 {
+                                    i(class: 'fa fa-book') {}
+                                    yield ' Books'
+                                }
                                 p '''
                                     Another great approach to learning Groovy is to read the various books published
                                     on the language:'''

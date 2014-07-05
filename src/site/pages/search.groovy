@@ -7,16 +7,22 @@ layout 'layouts/main.groovy',
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            ul(class: 'nav-sidebar') {
-                                li(class: 'active') {
-                                    a(href: 'search.html') { strong('Search') }
-                                }
-                            }
+//                            ul(class: 'nav-sidebar') {
+//                                li(class: 'active') {
+//                                    a(href: 'search.html') { strong('Search') }
+//                                }
+//                            }
                             br()
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Search'
+                            h1 {
+                                i(class: 'fa fa-search') {}
+                                yield ' Search'
+                            }
+                            p '''
+                                You can search the Groovy website, the Groovy documentation, and the Groovy APIs,
+                                with the Google Custom Search box below. Please type your search query, and hit enter:'''
                             div {
                                 script '''
                                   (function() {
@@ -80,6 +86,15 @@ layout 'layouts/main.groovy',
                                     }
                                     .gsst_a, .gscb_a {
                                         margin-top: 3px;
+                                    }
+                                    .gs-per-result-labels {
+                                        margin-left: 8px;
+                                        margin-top: 4px;
+                                    }
+                                    .gs-per-result-labels:before {
+                                        font-family: FontAwesome;
+                                        content: '\\f02c';
+                                        margin-right: 8px;
                                     }
                                 '''
                             }

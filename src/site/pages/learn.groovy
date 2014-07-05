@@ -13,7 +13,7 @@ layout 'layouts/main.groovy',
                                     a(href: '#') { strong('Learn') }
                                 }
                                 li {
-                                    a(href: '#books', 'Books')
+                                    a(href: '#books', class: 'anchor-link', 'Books')
                                 }
                             }
                         }

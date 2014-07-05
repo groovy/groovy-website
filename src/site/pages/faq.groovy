@@ -12,7 +12,7 @@ layout 'layouts/main.groovy',
                                     a(href: 'documentation.html', 'Documentation')
                                 }
                                 docSections.each { section ->
-                                    li { a(href: "documentation.html#${section.anchor}", section.name) }
+                                    li { a(href: "documentation.html#${section.anchor}", class: 'anchor-link', section.name) }
                                 }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }

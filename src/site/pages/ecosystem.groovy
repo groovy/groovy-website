@@ -10,7 +10,7 @@ layout 'layouts/main.groovy',
                             ul(class: 'nav-sidebar') {
                                 li(class: 'active') { a(href: 'ecosystem.html') { strong('Ecosystem') } }
                                 ecosys.keySet().each { name ->
-                                    li { a(href: "#$name", name) }
+                                    li { a(href: "#$name", class: 'anchor-link', name) }
                                 }
                             }
                         }

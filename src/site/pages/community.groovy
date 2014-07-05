@@ -43,6 +43,24 @@ layout 'layouts/main.groovy',
                                         yield ' you might want to attend to lear more about Groovy and to share your experience with others.'
                                     }
                                 }
+                                p '''
+                                    If you click on the socialize link in the menu, you will also find other ways to interact
+                                    with the Groovy community, and follow the news around the ecosystem:
+                                '''
+                                ul {
+                                    li {
+                                        a(href: 'groovyweekly.html', 'Groovy Weekly Newsletter')
+                                        yieldUnescaped ' &mdash; links to articles, presentations, tweets, podcasts, every Tuesday'
+                                    }
+                                    li {
+                                        a(href: 'https://google.com/+groovy', 'Google+ Groovy page')
+                                        yieldUnescaped ' &mdash; for sharing news and articles'
+                                    }
+                                    li {
+                                        a(href: 'http://bit.ly/g-community', 'Google+ Groovy community')
+                                        yieldUnescaped ' &mdash; for discussing and exchanging with other Groovy users'
+                                    }
+                                }
                             }
                             hr(class: 'divider')
                         }

@@ -78,6 +78,9 @@ layout 'layouts/main.groovy',
                                     .gsc-webResult, .gsc-result {
                                         font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
                                     }
+                                    .gsst_a, .gscb_a {
+                                        margin-top: 3px;
+                                    }
                                 '''
                             }
                             hr(class: 'divider')

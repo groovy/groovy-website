@@ -7,17 +7,7 @@ layout 'layouts/main.groovy',
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            ul(class: 'nav-sidebar') {
-                                li(class: 'active') {
-                                    a(href: 'groovy-weekly.html') { strong('Groovy Weekly') }
-                                }
-                                li {
-                                    a(href: '#subscribe', 'Subscribe')
-                                }
-                                li {
-                                    a(href: '#archives', 'Archives')
-                                }
-                            }
+                            include template: 'includes/community-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {

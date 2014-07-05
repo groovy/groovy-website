@@ -21,7 +21,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1('Documentation')
+                            h1 {
+                                i(class: 'fa fa-university') {}
+                                yield ' Documentation'
+                            }
                             p {
                                 yield 'The documentation is available as a '
                                 a(href: "single-page-documentation.html", 'single-page document')

@@ -15,7 +15,10 @@ layout 'layouts/main.groovy',
                             }
                         }
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1('Ecosystem')
+                            h1 {
+                                i(class: 'fa fa-leaf') {}
+                                yield ' Ecosystem'
+                            }
                             p {
                                 yield '''
                                         Beside the language and its API, Groovy gave birth to a fruitful ecosystem of projects around it,

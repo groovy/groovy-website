@@ -33,7 +33,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Download'
+                            h1 {
+                                i(class: 'fa fa-cloud-download') {}
+                                yield ' Download'
+                            }
                             article {
                                 p {
                                     yield 'In this download area, you will be able to download the '

@@ -12,7 +12,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Community'
+                            h1 {
+                                i(class: 'fa fa-users') {}
+                                yield ' Community'
+                            }
                             article {
                                 p {
                                     yield '''

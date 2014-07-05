@@ -19,7 +19,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1('Learn')
+                            h1 {
+                                i(class: 'fa fa-graduation-cap') {}
+                                yield ' Learn'
+                            }
                             article {
                                 p 'Welcome to the learning section of the Groovy website.'
                                 p {

@@ -39,8 +39,14 @@ layout 'layouts/main.groovy',
                                         height: 30px;
                                         display: none;
                                     }
+                                    .gs-title {
+                                        line-height: 20px;
+                                        font-weight: bold;
+                                    }
                                     .gs-snippet {
                                         margin-left: 8px;
+                                        line-height: 18px;
+                                        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
                                     }
                                     .gsc-cursor-page {
                                         margin: 4px;
@@ -48,6 +54,11 @@ layout 'layouts/main.groovy',
                                         padding-left: 8px;
                                         padding-right: 8px;
                                         border: 1px solid gray;
+                                    }
+                                    .gsc-cursor-page:hover {
+                                        color: white !important;
+                                        background-color: #db4800 !important;
+                                        text-decoration: none !important;
                                     }
                                     .gsc-selected-option-container {
                                         width: 120px !important;
@@ -63,6 +74,9 @@ layout 'layouts/main.groovy',
                                         color: #db4800;
                                         background-color: white;
                                         border: 0px;
+                                    }
+                                    .gsc-webResult, .gsc-result {
+                                        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
                                     }
                                 '''
                             }

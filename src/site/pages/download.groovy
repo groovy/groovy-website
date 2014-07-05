@@ -54,7 +54,10 @@ layout 'layouts/main.groovy',
                                 p 'You can download a binary, a source, a documentation bundle, as well as a bundle of the three.'
 
                                 distributions.each { dist ->
-                                    h2 dist.name
+                                    h2 {
+                                        i(class: 'fa fa-star') {}
+                                        yield " ${dist.name}"
+                                    }
                                     if (dist.description) {
                                         p {
                                             dist.description.rehydrate(this, this, this)()

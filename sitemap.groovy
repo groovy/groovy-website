@@ -16,7 +16,7 @@ menu {
         item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
         item 'Source code on GitHub',       'https://github.com/groovy/groovy-core',            'fa-github'
-        item 'Report issues in Jira',       'http://jira.codehaus.org/browse/GROOVY',           'fa-bug'
+        item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
         item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'

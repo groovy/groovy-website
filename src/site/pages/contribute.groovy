@@ -60,6 +60,19 @@ layout 'layouts/main.groovy',
 
                                 a(name: 'reporting-issues') {}
                                 h2 'Reporting issues'
+                                p {
+                                    yield 'The Groovy project is using the '
+                                    a(href: 'contribute.html#reporting-issues', 'JIRA bug tracker')
+                                    yield '''
+                                        to report and track issues, feature enhancements, and new features.
+                                        Be sure to sign-up, as explained below, before proceeding.
+                                    '''
+                                }
+                                p {
+                                    button(type: 'button', class: 'btn btn-default', 'Report an issue',
+                                            onclick: 'window.location.href="http://jira.codehaus.org/browse/GROOVY"')
+                                }
+                                h3 'Sign-up to report issues'
                                 p '''
                                     To be able to report issues in our bug tracker,
                                     you will have to register with Codehaus Xircles interface first.

@@ -9,9 +9,9 @@ header(id: 'header') {
                 li {
                     a('data-effect': 'st-effect-9', class: 'st-trigger', href: '#', 'Socialize')
                 }
-                li {
+                li(class: (category == 'Search') ? 'active' : '') {
                     a(href: 'search.html') {
-                        i(class:'fa fa-search') {}
+                        i(class: 'fa fa-search') {}
                     }
                 }
             }

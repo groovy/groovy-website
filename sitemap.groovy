@@ -9,7 +9,9 @@ menu {
     group('About') {
         item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/groovy/groovy-core'
+        item 'Books',                       'learn.html#books'
         item 'FAQ',                         'faq.html'
+        item 'Search',                      'search.html'
     }
     group('Socialize') {
         item 'Discuss on the mailing-list', 'mailing-lists.html',                               'fa-envelope'

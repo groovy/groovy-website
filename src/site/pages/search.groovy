@@ -66,6 +66,10 @@ layout 'layouts/main.groovy',
                                         background-color: #db4800 !important;
                                         text-decoration: none !important;
                                     }
+                                    .gsc-cursor-current-page {
+                                        background-color: #F2F2F2 !important;
+                                        color: black !important;
+                                    }
                                     .gsc-selected-option-container {
                                         width: 120px !important;
                                     }
@@ -99,7 +103,7 @@ layout 'layouts/main.groovy',
                                     .gsc-tabHeader.gsc-tabhActive {
                                         border-color: #CCCCCC;
                                         border-bottom-color: #F2F2F2;
-                                        background-color: #f2f2f2;
+                                        background-color: #F2F2F2;
                                     }
                                     .gsc-tabsArea {
                                         border-bottom: 0;

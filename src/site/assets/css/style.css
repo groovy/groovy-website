@@ -1,8 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:500,700);
 
-html {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+html, code, kbd, pre, samp {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
@@ -93,4 +92,8 @@ article .content time {
 
 .anchor-link:hover:before {
     color: orange;
+}
+
+code, kbd, pre, samp {
+    font-family: "Source Code Pro", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 }

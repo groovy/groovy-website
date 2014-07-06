@@ -31,7 +31,6 @@ layout 'layouts/main.groovy',
                                 }
                                 p 'You can use it to ask questions related to the development of the language itself, but in any case, answers are left to the discretion of people on the channel.'
                             }
-                            hr(class: 'divider')
                             div id:'hipchatpanel', class:'hipchatpanel'
                         }
                     }

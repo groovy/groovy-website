@@ -78,8 +78,7 @@ article .content time {
 }
 
 #mc-embedded-subscribe:hover {
-    color: white;
-    background-color: #db4800;
+    background-color: #F2F2F2;
     font-weight: bold;
 }
 

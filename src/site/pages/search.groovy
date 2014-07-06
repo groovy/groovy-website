@@ -96,6 +96,17 @@ layout 'layouts/main.groovy',
                                         content: '\\f02c';
                                         margin-right: 8px;
                                     }
+                                    .gsc-tabHeader.gsc-tabhActive {
+                                        border-color: #CCCCCC;
+                                        border-bottom-color: #F2F2F2;
+                                        background-color: #f2f2f2;
+                                    }
+                                    .gsc-tabsArea {
+                                        border-bottom: 0;
+                                    }
+                                    a.gs-label, img.gs-image {
+                                        margin-left: 5px;
+                                    }
                                 '''
                             }
                             hr(class: 'divider')

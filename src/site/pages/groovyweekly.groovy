@@ -11,7 +11,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Groovy Weekly newsletter'
+                            h1 {
+                                i(class: 'fa fa-envelope-o') {}
+                                yield ' Groovy Weekly newsletter'
+                            }
                             article {
                                 p 'Every Tuesday, you can receive a newsletter, directly in your inbox, about all the news ' +
                                         'about the Groovy ecosystem: the latest releases, interesting articles, interviews, ' +

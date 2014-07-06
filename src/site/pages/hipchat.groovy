@@ -16,7 +16,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Chat'
+                            h1 {
+                                i(class: 'fa fa-comments-o') {}
+                                yield ' Chat'
+                            }
                             article {
                                 p 'Here you can chat with the Groovy Development Team and other members of the Groovy community.'
                                 p {

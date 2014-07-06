@@ -13,7 +13,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Events'
+                            h1 {
+                                i(class: 'fa fa-calendar') {}
+                                yield ' Events'
+                            }
                             article {
                                 p '''
                                     Groovy and its ecosystem are often represented at various Java-oriented conferences,

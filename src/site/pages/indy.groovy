@@ -35,7 +35,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Invoke dynamic support'
+                            h1 {
+                                i(class: 'fa fa-gear') {}
+                                yield ' Invoke dynamic support'
+                            }
                             article {
                                 h2 'Introduction'
                                 p '''

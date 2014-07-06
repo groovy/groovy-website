@@ -21,7 +21,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'FAQ - Frequently Asked Questions'
+                            h1 {
+                                i(class: 'fa fa-question-circle') {}
+                                yieldUnescaped ' FAQ &mdash; Frequently Asked Questions'
+                            }
                             hr(class: 'divider')
                             article {
                                 h2 'Is Groovy an Open Source project?'

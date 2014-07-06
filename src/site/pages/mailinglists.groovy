@@ -12,7 +12,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Mailing-lists'
+                            h1 {
+                                i(class: 'fa fa-envelope-o') {}
+                                yield ' Mailing-lists'
+                            }
                             p '''The Groovy mailing-lists is the main means of interaction with the Groovy developers and Groovy users.'''
                             hr(class: 'divider')
 

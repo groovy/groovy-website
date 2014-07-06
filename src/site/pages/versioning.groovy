@@ -35,7 +35,10 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Groovy version scheme'
+                            h1 {
+                                i(class: 'fa fa-copy') {}
+                                yield ' Groovy version scheme'
+                            }
                             article {
                                 h2 'Since Groovy 2.0.0'
                                 p {

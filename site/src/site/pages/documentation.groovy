@@ -32,6 +32,7 @@ layout 'layouts/main.groovy', true,
                                 a(href: "single-page-documentation.html", 'single-page document')
                                 yield ', or feel free to pick at a direct section below.'
                             }
+                            p "You can also browse ${$a(href: '#old-docs', 'documentation for older versions')}."
                             hr(class: 'divider')
 
                             // group sections by 2, for 2 columns

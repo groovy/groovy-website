@@ -12,6 +12,9 @@ layout 'layouts/main.groovy', true,
                                 docSections.each { section ->
                                     li { a(href: "documentation.html#${section.anchor}", class: 'anchor-link', section.name) }
                                 }
+                                li {
+                                    a(href: "documentation.html#old-docs", class: 'anchor-link', 'Documentation for older versions')
+                                }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }
                                 }

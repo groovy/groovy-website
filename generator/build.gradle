@@ -2,7 +2,7 @@ apply plugin: 'groovy'
 
 repositories {
     maven {
-        url = 'https://oss.jfrog.org/oss-snapshot-local/'
+        url = 'http://oss.jfrog.org/oss-snapshot-local/'
     }
     jcenter()
 }

@@ -1,5 +1,8 @@
 package model
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class DownloadPackage {
     String version
     String releaseNotes

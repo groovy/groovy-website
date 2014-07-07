@@ -1,5 +1,8 @@
 package model
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class Menu extends LinkedHashMap<String, List<MenuItem>> {
 
     void group(String name, Closure groupSpec) {

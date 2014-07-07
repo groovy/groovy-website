@@ -3,6 +3,9 @@ package model
 import groovy.transform.ToString
 import org.codehaus.groovy.control.CompilerConfiguration
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 @ToString(includeNames=true)
 class SiteMap {
     final List<Section> documentationSections = []
@@ -21,7 +24,7 @@ class SiteMap {
         def script = shell.parse(source)
 
         def result = new SiteMap()
-        script.setDelegate(result)
+        ((DelegatingScript)script).setDelegate(result)
         script.run()
 
         result

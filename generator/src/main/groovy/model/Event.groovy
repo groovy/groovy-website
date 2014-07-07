@@ -1,5 +1,8 @@
 package model
 
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class Event {
     String name
     String location

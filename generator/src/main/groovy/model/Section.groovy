@@ -3,6 +3,9 @@ package model
 import groovy.transform.ToString
 
 @ToString(includeNames=true)
+import groovy.transform.CompileStatic
+
+@CompileStatic
 class Section {
     String name
     String icon

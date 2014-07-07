@@ -64,7 +64,7 @@ layout 'layouts/main.groovy',
                                             strong 'Email format '
                                         }
                                         label(class: 'radio-inline') {
-                                            input(type: 'radio', value: 'html', name: 'EMAILTYPE', id: 'mce-EMAILTYPE-0')
+                                            input(type: 'radio', value: 'html', name: 'EMAILTYPE', id: 'mce-EMAILTYPE-0', checked: 'checked')
                                             span 'html'
                                         }
                                         label(class: 'radio-inline') {

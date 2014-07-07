@@ -11,7 +11,11 @@ layout 'layouts/main.groovy', true,
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Events'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-calendar') {}
+                                yield ' Events'
+                            }
                             article {
                                 p '''
                                     Groovy and its ecosystem are often represented at various Java-oriented conferences,
@@ -27,8 +31,10 @@ layout 'layouts/main.groovy', true,
                                         a(href: event.url, eventName)
                                     }
                                     h3 {
-                                        yield event.location
-                                        yieldUnescaped ' &mdash; '
+                                        i(class: 'fa fa-globe') {}
+                                        yieldUnescaped " &nbsp;${event.location} &nbsp; &mdash; &nbsp; "
+                                        i(class: 'fa fa-calendar') {}
+                                        yieldUnescaped " &nbsp;"
                                         em event.date
                                     }
                                     div {

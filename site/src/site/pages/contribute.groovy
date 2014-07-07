@@ -9,7 +9,11 @@ layout 'layouts/main.groovy', true,
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Contribute'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-pencil-square-o') {}
+                                yield ' Contribute'
+                            }
                             article {
                                 p '''
                                     There are many ways you can help the Groovy development team improve the Groovy programming language.

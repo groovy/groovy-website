@@ -13,13 +13,17 @@ layout 'layouts/main.groovy', true,
                                     a(href: '#') { strong('Learn') }
                                 }
                                 li {
-                                    a(href: '#books', 'Books')
+                                    a(href: '#books', class: 'anchor-link', 'Books')
                                 }
                             }
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1('Learn')
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-graduation-cap') {}
+                                yield ' Learn'
+                            }
                             article {
                                 p 'Welcome to the learning section of the Groovy website.'
                                 p {
@@ -41,7 +45,10 @@ layout 'layouts/main.groovy', true,
                                 hr(class: 'divider')
 
                                 a(name: 'books') {}
-                                h2 'Books'
+                                h2 {
+                                    i(class: 'fa fa-book') {}
+                                    yield ' Books'
+                                }
                                 p '''
                                     Another great approach to learning Groovy is to read the various books published
                                     on the language:'''

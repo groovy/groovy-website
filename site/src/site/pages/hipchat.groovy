@@ -13,7 +13,11 @@ layout 'layouts/main.groovy', true,
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Chat'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-comments-o') {}
+                                yield ' Chat'
+                            }
                             article {
                                 p 'Here you can chat with the Groovy Development Team and other members of the Groovy community.'
                                 p {
@@ -25,7 +29,6 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p 'You can use it to ask questions related to the development of the language itself, but in any case, answers are left to the discretion of people on the channel.'
                             }
-                            hr(class: 'divider')
                             div id:'hipchatpanel', class:'hipchatpanel'
                         }
                     }

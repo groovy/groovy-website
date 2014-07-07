@@ -47,7 +47,7 @@ class SiteGenerator {
         setup()
 
         render 'index', 'index', [allEvents: siteMap.allEvents]
-        render 'search', 'search'
+        render 'search', 'search', [category: 'Search']
         render 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: siteMap.ecosystem]
         render 'learn', 'learn', [category: 'Learn', docSections: siteMap.documentationSections, allBooks: siteMap.library]
         render 'documentation', 'documentation', [category: 'Documentation', docSections: siteMap.documentationSections]
@@ -83,19 +83,23 @@ class SiteGenerator {
         def generator = new SiteGenerator(sourcesDir: sourcesDir, outputDir: outputDir)
         boolean watchMode = args.length > 2 ? Boolean.valueOf(args[2]) : false
         generator.generateSite()
+
         if (watchMode) {
             println "Started watch mode"
             def watcher = FileSystems.default.newWatchService()
+
             sourcesDir.toPath().register(watcher,
                     ENTRY_CREATE,
                     ENTRY_DELETE,
                     ENTRY_MODIFY)
+
             sourcesDir.eachDirRecurse { File f ->
                 f.toPath().register(watcher,
                         ENTRY_CREATE,
                         ENTRY_DELETE,
                         ENTRY_MODIFY)
             }
+
             while (true) {
                 def key = watcher.take()
                 def changed = key.pollEvents().collect { "${it.context()}".toString() }

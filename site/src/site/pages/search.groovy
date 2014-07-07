@@ -7,7 +7,14 @@ layout 'layouts/main.groovy', true,
                         div(class: 'col-lg-3') {}
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Search'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-search') {}
+                                yield ' Search'
+                            }
+                            p '''
+                                You can search the Groovy website, the Groovy documentation, and the Groovy APIs,
+                                with the Google Custom Search box below. Please type your search query, and hit enter:'''
                             div {
                                 script '''
                                   (function() {

@@ -10,7 +10,7 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'documentation.html', 'Documentation')
                                 }
                                 docSections.each { section ->
-                                    li { a(href: "documentation.html#${section.anchor}", section.name) }
+                                    li { a(href: "documentation.html#${section.anchor}", class: 'anchor-link', section.name) }
                                 }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }
@@ -19,7 +19,11 @@ layout 'layouts/main.groovy', true,
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'FAQ - Frequently Asked Questions'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-question-circle') {}
+                                yieldUnescaped ' Frequently Asked Questions'
+                            }
                             hr(class: 'divider')
                             article {
                                 h2 'Is Groovy an Open Source project?'

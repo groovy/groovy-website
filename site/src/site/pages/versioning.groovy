@@ -10,16 +10,16 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'download.html', 'Download Groovy')
                                 }
                                 li {
-                                    a(href: 'download.html#distro', 'Distributions')
+                                    a(href: 'download.html#distro', class: 'anchor-link', 'Distributions')
                                 }
                                 li {
-                                    a(href: 'download.html#gvm', 'Through GVM')
+                                    a(href: 'download.html#gvm', class: 'anchor-link', 'Through GVM')
                                 }
                                 li {
-                                    a(href: 'download.html#buildtools', 'From your build tools')
+                                    a(href: 'download.html#buildtools', class: 'anchor-link', 'From your build tools')
                                 }
                                 li {
-                                    a(href: 'download.html#otherways', 'Other ways to get Groovy')
+                                    a(href: 'download.html#otherways', class: 'anchor-link', 'Other ways to get Groovy')
                                 }
                                 li(class: 'active') {
                                     a(href: 'versioning.html') {
@@ -33,7 +33,11 @@ layout 'layouts/main.groovy', true,
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'The Groovy version scheme'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-copy') {}
+                                yield ' Groovy version scheme'
+                            }
                             article {
                                 h2 'Since Groovy 2.0.0'
                                 p "Since Groovy 2.0.0 we follow the ${$a(href: "http://semver.org/", 'semantic version scheme')}. This means the next minor version after 2.0.0 is 2.1.0, the first bugfix version after 2.0 is 2.0.1 and the next major version will be 3.0.0."

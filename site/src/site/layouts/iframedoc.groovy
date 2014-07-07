@@ -7,12 +7,7 @@
  * @param scripts , a list of scripts to be imported
  * @param iframeTarget , the URL of the page to be included as an iframe
  */
-layout 'layouts/page.groovy',
-        pageTitle: pageTitle,
-        extraStyles: extraStyles,
-        scripts: scripts,
-        menu: menu,
-        category: category,
+layout 'layouts/page.groovy', true,
         mainContent: contents {
             div {
                 include template: 'includes/topmenu.groovy'

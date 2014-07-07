@@ -10,16 +10,16 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'download.html') { strong('Download Groovy') }
                                 }
                                 li {
-                                    a(href: '#distro', 'Distributions')
+                                    a(href: '#distro', class: 'anchor-link', 'Distributions')
                                 }
                                 li {
-                                    a(href: '#gvm', 'Through GVM')
+                                    a(href: '#gvm', class: 'anchor-link', 'Through GVM')
                                 }
                                 li {
-                                    a(href: '#buildtools', 'From your build tools')
+                                    a(href: '#buildtools', class: 'anchor-link', 'From your build tools')
                                 }
                                 li {
-                                    a(href: '#otherways', 'Other ways to get Groovy')
+                                    a(href: '#otherways', class: 'anchor-link', 'Other ways to get Groovy')
                                 }
                                 li {
                                     a(href: 'versioning.html', 'Groovy version scheme')
@@ -31,7 +31,19 @@ layout 'layouts/main.groovy', true,
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            h1 'Download'
+                            include template: 'includes/contribute-button.groovy'
+                            h1 {
+                                i(class: 'fa fa-cloud-download') {}
+                                yield ' Download'
+                            }
+                            div(id: 'big-download-button') {
+                                def linkVersionToDownload = distributions.collect { it.packages }.flatten().find { it.stable }.version
+                                a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-${linkVersionToDownload}.zip",
+                                        title: "Download Groovy ${linkVersionToDownload}") {
+                                    i(class: 'fa fa-download') {}
+                                    yield ' Download'
+                                }
+                            }
                             article {
                                 p {
                                     yield 'In this download area, you will be able to download the '

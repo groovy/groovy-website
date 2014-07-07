@@ -108,3 +108,28 @@ code, kbd, pre, samp {
         top: 25px;
     }
 }
+
+#big-download-button {
+    float: right;
+    font-size: 30px;
+    padding: 15px;
+    margin: 10px;
+    border: 2px solid #db4800;
+    border-radius: 6px;
+    background-color: #db4800;
+    color: white;
+}
+
+#big-download-button:hover {
+    background-color: white;
+    color: #db4800;
+}
+
+#big-download-button a {
+    text-decoration: none;
+    color: white;
+}
+#big-download-button a:hover {
+    text-decoration: none;
+    color: #db4800;
+}

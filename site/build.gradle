@@ -107,7 +107,8 @@ task checkDeadLinks(dependsOn: generateSite) {
 
 task webzip(type:Zip, dependsOn: checkDeadLinks) {
     description = "Creates a zip with the generated website and the deadlink report"
-
+    destinationDir = file("$buildDir/distributions")
+    
     baseName = 'groovy'
     appendix = 'website'
     from(generateSite.outputDir) {

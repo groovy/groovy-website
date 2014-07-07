@@ -19,6 +19,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
+                            include template: 'includes/contribute-button.groovy'
                             h1 {
                                 i(class: 'fa fa-graduation-cap') {}
                                 yield ' Learn'
@@ -66,7 +67,7 @@ layout 'layouts/main.groovy',
                                         ul(class: 'page') {
                                             li {}
                                             li {
-                                                a(class: 'btn', href: book.url, target: '_blank', 'More info')
+                                                a(class: 'book-btn', href: book.url, target: '_blank', 'More info')
                                             }
                                             3.times { li {} }
                                         }

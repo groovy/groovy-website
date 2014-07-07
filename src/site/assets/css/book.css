@@ -1,4 +1,4 @@
-.btn {
+.book-btn {
     display: inline-block;
     text-transform: uppercase;
     text-decoration: none;
@@ -14,7 +14,7 @@
     transition: color 0.3s, border-color 0.3s;
 }
 
-.btn:hover {
+.book-btn:hover {
     border-color: #db4800;
     color: #db4800;
 }

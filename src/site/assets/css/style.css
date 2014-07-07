@@ -97,3 +97,14 @@ article .content time {
 code, kbd, pre, samp {
     font-family: "Source Code Pro", "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 }
+
+#contribute-btn {
+    position: absolute;
+    right: 0px;
+}
+
+@media (min-width: 1200px) {
+    #contribute-btn {
+        top: 25px;
+    }
+}

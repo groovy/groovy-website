@@ -13,6 +13,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
+                            include template: 'includes/contribute-button.groovy'
                             h1 {
                                 i(class: 'fa fa-calendar') {}
                                 yield ' Events'

@@ -7,37 +7,44 @@ import model.Section
 import model.SectionItem
 import model.SiteMap
 
+import java.nio.file.FileSystems
+
+import static java.nio.file.StandardWatchEventKinds.*
+
 @CompileStatic
 class SiteGenerator {
 
     File sourcesDir
-    File sitemapFile
     File outputDir
 
     private MarkupTemplateEngine tplEngine
     private SiteMap siteMap
 
     void setup() {
+
+        println "Generating website using Groovy ${GroovySystem.version}"
+
         def tplConf = new TemplateConfiguration()
         tplConf.autoIndent = true
         tplConf.autoNewLine = true
 
-        tplEngine = new MarkupTemplateEngine(this.class.classLoader, sourcesDir, tplConf)
+        def classLoader = new URLClassLoader([sourcesDir.toURI().toURL()] as URL[], this.class.classLoader)
+        tplEngine = new MarkupTemplateEngine(classLoader, tplConf, new MarkupTemplateEngine.CachingTemplateResolver())
 
-        siteMap = SiteMap.from(sitemapFile)
+        siteMap = SiteMap.from(new File(sourcesDir, "sitemap.groovy"))
 
     }
 
-    void render(String page, String target=null, Map model=[:]) {
+    void render(String page, String target = null, Map model = [:]) {
         model.menu = siteMap.menu
-        model.currentPage=target
+        model.currentPage = target
         target = target ?: page
         new File("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(), 'utf-8')
     }
-    void generateSite() {
-        setup()
 
-        println "Generating website using Groovy ${GroovySystem.version}"
+    void generateSite() {
+        long sd = System.currentTimeMillis()
+        setup()
 
         render 'index', 'index', [allEvents: siteMap.allEvents]
         render 'search', 'search'
@@ -65,13 +72,41 @@ class SiteGenerator {
         render 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
         render 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
         render 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
+
+        long dur = System.currentTimeMillis() - sd
+        println "Generated site into $outputDir in ${dur}ms"
     }
 
     static void main(String... args) {
         def sourcesDir = args[0] as File
-        def siteMap    = args[1] as File
-        def outputDir  = args[2] as File
-        def generator = new SiteGenerator(sourcesDir: sourcesDir, sitemapFile: siteMap, outputDir: outputDir)
+        def outputDir = args[1] as File
+        def generator = new SiteGenerator(sourcesDir: sourcesDir, outputDir: outputDir)
+        boolean watchMode = args.length > 2 ? Boolean.valueOf(args[2]) : false
         generator.generateSite()
+        if (watchMode) {
+            println "Started watch mode"
+            def watcher = FileSystems.default.newWatchService()
+            sourcesDir.toPath().register(watcher,
+                    ENTRY_CREATE,
+                    ENTRY_DELETE,
+                    ENTRY_MODIFY)
+            sourcesDir.eachDirRecurse { File f ->
+                f.toPath().register(watcher,
+                        ENTRY_CREATE,
+                        ENTRY_DELETE,
+                        ENTRY_MODIFY)
+            }
+            while (true) {
+                def key = watcher.take()
+                def changed = key.pollEvents().collect { "${it.context()}".toString() }
+                try {
+                    println "Regenerating site due to ${changed}"
+                    // todo: selective regeneration
+                    generator.generateSite()
+                } finally {
+                    key.reset()
+                }
+            }
+        }
     }
 }

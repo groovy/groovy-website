@@ -12,3 +12,6 @@ dependencies {
     compile "org.codehaus.groovy:groovy:$groovyVersion"
     compile "org.codehaus.groovy:groovy-templates:$groovyVersion"
 }
+
+compileGroovy.sourceCompatibility = '1.7'
+compileGroovy.targetCompatibility = '1.7'

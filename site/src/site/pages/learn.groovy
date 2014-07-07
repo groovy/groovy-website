@@ -1,8 +1,6 @@
 import model.Book
 
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Learn',
         extraStyles: ['book.css'],
         mainContent: contents {
@@ -15,17 +13,13 @@ layout 'layouts/main.groovy',
                                     a(href: '#') { strong('Learn') }
                                 }
                                 li {
-                                    a(href: '#books', class: 'anchor-link', 'Books')
+                                    a(href: '#books', 'Books')
                                 }
                             }
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-graduation-cap') {}
-                                yield ' Learn'
-                            }
+                            h1('Learn')
                             article {
                                 p 'Welcome to the learning section of the Groovy website.'
                                 p {
@@ -47,10 +41,7 @@ layout 'layouts/main.groovy',
                                 hr(class: 'divider')
 
                                 a(name: 'books') {}
-                                h2 {
-                                    i(class: 'fa fa-book') {}
-                                    yield ' Books'
-                                }
+                                h2 'Books'
                                 p '''
                                     Another great approach to learning Groovy is to read the various books published
                                     on the language:'''
@@ -69,7 +60,7 @@ layout 'layouts/main.groovy',
                                         ul(class: 'page') {
                                             li {}
                                             li {
-                                                a(class: 'book-btn', href: book.url, target: '_blank', 'More info')
+                                                a(class: 'btn', href: book.url, target: '_blank', 'More info')
                                             }
                                             3.times { li {} }
                                         }

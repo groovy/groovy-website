@@ -1,6 +1,4 @@
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Download',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
@@ -12,16 +10,16 @@ layout 'layouts/main.groovy',
                                     a(href: 'download.html') { strong('Download Groovy') }
                                 }
                                 li {
-                                    a(href: '#distro', class: 'anchor-link', 'Distributions')
+                                    a(href: '#distro', 'Distributions')
                                 }
                                 li {
-                                    a(href: '#gvm', class: 'anchor-link', 'Through GVM')
+                                    a(href: '#gvm', 'Through GVM')
                                 }
                                 li {
-                                    a(href: '#buildtools', class: 'anchor-link', 'From your build tools')
+                                    a(href: '#buildtools', 'From your build tools')
                                 }
                                 li {
-                                    a(href: '#otherways', class: 'anchor-link', 'Other ways to get Groovy')
+                                    a(href: '#otherways', 'Other ways to get Groovy')
                                 }
                                 li {
                                     a(href: 'versioning.html', 'Groovy version scheme')
@@ -33,11 +31,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-cloud-download') {}
-                                yield ' Download'
-                            }
+                            h1 'Download'
                             article {
                                 p {
                                     yield 'In this download area, you will be able to download the '
@@ -58,10 +52,7 @@ layout 'layouts/main.groovy',
                                 p 'You can download a binary, a source, a documentation bundle, as well as a bundle of the three.'
 
                                 distributions.each { dist ->
-                                    h2 {
-                                        i(class: 'fa fa-star') {}
-                                        yield " ${dist.name}"
-                                    }
+                                    h2 dist.name
                                     if (dist.description) {
                                         p {
                                             dist.description.rehydrate(this, this, this)()

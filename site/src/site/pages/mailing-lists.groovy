@@ -1,7 +1,4 @@
-layout 'layouts/main.groovy',
-        currentPage: currentPage,
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Mailing-lists',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {

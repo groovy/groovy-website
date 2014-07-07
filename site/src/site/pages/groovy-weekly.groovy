@@ -1,6 +1,4 @@
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Groovy Weekly newsletter',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {

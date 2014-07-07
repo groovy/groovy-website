@@ -1,6 +1,4 @@
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Versioning',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
@@ -12,16 +10,16 @@ layout 'layouts/main.groovy',
                                     a(href: 'download.html', 'Download Groovy')
                                 }
                                 li {
-                                    a(href: 'download.html#distro', class: 'anchor-link', 'Distributions')
+                                    a(href: 'download.html#distro', 'Distributions')
                                 }
                                 li {
-                                    a(href: 'download.html#gvm', class: 'anchor-link', 'Through GVM')
+                                    a(href: 'download.html#gvm', 'Through GVM')
                                 }
                                 li {
-                                    a(href: 'download.html#buildtools', class: 'anchor-link', 'From your build tools')
+                                    a(href: 'download.html#buildtools', 'From your build tools')
                                 }
                                 li {
-                                    a(href: 'download.html#otherways', class: 'anchor-link', 'Other ways to get Groovy')
+                                    a(href: 'download.html#otherways', 'Other ways to get Groovy')
                                 }
                                 li {
                                     a(href: 'versioning.html', 'Groovy version scheme')
@@ -35,11 +33,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-gear') {}
-                                yield ' Invoke dynamic support'
-                            }
+                            h1 'Invoke dynamic support'
                             article {
                                 h2 'Introduction'
                                 p '''

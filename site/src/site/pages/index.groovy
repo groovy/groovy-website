@@ -1,9 +1,6 @@
 import model.Event
 
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
-        allEvents: allEvents,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language',
         mainContent: contents {
             div(id: 'band', class: 'band') {

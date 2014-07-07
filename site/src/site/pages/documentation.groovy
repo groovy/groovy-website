@@ -1,6 +1,4 @@
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Documentation',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
@@ -12,7 +10,7 @@ layout 'layouts/main.groovy',
                                     a(href: '#') { strong('Documentation') }
                                 }
                                 docSections.each { section ->
-                                    li { a(href: "#${section.anchor}", class: 'anchor-link', section.name) }
+                                    li { a(href: "#${section.anchor}", section.name) }
                                 }
                                 li {
                                     a(href: 'faq.html', 'FAQ')
@@ -21,11 +19,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-university') {}
-                                yield ' Documentation'
-                            }
+                            h1('Documentation')
                             p {
                                 yield 'The documentation is available as a '
                                 a(href: "single-page-documentation.html", 'single-page document')

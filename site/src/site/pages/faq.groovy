@@ -1,6 +1,4 @@
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - FAQ - Frequently Asked Questions',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
@@ -12,7 +10,7 @@ layout 'layouts/main.groovy',
                                     a(href: 'documentation.html', 'Documentation')
                                 }
                                 docSections.each { section ->
-                                    li { a(href: "documentation.html#${section.anchor}", class: 'anchor-link', section.name) }
+                                    li { a(href: "documentation.html#${section.anchor}", section.name) }
                                 }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }
@@ -21,11 +19,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-question-circle') {}
-                                yieldUnescaped ' FAQ'
-                            }
+                            h1 'FAQ - Frequently Asked Questions'
                             hr(class: 'divider')
                             article {
                                 h2 'Is Groovy an Open Source project?'

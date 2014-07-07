@@ -1,7 +1,4 @@
-layout 'layouts/main.groovy',
-        currentPage: currentPage,
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Chatting',
         extraFooter: contents {
             script(src:'js/jquery.hipchat.js', type:'text/javascript') {}
@@ -16,11 +13,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-comments-o') {}
-                                yield ' Chat'
-                            }
+                            h1 'Chat'
                             article {
                                 p 'Here you can chat with the Groovy Development Team and other members of the Groovy community.'
                                 p {
@@ -32,6 +25,7 @@ layout 'layouts/main.groovy',
                                 }
                                 p 'You can use it to ask questions related to the development of the language itself, but in any case, answers are left to the discretion of people on the channel.'
                             }
+                            hr(class: 'divider')
                             div id:'hipchatpanel', class:'hipchatpanel'
                         }
                     }

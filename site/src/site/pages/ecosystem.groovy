@@ -1,6 +1,4 @@
-layout 'layouts/main.groovy',
-        menu: menu,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Ecosystem',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
@@ -10,16 +8,12 @@ layout 'layouts/main.groovy',
                             ul(class: 'nav-sidebar') {
                                 li(class: 'active') { a(href: 'ecosystem.html') { strong('Ecosystem') } }
                                 ecosys.keySet().each { name ->
-                                    li { a(href: "#$name", class: 'anchor-link', name) }
+                                    li { a(href: "#$name", name) }
                                 }
                             }
                         }
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-leaf') {}
-                                yield ' Ecosystem'
-                            }
+                            h1('Ecosystem')
                             p {
                                 yield '''
                                         Beside the language and its API, Groovy gave birth to a fruitful ecosystem of projects around it,

@@ -1,10 +1,6 @@
 import model.Event
 
-layout 'layouts/main.groovy',
-        currentPage: currentPage,
-        menu: menu,
-        allEvents: allEvents,
-        category: category,
+layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Events',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
@@ -15,11 +11,7 @@ layout 'layouts/main.groovy',
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
-                            include template: 'includes/contribute-button.groovy'
-                            h1 {
-                                i(class: 'fa fa-calendar') {}
-                                yield ' Events'
-                            }
+                            h1 'Events'
                             article {
                                 p '''
                                     Groovy and its ecosystem are often represented at various Java-oriented conferences,
@@ -35,10 +27,8 @@ layout 'layouts/main.groovy',
                                         a(href: event.url, eventName)
                                     }
                                     h3 {
-                                        i(class: 'fa fa-globe') {}
-                                        yieldUnescaped " &nbsp;${event.location} &nbsp; &mdash; &nbsp; "
-                                        i(class: 'fa fa-calendar') {}
-                                        yieldUnescaped " &nbsp;"
+                                        yield event.location
+                                        yieldUnescaped ' &mdash; '
                                         em event.date
                                     }
                                     div {

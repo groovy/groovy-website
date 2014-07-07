@@ -67,7 +67,7 @@ layout 'layouts/main.groovy', true,
                                         ul(class: 'page') {
                                             li {}
                                             li {
-                                                a(class: 'btn', href: book.url, target: '_blank', 'More info')
+                                                a(class: 'book-btn', href: book.url, target: '_blank', 'More info')
                                             }
                                             3.times { li {} }
                                         }

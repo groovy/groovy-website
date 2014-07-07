@@ -113,7 +113,7 @@ code, kbd, pre, samp {
     float: right;
     font-size: 30px;
     padding: 15px;
-    margin: 10px;
+    margin: 10px 0px 10px 20px;
     border: 2px solid #db4800;
     border-radius: 6px;
     background-color: #db4800;
@@ -121,15 +121,6 @@ code, kbd, pre, samp {
 }
 
 #big-download-button:hover {
-    background-color: white;
-    color: #db4800;
-}
-
-#big-download-button a {
-    text-decoration: none;
-    color: white;
-}
-#big-download-button a:hover {
-    text-decoration: none;
+    background-color: #e6e6e6;
     color: #db4800;
 }

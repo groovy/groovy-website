@@ -36,13 +36,12 @@ layout 'layouts/main.groovy', true,
                                 i(class: 'fa fa-cloud-download') {}
                                 yield ' Download'
                             }
-                            div(id: 'big-download-button') {
-                                def linkVersionToDownload = distributions.collect { it.packages }.flatten().find { it.stable }.version
-                                a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-${linkVersionToDownload}.zip",
-                                        title: "Download Groovy ${linkVersionToDownload}") {
-                                    i(class: 'fa fa-download') {}
-                                    yield ' Download'
-                                }
+                            def linkVersionToDownload = distributions.collect { it.packages }.flatten().find { it.stable }.version
+                            button(id: 'big-download-button', type: 'button', class: 'btn btn-default',
+                                    title: "Download Groovy ${linkVersionToDownload}",
+                                    onclick: "window.location.href=\"http://dl.bintray.com/groovy/maven/groovy-sdk-${linkVersionToDownload}.zip\"") {
+                                i(class: 'fa fa-download') {}
+                                yield ' Download'
                             }
                             article {
                                 p {

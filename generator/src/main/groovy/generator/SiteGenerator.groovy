@@ -8,6 +8,9 @@ import model.SectionItem
 import model.SiteMap
 
 import java.nio.file.FileSystems
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.WatchEvent
 
 import static java.nio.file.StandardWatchEventKinds.*
 
@@ -100,15 +103,27 @@ class SiteGenerator {
                         ENTRY_MODIFY)
             }
 
+            def existingDirectories = ['pages', 'layouts', 'includes', 'html', 'assets', 'css', 'fonts', 'img', 'js', 'vendor']
+
             while (true) {
                 def key = watcher.take()
-                def changed = key.pollEvents().collect { "${it.context()}".toString() }
-                try {
-                    println "Regenerating site due to ${changed}"
-                    // todo: selective regeneration
-                    generator.generateSite()
-                } finally {
-                    key.reset()
+                def pollEvents = (List<WatchEvent<Path>>) key.pollEvents()
+
+                def changed = pollEvents.collect { "${it.context()}".toString() }.join(', ')
+
+                // only generate when the event refers to the actual file modified / created / added
+                // as otherwise the watcher service generates two events:
+                // 1) one for directory containing the modified file, and
+                // 2) one for the actual file being modified
+                // this checks avoid getting two events for one change
+                if (existingDirectories.every { !changed.contains(it) }) {
+                    try {
+                        println "Regenerating site due to changes in: ${changed}"
+                        // todo: selective regeneration
+                        generator.generateSite()
+                    } finally {
+                        key.reset()
+                    }
                 }
             }
         }

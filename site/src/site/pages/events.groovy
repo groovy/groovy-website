@@ -1,3 +1,5 @@
+import model.Event
+
 layout 'layouts/main.groovy',
         currentPage: currentPage,
         menu: menu,

@@ -1,3 +1,5 @@
+package model
+
 class Event {
     String name
     String location

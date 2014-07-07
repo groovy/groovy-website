@@ -1,3 +1,5 @@
+package model
+
 import groovy.transform.ToString
 import org.codehaus.groovy.control.CompilerConfiguration
 

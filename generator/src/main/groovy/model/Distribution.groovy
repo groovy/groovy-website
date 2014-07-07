@@ -1,3 +1,5 @@
+package model
+
 class Distribution {
     String name
     Closure description

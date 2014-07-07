@@ -7,14 +7,7 @@
  * @param scripts , a list of scripts to be imported
  * @param extraFooter , a section to be added before closing body
  */
-layout 'layouts/page.groovy',
-        pageTitle: pageTitle,
-        extraStyles: extraStyles,
-        scripts: scripts,
-        extraFooter: extraFooter,
-        menu: menu,
-        category: category,
-        allEvents: allEvents,
+layout 'layouts/page.groovy', true,
         mainContent: contents {
             // 'Content'
             div {

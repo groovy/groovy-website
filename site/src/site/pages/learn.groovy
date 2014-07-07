@@ -1,3 +1,5 @@
+import model.Book
+
 layout 'layouts/main.groovy',
         menu: menu,
         category: category,

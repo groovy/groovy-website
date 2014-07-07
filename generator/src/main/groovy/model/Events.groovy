@@ -1,3 +1,5 @@
+package model
+
 class Events extends LinkedHashMap<String, Event> {
     void event(String name, Closure eventClosure) {
         def entry = new Event(name: name)

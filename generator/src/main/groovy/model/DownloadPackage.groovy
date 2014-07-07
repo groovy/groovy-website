@@ -1,3 +1,5 @@
+package model
+
 class DownloadPackage {
     String version
     String releaseNotes

@@ -1,0 +1,119 @@
+import groovy.text.markup.MarkupTemplateEngine
+import groovy.text.markup.TemplateConfiguration
+import org.gradle.logging.ConsoleRenderer
+
+task copyAssets(type:Copy) {
+    from file('src/site/assets')
+    into file("$buildDir/site")
+}
+
+task generateSite(type:JavaExec) {
+
+    description = 'Generates the Groovy Website'
+    dependsOn copyAssets
+
+    ext.sources = file('src/site')
+    ext.outputDir = file("$buildDir/site")
+    ext.sitemapFile = file('sitemap.groovy')
+
+    inputs.files fileTree(sources)
+    inputs.file sitemapFile
+    outputs.files fileTree(outputDir)
+
+    classpath = project(':generator').sourceSets.main.runtimeClasspath
+    main = 'generator.SiteGenerator'
+    args = [sources, sitemapFile, outputDir]
+
+}
+
+task checkDeadLinks(dependsOn: generateSite) {
+    description = "Checks for dead links in the generated Groovy website"
+
+    ext.outputDir = file("$buildDir/reports")
+    ext.reportFile = file("$outputDir/deadlinks.html")
+
+    inputs.files fileTree(generateSite.outputDir)
+    outputs.file reportFile
+
+    doLast {
+        def deadLinks = [:]
+
+        def isDead = [:].withDefault { String link ->
+            try {
+                URL url
+                try {
+                    url = URI.create(link).toURL()
+                } catch (e) {
+                    if (e.message.contains('URI is not absolute')) {
+                        url = URI.create("file://${file("${generateSite.outputDir}/$link")}").toURL()
+                    }
+                }
+                def stream = url.openStream()
+                stream.close()
+            } catch (e) {
+                if (link.startsWith('https')) {
+                    // workaround to be found
+                    return false
+                }
+                return true
+            }
+            return false
+        }
+
+        def checkLink = { List dead, int line, String link ->
+            if (isDead[link]) {
+                dead << "at line $line: $link"
+            }
+        }
+
+        def checkPage = { File f ->
+            f.eachLine('utf-8') { String line, int nb ->
+                def dead = []
+                [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
+                    def matcher = line =~ regex
+                    if (matcher) {
+                        matcher.each {
+                            checkLink(dead, nb, it[1])
+                        }
+                    }
+                }
+                if (dead) {
+                    deadLinks[f] = dead
+                }
+            }
+        }
+
+        file(generateSite.outputDir).eachFileRecurse {
+            if (it.name.endsWith('.html')) {
+                checkPage(it)
+            }
+        }
+
+        outputDir.mkdirs()
+        def tplConf = new TemplateConfiguration()
+        tplConf.with {
+            autoIndent = true
+            autoNewLine = true
+        }
+        def tplEngine = new MarkupTemplateEngine(this.class.classLoader, file('gradle/templates'), tplConf)
+
+        def report = tplEngine.createTemplateByPath("deadlinks.groovy").make(deadLinks: deadLinks).toString()
+
+        reportFile.write(report, 'utf-8')
+        def reportURL = new ConsoleRenderer().asClickableFileUrl(reportFile)
+        logger.lifecycle "Dead links report written at $reportURL"
+    }
+}
+
+task webzip(type:Zip, dependsOn: checkDeadLinks) {
+    description = "Creates a zip with the generated website and the deadlink report"
+
+    baseName = 'groovy'
+    appendix = 'website'
+    from(generateSite.outputDir) {
+        into 'site'
+    }
+    from (checkDeadLinks.outputDir) {
+        into 'reports'
+    }
+}

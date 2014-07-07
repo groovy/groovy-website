@@ -1,3 +1,5 @@
+package model
+
 class Menu extends LinkedHashMap<String, List<MenuItem>> {
 
     void group(String name, Closure groupSpec) {

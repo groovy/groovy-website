@@ -66,7 +66,7 @@ layout 'layouts/main.groovy',
                                     a(href: 'contribute.html#reporting-issues', 'JIRA bug tracker')
                                     yield '''
                                         to report and track issues, feature enhancements, and new features.
-                                        Be sure to sign-up, as explained below, before proceeding.
+                                        Be sure to be signed-up and logged-in, as explained below, before proceeding.
                                     '''
                                 }
                                 p {

@@ -216,7 +216,7 @@ books {
         authors 'Ken Kousen'
         cover 'img/books/Kousen-MJG.png'
         url 'http://www.manning.com/kousen/'
-        description 'Make Java development easier by adding Groovy -- a use-case driven approach.'
+        description 'Make Java development easier by adding Groovy. Each chapter focuses on a task Java developers do, like building, testing, or working with databases or restful web services, and shows ways Groovy can help.'
     }
 
     book('Programming Groovy 2') {

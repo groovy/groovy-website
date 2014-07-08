@@ -52,7 +52,7 @@ class SiteGenerator {
         render 'search', 'search', [category: 'Search']
         render 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: siteMap.ecosystem]
         render 'learn', 'learn', [category: 'Learn', docSections: siteMap.documentationSections, allBooks: siteMap.library]
-        render 'documentation', 'documentation', [category: 'Documentation', docSections: siteMap.documentationSections]
+        render 'documentation', 'documentation', [category: 'Documentation', docSections: siteMap.documentationSections, allDocVersions: siteMap.allDocVersions]
 
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->

@@ -14,6 +14,7 @@ class SiteMap {
     final Ecosystem ecosystem = new Ecosystem()
     final Events allEvents = new Events()
     final Library library = new Library()
+    final List<String> allDocVersions = []
 
     private SiteMap() {}
 
@@ -40,6 +41,10 @@ class SiteMap {
         def spec = sectionSpec.rehydrate(section,section,section)
         spec()
         documentationSections.add(section)
+    }
+
+    private void groovyDocumentationVersions(List<String> allDocVersions) {
+        this.allDocVersions.addAll(allDocVersions)
     }
 
     private void downloads(Closure dlSpec) {

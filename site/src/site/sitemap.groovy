@@ -6,6 +6,7 @@ menu {
         item 'Community',                   'community.html'
         item 'Ecosystem',                   'ecosystem.html'
     }
+
     group('About') {
         item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/groovy/groovy-core'
@@ -13,6 +14,7 @@ menu {
         item 'FAQ',                         'faq.html'
         item 'Search',                      'search.html'
     }
+
     group('Socialize') {
         item 'Discuss on the mailing-list', 'mailing-lists.html',                               'fa-envelope'
         item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
@@ -26,6 +28,14 @@ menu {
 }
 
 documentation {
+    groovyDocumentationVersions([
+            '1.7.0', '1.7.1', '1.7.2', '1.7.3', '1.7.4', '1.7.5', '1.7.6', '1.7.7', '1.7.8', '1.7.9', '1.7.10', '1.7.11',
+            '1.8.0', '1.8.1', '1.8.2', '1.8.3', '1.8.4', '1.8.5', '1.8.6', '1.8.7', '1.8.8', '1.8.9',
+            '2.0.0', '2.0.1', '2.0.2', '2.0.3', '2.0.4', '2.0.5', '2.0.6', '2.0.7', '2.0.8',
+            '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
+            '2.2.0', '2.2.1', '2.2.2',
+            '2.3.0', '2.3.1', '2.3.2', '2.3.3'])
+
     section('Getting started','fa-graduation-cap') {
         item 'Download Groovy',                             'download',         'download'
         item 'Install Groovy',                              'install',          'core-getting-started'
@@ -105,31 +115,37 @@ ecosystem {
         url 'http://grails.org/'
         logo 'img/ecosystem/grails.png'
     }
+
     project('Gradle') {
         description 'Gradle is build automation evolved. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation or indeed anything else.'
         url 'http://gradle.org'
         logo 'img/ecosystem/gradle.gif'
     }
+
     project('Spock') {
         description 'Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers.'
         url 'https://code.google.com/p/spock/'
         logo ''
     }
+
     project('GPars') {
         description 'The GPars framework offers Java developers intuitive and safe ways to handle Java or Groovy tasks concurrently. Leveraging the enormous flexibility of the Groovy programing language and building on proven Java technologies, we aim to make concurrent programming for multi-core hardware intuitive, robust and enjoyable.'
         url 'http://gpars.codehaus.org/'
         logo 'img/ecosystem/gpars.png'
     }
+
     project('Ratpack') {
         description 'Ratpack is a simple, capable, toolkit for creating high performance web applications.'
         url 'http://www.ratpack.io/'
         logo 'img/ecosystem/ratpack.png'
     }
+
     project('Griffon') {
         description 'Griffon is an application framework for developing desktop applications in the JVM, with Groovy being the primary language of choice. Inspired by Grails, Griffon follows the Convention over Configuration paradigm, paired with an intuitive MVC architecture and a command line interface.'
         url 'http://griffon.codehaus.org/'
         logo 'img/ecosystem/griffon.png'
     }
+
     project('GVM') {
         description 'GVM is a tool for managing parallel Versions of multiple Software Development Kits on most Unix based systems. It provides a convenient command line interface for installing, switching, removing and listing Candidates.'
         url 'http://gvmtool.net/'
@@ -195,24 +211,28 @@ books {
         url 'http://www.manning.com/koenig2/'
         description 'The undisputed definitive reference on the Groovy programming language, authored by core members of the development team.'
     }
+
     book('Programming Groovy 2') {
         authors 'Venkat Subramaniam'
         cover 'img/books/vslg2.jpg'
         url 'http://pragprog.com/book/vslg2/programming-groovy-2'
         description 'Dynamic productivity for the Java developer'
     }
+
     book('Groovy 2 Cookbook') {
         authors 'Andrey Adamovitch, Luciano Fiandeso'
         cover 'img/books/g2cook.jpg'
         url 'http://www.packtpub.com/groovy-2-cookbook/book'
         description 'Over 90 recipes that provide solutions to everyday programming challenges using the powerful features of Groovy 2'
     }
+
     book('Groovy for Domain-Specific Languages') {
         authors 'Fregal Dearle'
         cover 'img/books/gdsl.jpg'
         url 'http://www.packtpub.com/groovy-for-domain-specific-languages-dsl/book'
         description 'Enhance and extend your Java applications with Domain-Specific Languages in Groovy'
     }
+
     book('Groovy Goodness Notebook') {
         authors 'Hubert A. Klein Ikkink'
         cover 'img/books/ggood.jpg'

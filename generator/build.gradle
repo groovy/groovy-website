@@ -1,14 +1,11 @@
 apply plugin: 'groovy'
 
 repositories {
-    maven {
-        url = 'http://oss.jfrog.org/oss-snapshot-local/'
-    }
     jcenter()
 }
 
 dependencies {
-    ext.groovyVersion = '2.3.4-SNAPSHOT'
+    ext.groovyVersion = '2.3.4'
     compile "org.codehaus.groovy:groovy:$groovyVersion"
     compile "org.codehaus.groovy:groovy-templates:$groovyVersion"
 }

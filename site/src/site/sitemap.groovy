@@ -34,7 +34,7 @@ documentation {
             '2.0.0', '2.0.1', '2.0.2', '2.0.3', '2.0.4', '2.0.5', '2.0.6', '2.0.7', '2.0.8',
             '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
             '2.2.0', '2.2.1', '2.2.2',
-            '2.3.0', '2.3.1', '2.3.2', '2.3.3'])
+            '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4'])
 
     section('Getting started','fa-graduation-cap') {
         item 'Download Groovy',                             'download',         'download'
@@ -101,10 +101,10 @@ downloads {
             yield ' of Groovy.'
         }
 
-        version('2.3.3') {
+        version('2.3.4') {
             stable true
-            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20415'
-            windowsInstaller 'http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.3-installer.exe'
+            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20432'
+            //windowsInstaller 'http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.3-installer.exe'
         }
     }
 }

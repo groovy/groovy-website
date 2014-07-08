@@ -212,6 +212,13 @@ books {
         description 'The undisputed definitive reference on the Groovy programming language, authored by core members of the development team.'
     }
 
+    book('Making Java Groovy') {
+        authors 'Ken Kousen'
+        cover 'img/books/Kousen-MJG.png'
+        url 'http://www.manning.com/kousen/'
+        description 'Make Java development easier by adding Groovy -- a use-case driven approach.'
+    }
+
     book('Programming Groovy 2') {
         authors 'Venkat Subramaniam'
         cover 'img/books/vslg2.jpg'

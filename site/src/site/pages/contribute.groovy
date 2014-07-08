@@ -137,6 +137,12 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'https://github.com/groovy', 'repositories on Github')
                                     yield ', so having an account on Github would be ideal.'
                                 }
+                                p """
+                                    Contributing to this website is fairly easy, if you have a Github account already,
+                                    as you can click on the ${$em('Improve this doc')} buttons that you can see on all the pages of this website.
+                                    So don't hesitate to help us improve it, fix typos, broken language, clarify complicated sections,
+                                    add new material, etc.
+                                """
                                 p 'Please check the following section for more information on how to contribute to our codebase.'
                                 hr(class: 'divider')
 

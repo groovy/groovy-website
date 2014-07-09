@@ -34,11 +34,11 @@ layout 'layouts/main.groovy', true,
                                 p {
                                     yield 'Once all set up, we invite you to have a look at the Groovy '
                                     a(href: 'documentation.html', 'documentation')
-                                    yield ', explaining all the '
+                                    yield ', which explains all the '
                                     a(href: 'documentation.html#languagespecification', 'details of the language')
-                                    yield ', how to use the '
+                                    yield ', such as how to use the '
                                     a(href: 'documentation.html#tools', 'tools')
-                                    yield ' coming with a Groovy installation, and showing how to tackle more complex tasks with the various '
+                                    yield ' that come with a Groovy installation, and how to tackle more complex tasks with the various '
                                     a(href: 'documentation.html#groovymoduleguides', 'module user guides')
                                     yield '.'
                                 }

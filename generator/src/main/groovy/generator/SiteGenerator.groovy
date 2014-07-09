@@ -3,6 +3,7 @@ package generator
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
+import model.Page
 import model.Section
 import model.SectionItem
 import model.SiteMap
@@ -48,32 +49,20 @@ class SiteGenerator {
         long sd = System.currentTimeMillis()
         setup()
 
-        render 'index', 'index', [allEvents: siteMap.allEvents]
-        render 'search', 'search', [category: 'Search']
-        render 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: siteMap.ecosystem]
-        render 'learn', 'learn', [category: 'Learn', docSections: siteMap.documentationSections, allBooks: siteMap.library]
-        render 'documentation', 'documentation', [category: 'Documentation', docSections: siteMap.documentationSections, allDocVersions: siteMap.allDocVersions]
-
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->
-                println "Generating documentation page [$item.name]"
-                render 'docpage', item.targetFilename, [category: 'Learn', title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
+                if (item.generate) {
+                    println "Generating documentation page [$item.name]"
+                    render 'docpage', item.targetFilename, [category: 'Learn', title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
+                }
             }
         }
 
-        render 'download', 'download', [category: 'Download', distributions: siteMap.distributions]
-        render 'versioning', 'versioning', [category: 'Download']
-        render 'indy', 'indy', [category: 'Download']
-        render 'community', 'community', [category: 'Community']
-        render 'groovy-weekly', 'groovy-weekly', [category: 'Community']
-        render 'mailing-lists', 'mailing-lists', [category: 'Community']
-        render 'contribute', 'contribute', [category: 'Community']
-        render 'hipchat', 'hipchat', [category: 'Community']
-        render 'faq', 'faq', [category: 'Documentation', docSections: siteMap.documentationSections]
-        render 'events', 'events', [category: 'Community', allEvents: siteMap.allEvents]
-        render 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
-        render 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
-        render 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
+        siteMap.pages.each { Page page ->
+            println "Rendering individual page [$page.source]"
+            render page.source, page.target, page.model
+        }
+
 
         long dur = System.currentTimeMillis() - sd
         println "Generated site into $outputDir in ${dur}ms"

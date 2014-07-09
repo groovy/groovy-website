@@ -27,6 +27,27 @@ menu {
     }
 }
 
+pages {
+    page 'index', 'index', [allEvents: allEvents]
+    page 'search', 'search', [category: 'Search']
+    page 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: ecosystem]
+    page 'learn', 'learn', [category: 'Learn', docSections: documentationSections, allBooks: library]
+    page 'documentation', 'documentation', [category: 'Documentation', docSections: documentationSections, allDocVersions: allDocVersions]
+    page 'download', 'download', [category: 'Download', distributions: distributions]
+    page 'versioning', 'versioning', [category: 'Download']
+    page 'indy', 'indy', [category: 'Download']
+    page 'community', 'community', [category: 'Community']
+    page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
+    page 'mailing-lists', 'mailing-lists', [category: 'Community']
+    page 'contribute', 'contribute', [category: 'Community']
+    page 'hipchat', 'hipchat', [category: 'Community']
+    page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
+    page 'events', 'events', [category: 'Community', allEvents: allEvents]
+    page 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
+    page 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
+    page 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
+}
+
 documentation {
     groovyDocumentationVersions([
             '1.7.0', '1.7.1', '1.7.2', '1.7.3', '1.7.4', '1.7.5', '1.7.6', '1.7.7', '1.7.8', '1.7.9', '1.7.10', '1.7.11',
@@ -37,7 +58,8 @@ documentation {
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4'])
 
     section('Getting started','fa-graduation-cap') {
-        item 'Download Groovy',                             'download',         'download'
+        //          NAME                                     TARGET HTML         DOCPAGE HTML                       GENERATE
+        item 'Download Groovy',                             'download',         'download',                         false
         item 'Install Groovy',                              'install',          'core-getting-started'
         item 'Differences with Java',                       'differences',      'core-differences-java'
         item 'The Groovy Development Kit',                  'groovy-dev-kit',   'core-gdk'

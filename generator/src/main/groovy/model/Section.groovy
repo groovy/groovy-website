@@ -11,8 +11,8 @@ class Section {
     String icon
     List<SectionItem> items = []
 
-    void item(String name, String targetFile, String sourceFile) {
-        items.add(new SectionItem(name: name, sourceFilename: sourceFile, targetFilename: targetFile))
+    void item(String name, String targetFile, String sourceFile, boolean generate = true) {
+        items.add(new SectionItem(name: name, sourceFilename: sourceFile, targetFilename: targetFile, generate:generate))
     }
 
     String getAnchor() {

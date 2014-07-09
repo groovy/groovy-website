@@ -10,4 +10,5 @@ class SectionItem {
     String name
     String targetFilename
     String sourceFilename
+    boolean generate = true
 }

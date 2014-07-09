@@ -15,6 +15,7 @@ class SiteMap {
     final Events allEvents = new Events()
     final Library library = new Library()
     final List<String> allDocVersions = []
+    final List<Page> pages = []
 
     private SiteMap() {}
 
@@ -52,6 +53,11 @@ class SiteMap {
         clone()
     }
 
+    private void pages(Closure pagesSpec) {
+        def clone = pagesSpec.rehydrate(this,this,this)
+        clone()
+    }
+
     private void distribution(String name, Closure distSpec) {
         Distribution dist = new Distribution(name: name)
         def clone = distSpec.rehydrate(dist, dist, dist)
@@ -78,4 +84,9 @@ class SiteMap {
         def clone = booksSpec.rehydrate(library, library, library)
         clone()
     }
+
+    private void page(String source, String target, Map model = [:]) {
+        pages.add(new Page(source:source, target: target, model: model))
+    }
+
 }

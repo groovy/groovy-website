@@ -256,7 +256,7 @@ books {
     }
 
     book('Groovy for Domain-Specific Languages') {
-        authors 'Fregal Dearle'
+        authors 'Fergal Dearle'
         cover 'img/books/gdsl.jpg'
         url 'http://www.packtpub.com/groovy-for-domain-specific-languages-dsl/book'
         description 'Enhance and extend your Java applications with Domain-Specific Languages in Groovy'

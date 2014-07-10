@@ -226,6 +226,22 @@ allEvents {
             </p>
         '''
     }
+        event('GR8Conf EU 2015') {
+        location 'Copenhagen, Denmark'
+        date 'June 2-4, 2015'
+        url 'http://gr8conf.eu/'
+        logo 'img/confs/gr8confeu2015.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences.
+            It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
 }
 
 books {

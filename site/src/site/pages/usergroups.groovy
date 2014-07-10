@@ -32,13 +32,17 @@ layout 'layouts/main.groovy', true,
 
                                 a(name: 'europe') {}
                                 h2 'Europe'
-                                h3 'France'
+                                h3 'Belgium'
                                 ul {
-                                    li { a(href: 'http://www.meetup.com/Paris-Groovy-Grails/', 'Paris Groovy Grails User Group') }
+                                    li { a(href: 'http://www.meetup.com/Belgium-Groovy-Grails-User-Group/', 'Belgium Groovy/Grails User Group') }
                                 }
                                 h3 'Denmark'
                                 ul {
                                     li('Aarhus Groovy & Grails meetup - no homepage yet')
+                                }                                h3 'France'
+                                h3 'France'
+                                ul {
+                                    li { a(href: 'http://www.meetup.com/Paris-Groovy-Grails/', 'Paris Groovy Grails User Group') }
                                 }
                                 h3 'Spain'
                                 ul {

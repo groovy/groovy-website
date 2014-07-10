@@ -41,7 +41,7 @@ layout 'layouts/main.groovy', true,
                                 a(name: 'northamerica') {}
                                 h2 'North-America'
                                 ul {
-                                    li { a(href: 'http://groovy.mn', 'Groovy Users of Minnesota') }
+
                                 }
                                 hr(class: 'divider')
 
@@ -61,8 +61,9 @@ layout 'layouts/main.groovy', true,
 
                                 a(name: 'asia') {}
                                 h2 'Asia'
+                                h3 'India'
                                 ul {
-
+                                        li { a(href: 'http://www.meetup.com/Bangalore-Groovy-Grails-Meetup/', 'Bangalore Groovy Grails Meetup') }
                                 }
                                 hr(class: 'divider')
                             }

@@ -50,9 +50,17 @@ layout 'layouts/main.groovy', true,
                                     yield ' (binary and source), the Windows installer (for some of the versions) and the documentation for Groovy.'
                                 }
                                 p {
+                                    yield 'All the downloads are hosted in '
+                                    a(href: 'http://bintray.com/groovy/', 'Bintray\'s Groovy repository')
+                                    yield '. Registering on Bintray allows you to rate, review, and register for new version notifications.'
+                                }
+                                p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
                                     a(href: 'http://gvmtool.net', 'GVM (Groovy enVironment Manager)')
                                     yield ' to download and configure any Groovy version of your choice. Basic instructions can be found below.'
+                                    yield 'Windows users can use '
+                                    a(href: 'http://gvmtool.net', 'Posh-GVM (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI')
+                                    yield '.'
                                 }
                             }
                             hr(class: 'divider')

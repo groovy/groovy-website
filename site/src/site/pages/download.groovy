@@ -57,10 +57,13 @@ layout 'layouts/main.groovy', true,
                                 p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
                                     a(href: 'http://gvmtool.net', 'GVM (Groovy enVironment Manager)')
-                                    yield ' to download and configure any Groovy version of your choice. Basic instructions can be found below.'
+                                    yield ' to download and configure any Groovy version of your choice. Basic '
+                                    a(href: '#gvm', 'instructions')
+                                    yield ' can be found below. '
+                                    br()
                                     yield 'Windows users can use '
-                                    a(href: 'http://gvmtool.net', 'Posh-GVM (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI')
-                                    yield '.'
+                                    a(href: 'https://github.com/flofreud/posh-gvm/blob/master/README.md', 'Posh-GVM')
+                                    yield ' (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI.'
                                 }
                             }
                             hr(class: 'divider')

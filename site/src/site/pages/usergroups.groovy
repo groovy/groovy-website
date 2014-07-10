@@ -39,7 +39,7 @@ layout 'layouts/main.groovy', true,
                                 h3 'Denmark'
                                 ul {
                                     li('Aarhus Groovy & Grails meetup - no homepage yet')
-                                }                                h3 'France'
+                                }
                                 h3 'France'
                                 ul {
                                     li { a(href: 'http://www.meetup.com/Paris-Groovy-Grails/', 'Paris Groovy Grails User Group') }
@@ -55,6 +55,7 @@ layout 'layouts/main.groovy', true,
                                 ul {
                                     li { a(href: 'http://groovy.mn', 'Groovy Users of Minnesota') }
                                     li { a(href: 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/', 'Austin Groovy and Grails User Group (TX)') }
+                                    li { a(href: 'http://www.meetup.com/Grails-and-Ales/', 'Groovy and Grails Users of Columbus OH') }
                                 }
                                 hr(class: 'divider')
 

@@ -75,8 +75,9 @@ layout 'layouts/main.groovy', true,
 
                                 a(name: 'asia') {}
                                 h2 'Asia'
+                                h3 'India'
                                 ul {
-
+                                        li { a(href: 'http://www.meetup.com/Bangalore-Groovy-Grails-Meetup/', 'Bangalore Groovy Grails Meetup') }
                                 }
                                 hr(class: 'divider')
                             }

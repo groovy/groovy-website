@@ -40,6 +40,10 @@ layout 'layouts/main.groovy', true,
                                 ul {
                                     li { a(href: 'http://www.meetup.com/Paris-Groovy-Grails/', 'Paris Groovy Grails User Group') }
                                 }
+                                h3 'Denmark'
+                                ul {
+                                    li('Aarhus Groovy & Grails meetup - no homepage yet')
+                                }
                                 hr(class: 'divider')
 
                                 a(name: 'northamerica') {}

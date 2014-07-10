@@ -57,7 +57,7 @@ layout 'layouts/main.groovy', true,
                                 a(name: 'southamerica') {}
                                 h2 'South-America'
                                 ul {
-
+                                   li { a(href: 'http://www.grailsbrasil.com.br', 'Grails Brasil - Groovy and Grails users group of Brazil')  }
                                 }
                                 hr(class: 'divider')
 

@@ -41,7 +41,7 @@ layout 'layouts/main.groovy', true,
                                 a(name: 'northamerica') {}
                                 h2 'North-America'
                                 ul {
-
+                                    li { a(href: 'http://groovy.mn', 'Groovy Users of Minnesota') }
                                 }
                                 hr(class: 'divider')
 

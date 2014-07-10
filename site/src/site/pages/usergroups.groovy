@@ -53,6 +53,12 @@ layout 'layouts/main.groovy', true,
                                 ul {
                                     li { a(href: 'http://www.meetup.com/madrid-gug/', 'Madrid Groovy User Group') }
                                 }
+                                h3 'Israel'
+                                ul {
+                                    li { a(href: 'http://www.meetup.com/Groovy-Grails-Israel-Meetup-Group/', 'Groovy & Grails Israel User Group') }
+
+                                }
+
                                 hr(class: 'divider')
 
                                 a(name: 'northamerica') {}

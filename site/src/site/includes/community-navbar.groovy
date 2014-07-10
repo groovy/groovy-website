@@ -4,8 +4,9 @@ ul(class: 'nav-sidebar') {
             'community': 'Community',
             'contribute': 'Contribute',
             'mailing-lists': 'Mailing-lists',
-            'events': 'Events',
             'hipchat': 'Chat',
+            'events': 'Events',
+            'usergroups': 'User groups',
             'groovy-weekly': 'Groovy Weekly newsletter'
     ].each { page, label ->
         if (currentPage == page) {

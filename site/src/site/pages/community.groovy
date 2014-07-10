@@ -39,10 +39,11 @@ layout 'layouts/main.groovy', true,
                                         a(href: 'mailing-lists.html', 'mailing-lists')
                                     }
                                     li {
-                                        yield 'and the upcoming '
+                                        yield 'the upcoming '
                                         a(href: 'events.html', 'events and conferences')
                                         yield ' you might want to attend to lear more about Groovy and to share your experience with others.'
                                     }
+                                    li "the list of ${$a(href: 'usergroups.html', 'user groups')} you can attend and where to meet other Groovy users"
                                 }
                                 p '''
                                     If you click on the socialize link in the menu, you will also find other ways to interact

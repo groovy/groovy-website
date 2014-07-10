@@ -37,6 +37,7 @@ pages {
     page 'versioning', 'versioning', [category: 'Download']
     page 'indy', 'indy', [category: 'Download']
     page 'community', 'community', [category: 'Community']
+    page 'usergroups', 'usergroups', [category: 'Community']
     page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
     page 'mailing-lists', 'mailing-lists', [category: 'Community']
     page 'contribute', 'contribute', [category: 'Community']

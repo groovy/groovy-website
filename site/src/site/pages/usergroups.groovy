@@ -47,16 +47,10 @@ layout 'layouts/main.groovy', true,
                                 h3 'Israel'
                                 ul {
                                     li { a(href: 'http://www.meetup.com/Groovy-Grails-Israel-Meetup-Group/', 'Groovy & Grails Israel User Group') }
-
                                 }
                                 h3 'Spain'
                                 ul {
                                     li { a(href: 'http://www.meetup.com/madrid-gug/', 'Madrid Groovy User Group') }
-                                }
-                                h3 'Israel'
-                                ul {
-                                    li { a(href: 'http://www.meetup.com/Groovy-Grails-Israel-Meetup-Group/', 'Groovy & Grails Israel User Group') }
-
                                 }
 
                                 hr(class: 'divider')
@@ -68,7 +62,6 @@ layout 'layouts/main.groovy', true,
                                     li { a(href: 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/', 'Austin Groovy and Grails User Group (TX)') }
                                     li { a(href: 'http://www.meetup.com/Grails-and-Ales/', 'Groovy and Grails Users of Columbus OH') }
                                     li { a(href: 'http://www.meetup.com/grails/', 'NYC Groovy / Grails Meetup') }
-
                                 }
                                 hr(class: 'divider')
 
@@ -90,7 +83,7 @@ layout 'layouts/main.groovy', true,
                                 h2 'Asia'
                                 h3 'India'
                                 ul {
-                                        li { a(href: 'http://www.meetup.com/Bangalore-Groovy-Grails-Meetup/', 'Bangalore Groovy Grails Meetup') }
+                                    li { a(href: 'http://www.meetup.com/Bangalore-Groovy-Grails-Meetup/', 'Bangalore Groovy Grails Meetup') }
                                 }
                                 hr(class: 'divider')
                             }

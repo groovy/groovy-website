@@ -18,6 +18,7 @@ menu {
     group('Socialize') {
         item 'Discuss on the mailing-list', 'mailing-lists.html',                               'fa-envelope'
         item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
+        item 'Groovy on Twitter',           'https://twitter.com/hashtag/groovylang',           'fa-twitter'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
         item 'Source code on GitHub',       'https://github.com/groovy/groovy-core',            'fa-github'
         item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'

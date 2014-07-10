@@ -62,6 +62,7 @@ layout 'layouts/main.groovy', true,
                                     li { a(href: 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/', 'Austin Groovy and Grails User Group (TX)') }
                                     li { a(href: 'http://www.meetup.com/Grails-and-Ales/', 'Groovy and Grails Users of Columbus OH') }
                                     li { a(href: 'http://www.meetup.com/grails/', 'NYC Groovy / Grails Meetup') }
+                                    li { a(href: 'http://www.scottsdale-groovy.com/', 'Scottsdale Groovy Brigade') }
                                 }
                                 hr(class: 'divider')
 

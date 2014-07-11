@@ -90,6 +90,10 @@ layout 'layouts/main.groovy', true,
                                 ul {
                                     li { a(href: 'http://www.meetup.com/Bangalore-Groovy-Grails-Meetup/', 'Bangalore Groovy Grails Meetup') }
                                 }
+                                h3 'Japan'
+                                ul {
+                                    li { a(href: 'http://www.jggug.org/', 'Japan Grails/Groovy User Group') }
+                                }
                                 hr(class: 'divider')
                             }
                         }

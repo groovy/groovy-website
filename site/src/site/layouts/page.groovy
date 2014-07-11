@@ -66,9 +66,6 @@ html {
             }
         }
 
-        // bottom styles
-        link href: 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,200', rel: 'stylesheet', type: 'text/css'
-
         def scripts = extraScripts ?: []
         ['vendor/jquery-1.10.2.min.js', 'vendor/classie.js', 'vendor/sidebarEffects.js', 'plugins.js', 'main.js', *scripts].each {
             yieldUnescaped "<script src='js/$it'></script>"

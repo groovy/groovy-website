@@ -335,6 +335,10 @@ usergroups {
         location 'North-America/United States'
         url 'http://www.scottsdale-groovy.com/'
     }
+    userGroup('Coder Consortium of Sacramento') {
+        location 'North-America/United States'
+        url 'http://coderconsortium.com/'
+    }
 
     // South-America
     userGroup('Grails Brasil - Groovy and Grails users group of Brazil') {

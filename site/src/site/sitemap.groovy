@@ -38,7 +38,7 @@ pages {
     page 'versioning', 'versioning', [category: 'Download']
     page 'indy', 'indy', [category: 'Download']
     page 'community', 'community', [category: 'Community']
-    page 'usergroups', 'usergroups', [category: 'Community']
+    page 'usergroups', 'usergroups', [category: 'Community', userGroups: usergroups]
     page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
     page 'mailing-lists', 'mailing-lists', [category: 'Community']
     page 'contribute', 'contribute', [category: 'Community']
@@ -286,4 +286,72 @@ books {
         url 'https://leanpub.com/groovy-goodness-notebook'
         description 'Experience the Groovy programming language through code snippets. Learn more about (hidden) Groovy features with code snippets and short articles. The articles and code will get you started quickly and will give more insight in Groovy.'
     }
+}
+
+usergroups {
+    // Europe
+    userGroup('Belgium Groovy/Grails User Group') {
+        location 'Europe/Belgium'
+        url 'http://www.meetup.com/Belgium-Groovy-Grails-User-Group/'
+    }
+    userGroup('Aarhus Groovy & Grails meetup - no homepage yet') {
+        location 'Europe/Denmark'
+    }
+    userGroup('Paris Groovy Grails User Group') {
+        location 'Europe/France'
+        url 'http://www.meetup.com/Belgium-Groovy-Grails-User-Group/'
+    }
+    userGroup('Groovy & Grails Israel User Group') {
+        location 'Europe/Israel'
+        url 'http://www.meetup.com/Groovy-Grails-Israel-Meetup-Group/'
+    }
+    userGroup('Warsaw Groovy User Group') {
+        location 'Europe/Poland'
+        url 'http://www.meetup.com/Warsaw-Groovy-User-Group/'
+    }
+    userGroup('Madrid Groovy User Group') {
+        location 'Europe/Spain'
+        url 'http://www.meetup.com/madrid-gug/'
+    }
+
+    // North-America
+    userGroup('Groovy Users of Minnesota') {
+        location 'North-America/United States'
+        url 'http://groovy.mn'
+    }
+    userGroup('Austin Groovy and Grails User Group (TX)') {
+        location 'North-America/United States'
+        url 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/'
+    }
+    userGroup('Groovy and Grails Users of Columbus OH') {
+        location 'North-America/United States'
+        url 'http://www.meetup.com/Grails-and-Ales/'
+    }
+    userGroup('NYC Groovy / Grails Meetup') {
+        location 'North-America/United States'
+        url 'http://www.meetup.com/grails/'
+    }
+    userGroup('Scottsdale Groovy Brigade') {
+        location 'North-America/United States'
+        url 'http://www.scottsdale-groovy.com/'
+    }
+
+    // South-America
+    userGroup('Grails Brasil - Groovy and Grails users group of Brazil') {
+        location 'South-America/Brazil'
+        url 'http://www.grailsbrasil.com.br'
+    }
+
+    // Asia
+    userGroup('Bangalore Groovy Grails Meetup') {
+        location 'Asia/India'
+        url 'http://www.meetup.com/Bangalore-Groovy-Grails-Meetup/'
+    }
+    userGroup('Japan Grails/Groovy User Group') {
+        location 'Asia/Japan'
+        url 'http://www.jggug.org/'
+    }
+
+    // Oceania?
+    /* userGroup('') { location 'Oceania/Australia' } */
 }

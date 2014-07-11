@@ -62,7 +62,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' can be found below. '
                                     br()
                                     yield 'Windows users can use '
-                                    a(href: 'https://github.com/flofreud/posh-gvm/blob/master/README.md', 'Posh-GVM')
+                                    a(href: 'https://github.com/flofreud/posh-gvm', 'Posh-GVM')
                                     yield ' (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI.'
                                 }
                             }

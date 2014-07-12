@@ -339,6 +339,10 @@ usergroups {
         location 'North-America/United States'
         url 'http://coderconsortium.com/'
     }
+    userGroup('DC Groovy') {
+        location 'North-America/United States'
+        url 'http://www.dcgroovy.org'
+    }
 
     // South-America
     userGroup('Grails Brasil - Groovy and Grails users group of Brazil') {

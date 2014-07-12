@@ -33,9 +33,11 @@ html, body {
 }
 
 #they-use-groovy {
+    width: 100%;
     height: 450px;
     background-color: #db4800;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #they-use-groovy .item {
@@ -43,9 +45,52 @@ html, body {
     color: white;
 }
 
-#logos {
+#logos-holder {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
     text-align: center;
-    width: 100%;
+}
+
+#logos-holder .logo {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    width: 100px;
+    height: 80px;
+    background-size: 95%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+@media (min-width: 430px) {
+    #logos-holder {
+        width: 420px;
+    }
+
+    #they-use-groovy {
+        height: 900px;
+    }
+}
+
+@media (min-width: 650px) {
+    #logos-holder {
+        width: 630px;
+    }
+
+    #they-use-groovy {
+        height: 600px;
+    }
+}
+
+@media (min-width: 960px) {
+    #logos-holder {
+        width: 940px;
+    }
+
+    #they-use-groovy {
+        height: 450px;
+    }
 }
 
 .centered {

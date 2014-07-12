@@ -21,8 +21,8 @@ html, body {
 #band {
     background: url(../img/groovy-logo-white.png) no-repeat;
     background-color: #4298b8;
-    background-attachment: fixed;
-    background-position: 50% 10%;
+    /*background-attachment: fixed;*/
+    background-position: 50% 30%;
 }
 
 #they-use-groovy {

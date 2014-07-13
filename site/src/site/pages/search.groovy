@@ -28,7 +28,7 @@ layout 'layouts/main.groovy', true,
                                     s.parentNode.insertBefore(gcse, s);
                                   })();
                                 '''
-                                'gcse:search'(){}
+                                'gcse:search'(linkTarget: '_blank'){}
                                 style '''
                                     .gsc-input-box {
                                         height: 30px;

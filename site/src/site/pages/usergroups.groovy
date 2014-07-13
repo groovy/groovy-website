@@ -1,8 +1,9 @@
-/**
- * The template generating the user groups page.
- * If you want to add a user group, please edit the usergroups section in src/site/sitemap.groovy
- */
 import model.UserGroup
+
+/**
+ * Ths template is generating the user groups page.
+ * If you want to add a user group, please edit the "usergroups" section in src/site/sitemap.groovy
+ */
 
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - User groups',

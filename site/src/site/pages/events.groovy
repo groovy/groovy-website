@@ -1,5 +1,10 @@
 import model.Event
 
+/**
+ * This template is generating the events page.
+ * If you want to add a new event, please edit the "allEvents" section in src/site/sitemap.groovy
+ */
+
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Events',
         mainContent: contents {

@@ -67,13 +67,13 @@ layout 'layouts/main.groovy', true,
                                 hr(class: 'divider')
 
                                 h2 'Mailing-lists archive on Nabble'
-                                p '''
-                                    The mailing-lists are archived on Nabble.
+                                p """
+                                    The mailing-lists are archived on ${$a(href: 'http://www.nabble.com/', 'Nabble')}.
                                     Below you can see the archives of the lists.
                                     In order to post messages to the mailing-lists through Nabble,
                                     you first need to be registered to the Groovy mailing-lists,
                                     as explained at the top of this page.
-                                '''
+                                """
                                 a(id: 'nabblelink', href: 'http://groovy.329449.n5.nabble.com/', 'Nabble forum')
                                 script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449')
                             }

@@ -11,6 +11,7 @@ menu {
         item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/groovy/groovy-core'
         item 'Books',                       'learn.html#books'
+        item 'Sponsors',                    'sponsors.html'
         item 'FAQ',                         'faq.html'
         item 'Search',                      'search.html'
     }
@@ -43,6 +44,7 @@ pages {
     page 'mailing-lists', 'mailing-lists', [category: 'Community']
     page 'contribute', 'contribute', [category: 'Community']
     page 'hipchat', 'hipchat', [category: 'Community']
+    page 'sponsors', 'sponsors', [category: 'Community']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
     page 'events', 'events', [category: 'Community', allEvents: allEvents]
     page 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']

@@ -75,7 +75,7 @@ layout 'layouts/main.groovy', true,
                                     as explained at the top of this page.
                                 """
                                 a(id: 'nabblelink', href: 'http://groovy.329449.n5.nabble.com/', 'Nabble forum')
-                                script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449')
+                                script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449') {}
                             }
                             hr(class: 'divider')
                         }

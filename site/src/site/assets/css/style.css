@@ -17,18 +17,16 @@ html, body {
     color: white;
 }
 
+#band {
+    background: #4298b8 no-repeat 50% 30%;
+}
+
 .svg #band {
-    background: url(../img/groovy-logo-white.svg) no-repeat;
-    background-color: #4298b8;
-    /*background-attachment: fixed;*/
-    background-position: 50% 30%;
+    background-image: url(../img/groovy-logo-white.svg);
 }
 
 .no-svg #band {
-    background: url(../img/groovy-logo-white.png) no-repeat;
-    background-color: #4298b8;
-    /*background-attachment: fixed;*/
-    background-position: 50% 30%;
+    background-image: url(../img/groovy-logo-white.png);
 }
 
 #they-use-groovy {

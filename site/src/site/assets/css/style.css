@@ -184,6 +184,15 @@ code, kbd, pre, samp {
     color: #db4800;
 }
 
+.colset-3-footer .col-1, .colset-3-footer .col-2, .colset-3-footer .col-3 {
+    min-width: 180px;
+    float: left;
+}
+
+.colset-3-footer .col-3 {
+    min-width: 220px;
+}
+
 .colset-3-article article {
     float: left;
 }

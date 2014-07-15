@@ -1,12 +1,39 @@
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import org.gradle.logging.ConsoleRenderer
+import com.yahoo.platform.yui.compressor.CssCompressor
+import org.apache.tools.ant.filters.BaseFilterReader
 
 ext.watchmode = project.hasProperty('watchmode')?project.getProperty('watchmode'):'false'
+
+class CompressorFilter extends BaseFilterReader {
+    Writer writer
+    Thread worker
+
+    CompressorFilter(Reader reader) {
+        super(new PipedReader())
+        writer = new PipedWriter(this.@in)
+        def compressor = new CssCompressor(reader)
+        reader.close()
+        worker = Thread.start {
+            compressor.compress(writer, -1)
+            writer.close()
+        }
+    }
+
+    void close() {
+        worker.join()
+        super.close()
+    }
+
+}
 
 task copyAssets(type:Copy) {
     from file('src/site/assets')
     into file("$buildDir/site")
+    filesMatching('**/*.css') { f->
+        filter(CompressorFilter)
+    }
 }
 
 task generateSite(type:JavaExec) {

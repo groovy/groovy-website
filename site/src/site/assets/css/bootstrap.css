@@ -2133,7 +2133,7 @@ h8 {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    padding-right: 60px;
+    padding-right: 70px;
 }
 
 #header nav#navigation ul {
@@ -2150,7 +2150,7 @@ h8 {
     outline: 0;
     display: block;
     line-height: 28px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-weight: 400;
     color: #c0d3db;
     font-size: 14px;

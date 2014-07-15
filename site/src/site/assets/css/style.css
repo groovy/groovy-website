@@ -19,6 +19,7 @@ html, body {
 
 #band {
     background: #4298b8 no-repeat 50% 30%;
+    height: 400px;
 }
 
 .svg #band {
@@ -27,6 +28,27 @@ html, body {
 
 .no-svg #band {
     background-image: url(../img/groovy-logo-white.png);
+}
+
+@media (max-width: 1010px) {
+    #band {
+        background-size: 90%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 690px) {
+    #band {
+        background-size: 80%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 475px) {
+    #band {
+        background-size: 70%;
+        height: 100px;
+    }
 }
 
 #they-use-groovy {

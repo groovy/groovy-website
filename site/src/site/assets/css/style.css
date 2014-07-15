@@ -185,3 +185,17 @@ code, kbd, pre, samp {
     background-color: #e6e6e6;
     color: #db4800;
 }
+
+.col1, .col2 {
+    min-width: 400px;
+    float: left;
+}
+
+@media (max-width: 988px) {
+    .col1, .col2 {
+        width: 98% !important;
+        max-width: 98%;
+    }
+}
+
+

@@ -2242,7 +2242,6 @@ h8 {
 .row {
     position: relative;
     max-width: 1400px;
-    min-width: 930px;
     margin: 0 auto;
     padding: 0 5%
 }

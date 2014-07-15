@@ -64,7 +64,16 @@ html, body {
     background-position: 50% 50%;
 }
 
-@media (min-width: 430px) {
+@media (min-width: 330px) {
+    #logos-holder {
+        width: 320px;
+    }
+
+    #they-use-groovy {
+        height: 1130px;
+    }
+}
+@media (min-width: 475px) {
     #logos-holder {
         width: 420px;
     }
@@ -74,7 +83,7 @@ html, body {
     }
 }
 
-@media (min-width: 650px) {
+@media (min-width: 690px) {
     #logos-holder {
         width: 630px;
     }
@@ -84,7 +93,7 @@ html, body {
     }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1010px) {
     #logos-holder {
         width: 940px;
     }

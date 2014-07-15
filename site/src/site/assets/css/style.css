@@ -184,6 +184,10 @@ code, kbd, pre, samp {
     color: #db4800;
 }
 
+.colset-3-article article {
+    float: left;
+}
+
 .col1, .col2 {
     min-width: 400px;
     float: left;
@@ -191,6 +195,11 @@ code, kbd, pre, samp {
 
 @media (max-width: 988px) {
     .col1, .col2 {
+        width: 98% !important;
+        max-width: 98%;
+    }
+
+    .colset-3-article article {
         width: 98% !important;
         max-width: 98%;
     }

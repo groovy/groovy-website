@@ -68,7 +68,7 @@ html {
 
         def scripts = extraScripts ?: []
         ['vendor/jquery-1.10.2.min.js', 'vendor/classie.js', 'vendor/bootstrap.min.js', 'vendor/sidebarEffects.js', 'vendor/modernizr-2.6.2.min.js','plugins.js', 'main.js', *scripts].each {
-            yieldUnescaped "<script src='js/$it'></script>"
+            yieldUnescaped "<script src='js/$it' defer></script>"
         }
 
         if (extraFooter) {

@@ -23,6 +23,6 @@ footer(id: 'footer') {
                 img(src: 'img/pivotal.png', title: 'Pivotal', alt: 'Pivotal')
             }
         }
-        div(class: 'clearfix', "&copy; 2003-${Calendar.instance[Calendar.YEAR]} the Groovy project &mdash; Groovy is Open Source, Apache 2 License")
+        div(class: 'clearfix', "&copy; 2003-${Calendar.instance[Calendar.YEAR]} the Groovy project &mdash; Groovy is Open Source, ${$a(href: 'http://www.apache.org/licenses/LICENSE-2.0.html', 'Apache 2 License')}")
     }
 }

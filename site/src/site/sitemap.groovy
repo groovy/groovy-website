@@ -173,6 +173,7 @@ ecosystem {
     project('GVM') {
         description 'GVM is a tool for managing parallel Versions of multiple Software Development Kits on most Unix based systems. It provides a convenient command line interface for installing, switching, removing and listing Candidates.'
         url 'http://gvmtool.net/'
+        logo 'img/ecosystem/gvmtool.png'
     }
 }
 

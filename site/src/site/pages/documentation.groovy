@@ -56,16 +56,20 @@ layout 'layouts/main.groovy', true,
                                     }
                                 }
                             }
-                            hr(class: 'divider')
+                            div(class: 'col-md-12') {
+                                hr(class: 'divider')
 
-                            a(name: 'old-docs') {}
-                            h2 'Documentation for older versions'
-                            p 'You can browse the documentation of previous versions of Groovy since Groovy 1.7:'
-                            def allVersions =  [*allDocVersions, 'Select a version'].reverse()
+                                a(name: 'old-docs') {}
+                                article {
+                                    h2 'Documentation for older versions'
+                                    p 'You can browse the documentation of previous versions of Groovy since Groovy 1.7:'
+                                    def allVersions =  [*allDocVersions, 'Select a version'].reverse()
 
-                            select(class: 'form-control', onchange: "window.location.href='http://docs.groovy-lang.org/docs/groovy-' + this.value + '/html/'") {
-                                allVersions.each { String version ->
-                                    option version
+                                    select(class: 'form-control', onchange: "window.location.href='http://docs.groovy-lang.org/docs/groovy-' + this.value + '/html/'") {
+                                        allVersions.each { String version ->
+                                            option version
+                                        }
+                                    }
                                 }
                             }
                         }

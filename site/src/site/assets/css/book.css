@@ -643,7 +643,7 @@ Table of Contents
 }
 
 /* Media Queries */
-@media screen and (max-width: 37.8125em) {
+@media screen and (max-width: 767px) {
     .align > li {
         width: 100%;
         min-height: 440px;
@@ -653,17 +653,16 @@ Table of Contents
     }
 
     .book {
-        margin: 0 auto;
+        margin-left: 60px;
         display: block;
         margin-bottom: 280px;
     }
 
     .book figcaption {
-        width: 320px;
+        min-width: 320px;
         top: 250px;
         padding-left: 0;
-        left: -80px;
-        font-size: 90%;
+        left: -60px;
         display: block;
     }
 }

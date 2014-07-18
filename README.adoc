@@ -43,8 +43,15 @@ build
 
 == Contributing
 
-The website is generated thanks to Gradle and makes use of the {markupte}[Markup Template Engine]. The struture of the
-project consists of:
+The website is generated thanks to Gradle and makes use of the {markupte}[Markup Template Engine]. The structure of the
+project consists of two modules:
+
+----
+generator                       : utility classes and model for generating the website
+site                            : the website itself
+----
+
+The website subproject consists of:
 
 ----
 src/main/site                   : sources for the static website
@@ -55,6 +62,8 @@ src/main/site                   : sources for the static website
           |--- pages            : individual pages
 build.gradle                    : website weaving logic
 ----
+
+Additional details can be found in this http://melix.github.io/blog/2014/07/new-groovy-website.html[blog post].
 
 == Continuous Integration
 

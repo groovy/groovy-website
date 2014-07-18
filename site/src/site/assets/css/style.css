@@ -234,12 +234,27 @@ code, kbd, pre, samp {
 
 #contribute-btn {
     position: absolute;
-    right: 0px;
+    right: 15px;
+}
+
+@media (max-width: 767px) {
+    #contribute-btn {
+        width: 100%;
+        position: relative;
+        margin-top: 30px;
+        right: 0px;
+    }
+
+    #contribute-btn button {
+        width: 100%;
+        right: 15px;
+    }
 }
 
 @media (min-width: 1200px) {
     #contribute-btn {
         top: 25px;
+        right: 15px;
     }
 }
 

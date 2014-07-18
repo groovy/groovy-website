@@ -2,37 +2,25 @@ import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import org.gradle.logging.ConsoleRenderer
 import com.yahoo.platform.yui.compressor.CssCompressor
+import com.yahoo.platform.yui.compressor.JavaScriptCompressor
 import org.apache.tools.ant.filters.BaseFilterReader
 
 ext.watchmode = project.hasProperty('watchmode')?project.getProperty('watchmode'):'false'
 
-class CompressorFilter extends BaseFilterReader {
-    Writer writer
-    Thread worker
-
-    CompressorFilter(Reader reader) {
-        super(new PipedReader())
-        writer = new PipedWriter(this.@in)
-        def compressor = new CssCompressor(reader)
-        reader.close()
-        worker = Thread.start {
-            compressor.compress(writer, -1)
-            writer.close()
-        }
-    }
-
-    void close() {
-        worker.join()
-        super.close()
-    }
-
-}
+apply plugin: 'base'
 
 task copyAssets(type:Copy) {
     from file('src/site/assets')
     into file("$buildDir/site")
     filesMatching('**/*.css') { f->
-        filter(CompressorFilter)
+        if (!f.name.contains('.min.')) {
+            filter(CssFilter)
+        }
+    }
+    filesMatching('**/*.js') { f->
+        if (!f.name.contains('.min.')) {
+            filter(JsFilter)
+        }
     }
 }
 
@@ -144,4 +132,50 @@ task webzip(type:Zip, dependsOn: checkDeadLinks) {
     from (checkDeadLinks.outputDir) {
         into 'reports'
     }
+}
+
+// Resource filtering classes
+
+class JsFilter extends BaseFilterReader {
+    Writer writer
+    Thread worker
+
+    JsFilter(Reader reader) {
+        super(new PipedReader())
+        writer = new PipedWriter(this.@in)
+        def compressor = new JavaScriptCompressor(reader, null)
+        reader.close()
+        worker = Thread.start {
+            compressor.compress(writer, -1, true, false, false, false)
+            writer.close()
+        }
+    }
+
+    void close() {
+        worker.join()
+        super.close()
+    }
+
+}
+
+class CssFilter extends BaseFilterReader {
+    Writer writer
+    Thread worker
+
+    CssFilter(Reader reader) {
+        super(new PipedReader())
+        writer = new PipedWriter(this.@in)
+        def compressor = new CssCompressor(reader)
+        reader.close()
+        worker = Thread.start {
+            compressor.compress(writer, -1)
+            writer.close()
+        }
+    }
+
+    void close() {
+        worker.join()
+        super.close()
+    }
+
 }

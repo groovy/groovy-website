@@ -666,3 +666,13 @@ Table of Contents
         display: block;
     }
 }
+
+@media screen and (max-width: 550px) {
+    .book {
+        height: 250px;
+    }
+
+    .book figcaption {
+        width: 320px;
+    }
+}

@@ -617,7 +617,7 @@ Table of Contents
 
 /* figcaption */
 
-figcaption {
+.book figcaption {
     padding-left: 40px;
     padding-top: 40px;
     text-align: left;
@@ -627,17 +627,17 @@ figcaption {
     width: 500px;
 }
 
-figcaption h1 {
+.book figcaption h1 {
     margin: 0;
 }
 
-figcaption span {
+.book figcaption span {
     color: #245f78;
-    padding: 0.6em 0 1em 0;
+    padding: 0.6em 0 0.2em 0;
     display: block;
 }
 
-figcaption p {
+.book figcaption p {
     color: black;
     line-height: 1.3;
 }
@@ -654,14 +654,16 @@ figcaption p {
 
     .book {
         margin: 0 auto;
+        display: block;
+        margin-bottom: 280px;
     }
 
-    figcaption {
-        text-align: center;
+    .book figcaption {
         width: 320px;
         top: 250px;
         padding-left: 0;
         left: -80px;
         font-size: 90%;
+        display: block;
     }
 }

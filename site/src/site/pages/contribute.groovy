@@ -210,6 +210,10 @@ layout 'layouts/main.groovy', true,
                                 }
                             }
                             hr(class: 'divider')
+
+                            h2('Build status')
+
+                            p "The Groovy sources are tested thanks our ${$a(href:'buildstatus.html','continuous integration server')}."
                         }
                     }
                 }

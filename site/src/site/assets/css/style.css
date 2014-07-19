@@ -69,6 +69,12 @@ a.navbar-brand {
     background-color: #db4800;
 }
 
+@media (min-width: 768px) {
+    .container {
+        width: auto;
+    }
+}
+
 /* specific to index.html */
 
 #band {

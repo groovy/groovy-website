@@ -288,7 +288,7 @@ code, kbd, pre, samp {
 }
 
 .col1, .col2 {
-    min-width: 320px;
+    min-width: 300px;
     float: left;
 }
 

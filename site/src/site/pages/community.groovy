@@ -25,11 +25,11 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p 'In this section of the website, you can find useful links and information about: '
                                 ul {
-                                    li "how you can ${$a(href: 'contribute.html', 'contribute')} to the project, its codebase, its documentation"
-                                    li "how to raise issues in our ${$a(href: 'contribute.html#reporting-issues', 'bug tracker')}"
-                                    li "how to interact with other Groovy users and developers through the ${$a(href: 'mailing-lists.html', 'mailing-lists')}"
-                                    li "the upcoming ${$a(href: 'events.html', 'events and conferences')} you might want to attend to lear more about Groovy and to share your experience with others."
-                                    li "the list of ${$a(href: 'usergroups.html', 'user groups')} you can attend and where to meet other Groovy users"
+                                    li "how you can ${$a(href: 'contribute.html', 'contribute')} to the project, its codebase, its documentation,"
+                                    li "how to raise issues in our ${$a(href: 'contribute.html#reporting-issues', 'bug tracker')},"
+                                    li "how to interact with other Groovy users and developers through the ${$a(href: 'mailing-lists.html', 'mailing-lists')},"
+                                    li "the upcoming ${$a(href: 'events.html', 'events and conferences')} you might want to attend to lear more about Groovy and to share your experience with others,"
+                                    li "the list of ${$a(href: 'usergroups.html', 'user groups')} you can attend and where to meet other Groovy users."
                                 }
                                 p '''
                                     If you click on the socialize link in the menu, you will also find other ways to interact

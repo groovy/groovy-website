@@ -19,7 +19,7 @@ layout 'layouts/main.groovy', true,
                                     Our ${
                                     $a(href: 'http://ci.groovy-lang.org?guest=1', 'continuous integration server')
                                 },
-                                    sponsored by ${$a(href: 'http://www.jetbrains.com', 'Jetbrains')},
+                                    sponsored by ${$a(href: 'http://www.jetbrains.com', 'JetBrains')},
                                     builds Groovy against multiple JDK versions, as well as some projects from the community tested
                                     against development versions of Groovy:
                                 """

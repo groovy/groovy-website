@@ -10,6 +10,7 @@ menu {
     group('About') {
         item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/groovy/groovy-core'
+        item 'Build status',                'buildstatus.html'
         item 'Books',                       'learn.html#books'
         item 'Sponsors',                    'sponsors.html'
         item 'FAQ',                         'faq.html'

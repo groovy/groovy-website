@@ -31,6 +31,7 @@ pre {
 /* customizing bootstrap nav bar */
 .navbar {
     margin-bottom: 0px;
+    padding-right: 110px;
 }
 .navbar .container {
     margin: 10px;
@@ -76,6 +77,16 @@ a.navbar-brand {
 }
 
 /* specific to index.html */
+
+@media (max-width: 999px) {
+    #fork-me {
+        display: none;
+    }
+
+    .navbar {
+        padding-right: 0px;
+    }
+}
 
 #band {
     background: #4298b8 no-repeat 50% 30%;

@@ -962,3 +962,48 @@ html, body, .st-container, .st-pusher, .st-content {
 .st-effect-9.st-menu::after {
     display: none
 }
+
+/* Video from the learn page */
+.presentations {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.presentations img.screenshot {
+    float: left;
+    margin-right: 40px;
+    margin-top: 1em;
+    margin-bottom: 0px;
+    width: 300px;
+    height: auto;
+}
+
+.presentations .metadata {
+    display: table-cell;
+    min-width: 328px;
+}
+
+.presentations .title {
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+}
+
+
+.presentations .speaker {
+    color: #245f78;
+    margin-bottom: 0.5em;
+}
+
+.presentations .summary {
+    line-height: 1.3;
+}
+
+.presentations .urls {
+}
+
+@media screen and (max-width: 767px) {
+    .presentations .img.screenshot, .video .metadata {
+        float: none;
+    }
+}
+

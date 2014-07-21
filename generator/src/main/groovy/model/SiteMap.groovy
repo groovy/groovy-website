@@ -17,6 +17,7 @@ class SiteMap {
     final List<String> allDocVersions = []
     final List<Page> pages = []
     final List<UserGroup> usergroups = []
+    final List<Video> videos = []
 
     private SiteMap() {}
 
@@ -50,17 +51,22 @@ class SiteMap {
     }
 
     private void downloads(Closure dlSpec) {
-        def clone = dlSpec.rehydrate(this,this,this)
+        def clone = dlSpec.rehydrate(this, this, this)
         clone()
     }
 
     private void pages(Closure pagesSpec) {
-        def clone = pagesSpec.rehydrate(this,this,this)
+        def clone = pagesSpec.rehydrate(this, this, this)
         clone()
     }
 
     private void usergroups(Closure groupsSpec) {
-        def clone = groupsSpec.rehydrate(this,this,this)
+        def clone = groupsSpec.rehydrate(this ,this ,this)
+        clone()
+    }
+
+    private void videos(Closure videosSpec) {
+        def clone = videosSpec.rehydrate(this, this, this)
         clone()
     }
 
@@ -96,10 +102,16 @@ class SiteMap {
     }
 
     private void userGroup(String name, Closure groupSpec) {
-        def group = new UserGroup(name:name)
+        def group = new UserGroup(name: name)
         def clone = groupSpec.rehydrate(group,group,group)
         clone()
         usergroups.add(group)
     }
 
+    private void video(String title, Closure videoSpec) {
+        def video = new Video(title: title)
+        def clone = videoSpec.rehydrate(video, video, video)
+        clone()
+        videos.add(video)
+    }
 }

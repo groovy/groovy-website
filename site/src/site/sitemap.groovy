@@ -34,7 +34,7 @@ pages {
     page 'index', 'index', [allEvents: allEvents]
     page 'search', 'search', [category: 'Search']
     page 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: ecosystem]
-    page 'learn', 'learn', [category: 'Learn', docSections: documentationSections, allBooks: library]
+    page 'learn', 'learn', [category: 'Learn', docSections: documentationSections, allBooks: library, videos: videos]
     page 'documentation', 'documentation', [category: 'Documentation', docSections: documentationSections, allDocVersions: allDocVersions]
     page 'download', 'download', [category: 'Download', distributions: distributions]
     page 'versioning', 'versioning', [category: 'Download']
@@ -367,4 +367,62 @@ usergroups {
 
     // Oceania?
     /* userGroup('') { location 'Oceania/Australia' } */
+}
+
+videos {
+    video('Groovy in 2014 and beyond') {
+        speaker 'Guillaume Laforge'
+        summary '''
+            <p>Groovy is already 10 years old, but continues to evolve and innovate.</p>
+            <p>What's new under the hood? - implicit closure coercion - new AST transforms - finer grained script configuration - type checker extensions</p>
+            <p>In the upcoming versions of Groovy, you'll be able to create "traits", do tail recursions, and much more.</p>
+            <p>We'll also talk about what's cooking for Groovy 3.0, with its new Meta-Object Protocol, its new grammar, its JDK 8 support.</p>
+        '''
+        pictureUrl 'groovy-in-2014-and-beyond.png'
+        videoUrl 'https://www.youtube.com/watch?v=P63OHYc3q8s&list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1&index=2'
+        slidesUrl 'https://speakerdeck.com/glaforge/groovy-in-2014-and-beyond-at-gr8conf-europe-2014'
+    }
+
+    video('The Groovy ecosystem revisited') {
+        speaker 'Andrés Almiray'
+        summary '''
+            <p>Groovy is a well established player in the JVM since a few years ago.
+            It's increased popularity across the years has spawned several projects that conform the Groovy Ecosystem.
+            You've probably heard of Grails, Gradle, Griffon and Spock.
+            But what about the rest of projects that are just waiting around the corner to be discovered and make your life easier?
+            This talk presents them tools and libraries that use Groovy as the main driving force to get the job done.</p>
+        '''
+        pictureUrl 'groovy-ecosystem-revisited.png'
+        videoUrl 'https://www.youtube.com/watch?v=2NGeaIwmnC8&list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1&index=5'
+        slidesUrl 'http://fr.slideshare.net/aalmiray/gr8conf-groovy-ecosystem'
+    }
+
+    video('Metaprogramming with the Groovy runtime') {
+        speaker 'Jeff Brown'
+        summary '''
+            <p>The dynamic runtime nature of Groovy is one of the things that sets it apart from standard Java and makes it a fantastic language for building dynamic applications for the Java Platform.
+            The metaprogramming capabilities offered by the language provide everything that an application development team needs to build systems that are far more capable than their all Java counterparts.
+            This Part 1 of 2 will cover the runtime metaprogramming capabilities of Groovy. The session will dive deep into Groovy's Meta Object Protocol (MOP) which implements the incredibly dynamic runtime dispatch mechanism.
+            The session will include a lot of live code demonstrating really powerful runtime features of the language.
+            This session is focused specifically on Groovy's runtime metaprogramming capabilities.
+            Part 2 of 2 will cover Groovy's compile time metaprogramming capabilities</p>
+        '''
+        pictureUrl 'metaprogramming-part-1.png'
+        videoUrl 'https://www.youtube.com/watch?v=1xvg8Wcj-hg&list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1&index=9'
+    }
+
+    video('Groovy Puzzlers') {
+        speaker 'Noam Tenne'
+        summary '''
+            <p>Remember the epic Java Puzzlers? Here's the Groovy version, and we have some neat ones!
+            Even though we are totally a Grails shop here at JFrog, some of these had us scratching our heads for days trying to figure them out.
+            And there is more!
+            Contributions from the truly Groovy senseis, including Guillaume Laforge, Andrés Almiray, Tim Yates, Ken Kousen
+            make this talk an unforgettable journey to Groovy.
+            In this talk, you'll have the expected dose of fun and enlightenment hearing about our mistakes and failures, great and small,
+            in hard core Groovy/Grails development.</p>
+        '''
+        pictureUrl 'groovy-puzzlers.png'
+        videoUrl 'https://www.youtube.com/watch?v=GfIhxi7L6R0&list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1&index=17'
+    }
 }

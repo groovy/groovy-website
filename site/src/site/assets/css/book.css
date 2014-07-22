@@ -453,56 +453,58 @@ Table of Contents
     5. events
 */
 
-.book:hover > .hardcover_front {
-    -webkit-transform: rotateY(-145deg) translateZ(0);
-    -moz-transform: rotateY(-145deg) translateZ(0);
-    transform: rotateY(-145deg) translateZ(0);
-    z-index: 0;
-}
+@media screen and (min-width: 768px) {
+    .book:hover > .hardcover_front {
+        -webkit-transform: rotateY(-145deg) translateZ(0);
+        -moz-transform: rotateY(-145deg) translateZ(0);
+        transform: rotateY(-145deg) translateZ(0);
+        z-index: 0;
+    }
 
-.book:hover > .page li:nth-child(1) {
-    -webkit-transform: rotateY(-30deg);
-    -moz-transform: rotateY(-30deg);
-    transform: rotateY(-30deg);
-    -webkit-transition-duration: 1.5s;
-    -moz-transition-duration: 1.5s;
-    transition-duration: 1.5s;
-}
+    .book:hover > .page li:nth-child(1) {
+        -webkit-transform: rotateY(-30deg);
+        -moz-transform: rotateY(-30deg);
+        transform: rotateY(-30deg);
+        -webkit-transition-duration: 1.5s;
+        -moz-transition-duration: 1.5s;
+        transition-duration: 1.5s;
+    }
 
-.book:hover > .page li:nth-child(2) {
-    -webkit-transform: rotateY(-35deg);
-    -moz-transform: rotateY(-35deg);
-    transform: rotateY(-35deg);
-    -webkit-transition-duration: 1.8s;
-    -moz-transition-duration: 1.8s;
-    transition-duration: 1.8s;
-}
+    .book:hover > .page li:nth-child(2) {
+        -webkit-transform: rotateY(-35deg);
+        -moz-transform: rotateY(-35deg);
+        transform: rotateY(-35deg);
+        -webkit-transition-duration: 1.8s;
+        -moz-transition-duration: 1.8s;
+        transition-duration: 1.8s;
+    }
 
-.book:hover > .page li:nth-child(3) {
-    -webkit-transform: rotateY(-118deg);
-    -moz-transform: rotateY(-118deg);
-    transform: rotateY(-118deg);
-    -webkit-transition-duration: 1.6s;
-    -moz-transition-duration: 1.6s;
-    transition-duration: 1.6s;
-}
+    .book:hover > .page li:nth-child(3) {
+        -webkit-transform: rotateY(-118deg);
+        -moz-transform: rotateY(-118deg);
+        transform: rotateY(-118deg);
+        -webkit-transition-duration: 1.6s;
+        -moz-transition-duration: 1.6s;
+        transition-duration: 1.6s;
+    }
 
-.book:hover > .page li:nth-child(4) {
-    -webkit-transform: rotateY(-130deg);
-    -moz-transform: rotateY(-130deg);
-    transform: rotateY(-130deg);
-    -webkit-transition-duration: 1.4s;
-    -moz-transition-duration: 1.4s;
-    transition-duration: 1.4s;
-}
+    .book:hover > .page li:nth-child(4) {
+        -webkit-transform: rotateY(-130deg);
+        -moz-transform: rotateY(-130deg);
+        transform: rotateY(-130deg);
+        -webkit-transition-duration: 1.4s;
+        -moz-transition-duration: 1.4s;
+        transition-duration: 1.4s;
+    }
 
-.book:hover > .page li:nth-child(5) {
-    -webkit-transform: rotateY(-140deg);
-    -moz-transform: rotateY(-140deg);
-    transform: rotateY(-140deg);
-    -webkit-transition-duration: 1.2s;
-    -moz-transition-duration: 1.2s;
-    transition-duration: 1.2s;
+    .book:hover > .page li:nth-child(5) {
+        -webkit-transform: rotateY(-140deg);
+        -moz-transform: rotateY(-140deg);
+        transform: rotateY(-140deg);
+        -webkit-transition-duration: 1.2s;
+        -moz-transition-duration: 1.2s;
+        transition-duration: 1.2s;
+    }
 }
 
 /*

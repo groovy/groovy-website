@@ -227,6 +227,9 @@ layout 'layouts/main.groovy', true,
                                         }
                                     }
                                 }
+                                h3 'Maven repositories'
+                                p "Groovy releases are downloadable from ${$a(href:'http://repo1.maven.org/maven2/org/codehaus/groovy/','Maven Central')} or ${$a(href:'http://jcenter.bintray.com/org/codehaus/groovy/','JCenter')}."
+                                p "Groovy snapshots are downloadable from ${$a(href:'https://oss.jfrog.org/oss-snapshot-local/org/codehaus/groovy','JFrog OpenSource Snapshots repository')}"
                             }
                             hr(class: 'divider')
 

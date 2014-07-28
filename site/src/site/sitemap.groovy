@@ -118,8 +118,8 @@ downloads {
             yield ' of Groovy.'
         }
 
-        version('2.4.0-beta-1') {
-            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20369'
+        version('2.4.0-beta-2') {
+            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20433'
         }
     }
     distribution('Groovy 2.3') {

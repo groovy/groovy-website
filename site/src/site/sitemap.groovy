@@ -132,7 +132,7 @@ downloads {
         version('2.3.6') {
             stable true
             releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20540'
-//            windowsInstaller 'http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-2.3.4-installer.exe'
+            windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.3.6-installer.exe'
         }
     }
 }

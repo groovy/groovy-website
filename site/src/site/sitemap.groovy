@@ -318,6 +318,10 @@ usergroups {
         location 'Europe/Spain'
         url 'http://www.meetup.com/madrid-gug/'
     }
+    userGroup('Dutch Groovy and Grails User Group (NLGUG)') {
+    	location 'Europe/The Netherlands'
+    	url 'http://www.meetup.com/nl-gug/'
+    }
 
     // North-America
     userGroup('Groovy Users of Minnesota') {

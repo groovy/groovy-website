@@ -117,7 +117,7 @@ layout 'layouts/main.groovy', true,
                                                 }
                                                 if (pkg.windowsInstaller) {
                                                     td {
-                                                        a(href: "http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-${pkg.version}-installer.exe") {
+                                                        a(href: pkg.windowsInstaller) {
                                                             i(class: 'fa fa-windows fa-4x') {}
                                                             br()
                                                             yield ' Windows installer'

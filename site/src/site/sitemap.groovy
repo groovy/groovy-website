@@ -75,6 +75,7 @@ documentation {
         item 'Domain-Specific Languages',                   'dsls',             'core-domain-specific-languages'
         item 'Security',                                    'security',         'security'
         item 'Design patterns in Groovy',                   'design-patterns',  'design-pattern-in-groovy'
+        item 'Style guide',                                 'style-guide',      'style-guide'
     }
 
     section ('Language Specification', 'fa-graduation-cap') {

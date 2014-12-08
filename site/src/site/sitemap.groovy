@@ -133,7 +133,7 @@ downloads {
         version('2.3.8') {
             stable true
             releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20648'
-            //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.3.8-installer.exe'
+            windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.3.8-installer.exe'
         }
     }
 }

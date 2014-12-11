@@ -14,6 +14,18 @@ layout 'layouts/page.groovy', true,
                 include template: 'includes/topmenu.groovy'
 
                 // main contents goes here!
+                div(class:'alert alert-danger',role:'alert') {
+                    p '''You are seeing a beta version of the new Groovy website. You probably came here through the
+old Codehaus site which is currently down and beyond our control. This is a therefore a temporary redirection.
+'''
+                    p {
+                        yieldUnescaped 'While we do our best to restore the old version of the website, you can find '
+                        a(href:'documentation.html', 'a new documentation following this link.')
+                    }
+                    p '''We strongly encourage you to leverage this temporary workaround to give us your
+impressions about the new website and documentation. Thanks for your understanding!'''
+                }
+
                 mainContent()
 
                 include template: 'includes/bottommenu.groovy'

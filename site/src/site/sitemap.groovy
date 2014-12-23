@@ -114,13 +114,13 @@ documentation {
 downloads {
     distribution('Groovy 2.4') {
         description {
-            yield 'Groovy 2.4 is currently in beta testing. If you want a stable version, please choose Groovy 2.3 which is our latest official '
+            yield 'Groovy 2.4 is currently in release candidate. If you want a stable version, please choose Groovy 2.3 which is our latest official '
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
         }
 
-        version('2.4.0-beta-4') {
-            releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20612'
+        version('2.4.0-rc-1') {
+            releaseNotes 'https://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20785'
         }
     }
     distribution('Groovy 2.3') {

@@ -183,22 +183,6 @@ ecosystem {
 }
 
 allEvents {
-    event('Groovy Grails eXchange 2014') {
-        location 'London, United Kingdom'
-        date 'December 11-12, 2014'
-        url 'https://skillsmatter.com/conferences/1957-groovy-grails-exchange-2014'
-        logo 'img/confs/ggex2014.png'
-        description '''
-            <p>
-            Do you love Groovy & Grails? Would you like to spend 2 days with 150+ Groovy & Grails developers, learning
-            and sharing skills with the world's leading experts on Groovy, Grails and modern enterprise development?
-            </p>
-            <p>
-            Then why not come to the 8th annual Groovy & Grails eXchange and be part of this passionate community of
-            creators, founders, developers and enthusiasts.
-            </p>
-        '''
-    }
     event('Greach 2015') {
         location 'Madrid, Spain'
         date 'April 10-11, 2015'
@@ -219,12 +203,44 @@ allEvents {
         logo 'img/confs/gr8confeu2015.png'
         description '''
             <p>
+            We <strong>feed your brain</strong> with all the important stuff from the 
+            <strong>Groovy</strong> and <strong>Grails</strong> community.
+            </p>
+            <p>
+            We have <strong>in-depth</strong> talks covering all <strong>major technologies</strong> in the Groovy ecosystem. 
+            All talks are performed by the <strong>brightest minds</strong> and <strong>core developers</strong> in their fields.
+            </p>
+        '''
+    }
+    event('GR8Conf US 2015') {
+        location 'Minneapolis, MN, United States of America'
+        date 'July 29-31, 2015'
+        url 'http://gr8conf.us/'
+        logo 'img/confs/gr8confeu2015.png'
+        description '''
+            <p>
             Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
             few years, and with good reason. To spread the word even more we have created GR8Conf.
             </p>
             <p>
             GR8Conf is an independent, affordable series of conferences.
             It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+    event('Groovy Grails eXchange 2015') {
+        location 'London, United Kingdom'
+        date 'December 14-15, 2015'
+        url 'https://skillsmatter.com/conferences/6863-groovy-grails-exchange-2015'
+        logo 'img/confs/ggex2014.png'
+        description '''
+            <p>
+            Do you love Groovy & Grails? Would you like to spend 2 days with 150+ Groovy & Grails developers, learning
+            and sharing skills with the world's leading experts on Groovy, Grails and modern enterprise development?
+            </p>
+            <p>
+            Then why not come to the 9th annual Groovy & Grails eXchange and be part of this passionate community of
+            creators, founders, developers and enthusiasts.
             </p>
         '''
     }

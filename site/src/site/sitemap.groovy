@@ -216,7 +216,7 @@ allEvents {
         location 'Minneapolis, MN, United States of America'
         date 'July 29-31, 2015'
         url 'http://gr8conf.us/'
-        logo 'img/confs/gr8confeu2015.png'
+        logo 'img/confs/gr8confus2015.png'
         description '''
             <p>
             Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
@@ -232,7 +232,7 @@ allEvents {
         location 'London, United Kingdom'
         date 'December 14-15, 2015'
         url 'https://skillsmatter.com/conferences/6863-groovy-grails-exchange-2015'
-        logo 'img/confs/ggex2014.png'
+        logo 'img/confs/ggex2015.png'
         description '''
             <p>
             Do you love Groovy & Grails? Would you like to spend 2 days with 150+ Groovy & Grails developers, learning

@@ -204,6 +204,29 @@ a.navbar-brand {
     height: 180px;
 }
 
+.event-logo {
+    height: 180px;
+    float: right;
+}
+
+@media (max-width: 1010px) {
+    .event-logo {
+        height: ;
+    }
+
+}
+
+@media (max-width: 690px) {
+    .event-logo {
+        height: 60px;
+    }}
+
+@media (max-width: 475px) {
+    .event-logo {
+        display: none;
+    }
+}
+
 article .content time {
     font-weight: bold;
 }

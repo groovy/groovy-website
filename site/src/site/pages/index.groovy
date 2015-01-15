@@ -15,6 +15,7 @@ layout 'layouts/main.groovy', true,
                         Event event = allEvents[eventName]
                         article {
                             div(class: 'content') {
+                                // Note that the event image should be 257x180 to look nice
                                 div(class: 'event-img', style: "background-image: url(${event.logo})") {}
                                 h1 {
                                     a(href: event.url) {

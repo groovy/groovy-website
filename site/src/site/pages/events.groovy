@@ -31,10 +31,13 @@ layout 'layouts/main.groovy', true,
                                 allEvents.each {
                                     String eventName = it.key
                                     Event event = it.value
-
+                                    div(class: 'event-logo') {
+                                        img(src: "${event.logo}", class:'event-logo', alt:"${eventName}")
+                                    }
                                     h2 {
                                         a(href: event.url, eventName)
                                     }
+
                                     h3 {
                                         i(class: 'fa fa-globe') {}
                                         yieldUnescaped " &nbsp;${event.location} &nbsp; &mdash; &nbsp; "

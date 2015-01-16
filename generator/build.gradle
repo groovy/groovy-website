@@ -5,8 +5,9 @@ repositories {
 }
 
 dependencies {
-    ext.groovyVersion = '2.3.6'
+    ext.groovyVersion = '2.3.9'
     compile "org.codehaus.groovy:groovy:$groovyVersion"
+    compile "org.codehaus.groovy:groovy-json:$groovyVersion"
     compile "org.codehaus.groovy:groovy-templates:$groovyVersion"
 }
 

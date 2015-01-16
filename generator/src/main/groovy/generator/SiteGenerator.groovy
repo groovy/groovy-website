@@ -63,6 +63,10 @@ class SiteGenerator {
             render page.source, page.target, page.model
         }
 
+        ChangelogParser.fetchReleaseNotes().each {
+            println "Rendering changelog for Groovy $it.groovyVersion"
+            render 'changelog', "changelog-$it.groovyVersion",[groovyVersion:it.groovyVersion, issues:it.issues]
+        }
 
         long dur = System.currentTimeMillis() - sd
         println "Generated site into $outputDir in ${dur}ms"

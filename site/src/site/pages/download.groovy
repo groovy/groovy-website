@@ -128,7 +128,7 @@ layout 'layouts/main.groovy', true,
                                         }
                                         p {
                                             yield 'Consult the '
-                                            a(href: pkg.releaseNotes, 'JIRA release notes')
+                                            a(href: "changelog-${pkg.version}.html", 'JIRA change log')
                                             yield '.'
                                             br()
                                             yield 'Read the '

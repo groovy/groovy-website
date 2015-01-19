@@ -16,9 +16,9 @@ class ChangelogParser {
     private static final String BUGTYPE_MARK = '** '
     private static final String ITEM_MARK = '    * '
     private static final Pattern ITEM_PATTERN = ~/\[(GROOVY-[0-9]+)\] - (.+)/
-    private static final String VERSION_PATTERN = /^((1.[78])|[23].)/
+    private static final String VERSION_PATTERN = /^((1\.)|[23]\.)/
 
-    static List<Changelog> fetchReleaseNotes() {
+    static List<Changelog> fetchReleaseNotes(File cacheDirectory) {
         def slurper = new JsonSlurper()
         def versions = slurper.parse("$JIRA_SERVER/rest/api/2/project/$PROJECT_NAME/versions".toURL())
         def versionMap = versions.findAll {
@@ -30,7 +30,7 @@ class ChangelogParser {
 
         def raw = versionMap.collect { name, id ->
             println "Fetching changelog for version $name"
-            new Changelog(groovyVersion: name, issues: changelogHTML(id))
+            new Changelog(groovyVersion: name, issues: changelogHTML(id, cacheDirectory))
         }
         createAggregates(raw)
     }
@@ -53,8 +53,15 @@ class ChangelogParser {
         changelogs
     }
 
-    private static List<Issue> changelogHTML(id) {
-        def log = new URL("$JIRA_SERVER/secure/ReleaseNote.jspa?version=$id&styleName=Text&projectId=$PROJECT_ID").text
+    private static List<Issue> changelogHTML(String id, File cacheDir) {
+        def cache = new File(cacheDir, "changelog-${id}.html")
+        def log
+        if (cache.exists()) {
+            log = cache.getText('UTF-8')
+        } else {
+            log = new URL("$JIRA_SERVER/secure/ReleaseNote.jspa?version=$id&styleName=Text&projectId=$PROJECT_ID").getText('UTF-8')
+            cache.write(log, 'UTF-8')
+        }
         boolean inNotes = false
         String type = null
         List<Issue> issues = []

@@ -3,6 +3,7 @@ package generator
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
+import model.Changelog
 import model.Page
 import model.Section
 import model.SectionItem
@@ -16,6 +17,40 @@ import static java.nio.file.StandardWatchEventKinds.*
 
 @CompileStatic
 class SiteGenerator {
+
+    private final static Closure SEMANTIC_SORT = { String v1, String v2 ->
+        List<String> items1 = decomposeVersion(v1)
+        List<String> items2 = decomposeVersion(v2)
+        for (int i=0; i<Math.max(items1.size(),items2.size());i++) {
+            if (i>=items2.size()) {
+                return 1
+            }
+            if (i>=items1.size()) {
+                return -1
+            }
+            def p1 = items1[i]
+            def p2 = items2[i]
+            if (p1.isNumber()) {
+                if (p2.isNumber()) {
+                    def pi1 = p1.toInteger()
+                    def pi2 = p2.toInteger()
+
+                    if (pi1 < pi2) {
+                        return 1
+                    } else if (pi1 > pi2) {
+                        return -1
+                    }
+                } else {
+                    return -1
+                }
+            } else if (p2.isNumber()) {
+                return 1
+            } else {
+                return p2 <=> p1
+            }
+        }
+        0
+    }
 
     File sourcesDir
     File outputDir
@@ -49,6 +84,11 @@ class SiteGenerator {
         long sd = System.currentTimeMillis()
         setup()
 
+        def cacheDir = new File(new File('build'), 'cache')
+        cacheDir.mkdirs()
+        println "Cache directory: $cacheDir"
+        def changelogs = ChangelogParser.fetchReleaseNotes(cacheDir);
+
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->
                 if (item.generate) {
@@ -60,10 +100,13 @@ class SiteGenerator {
 
         siteMap.pages.each { Page page ->
             println "Rendering individual page [$page.source]"
+            if ('changelogs'==page.source) {
+                page.model.versions = changelogs.groovyVersion.sort(SEMANTIC_SORT)
+            }
             render page.source, page.target, page.model
         }
 
-        ChangelogParser.fetchReleaseNotes().each {
+        changelogs.each {
             println "Rendering changelog for Groovy $it.groovyVersion"
             render 'changelog', "changelog-$it.groovyVersion",[groovyVersion:it.groovyVersion, issues:it.issues]
         }
@@ -118,6 +161,20 @@ class SiteGenerator {
                     }
                 }
             }
+        }
+    }
+
+    static List<String> decomposeVersion(String version) {
+        String qualifier = ''
+        if (version.indexOf('-')>0) {
+            qualifier = version.substring(version.indexOf('-'))
+            version = version - qualifier
+        }
+        String[] parts = version.split(/\./)
+        if (qualifier) {
+            [*parts, qualifier]
+        } else {
+            parts.toList()
         }
     }
 }

@@ -137,6 +137,15 @@ layout 'layouts/main.groovy', true,
                                         }
                                     }
                                 }
+                                article {
+                                    h3 'Changelog'
+
+                                    p {
+                                        yield 'You can also read the changelogs for '
+                                        a(href: "changelogs.html", 'older versions')
+                                        yield '.'
+                                    }
+                                }
                             }
 
                             hr(class: 'divider')

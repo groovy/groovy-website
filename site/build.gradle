@@ -54,6 +54,11 @@ task checkDeadLinks(dependsOn: generateSite) {
         def deadLinks = [:]
 
         def isDead = [:].withDefault { String link ->
+            if (link.startsWith('http://jira.codehaus.org/browse/GROOVY-')) {
+                // skip checking those links because they dramatically increase build time
+                // while being most likely ok because generated through changelog parsing
+                return false
+            }
             try {
                 URL url
                 try {

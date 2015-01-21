@@ -62,7 +62,9 @@ documentation {
             '2.0.0', '2.0.1', '2.0.2', '2.0.3', '2.0.4', '2.0.5', '2.0.6', '2.0.7', '2.0.8',
             '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
             '2.2.0', '2.2.1', '2.2.2',
-            '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9'])
+            '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9',
+            '2.4.0'
+    ])
 
     section('Getting started','fa-graduation-cap') {
         //          NAME                                     TARGET HTML         DOCPAGE HTML                       GENERATE
@@ -115,19 +117,19 @@ documentation {
 downloads {
     distribution('Groovy 2.4') {
         description {
-            yield 'Groovy 2.4 is currently in release candidate. If you want a stable version, please choose Groovy 2.3 which is our latest official '
+            yield 'Groovy 2.4 is our latest official '
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
         }
 
-        version('2.4.0-rc-2') {
-            releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20834'
+        version('2.4.0') {
+            releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20921'
         }
     }
     distribution('Groovy 2.3') {
         description {
-            yield 'Groovy 2.3 is our latest official '
-            a(href: 'versioning.html', 'version')
+            yield 'Groovy 2.3 is still '
+            a(href: 'versioning.html', 'a maintained version')
             yield ' of Groovy.'
         }
 

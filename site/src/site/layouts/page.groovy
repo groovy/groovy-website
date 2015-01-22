@@ -25,7 +25,7 @@ html {
         def styles = extraStyles ?: []
         ['bootstrap.css', 'font-awesome.min.css', 'style.css', *styles].each {
             link rel: 'stylesheet', type: 'text/css', href:
-                    relative("css/$it")
+                    it.startsWith('http')?it:relative("css/$it")
         }
     }
 
@@ -70,7 +70,7 @@ html {
 
         def scripts = extraScripts ?: []
         ['vendor/jquery-1.10.2.min.js', 'vendor/classie.js', 'vendor/bootstrap.js', 'vendor/sidebarEffects.js', 'vendor/modernizr-2.6.2.min.js','plugins.js', *scripts].each {
-            yieldUnescaped "<script src='${relative('js/'+it)}' defer></script>"
+            yieldUnescaped "<script src='${it.startsWith('http')?it:relative('js/'+it)}' defer></script>"
         }
 
         if (extraFooter) {

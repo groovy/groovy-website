@@ -9,7 +9,7 @@ layout 'layouts/main.groovy', true,
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
-                                li {
+                                li(class:'active') {
                                     a(href: '#changelog', "Changelog for Groovy $groovyVersion")
                                 }
                                 issueTypes.eachWithIndex { type, i ->

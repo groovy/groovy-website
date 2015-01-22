@@ -120,6 +120,14 @@ class SiteGenerator {
             render 'changelog', "changelog-$it.groovyVersion",[groovyVersion:it.groovyVersion, issues:it.issues], 'changelogs'
         }
 
+        // release notes
+        new File(sourcesDir, 'releasenotes').eachFile { File file ->
+            def name = file.name.substring(0, file.name.lastIndexOf('.adoc'))
+            def version = name - 'groovy-'
+            println "Rendering release notes for Groovy $version"
+            render 'release-notes', name, [notes:file.getText('utf-8'), groovyVersion: version], 'releasenotes'
+        }
+
         long dur = System.currentTimeMillis() - sd
         println "Generated site into $outputDir in ${dur}ms"
     }

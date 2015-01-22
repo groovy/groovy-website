@@ -4,6 +4,8 @@ import groovy.text.markup.BaseTemplate
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
+import org.asciidoctor.Asciidoctor
+import org.asciidoctor.AttributesBuilder
 
 @CompileStatic
 abstract class PageTemplate extends BaseTemplate {
@@ -26,4 +28,30 @@ abstract class PageTemplate extends BaseTemplate {
             path
         }
     }
+
+    /**
+     * Converts and outputs asciidoctor markup into HTML
+     * @param body the asciidoctor markup
+     */
+    void asciidoc(String body, Map options=[:]) {
+        yieldUnescaped asciidocText(body, options)
+    }
+
+    /**
+     * Converts and returns asciidoctor markup into HTML. This method
+     * does *not* automatically renders the result so it is possible
+     * to post-process the generated HTML.
+     * @param body the asciidoctor markup
+     */
+    String asciidocText(String body, Map options=[:]) {
+        def asciidoctor = AsciidoctorFactory.instance
+        def attributes = options.attributes
+        if (!attributes) {
+            attributes = [:]
+            options.put('attributes', attributes)
+        }
+        attributes['source-highlighter'] = 'prettify'
+        asciidoctor.convert(body,options)
+    }
+
 }

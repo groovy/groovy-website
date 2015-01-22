@@ -9,7 +9,7 @@ footer(id: 'footer') {
                     h1(name)
                     ul {
                         menu.each { menuItem ->
-                            li { a(href: menuItem.link, menuItem.name) }
+                            li { a(href: relative(menuItem.link), menuItem.name) }
                         }
                     }
                 }

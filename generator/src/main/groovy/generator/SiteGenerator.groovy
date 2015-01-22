@@ -3,7 +3,6 @@ package generator
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
-import model.Changelog
 import model.Page
 import model.Section
 import model.SectionItem
@@ -65,6 +64,7 @@ class SiteGenerator {
         def tplConf = new TemplateConfiguration()
         tplConf.autoIndent = true
         tplConf.autoNewLine = true
+        tplConf.baseTemplateClass = PageTemplate
 
         def classLoader = new URLClassLoader([sourcesDir.toURI().toURL()] as URL[], this.class.classLoader)
         tplEngine = new MarkupTemplateEngine(classLoader, tplConf, new MarkupTemplateEngine.CachingTemplateResolver())
@@ -73,11 +73,20 @@ class SiteGenerator {
 
     }
 
-    void render(String page, String target = null, Map model = [:]) {
+    void render(String page, String target = null, Map model = [:], String baseDir=null) {
         model.menu = siteMap.menu
         model.currentPage = target
         target = target ?: page
-        new File("$outputDir/${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(), 'utf-8')
+        File root
+        if (baseDir) {
+            root = new File(outputDir, baseDir)
+            model[PageTemplate.BASEDIR] = baseDir
+            root.mkdirs()
+        } else {
+            root = outputDir
+        }
+
+        new File(root,"${target}.html").write(tplEngine.createTemplateByPath("pages/${page}.groovy").make(model).toString(), 'utf-8')
     }
 
     void generateSite() {
@@ -108,7 +117,7 @@ class SiteGenerator {
 
         changelogs.each {
             println "Rendering changelog for Groovy $it.groovyVersion"
-            render 'changelog', "changelog-$it.groovyVersion",[groovyVersion:it.groovyVersion, issues:it.issues]
+            render 'changelog', "changelog-$it.groovyVersion",[groovyVersion:it.groovyVersion, issues:it.issues], 'changelogs'
         }
 
         long dur = System.currentTimeMillis() - sd

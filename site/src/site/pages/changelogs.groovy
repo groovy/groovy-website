@@ -31,7 +31,7 @@ layout 'layouts/main.groovy', true,
                                     minor.each { v->
                                         li {
                                             yieldUnescaped "Changelog for "
-                                            a(href: "changelog-${v}.html", "Groovy $v")
+                                            a(href: "changelogs/changelog-${v}.html", "Groovy $v")
                                         }
                                     }
                                 }

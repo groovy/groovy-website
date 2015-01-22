@@ -11,13 +11,13 @@ ul(class: 'nav-sidebar') {
             'groovy-weekly': 'Groovy Weekly newsletter'
     ].each { page, label ->
         if (currentPage == page) {
-            li(class: 'active') { a(href: "${page}.html") { strong(label) } }
+            li(class: 'active') { a(href: relative("${page}.html")) { strong(label) } }
         } else {
             li { a(href: "${page}.html", label) }
         }
     }
-    li { a(href: "groovy-weekly.html#subscribe", class: 'anchor-link', 'Subscribe') }
-    li { a(href: "groovy-weekly.html#archives", class: 'anchor-link', 'Archive') }
+    li { a(href: relative("groovy-weekly.html#subscribe"), class: 'anchor-link', 'Subscribe') }
+    li { a(href: relative("groovy-weekly.html#archives"), class: 'anchor-link', 'Archive') }
 }
 br()
 include unescaped: 'html/twittersearch.html'

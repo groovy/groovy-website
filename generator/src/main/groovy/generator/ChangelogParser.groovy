@@ -25,7 +25,7 @@ class ChangelogParser {
             it.name =~ VERSION_PATTERN &&
                     it.released == true
         }.collectEntries {
-            [it.name, it.id]
+            [fixName(it.name), it.id]
         }
 
         def raw = versionMap.collect { name, id ->
@@ -35,14 +35,31 @@ class ChangelogParser {
         createAggregates(raw)
     }
 
+    private static String fixName(String name) {
+        String id = name
+        String classifier = ''
+
+        int idx = name.indexOf('-')
+        if (idx>0) {
+            classifier = name.substring(idx)
+            id = name - classifier
+        }
+        if (id.count('.')<2) {
+            // groovy 2.0 instead of 2.0.0
+            id = "${id}.0"
+        }
+        "$id$classifier"
+    }
+
     private static List<Changelog> createAggregates(final List<Changelog> changelogs) {
         def allMajor = changelogs.groupBy {
             def v = it.groovyVersion
             v.contains('-')?v-v.substring(v.indexOf('-')):v
         }
         allMajor.collect { k,v ->
-            def changelog = changelogs.find { it.groovyVersion == v }
+            def changelog = changelogs.find { it.groovyVersion == k }
             if (!changelog) {
+                println "Not found: $k"
                 changelog = new Changelog(groovyVersion: k, issues:[])
                 changelogs << changelog
             }

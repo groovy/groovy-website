@@ -12,6 +12,8 @@ import java.nio.file.FileSystems
 import java.nio.file.Path
 import java.nio.file.WatchEvent
 
+import static generator.DocumentationHTMLCleaner.cleanupPage
+import static generator.DocumentationHTMLCleaner.parsePage
 import static java.nio.file.StandardWatchEventKinds.*
 
 @CompileStatic
@@ -102,7 +104,10 @@ class SiteGenerator {
             section.items.each { SectionItem item ->
                 if (item.generate) {
                     println "Generating documentation page [$item.name]"
-                    render 'docpage', item.targetFilename, [category: 'Learn', title: item.name, iframeTarget: "http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html"]
+                    render 'docpage', item.targetFilename, [
+                            category: 'Learn',
+                            title: item.name,
+                            page: parsePage("http://docs.groovy-lang.org/docs/next/html/documentation/${item.sourceFilename}.html")]
                 }
             }
         }

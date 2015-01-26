@@ -27,6 +27,9 @@ layout 'layouts/main.groovy', true,
                                 li {
                                     a(href: 'indy.html', 'Invoke dynamic support')
                                 }
+                                li {
+                                    a(href: 'releases.html', 'Release notes')
+                                }
                             }
                         }
 

@@ -121,12 +121,21 @@ class SiteGenerator {
         }
 
         // release notes
+        def releaseNotesVersions = new TreeSet<String>(new Comparator<String>() {
+            @Override
+            int compare(final String v1, final String v2) {
+                v2.toDouble() <=> v1.toDouble()
+            }
+        })
         new File(sourcesDir, 'releasenotes').eachFile { File file ->
             def name = file.name.substring(0, file.name.lastIndexOf('.adoc'))
             def version = name - 'groovy-'
+            releaseNotesVersions << version
             println "Rendering release notes for Groovy $version"
             render 'release-notes', name, [notes:file.getText('utf-8'), groovyVersion: version], 'releasenotes'
         }
+        render 'releases', 'releases', [versions: releaseNotesVersions]
+
 
         long dur = System.currentTimeMillis() - sd
         println "Generated site into $outputDir in ${dur}ms"

@@ -11,7 +11,7 @@ layout 'layouts/main.groovy', true,
                                     a(href: '#notes', "Release notes")
                                 }
                                 versions.each { v ->
-                                    li { a(href: "notes$v", class: 'anchor-link', "Groovy $v") }
+                                    li { a(href: "#notes$v", class: 'anchor-link', "Groovy $v") }
                                 }
                             }
                         }

@@ -101,7 +101,7 @@ task checkDeadLinks(dependsOn: generateSite) {
             currentPath = GFileUtils.relativePath(generateSite.outputDir, f.parentFile)
             f.eachLine('utf-8') { String line, int nb ->
                 def dead = []
-                [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
+                [/\shref=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
                     def matcher = line =~ regex
                     if (matcher) {
                         matcher.each {

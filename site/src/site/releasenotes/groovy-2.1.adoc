@@ -246,7 +246,7 @@ delegate based methods, but we hinted at the fact we can go beyond, in
 terms of static type checking for your DSLs.
 
 For more details take a look at
-the link:http://beta.groovy-lang.org/docs/latest/html/documentation/#__code_delegatesto_code[@DelegatesTo documentation].
+the link:http://docs.groovy-lang.org/docs/latest/html/documentation/#__code_delegatesto_code[@DelegatesTo documentation].
 
 [[Groovy21releasenotes-Typecheckerextensions]]
 == Type checker extensions

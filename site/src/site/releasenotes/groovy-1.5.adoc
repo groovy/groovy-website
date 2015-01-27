@@ -179,8 +179,7 @@ to surround their elements as well.
 
 With annotations in Groovy 1.5, you can easily define your JPA or
 Hibernate annotated beans
-(http://www.curious-creature.org/2007/03/25/persistence-made-easy-with-groovy-and-jpa/)
-in Groovy, add an @Transactional annotation on your Spring services,
+in Groovy, add an `@Transactional` annotation on your Spring services,
 test your Swing UI with TestNG and Fest
 (http://www.jroller.com/aalmiray/entry/testing_groovy_uis_with_fest).
 All the useful and powerful enterprise frameworks leveraging annotations

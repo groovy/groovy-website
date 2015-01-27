@@ -50,7 +50,22 @@ class DocumentationHTMLCleaner {
         }
         String toc = extractTOC(contents)?:''
         String main = extractBetween(contents, MAIN_START, MAIN_END)?:"Main body not found for <a href='$location'>$location</a>"
+        main = replaceInternalLinks(main)
         new DocPage(toc: toc, content: main)
+    }
+
+    private static String replaceInternalLinks(String html) {
+        def replacer = { List<String> it ->
+            def (String tag, String attr, String url) = [it[1], it[2], it[3]]
+            if (!url.startsWith('http') && !url.startsWith('#')) {
+                "$tag $attr'http://docs.groovy-lang.org/latest/html/documentation/$url'"
+            } else {
+                it[0]
+            }
+        }
+        html = html.replaceAll(/(a)\s+(href=)["'](.+?)["']/,replacer)
+        html = html.replaceAll(/(img)\s+(src=)["'](.+?)["']/,replacer)
+        html
     }
 
     private static String extractTOC(final String html) {

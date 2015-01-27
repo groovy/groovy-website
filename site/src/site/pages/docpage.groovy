@@ -18,7 +18,7 @@ layout 'layouts/main.groovy', true,
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
-                        div(class: 'col-lg-4') {
+                        div(class: 'col-lg-3') {
                             ul(class: 'nav-sidebar') {
                                 li(class: 'active') {
                                     a(href: '#') { strong('Table of contents') }

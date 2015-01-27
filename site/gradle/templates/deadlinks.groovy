@@ -16,8 +16,8 @@ are generated in the Groovy documentation instead."""
             def (page, links) = [entry.key, entry.value]
             h3(page)
             ul {
-                links.each {
-                    li(a(href:it,it))
+                links.each { link ->
+                    li(link)
                 }
             }
         }

@@ -4,7 +4,7 @@ import org.gradle.logging.ConsoleRenderer
 import com.yahoo.platform.yui.compressor.CssCompressor
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor
 import org.apache.tools.ant.filters.BaseFilterReader
-import org.gradle.api.file.RelativePath
+import org.gradle.util.GFileUtils
 
 ext.watchmode = project.hasProperty('watchmode')?project.getProperty('watchmode'):'false'
 
@@ -69,6 +69,7 @@ task checkDeadLinks(dependsOn: generateSite) {
                 // while being most likely ok because generated through changelog parsing
                 return false
             }
+
             try {
                 URL url
                 try {
@@ -97,7 +98,7 @@ task checkDeadLinks(dependsOn: generateSite) {
         }
 
         def checkPage = { File f ->
-            currentPath = RelativePath.parse(true,relativePath(f)).segments[2..<-1].join('/')
+            currentPath = GFileUtils.relativePath(generateSite.outputDir, f.parentFile)
             f.eachLine('utf-8') { String line, int nb ->
                 def dead = []
                 [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->

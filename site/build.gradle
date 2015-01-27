@@ -4,6 +4,7 @@ import org.gradle.logging.ConsoleRenderer
 import com.yahoo.platform.yui.compressor.CssCompressor
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor
 import org.apache.tools.ant.filters.BaseFilterReader
+import org.gradle.api.file.RelativePath
 
 ext.watchmode = project.hasProperty('watchmode')?project.getProperty('watchmode'):'false'
 
@@ -50,11 +51,20 @@ task checkDeadLinks(dependsOn: generateSite) {
     inputs.files fileTree(generateSite.outputDir)
     outputs.file reportFile
 
+    // a collection of links which have either been validated
+    // or cannot be checked securely (false positives) due to user agent restrictions
+    def excludeFromChecks = [
+            'http://jira.codehaus.org/browse/GROOVY-',
+            'http://www.meetup.com',
+            'http://www.dcgroovy.org'
+    ]
+
     doLast {
         def deadLinks = [:]
 
+        def currentPath
         def isDead = [:].withDefault { String link ->
-            if (link.startsWith('http://jira.codehaus.org/browse/GROOVY-')) {
+            if (excludeFromChecks.any { link.startsWith(it) }) {
                 // skip checking those links because they dramatically increase build time
                 // while being most likely ok because generated through changelog parsing
                 return false
@@ -65,7 +75,7 @@ task checkDeadLinks(dependsOn: generateSite) {
                     url = URI.create(link).toURL()
                 } catch (e) {
                     if (e.message.contains('URI is not absolute')) {
-                        url = URI.create("file://${file("${generateSite.outputDir}/$link")}").toURL()
+                        url = URI.create("file://${file("${generateSite.outputDir}/$currentPath/$link").absoluteFile}").toURL()
                     }
                 }
                 def stream = url.openStream()
@@ -87,13 +97,15 @@ task checkDeadLinks(dependsOn: generateSite) {
         }
 
         def checkPage = { File f ->
+            currentPath = RelativePath.parse(true,relativePath(f)).segments[2..<-1].join('/')
             f.eachLine('utf-8') { String line, int nb ->
                 def dead = []
                 [/href=['"](.+?)['"]/, /src=['"](.+?)['"]/].each { regex ->
                     def matcher = line =~ regex
                     if (matcher) {
                         matcher.each {
-                            checkLink(dead, nb, it[1])
+                            def path = it[1]
+                            checkLink(dead, nb, path)
                         }
                     }
                 }

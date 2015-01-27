@@ -1,7 +1,6 @@
 html {
     head {
         title 'Dead links report'
-        link rel:'stylesheet', type:'text/css', href:'../site/css/style.css'
     }
     body {
         h1('Dead links report')

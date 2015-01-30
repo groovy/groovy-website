@@ -52,7 +52,8 @@ pages {
     page 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
     page 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
     page 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
-    page 'changelogs', 'changelogs', [: ]
+    page 'changelogs', 'changelogs', [:]
+    page '404','404', [:]
 }
 
 documentation {

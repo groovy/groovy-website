@@ -1,6 +1,5 @@
 /**
- * Ths template is generating the user groups page.
- * If you want to add a user group, please edit the "usergroups" section in src/site/sitemap.groovy
+ * Ths template is generating the 404 page
  */
 
 layout 'layouts/main.groovy', true,

@@ -14,7 +14,7 @@ are generated in the Groovy documentation instead."""
         }
         deadLinks.each { entry ->
             def (page, links) = [entry.key, entry.value]
-            h3(page)
+            h3 { a(href:page,page) }
             ul {
                 links.each { link ->
                     li(link)

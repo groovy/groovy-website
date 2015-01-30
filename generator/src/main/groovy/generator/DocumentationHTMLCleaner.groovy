@@ -57,9 +57,7 @@ class DocumentationHTMLCleaner {
     private static String replaceInternalLinks(String html) {
         def replacer = { List<String> it ->
             def (String tag, String attr, String url) = [it[1], it[2], it[3]]
-            if (url.indexOf(".pagespeed")>0) {
-                url = url.substring(0, url.indexOf(".pagespeed"))
-            }
+            url = url.replaceAll(/x(.+)\.(?:pagespeed.+)/, '$1')
             if (!url.startsWith('http') && !url.startsWith('#') && 'target.html'!=url) {
                 "$tag $attr'http://docs.groovy-lang.org/latest/html/documentation/$url'"
             } else {

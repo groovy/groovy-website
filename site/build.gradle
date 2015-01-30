@@ -95,7 +95,7 @@ task checkDeadLinks(dependsOn: generateSite) {
 
         def checkLink = { List dead, int line, String link ->
             if (isDead[link]) {
-                dead << "at line $line: $link"
+                dead << "at line $line: link:$link[$link]"
             }
         }
 

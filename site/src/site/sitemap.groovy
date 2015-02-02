@@ -126,6 +126,7 @@ downloads {
         version('2.4.0') {
             stable true
             releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20921'
+            windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.0-installer.exe'
         }
     }
     distribution('Groovy 2.3') {

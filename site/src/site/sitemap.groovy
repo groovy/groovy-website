@@ -49,8 +49,8 @@ pages {
     page 'buildstatus', 'buildstatus', [category: 'Community']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
     page 'events', 'events', [category: 'Community', allEvents: allEvents]
-    page 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/gapi']
-    page 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/groovy-jdk']
+    page 'api', 'api', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/latest/html/gapi']
+    page 'gdk', 'gdk', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/latest/html/groovy-jdk']
     page 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: 'http://docs.groovy-lang.org/docs/next/html/documentation/']
     page 'changelogs', 'changelogs', [:]
     page '404','404', [:]
@@ -101,7 +101,7 @@ documentation {
     section('Groovy module guides', 'fa-cubes') {
         item 'Parsing and producing JSON',          'json',             'json-userguide'
         item 'Working with a relational database',  'databases',        'databases'
-        item 'Processing XML',                      'processing-xml',   'processing-xml'
+        item 'Processing XML',                      'processing-xml',   'xml-userguide'
         item 'Scripting Ant tasks',                 'scripting-ant',    'scripting-ant'
         item 'Template engines',                    'templating',       'template-engines'
         item 'Creating Swing UIs',                  'swing',            'swing'

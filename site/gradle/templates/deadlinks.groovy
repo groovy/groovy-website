@@ -17,7 +17,7 @@ are generated in the Groovy documentation instead."""
             h3 { a(href:page,page) }
             ul {
                 links.each { link ->
-                    li(link)
+                    asciidoc("At line ${link.line}, dead link to ${link.link}")
                 }
             }
         }

@@ -54,7 +54,8 @@ task checkDeadLinks(dependsOn: generateSite) {
     // a collection of links which have either been validated
     // or cannot be checked securely (false positives) due to user agent restrictions
     def excludeFromChecks = [
-            'http://jira.codehaus.org/browse/GROOVY-',
+            'http://jira.codehaus.org',
+            'https://jira.codehaus.org',
             'http://www.meetup.com',
             'http://www.dcgroovy.org',
             'http://www.jroller.com',
@@ -81,8 +82,21 @@ task checkDeadLinks(dependsOn: generateSite) {
                         url = URI.create("file://${file("${generateSite.outputDir}/$currentPath/$link").absoluteFile}").toURL()
                     }
                 }
-                def stream = url.openStream()
-                stream.close()
+                logger.debug("Checking URL: $url")
+                def cx = url.openConnection()
+                if (cx instanceof HttpURLConnection) {
+                    cx.connectTimeout = 5000
+                    cx.readTimeout = 5000
+                    cx.requestMethod = 'GET'
+                    try {
+                        cx.connect()
+                        if (cx.responseCode == 404) {
+                            return true
+                        }
+                    } finally {
+                        cx.disconnect()
+                    }
+                }
             } catch (e) {
                 if (link.startsWith('https')) {
                     // workaround to be found
@@ -95,7 +109,7 @@ task checkDeadLinks(dependsOn: generateSite) {
 
         def checkLink = { List dead, int line, String link ->
             if (isDead[link]) {
-                dead << "at line $line: link:$link[$link]"
+                dead << [line:line, link:link]
             }
         }
 

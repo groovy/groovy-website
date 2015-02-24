@@ -108,7 +108,7 @@ as the resolution will take place at runtime as usual.
 [[Groovy2.4releasenotes-GDKimprovements]]
 == GDK improvements
 
-* `System.currentTimeSecond()` to get the current time in seconds
+* `System.currentTimeSeconds()` to get the current time in seconds
 (link:http://jira.codehaus.org/browse/GROOVY-6294[GROOVY-6294])
 * `List#getIndices()` to get a range representing the indices of the
 elements of the list

@@ -107,7 +107,7 @@ class SiteGenerator {
                     render 'docpage', item.targetFilename, [
                             category: 'Learn',
                             title: item.name,
-                            page: parsePage("http://docs.groovy-lang.org/docs/latest/html/documentation/${item.sourceFilename}.html")]
+                            page: parsePage("${DocUtils.DOCS_BASEURL}/html/documentation/${item.sourceFilename}.html")]
                 }
             }
         }

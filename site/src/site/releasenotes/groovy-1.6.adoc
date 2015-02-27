@@ -864,7 +864,7 @@ html.body.'**'.a.@href.grep(~/.*\.pdf/).each{ println it }
 
 For the pleasure of giving another example: let’s use
 the link:http://eclipse.org/jetty/[Jetty servlet container] to
-expose link:http://docs.groovy-lang.org/next/html/documentation/template-engines.html[Groovy templates] in
+expose link:{DOCS_BASEURL}/html/documentation/template-engines.html[Groovy templates] in
 a few lines of code:
 
 [source,groovy]
@@ -983,7 +983,7 @@ bean location: bind { pos.x + ', ' + pos.y }
 --------------------------------------------
 
 You may also be interested in having a look
-at link:http://docs.groovy-lang.org/latest/html/api/groovy/util/ObservableMap.html[ObservableMap] and link:http://docs.groovy-lang.org/latest/html/api/groovy/util/ObservableList.html[ObservableList],
+at link:{DOCS_BASEURL}/html/api/groovy/util/ObservableMap.html[ObservableMap] and link:{DOCS_BASEURL}/html/api/groovy/util/ObservableList.html[ObservableList],
 for a similar mechanism on maps and lists.
 
 Along with `@Bindable`, there’s also a `@Vetoable` transformation for

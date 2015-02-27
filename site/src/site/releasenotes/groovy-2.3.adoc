@@ -54,7 +54,7 @@ particular Groovy methods decorating JDK 8 APIs might be added.
 
 A major highlight for Groovy 2.3 is the introduction of the *concept of traits*.
 
-link:http://docs.groovy-lang.org/latest/html/documentation/core-traits.html[Traits]
+link:{DOCS_BASEURL}/html/documentation/core-traits.html[Traits]
 are reusable components of behavior that your classes can implement, and
 are an additional Object-Oriented concept alongside classes and
 interfaces.
@@ -192,7 +192,7 @@ assert na.quack() == 'Quack!'
 ----
 
 You can find more information on traits in the
-exhaustive link:http://docs.groovy-lang.org/latest/html/documentation/core-traits.html[traits documentation].
+exhaustive link:{DOCS_BASEURL}/html/documentation/core-traits.html[traits documentation].
 
 [[Groovy2.3releasenotes-NewandupdatedASTtransformations]]
 == New and updated AST transformations
@@ -271,7 +271,7 @@ assert person.age == 21
 -----
 
 You can have a look at
-the link:http://docs.groovy-lang.org/latest/html/documentation/core-metaprogramming.html#xform-Builder[@Builder documentation]
+the link:{DOCS_BASEURL}/html/documentation/core-metaprogramming.html#xform-Builder[@Builder documentation]
 for the other builder variants.
 
 [[Groovy2.3releasenotes-Sortable]]
@@ -310,7 +310,7 @@ Additionally, you can define included / excluded fields, access
 individual field comparators with methods like `comparatorByFirst()`.
 
 More details on
-the http://docs.groovy-lang.org/latest/html/documentation/core-metaprogramming.html#xform-Sortable[@Sortable documentation] page.
+the {DOCS_BASEURL}/html/documentation/core-metaprogramming.html#xform-Sortable[@Sortable documentation] page.
 
 [[Groovy2.3releasenotes-SourceURI]]
 ==== @SourceURI
@@ -363,7 +363,7 @@ the name and parameter types expressed in an interface type
 [[Groovy2.3releasenotes-BaseScriptclassimprovements]]
 ==== @BaseScript class improvements
 
-http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/BaseScript.html[@BaseScript]
+{DOCS_BASEURL}/html/gapi/groovy/transform/BaseScript.html[@BaseScript]
 is a fairly recent addition in Groovy, and it allowed to annotate a
 variable in your script to instruct the compiler to use a particular
 base script class for this script. Now we have another notation which is
@@ -470,9 +470,9 @@ level as competing libraries.
 Beside the performance improvements of the JSON module, other updates
 have taken place.
 
-With link:http://docs.groovy-lang.org/latest/html/gapi/groovy/json/JsonSlurper.html[JsonSlurper],
+With link:{DOCS_BASEURL}/html/gapi/groovy/json/JsonSlurper.html[JsonSlurper],
 you’ll be able to set
-different link:http://docs.groovy-lang.org/latest/html/gapi/groovy/json/JsonParserType.html[parser types]
+different link:{DOCS_BASEURL}/html/gapi/groovy/json/JsonParserType.html[parser types]
 depending on the kind of input you wish to parse, particularly if
 you know the size of the payload you expect to parse, or whether you
 want a more tolerant parser which accepts elements like comments which
@@ -516,7 +516,7 @@ give the type of the parameter, but it’s no longer required:
 
 In the signature of your methods taking closures as arguments, you’ll
 also be able to annotate the closure parameter
-with link:http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/stc/ClosureParams.html[@ClosureParams]
+with link:{DOCS_BASEURL}/html/gapi/groovy/transform/stc/ClosureParams.html[@ClosureParams]
 to give additional hints to the type checker to infer the type of the
 parameters passed to your closure.
 
@@ -534,7 +534,7 @@ internationalization, includes, as well as proposing type checked
 templates and models.
 
 More details about the
-new link:http://docs.groovy-lang.org/latest/html/documentation/markup-template-engine.html[Markup template engine]
+new link:{DOCS_BASEURL}/html/documentation/markup-template-engine.html[Markup template engine]
 in the documentation, as well as in Cédric’s link:http://melix.github.io/blog/[blog], if you want to learn more
 about the "behind the scenes" stories!
 
@@ -624,7 +624,7 @@ compiled.
 == JUnit 4 GroovyAssert class
 
 The
-venerable link:http://docs.groovy-lang.org/latest/html/gapi/groovy/util/GroovyTestCase.html[GroovyTestCase]
+venerable link:{DOCS_BASEURL}/html/gapi/groovy/util/GroovyTestCase.html[GroovyTestCase]
 (JUnit 3 based approach) has often been used as a base class for your
 test classes — unless you’ve been using
 the link:http://www.spockframework.org/[Spock testing framework], of course.
@@ -633,7 +633,7 @@ your own classes, but must derive from `GroovyTestCase` to benefit from
 the additional assertion methods.
 
 In earlier versions of Groovy we introduced the JUnit
-4-friendly link:http://docs.groovy-lang.org/latest/html/gapi/groovy/util/GroovyAssert.html[GroovyAssert],
+4-friendly link:{DOCS_BASEURL}/html/gapi/groovy/util/GroovyAssert.html[GroovyAssert],
 which is a convenient class offering the usual assertion methods of
 `GroovyTestCase`, but in the form of static methods that you can static
 import in your test class. In Groovy 2.3 we’ve enriched `GroovyAssert`
@@ -736,7 +736,7 @@ with link:http://jira.codehaus.org/browse/GROOVY-6459[GROOVY-6459].
 === New documentation
 
 We are still working on the
-brand link:http://docs.groovy-lang.org/docs/latest/html/documentation/[new documentation] for Groovy
+brand link:{DOCS_BASEURL}/html/documentation/[new documentation] for Groovy
 (in Asciidoc(tor) format), so you can already
 have a glimpse at what’s already covered or not.
 
@@ -767,7 +767,7 @@ documentation, showing the methods the Groovy library adds on top of the
 JDK classes.
 
 Please also have a look at the
-new link:http://docs.groovy-lang.org/latest/html/groovy-jdk/[restyled GDK documentation].
+new link:{DOCS_BASEURL}/html/groovy-jdk/[restyled GDK documentation].
 
 [[Groovy2.3releasenotes-Dependencyupgrades]]
 == Dependency upgrades

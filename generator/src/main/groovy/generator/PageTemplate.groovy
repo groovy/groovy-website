@@ -54,4 +54,7 @@ abstract class PageTemplate extends BaseTemplate {
         asciidoctor.convert(body,options)
     }
 
+    String latestDocURL(String target) {
+        "${DocUtils.DOCS_BASEURL}/html/$target"
+    }
 }

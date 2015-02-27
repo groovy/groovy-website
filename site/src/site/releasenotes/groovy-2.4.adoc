@@ -2,7 +2,7 @@
 == Android Support
 With Groovy 2.4, you can write Android applications in Groovy!
 
-A quick link:http://docs.groovy-lang.org/docs/latest/html/documentation/tools-groovyc.html#section-android[getting
+A quick link:{DOCS_BASEURL}/html/documentation/tools-groovyc.html#section-android[getting
 started guide] is available on the Groovy website.
 
 To build your Android applications with the Groovy support, you’ll be

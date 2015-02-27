@@ -4,6 +4,7 @@ import groovy.transform.ToString
 import org.codehaus.groovy.control.CompilerConfiguration
 
 import groovy.transform.CompileStatic
+import org.codehaus.groovy.control.customizers.ImportCustomizer
 
 @CompileStatic
 @ToString(includeNames=true)
@@ -23,6 +24,9 @@ class SiteMap {
 
     public static SiteMap from(File source) {
         CompilerConfiguration config = new CompilerConfiguration()
+        def customizer = new ImportCustomizer()
+        config.addCompilationCustomizers(customizer)
+        customizer.addStaticImport('generator.DocUtils','DOCS_BASEURL')
         config.scriptBaseClass = 'groovy.util.DelegatingScript'
         GroovyShell shell = new GroovyShell(config)
         def script = shell.parse(source)

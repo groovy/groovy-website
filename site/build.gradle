@@ -39,7 +39,7 @@ task generateSite(type:JavaExec) {
     classpath = project(':generator').sourceSets.main.runtimeClasspath
     main = 'generator.SiteGenerator'
     args = [sources, outputDir, project.watchmode]
-
+    systemProperties.docs_baseurl = System.getProperty('docs_baseurl')
 }
 
 task checkDeadLinks(dependsOn: generateSite) {

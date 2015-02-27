@@ -1,3 +1,5 @@
+import generator.DocUtils
+
 modelTypes = {
     String groovyVersion
     String notes
@@ -11,8 +13,8 @@ layout 'layouts/main.groovy', true,
             script { yieldUnescaped "document.addEventListener('DOMContentLoaded',prettyPrint)" }
         },
         mainContent: contents {
-
-            def notesAsHTML = asciidocText(notes)
+            Map options = [attributes:[DOCS_BASEURL:DocUtils.DOCS_BASEURL]]
+            def notesAsHTML = asciidocText(notes,options)
             def matcher = notesAsHTML =~ /<h2 id="(.+?)">(.+?)<\/h2>/
             def sections = [:]
             while (matcher.find()) {

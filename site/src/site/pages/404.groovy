@@ -5,9 +5,6 @@
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - 404',
         mainContent: contents {
-            def latestURL = { String target ->
-                "http://docs.groovy-lang.org/latest/html/$target"
-            }
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
@@ -16,10 +13,10 @@ layout 'layouts/main.groovy', true,
                             div(class: 'panel-body') {
                                 p 'We could not find the page you are looking for. Maybe you are looking for one of those?'
                                 ul {
-                                    li("The ${$a(href: latestURL('documentation'), 'reference documentation')} of the Groovy language.")
-                                    li("The latest ${$a(href: latestURL('api'), 'Javadocs')} of the language.")
-                                    li("The latest ${$a(href: latestURL('gapi'), 'Groovdocs')} of the Latestlanguage.")
-                                    li("Description of ${$a(href: latestURL('groovy-jdk'), 'the Groovy development kit APIs')}.")
+                                    li("The ${$a(href: latestDocURL('documentation'), 'reference documentation')} of the Groovy language.")
+                                    li("The latest ${$a(href: latestDocURL('api'), 'Javadocs')} of the language.")
+                                    li("The latest ${$a(href: latestDocURL('gapi'), 'Groovdocs')} of the Latestlanguage.")
+                                    li("Description of ${$a(href: latestDocURL('groovy-jdk'), 'the Groovy development kit APIs')}.")
                                 }
                             }
                         }

@@ -59,7 +59,7 @@ class DocumentationHTMLCleaner {
             def (String tag, String attr, String url) = [it[1], it[2], it[3]]
             url = url.replaceAll(/x(.+)\.(?:pagespeed.+)/, '$1')
             if (!url.startsWith('http') && !url.startsWith('#') && 'target.html'!=url) {
-                "$tag $attr'http://docs.groovy-lang.org/latest/html/documentation/$url'"
+                "$tag $attr'${DocUtils.DOCS_BASEURL}/html/documentation/$url'"
             } else {
                 it[0]
             }

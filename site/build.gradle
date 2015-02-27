@@ -59,7 +59,9 @@ task checkDeadLinks(dependsOn: generateSite) {
             'http://www.meetup.com',
             'http://www.dcgroovy.org',
             'http://www.jroller.com',
-            'target.html'
+            'target.html',
+            'http://www.acme.com/cars',
+            'http://www.scottsdale-groovy.com/'
     ]
 
     doLast {

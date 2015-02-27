@@ -102,7 +102,7 @@ documentation {
         item 'Parsing and producing JSON',          'json',             'json-userguide'
         item 'Working with a relational database',  'databases',        'databases'
         item 'Processing XML',                      'processing-xml',   'xml-userguide'
-        item 'Scripting Ant tasks',                 'scripting-ant',    'scripting-ant'
+        item 'Scripting Ant tasks',                 'scripting-ant',    'ant-builder'
         item 'Template engines',                    'templating',       'template-engines'
         item 'Creating Swing UIs',                  'swing',            'swing'
         item 'Servlet support',                     'servlet',          'servlet'

@@ -15,7 +15,7 @@ layout 'layouts/main.groovy', true,
                                 ul {
                                     li("The ${$a(href: latestDocURL('documentation'), 'reference documentation')} of the Groovy language.")
                                     li("The latest ${$a(href: latestDocURL('api'), 'Javadocs')} of the language.")
-                                    li("The latest ${$a(href: latestDocURL('gapi'), 'Groovdocs')} of the Latestlanguage.")
+                                    li("The latest ${$a(href: latestDocURL('gapi'), 'Groovdocs')} of the language.")
                                     li("Description of ${$a(href: latestDocURL('groovy-jdk'), 'the Groovy development kit APIs')}.")
                                 }
                             }

@@ -19,7 +19,7 @@ layout 'layouts/main.groovy', true,
                         div(class: 'col-lg-8 col-lg-pull-0') {
                             h1('Release notes for Groovy')
                             p '''Here you can find the release notes for the past Groovy releases, describing
-throughfully what are the novelites and bug fixes of each version.'''
+thoroughly what are the novelties and bug fixes of each version.'''
                             ul {
                                 versions.each { mj ->
                                     li {

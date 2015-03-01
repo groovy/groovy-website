@@ -44,7 +44,7 @@ layout 'layouts/main.groovy', true,
                                     Since Groovy 2.0, we added support for the JVM invokedynamic instruction.
                                     This instruction is supported since Java 7 and is a new bytecode instruction in the JVM
                                     that allows easier implementation of dynamic languages.
-                                    This instruction will also be used internally, by the JVM, for the upcoming lamdba support in Java 8.
+                                    This instruction is used internally, by the JVM, for the lambda support in Java 8.
                                 '''
                                 p '''
                                     This means that unlike APIs, AST transformations or syntactic sugar,

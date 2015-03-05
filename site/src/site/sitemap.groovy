@@ -77,6 +77,7 @@ documentation {
         item 'The Grape dependency manager',                'grape',            'grape'
         item 'Testing guide',                               'testing',          'core-testing-guide'
         item 'Domain-Specific Languages',                   'dsls',             'core-domain-specific-languages'
+        item 'Integrating Groovy into applications',        'integrating',      'guide-integrating'
         item 'Security',                                    'security',         'security'
         item 'Design patterns in Groovy',                   'design-patterns',  'design-pattern-in-groovy'
         item 'Style guide',                                 'style-guide',      'style-guide'

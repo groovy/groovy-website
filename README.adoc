@@ -3,7 +3,7 @@ The Groovy development team
 :revdate: 24-02-2014
 :build-icon: http://ci.groovy-lang.org:8111/app/rest/builds/buildType:(id:Groovy_Website)/statusIcon
 :noheader:
-:groovy-www: http://groovy.codehaus.org/
+:groovy-www: http://groovy-lang.org/
 :groovy-ci: http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_Website&guest=1
 :gradle: http://www.gradle.org
 :markupte: http://docs.groovy-lang.org/latest/html/documentation/markup-template-engine.html

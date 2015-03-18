@@ -46,7 +46,7 @@ class DocumentationHTMLCleaner {
     public static DocPage parsePage(String location) {
         String contents = cleanupPage(location)
         if (contents==null) {
-            return new DocPage(content: "Contents not found for <a href='$location'>$location</a>")
+            return new DocPage(content: "Contents not found for <a href='$location'>$location</a>, most likely because this section has not yet been written.")
         }
         String toc = extractTOC(contents)?:''
         String main = extractBetween(contents, MAIN_START, MAIN_END)?:"Main body not found for <a href='$location'>$location</a>"

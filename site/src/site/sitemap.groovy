@@ -363,6 +363,10 @@ usergroups {
         location 'South-America/Brazil'
         url 'http://www.grailsbrasil.com.br'
     }
+    userGroup('Brazil Groovy and Grails Meetup') {
+        location 'South-America/Brazil'
+        url 'http://www.meetup.com/groovybr'
+    }
 
     // Asia
     userGroup('Bangalore Groovy Grails Meetup') {

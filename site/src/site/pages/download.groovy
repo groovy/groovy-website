@@ -22,6 +22,9 @@ layout 'layouts/main.groovy', true,
                                     a(href: '#otherways', class: 'anchor-link', 'Other ways to get Groovy')
                                 }
                                 li {
+                                    a(href: '#requirements', class: 'anchor-link', 'System requirements')
+                                }
+                                li {
                                     a(href: 'versioning.html', 'Groovy version scheme')
                                 }
                                 li {
@@ -263,6 +266,46 @@ layout 'layouts/main.groovy', true,
                                     yield 'If you are an IDE user, you can just grab the latest '
                                     a(href: 'ides.html', 'IDE plugin')
                                     yield ' and follow the plugin installation instructions.'
+                                }
+                            }
+                            a(name: 'requirements') {}
+                            article {
+                                h1 'System requirements'
+                                p {
+                                    table(class: 'table') {
+                                        thead {
+                                            tr {
+                                                th 'Groovy Branch'
+                                                th 'JVM Required (non-indy)'
+                                                th 'JVM Required (indy) *'
+                                            }
+                                        }
+                                        tbody {
+                                            tr {
+                                                td { b '2.3 - current' }
+                                                td '1.6'
+                                                td '1.7'
+                                            }
+                                            tr {
+                                                td { b '2.0 - 2.2' }
+                                                td '1.5'
+                                                td '1.7'
+                                            }
+                                            tr {
+                                                td { b '1.6 - 1.8' }
+                                                td '1.5'
+                                                td 'N/A'
+                                            }
+                                            tr {
+                                                td { b '1.0 - 1.5' }
+                                                td '1.4'
+                                                td 'N/A'
+                                            }
+                                        }
+                                    }
+                                    yield '* If you plan on using invoke dynamic support, read the '
+                                    a(href: "indy.html", 'support information')
+                                    yield '.'
                                 }
                             }
                         }

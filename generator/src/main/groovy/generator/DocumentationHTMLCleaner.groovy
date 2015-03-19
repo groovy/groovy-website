@@ -16,6 +16,12 @@ class DocumentationHTMLCleaner {
     private final static String MAIN_START = /<div id="content"/
     private final static String MAIN_END = /<div id="footer"/
 
+    /**
+     * A list of links which are badly generated, but we know how to fix them
+     */
+    private final static Map<String,String> KNOWN_REPLACEMENTS = [
+        /docs\.groovy-lang\.org\/(latest|next)\/html\/documentation\/gdk\.html/: 'groovy-lang.org/gdk.html'
+    ]
 
     private static String cleanupPage(String location) {
         def url = location.toURL()
@@ -66,6 +72,9 @@ class DocumentationHTMLCleaner {
         }
         html = html.replaceAll(/(a)\s+(href=)["'](.+?)["']/,replacer)
         html = html.replaceAll(/(img)\s+(src=)["'](.+?)["']/,replacer)
+        KNOWN_REPLACEMENTS.each { link, repl ->
+            html = html.replaceAll(link, repl)
+        }
         html
     }
 

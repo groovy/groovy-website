@@ -64,7 +64,7 @@ documentation {
             '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
             '2.2.0', '2.2.1', '2.2.2',
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9', '2.3.10', '2.3.11',
-            '2.4.0', '2.4.1', '2.4.2'
+            '2.4.0', '2.4.1', '2.4.2', '2.4.3'
     ])
 
     section('Getting started','fa-graduation-cap') {
@@ -124,10 +124,8 @@ downloads {
             yield ' of Groovy.'
         }
 
-        version('2.4.2') {
+        version('2.4.3') {
             stable true
-            // deprecated: release notes are automatically fetched now
-            releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20990'
             //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.0-installer.exe'
         }
     }
@@ -139,8 +137,6 @@ downloads {
         }
 
         version('2.3.11') {
-            // deprecated: release notes are automatically fetched now
-            releaseNotes 'http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=10242&version=20991'
             //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.3.9-installer.exe'
         }
     }

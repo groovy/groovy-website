@@ -174,13 +174,15 @@ class SiteGenerator {
                 def header = asciidoctor.readDocumentHeader(f)
                 def bn = f.name.substring(0,f.name.lastIndexOf('.adoc'))
                 println "Rendering $header.documentTitle.main by ${header.author?.fullName}"
-                def relativePath = ''
+                def relativePath = []
                 def p = f.parentFile
                 while (p!=wikiDir) {
-                    relativePath = "${p.name}${File.separator}$relativePath"
+                    relativePath << p.name
                     p = p.parentFile
                 }
-                render 'wiki', bn, [notes:f.getText('utf-8'), header: header], "wiki${File.separator}$relativePath"
+                String baseDir = relativePath?"wiki${File.separator}${relativePath.join(File.separator)}":'wiki'
+                render 'wiki', bn, [notes:f.getText('utf-8'), header: header], baseDir
+                println baseDir
             }
         }
     }

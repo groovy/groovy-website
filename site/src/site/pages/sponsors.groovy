@@ -17,7 +17,7 @@ layout 'layouts/main.groovy', true,
                             article {
                                 p "The Groovy project is generously sponsored by several companies:"
                                 ul {
-                                    li "${$a(href: 'http://gopivotal.com/', 'Pivotal')} hire key project committers"
+                                    li "${$a(href: 'http://incubator.apache.org/projects/groovy.html', 'The Apache Software Foundation Incubator')} sponsors the project"
                                     li """
                                         ${$a(href: 'http://www.jetbrains.com/', 'JetBrains')} cover the cost of our server
                                         which runs our continuous integration server, hosts our documentation and website,

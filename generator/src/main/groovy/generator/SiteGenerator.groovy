@@ -3,6 +3,7 @@ package generator
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
+import model.Changelog
 import model.Page
 import model.Section
 import model.SectionItem
@@ -100,32 +101,53 @@ class SiteGenerator {
         println "Cache directory: $cacheDir"
         def changelogs = ChangelogParser.fetchReleaseNotes(cacheDir);
 
+        renderDocumentation()
+
+        renderPages(changelogs)
+
+        renderChangelogs(changelogs)
+
+        renderReleaseNotes()
+
+        renderWiki()
+
+
+        long dur = System.currentTimeMillis() - sd
+        println "Generated site into $outputDir in ${dur}ms"
+    }
+
+    private List<Section> renderDocumentation() {
         siteMap.documentationSections.each { Section section ->
             section.items.each { SectionItem item ->
                 if (item.generate) {
                     println "Generating documentation page [$item.name]"
                     render 'docpage', item.targetFilename, [
                             category: 'Learn',
-                            title: item.name,
-                            page: parsePage("${DocUtils.DOCS_BASEURL}/html/documentation/${item.sourceFilename}.html")]
+                            title   : item.name,
+                            page    : parsePage("${DocUtils.DOCS_BASEURL}/html/documentation/${item.sourceFilename}.html")]
                 }
             }
         }
+    }
 
+    private List<Page> renderPages(List<Changelog> changelogs) {
         siteMap.pages.each { Page page ->
             println "Rendering individual page [$page.source]"
-            if ('changelogs'==page.source) {
+            if ('changelogs' == page.source) {
                 page.model.versions = changelogs.groovyVersion.sort(SEMANTIC_SORT)
             }
             render page.source, page.target, page.model
         }
+    }
 
+    private List<Changelog> renderChangelogs(List<Changelog> changelogs) {
         changelogs.each {
             println "Rendering changelog for Groovy $it.groovyVersion"
-            render 'changelog', "changelog-$it.groovyVersion",[groovyVersion:it.groovyVersion, issues:it.issues], 'changelogs'
+            render 'changelog', "changelog-$it.groovyVersion", [groovyVersion: it.groovyVersion, issues: it.issues], 'changelogs'
         }
+    }
 
-        // release notes
+    private void renderReleaseNotes() {
         def releaseNotesVersions = new TreeSet<String>(new Comparator<String>() {
             @Override
             int compare(final String v1, final String v2) {
@@ -137,13 +159,30 @@ class SiteGenerator {
             def version = name - 'groovy-'
             releaseNotesVersions << version
             println "Rendering release notes for Groovy $version"
-            render 'release-notes', name, [notes:file.getText('utf-8'), groovyVersion: version], 'releasenotes'
+            render 'release-notes', name, [notes: file.getText('utf-8'), groovyVersion: version], 'releasenotes'
         }
         render 'releases', 'releases', [versions: releaseNotesVersions]
+    }
 
+    private void renderWiki() {
+        def asciidoctor = AsciidoctorFactory.instance
+        println "Rendering wiki"
 
-        long dur = System.currentTimeMillis() - sd
-        println "Generated site into $outputDir in ${dur}ms"
+        def wikiDir = new File(sourcesDir, "wiki")
+        wikiDir.eachFileRecurse { f->
+            if (f.name.endsWith('.adoc')) {
+                def header = asciidoctor.readDocumentHeader(f)
+                def bn = f.name.substring(0,f.name.lastIndexOf('.adoc'))
+                println "Rendering $header.documentTitle.main by ${header.author?.fullName}"
+                def relativePath = ''
+                def p = f.parentFile
+                while (p!=wikiDir) {
+                    relativePath = "${p.name}${File.separator}$relativePath"
+                    p = p.parentFile
+                }
+                render 'wiki', bn, [notes:f.getText('utf-8'), header: header], "wiki${File.separator}$relativePath"
+            }
+        }
     }
 
     static void main(String... args) {

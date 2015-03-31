@@ -9,7 +9,7 @@
  */
 layout 'layouts/main.groovy', true,
         pageTitle: "The Groovy programming language - $title",
-        extraStyles: ['https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css'],
+        extraStyles: ['docstyle.css','https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css'],
         extraFooter: contents {
             script(src: 'https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js') {}
             script { yieldUnescaped "document.addEventListener('DOMContentLoaded',prettyPrint)" }

@@ -18,30 +18,28 @@ layout 'layouts/main.groovy', true,
                             hr(class: 'divider')
 
                             article {
-                                h1 'Subscribing to the lists'
-                                p("To subscribe to a mailing-list, you must send an email to &lt;listname&gt;-subscribe@groovy.incubator.apache.org")
-
-                                hr(class: 'divider')
-
-                                h2 'Available lists'
+                                h1 'Available lists'
                                 table(class: 'table') {
                                     tr {
                                         td {
                                             strong 'users@groovy.incubator.apache.org'
                                         }
                                         td 'high volume list for questions and general discussion about Groovy'
+                                        td { a(href: 'mailto:users-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                     tr {
                                         td {
                                             strong 'dev@groovy.incubator.apache.org'
                                         }
                                         td 'medium volume list useful for those interested in ongoing developments'
+                                        td { a(href: 'mailto:dev-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                     tr {
                                         td {
                                             strong 'commits@groovy.incubator.apache.org'
                                         }
                                         td 'medium volume list that logs commits.'
+                                        td { a(href: 'mailto:commits-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                 }
                                 hr(class: 'divider')

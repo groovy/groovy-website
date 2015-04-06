@@ -47,7 +47,7 @@ Be sure to check
 the link:http://www.jroller.com/vaclav/entry/i_like_the_smell_of[release announcement] and read the “what’s new section”
 of the GPars user guide.
 You can also have a look at the
-detailed link:http://jira.codehaus.org/secure/ReleaseNote.jspa?projectId=12030&version=17007[JIRA release notes].
+detailed link:https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12318123&version=17007[JIRA release notes].
 
 [[Groovy21releasenotes-DelegatesToannotation]]
 == @DelegatesTo annotation

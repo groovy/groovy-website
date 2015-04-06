@@ -28,7 +28,7 @@ layout 'layouts/main.groovy', true,
                                     li {
                                         a(href: '#reporting-issues', 'reporting issues')
                                         yield ' you encounter in our '
-                                        a(href: 'http://jira.codehaus.org/browse/GROOVY', 'bug tracker')
+                                        a(href: 'https://issues.apache.org/jira/browse/GROOVY', 'bug tracker')
                                     }
                                     li {
                                         a(href: '#documenting', 'documenting')
@@ -63,44 +63,14 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'contribute.html#reporting-issues', 'JIRA bug tracker')
                                     yield '''
                                         to report and track issues, feature enhancements, and new features.
-                                        Be sure to be signed-up and logged-in, as explained below, before proceeding.
+                                        Be sure to be signed-up and logged-in, before proceeding.
                                     '''
                                 }
                                 p {
                                     button(type: 'button', class: 'btn btn-default', 'Report an issue',
-                                            onclick: 'window.location.href="http://jira.codehaus.org/browse/GROOVY"')
+                                            onclick: 'window.location.href="https://issues.apache.org/jira/browse/GROOVY"')
                                 }
-                                h3 'Sign-up to report issues'
-                                p '''
-                                    To be able to report issues in our bug tracker,
-                                    you will have to register with Codehaus Xircles interface first.
-                                    Please following the below steps to register:'''
-                                ul {
-                                    li {
-                                        yield 'Open the '
-                                        a(href: 'https://xircles.codehaus.org/signup', 'Xircles Signup')
-                                        yield ' page.'
-                                    }
-                                    li 'Pick a username / password.'
-                                    li 'Wait for the verification email and verify the account per the email instructions.'
-                                    li {
-                                        yield 'You are now logged in '
-                                        a(href: 'http://xircles.codehaus.org/', 'xircles.codehaus.org')
-                                        yield '.'
-                                    }
-                                    li {
-                                        yield 'Open the '
-                                        a(href: 'http://jira.codehaus.org/browse/GROOVY', 'issue tracker')
-                                        yield ' page.'
-                                    }
-                                    li {
-                                        yield 'In the upper-right-hand corner, click "log in".'
-                                        br()
-                                        yield '(you must log into JIRA separately from Xircles)'
-                                    }
-                                    li 'Use your Xircles username / password. You should now be logged into JIRA.'
-                                    li 'Now you can search for existing issues or comment on them, create new ones, etc.'
-                                }
+
                                 hr(class: 'divider')
 
                                 a(name: 'documenting') {}
@@ -152,7 +122,7 @@ layout 'layouts/main.groovy', true,
                                     yield '''
                                         If you know the area you want to contribute to, this is great, but if you are looking for
                                         some first contributions, the Groovy development team tries to maintain a '''
-                                    a(href: 'https://jira.codehaus.org/secure/IssueNavigator%21executeAdvanced.jspa?jqlQuery=project%3DGROOVY+and+labels+%3D+contrib+AND+resolution%3DUnresolved&runQuery=true&clear=true', 'list tickets')
+                                    a(href: 'https://issues.apache.org/jira/secure/IssueNavigator%21executeAdvanced.jspa?jqlQuery=project%3DGROOVY+and+labels+%3D+contrib+AND+resolution%3DUnresolved&runQuery=true&clear=true', 'list tickets')
                                     yield '''
                                         of possible easy contributions that you could get you started on your journey
                                         to become of Groovy committer. Just raise your hand on the Groovy developer '''

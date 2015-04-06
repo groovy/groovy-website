@@ -29,8 +29,8 @@ And discover presentations on the Android support:
 The work on the Android support also lead to various optimizations in
 terms of bytecode generation, as explained further down, as well as, for
 instance, improving the handling of overloaded setters
-(link:http://jira.codehaus.org/browse/GROOVY-2049[GROOVY-2049],link:http://jira.codehaus.org/browse/GROOVY-6084[GROOVY-6084],
-link:http://jira.codehaus.org/browse/GROOVY-2500[GROOVY-2500])
+(link:https://issues.apache.org/jira/browse/GROOVY-2049[GROOVY-2049],link:https://issues.apache.org/jira/browse/GROOVY-6084[GROOVY-6084],
+link:https://issues.apache.org/jira/browse/GROOVY-2500[GROOVY-2500])
 which are frequent in the Android SDK.
 
 [[Groovy2.4releasenotes-Performanceimprovementsandreducedbytecode]]
@@ -44,18 +44,18 @@ performance.
 Here are some of the tickets related to the topic:
 
 * Cheaper comparison operations
-(link:http://jira.codehaus.org/browse/GROOVY-7194[GROOVY-7194])
+(link:https://issues.apache.org/jira/browse/GROOVY-7194[GROOVY-7194])
 * Reduced memory consumption for `respondsTo()`
-(link:http://jira.codehaus.org/browse/GROOVY-7178[GROOVY-7178])
+(link:https://issues.apache.org/jira/browse/GROOVY-7178[GROOVY-7178])
 * For fully statically compiled classes, MOP related generated methods
 are not needed
-(link:http://jira.codehaus.org/browse/GROOVY-6990[GROOVY-6990])
+(link:https://issues.apache.org/jira/browse/GROOVY-6990[GROOVY-6990])
 * Remove unneeded inner class distributor methods when no inner classes
-are present (link:http://jira.codehaus.org/browse/GROOVY-6993[GROOVY-6993])
+are present (link:https://issues.apache.org/jira/browse/GROOVY-6993[GROOVY-6993])
 * Removal of the timestamp in Groovy classes
-(link:http://jira.codehaus.org/browse/GROOVY-6308[GROOVY-6308])
+(link:https://issues.apache.org/jira/browse/GROOVY-6308[GROOVY-6308])
 * Optimization of primitive type conversions with the as operator
-(link:http://jira.codehaus.org/browse/GROOVY-7140[GROOVY-7140])
+(link:https://issues.apache.org/jira/browse/GROOVY-7140[GROOVY-7140])
 
 [[Groovy2.4releasenotes-TraitsSelfTypeannotation]]
 == Traits @SelfType annotation
@@ -63,7 +63,7 @@ are present (link:http://jira.codehaus.org/browse/GROOVY-6993[GROOVY-6993])
 Sometimes, it’s desired to be able to restrict a trait’s application so
 that it can only be applied to subclasses of a certain type. That’s what
 the `@SelfType` annotation is for
-(link:http://jira.codehaus.org/browse/GROOVY-7134[GROOVY-7134]).
+(link:https://issues.apache.org/jira/browse/GROOVY-7134[GROOVY-7134]).
 
 Here’s a concrete example of `@SelfType` in action.
 
@@ -109,25 +109,25 @@ as the resolution will take place at runtime as usual.
 == GDK improvements
 
 * `System.currentTimeSeconds()` to get the current time in seconds
-(link:http://jira.codehaus.org/browse/GROOVY-6294[GROOVY-6294])
+(link:https://issues.apache.org/jira/browse/GROOVY-6294[GROOVY-6294])
 * `List#getIndices()` to get a range representing the indices of the
 elements of the list
-(link:http://jira.codehaus.org/browse/GROOVY-7171[GROOVY-7171])
+(link:https://issues.apache.org/jira/browse/GROOVY-7171[GROOVY-7171])
 * More collection related methods are moved to iterator-based variants
 to apply to all iterable collection types
-(link:http://jira.codehaus.org/browse/GROOVY-6863[GROOVY-6863]) and missing
+(link:https://issues.apache.org/jira/browse/GROOVY-6863[GROOVY-6863]) and missing
 methods have been added like `init()`, `dropRight()`, `takeRight()`
-(link:http://jira.codehaus.org/browse/GROOVY-6867[GROOVY-6867])
+(link:https://issues.apache.org/jira/browse/GROOVY-6867[GROOVY-6867])
 * `Iterable` gets `disjoin()`, `minus()` and `toSpreadMap()` methods
-(link:http://jira.codehaus.org/browse/GROOVY-6920[GROOVY-6920])
+(link:https://issues.apache.org/jira/browse/GROOVY-6920[GROOVY-6920])
 * Refinements and concistency for existing collection methods,
 leveraging iterable approaches for stream-like traversals, consistency
 for mutation in place vs  new collection creation, minor optimizations,
-etc. (link:http://jira.codehaus.org/browse/GROOVY-6945[GROOVY-6945])
+etc. (link:https://issues.apache.org/jira/browse/GROOVY-6945[GROOVY-6945])
 * New `List#removeAt(index)` and `Collection#removeElement(Object)` methods
-(link:http://jira.codehaus.org/browse/GROOVY-6952[GROOVY-6952])
+(link:https://issues.apache.org/jira/browse/GROOVY-6952[GROOVY-6952])
 * `Iterable` gets a `size()` method like iterators
-(link:http://jira.codehaus.org/browse/GROOVY-7085[GROOVY-7085])
+(link:https://issues.apache.org/jira/browse/GROOVY-7085[GROOVY-7085])
 
 [[Groovy2.4releasenotes-ASTtransformations]]
 == AST transformations
@@ -135,22 +135,22 @@ etc. (link:http://jira.codehaus.org/browse/GROOVY-6945[GROOVY-6945])
 * The `@ToString` transformation offers an `includeSuperProperties`
 parameter so properties from the super class are also present in the
 string representation
-(link:http://jira.codehaus.org/browse/GROOVY-7161[GROOVY-7161])
+(link:https://issues.apache.org/jira/browse/GROOVY-7161[GROOVY-7161])
 * You can define the compilation phase for the `@ASTTest` transformation
 for testing your AST transformations
-(link:http://jira.codehaus.org/browse/GROOVY-6968[GROOVY-6968])
+(link:https://issues.apache.org/jira/browse/GROOVY-6968[GROOVY-6968])
 * `@Synchronized` supports explicit static locks to be used by instance
 methods if needed
-(link:http://jira.codehaus.org/browse/GROOVY-7030[GROOVY-7030])
+(link:https://issues.apache.org/jira/browse/GROOVY-7030[GROOVY-7030])
 * Clean up generated code for `@AutoExternalizable`
-(link:http://jira.codehaus.org/browse/GROOVY-6889[GROOVY-6889]) and
+(link:https://issues.apache.org/jira/browse/GROOVY-6889[GROOVY-6889]) and
 `@EqualsAndHashCode`
-(link:http://jira.codehaus.org/browse/GROOVY-6893[GROOVY-6893]) the when
+(link:https://issues.apache.org/jira/browse/GROOVY-6893[GROOVY-6893]) the when
 using `@CompileStatic`
 * `@Builder`’s default and initializer strategies improved Java
-integration (link:http://jira.codehaus.org/browse/GROOVY-6875[GROOVY-6875])
+integration (link:https://issues.apache.org/jira/browse/GROOVY-6875[GROOVY-6875])
 * `@PackageScope` allowed on constructors too
-(link:http://jira.codehaus.org/browse/GROOVY-6839[GROOVY-6839])
+(link:https://issues.apache.org/jira/browse/GROOVY-6839[GROOVY-6839])
 
 [[Groovy2.4releasenotes-Groovyshimprovements]]
 == Groovysh improvements
@@ -158,46 +158,46 @@ integration (link:http://jira.codehaus.org/browse/GROOVY-6875[GROOVY-6875])
 The venerable Groovysh shell continues seeing some useful improvements:
 
 * Groovysh supports custom .rc and .profile scripts to be loaded on
-startup (link:http://jira.codehaus.org/browse/GROOVY-6943[GROOVY-6943])
+startup (link:https://issues.apache.org/jira/browse/GROOVY-6943[GROOVY-6943])
 * completion of instanceof statements
-(link:http://jira.codehaus.org/browse/GROOVY-7200[GROOVY-7200])
+(link:https://issues.apache.org/jira/browse/GROOVY-7200[GROOVY-7200])
 * completion of static members only displayed in a static context
-(link:http://jira.codehaus.org/browse/GROOVY-6622[GROOVY-6622])
+(link:https://issues.apache.org/jira/browse/GROOVY-6622[GROOVY-6622])
 * completion candidates in color
-(link:http://jira.codehaus.org/browse/GROOVY-6563[GROOVY-6563])
+(link:https://issues.apache.org/jira/browse/GROOVY-6563[GROOVY-6563])
 * with :set interpreterMode true, you can let Groovysh to let you see
 and use locally-defined variables after further line executions
-(link:http://jira.codehaus.org/browse/GROOVY-6623[GROOVY-6623])
+(link:https://issues.apache.org/jira/browse/GROOVY-6623[GROOVY-6623])
 * the :load command supports file names containing spaces
-(link:http://jira.codehaus.org/browse/GROOVY-6942[GROOVY-6942])
+(link:https://issues.apache.org/jira/browse/GROOVY-6942[GROOVY-6942])
 * make arguments and flags consistent with the groovy command and allow
 the launch of a script on startup passed as argument and continue
 execution of Groovysh
-(link:http://jira.codehaus.org/browse/GROOVY-6754[GROOVY-6754])
+(link:https://issues.apache.org/jira/browse/GROOVY-6754[GROOVY-6754])
 * make it easier to subclass Groovysh for reuse as an embedded shell
-(link:http://jira.codehaus.org/browse/GROOVY-6752[GROOVY-6752])
+(link:https://issues.apache.org/jira/browse/GROOVY-6752[GROOVY-6752])
 
 [[Groovy2.4releasenotes-Miscellaneous]]
 == Miscellaneous
 
 * Allow Ant targets declaration by AntBuilder without immediate
-execution (link:http://jira.codehaus.org/browse/GROOVY-2900[GROOVY-2900])
+execution (link:https://issues.apache.org/jira/browse/GROOVY-2900[GROOVY-2900])
 * Make `NamespaceBuilder` automatically detect namespace declarations
-(link:http://jira.codehaus.org/browse/GROOVY-6890[GROOVY-6890])
+(link:https://issues.apache.org/jira/browse/GROOVY-6890[GROOVY-6890])
 * Implement and register type checking extensions as subclasses of
 `TypeCheckingExtension`
-(link:http://jira.codehaus.org/browse/GROOVY-6739[GROOVY-6739])
+(link:https://issues.apache.org/jira/browse/GROOVY-6739[GROOVY-6739])
 * `ConfigObject` overrides `toString()` and offers a `prettyPrint()` method
-(link:http://jira.codehaus.org/browse/GROOVY-7183[GROOVY-7183])
+(link:https://issues.apache.org/jira/browse/GROOVY-7183[GROOVY-7183])
 * Improved type checking for certain GDK methods
-(link:http://jira.codehaus.org/browse/GROOVY-6966[GROOVY-6966])
+(link:https://issues.apache.org/jira/browse/GROOVY-6966[GROOVY-6966])
 * Grape is using JCenter through HTTP first for resolving dependencies,
 and now HTTPS is used for better security
-(link:http://jira.codehaus.org/browse/GROOVY-7152[GROOVY-7152])
+(link:https://issues.apache.org/jira/browse/GROOVY-7152[GROOVY-7152])
 * Parameters of `@DelegatesTo` and `@ClosureParams` are better aligned
-(link:http://jira.codehaus.org/browse/GROOVY-6956[GROOVY-6956])
+(link:https://issues.apache.org/jira/browse/GROOVY-6956[GROOVY-6956])
 * Multiple labels are supported on the same statement
-(link:http://jira.codehaus.org/browse/GROOVY-3298[GROOVY-3298])
+(link:https://issues.apache.org/jira/browse/GROOVY-3298[GROOVY-3298])
 
 [[Groovy2.4releasenotes-Breakingchanges]]
 == Breaking changes
@@ -206,13 +206,13 @@ A few issues fixed might also be considered breaking changes in some
 situations:
 
 * Malformed class names for closures in inner classes
-(link:http://jira.codehaus.org/browse/GROOVY-5351[GROOVY-5351])
+(link:https://issues.apache.org/jira/browse/GROOVY-5351[GROOVY-5351])
 * Avoid creation of MOP methods in static compilation
-(link:http://jira.codehaus.org/browse/GROOVY-6990[GROOVY-6990])
+(link:https://issues.apache.org/jira/browse/GROOVY-6990[GROOVY-6990])
 * Reduce memory consumption for respondsTo()
-(link:http://jira.codehaus.org/browse/GROOVY-7178[GROOVY-7178])
+(link:https://issues.apache.org/jira/browse/GROOVY-7178[GROOVY-7178])
 * Making Groovysh more easily extendable and embeddable
-(link:http://jira.codehaus.org/browse/GROOVY-6752[GROOVY-6752])
+(link:https://issues.apache.org/jira/browse/GROOVY-6752[GROOVY-6752])
 
 [[Groovy2.4releasenotes-Moreinformation]]
 == More information

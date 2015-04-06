@@ -7,9 +7,9 @@ import model.Issue
 import java.util.regex.Pattern
 
 class ChangelogParser {
-    private static final String JIRA_SERVER = 'http://jira.codehaus.org'
+    private static final String JIRA_SERVER = 'https://issues.apache.org/jira'
     private static final String PROJECT_NAME = 'GROOVY'
-    private static final String PROJECT_ID = '10242'
+    private static final String PROJECT_ID = '12318123'
 
     private static final String LOGNOTES_INTRO = /Release Notes - groovy/
     private static final String LOGNOTES_END = /<\/textarea>/

@@ -206,7 +206,7 @@ exhaustive link:{DOCS_BASEURL}/html/documentation/core-traits.html[traits docume
 `@TailRecursive` on methods adds tail recursion to methods which are
 recursive and call themselves at the last operation of the method body,
 which helps avoid blowing up the stack with the recursive calls
-(link:http://jira.codehaus.org/browse/GROOVY-6570[GROOVY-6570]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6570[GROOVY-6570]).
 
 Here’s a slightly rewritten factorial implementation, that is friendly
 to tail-call transformation:
@@ -232,7 +232,7 @@ with Groovy’s builders) to instantiate complex objects, without
 requiring to multiply the number of constructors with variants taking
 various combination of parameters. Groovy 2.3 introduces a `@Builder`
 transformation to automate the creation of such builder APIs
-(link:https://jira.codehaus.org/browse/GROOVY-6484[GROOVY-6484]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6484[GROOVY-6484]).
 
 The `@Builder` transformation offers different implementation strategies
 that you can choose from:
@@ -280,7 +280,7 @@ for the other builder variants.
 `@Sortable` on classes implements comparison methods for you (through
 implementing the `Comparable` interface), according to the declaration
 order of your properties
-(link:http://jira.codehaus.org/browse/GROOVY-6649[GROOVY-6649]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6649[GROOVY-6649]).
 
 For the following `Person` class, its instances will be sorted by last
 name, then by first name, and by age, in that order:
@@ -358,7 +358,7 @@ to have a `URI` instead of a `String`.
 fine-grained control over which methods to include or exclude from
 delegation. Rather than just matching on name, this option matches on
 the name and parameter types expressed in an interface type
-(link:http://jira.codehaus.org/browse/GROOVY-6329[GROOVY-6329]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6329[GROOVY-6329]).
 
 [[Groovy2.3releasenotes-BaseScriptclassimprovements]]
 ==== @BaseScript class improvements
@@ -368,7 +368,7 @@ is a fairly recent addition in Groovy, and it allowed to annotate a
 variable in your script to instruct the compiler to use a particular
 base script class for this script. Now we have another notation which is
 nicer as you can annotate an import or a package
-(link:http://jira.codehaus.org/browse/GROOVY-6592[GROOVY-6592]) to indicate
+(link:https://issues.apache.org/jira/browse/GROOVY-6592[GROOVY-6592]) to indicate
 that base script class:
 
 [source,groovy]
@@ -380,8 +380,8 @@ import groovy.transform.BaseScript
 Additionally, base script classes can now use any abstract method for
 the script body. This means that you can implement the `run()` method to
 implement specific behavior like setup and tear down in tests
-(link:http://jira.codehaus.org/browse/GROOVY-6585[GROOVY-6585]
-and link:http://jira.codehaus.org/browse/GROOVY-6615[GROOVY-6615]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6585[GROOVY-6585]
+and link:https://issues.apache.org/jira/browse/GROOVY-6615[GROOVY-6615]).
 
 Given the following custom base script class, where we implement the
 default `run()` method, we also create a new abstract method called
@@ -420,7 +420,7 @@ println 'Hello'
 On JDK 7 and beyond, you can benefit from the same methods as the ones
 of File but for the new NIO2 class `Path`.
 
-See link:http://jira.codehaus.org/browse/GROOVY-6377[GROOVY-6377] and
+See link:https://issues.apache.org/jira/browse/GROOVY-6377[GROOVY-6377] and
 the link:https://github.com/groovy/groovy-core/pull/260/files[pull request]
 for some further hints of the new methods.
 
@@ -642,7 +642,7 @@ JUnit 3 if you haven’t already done so. We didn’t include all of the
 myriad of `assertEquals` methods from `GroovyTestCase` as they are typically
 less useful than Groovy’s built-in power assert, but it provides some
 handy `shouldFail()` and `assertScript()` methods
-(link:http://jira.codehaus.org/browse/GROOVY-6588[GROOVY-6588]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6588[GROOVY-6588]).
 
 For instance, if you want to leverage the `shouldFail(String)` and
 `assertScript(String)` methods, you can do so as follows:
@@ -670,7 +670,7 @@ ConfigSlurper has previously supported a single "environments"
 non-configurational conditional block, but you couldn’t define your own.
 With Groovy 2.3 you can also create your own such blocks. For instance
 if you wanted to support "flavors" like OS variants
-(link:http://jira.codehaus.org/browse/GROOVY-6383[GROOVY-6383]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6383[GROOVY-6383]).
 
 Concretely, instead of the familiar environments / production blocks in
 Grails, let’s register a flavors / prod pair: 
@@ -695,7 +695,7 @@ assert config.a.b.c == 2
 ----
 
 In addition, the `isSet()` / `hasSet()` combo methods
-(link:http://jira.codehaus.org/browse/GROOVY-4639[GROOVY-4639]) have been
+(link:https://issues.apache.org/jira/browse/GROOVY-4639[GROOVY-4639]) have been
 added so you can double check if a given node of your configuration has
 been defined. Before, whether the node wasn’t defined or containing
 `null`, you couldn’t differentiate either case easily.
@@ -710,23 +710,23 @@ Along with a slightly reduced startup time, Groovysh has seen new
 improvements in its code-completion capabilities:
 
 * completion for keywords
-(link:http://jira.codehaus.org/browse/GROOVY-6399[GROOVY-6399])
+(link:https://issues.apache.org/jira/browse/GROOVY-6399[GROOVY-6399])
 * completion for properties
-(link:http://jira.codehaus.org/browse/GROOVY-6395[GROOVY-6395])
+(link:https://issues.apache.org/jira/browse/GROOVY-6395[GROOVY-6395])
 
 Commands are now prefixed with ``:''
-(link:https://jira.codehaus.org/browse/GROOVY-6397).
+(link:https://issues.apache.org/jira/browse/GROOVY-6397).
 
 [[Groovy2.3releasenotes-GroovyConsole]]
 === GroovyConsole
 
 It is now possible to configure the font used by the console
-(link:https://jira.codehaus.org/browse/GROOVY-6303[GROOVY-6303], although
+(link:https://issues.apache.org/jira/browse/GROOVY-6303[GROOVY-6303], although
 without a UI dialog yet), and also to be able to run a selected snippet
 of code reusing the imports defined in your script making it easier to
 just run quick snippets of your script. The ability to comment or
 uncomment selected code by pressing `Ctrl +` was added
-with link:http://jira.codehaus.org/browse/GROOVY-6459[GROOVY-6459].
+with link:https://issues.apache.org/jira/browse/GROOVY-6459[GROOVY-6459].
 
 
 [[Groovy2.3releasenotes-Documentation]]
@@ -813,22 +813,22 @@ your variable and recompile your code.
 A few updates have been made to the *XML support around whitespace
 handling, and text node handling*:
 
-* http://jira.codehaus.org/browse/GROOVY-6685[GROOVY-6685]
-* http://jira.codehaus.org/browse/GROOVY-6683[GROOVY-6683]
-* http://jira.codehaus.org/browse/GROOVY-6682[GROOVY-6682]
-* http://jira.codehaus.org/browse/GROOVY-6678[GROOVY-6678]
-* http://jira.codehaus.org/browse/GROOVY-6621[GROOVY-6621]
+* https://issues.apache.org/jira/browse/GROOVY-6685[GROOVY-6685]
+* https://issues.apache.org/jira/browse/GROOVY-6683[GROOVY-6683]
+* https://issues.apache.org/jira/browse/GROOVY-6682[GROOVY-6682]
+* https://issues.apache.org/jira/browse/GROOVY-6678[GROOVY-6678]
+* https://issues.apache.org/jira/browse/GROOVY-6621[GROOVY-6621]
 
 With the new default methods on interfaces in JDK 8, there was
 particularly one,
-a link:http://jira.codehaus.org/browse/GROOVY-6465[List#sort(Comparable) method], which *conflicted with one of the GDK*,
+a link:https://issues.apache.org/jira/browse/GROOVY-6465[List#sort(Comparable) method], which *conflicted with one of the GDK*,
 so we had to remove ours to stay compliant with JDK 8.
 
-We fixed a link:http://jira.codehaus.org/browse/GROOVY-6456[race condition in AbstractHttpServler#applyResourceNameMatcher]
+We fixed a link:https://issues.apache.org/jira/browse/GROOVY-6456[race condition in AbstractHttpServler#applyResourceNameMatcher]
 which incurred a small change in behavior. This feature is seldomly used and doesn’t seem to
 have impacted users of the Groovy servlet machinery so far.
 
 You can look at the list of
-the link:http://jira.codehaus.org/browse/GROOVY-6685?jql=project%20%3D%20GROOVY%20AND%20fixVersion%20in%20%28%222.3.0-rc-3%22%2C%20%222.3.0-beta-1%22%2C%20%222.3.0-beta-2%22%2C%20%222.3.0-rc-1%22%2C%20%222.3.0-rc-2%22%29%20AND%20labels%20%3D%20breaking%20AND%20status%20in%20%28Resolved%2C%20Closed%29[breaking changes from our JIRA]
+the link:https://issues.apache.org/jira/browse/GROOVY-6685?jql=project%20%3D%20GROOVY%20AND%20fixVersion%20in%20%28%222.3.0-rc-3%22%2C%20%222.3.0-beta-1%22%2C%20%222.3.0-beta-2%22%2C%20%222.3.0-rc-1%22%2C%20%222.3.0-rc-2%22%29%20AND%20labels%20%3D%20breaking%20AND%20status%20in%20%28Resolved%2C%20Closed%29[breaking changes from our JIRA]
 issue tracker.
 

@@ -54,8 +54,8 @@ task checkDeadLinks(dependsOn: generateSite) {
     // a collection of links which have either been validated
     // or cannot be checked securely (false positives) due to user agent restrictions
     def excludeFromChecks = [
-            'http://jira.codehaus.org',
-            'https://jira.codehaus.org',
+            'http://issues.apache.org/jira',
+            'https://issues.apache.org/jira',
             'http://www.meetup.com',
             'http://www.dcgroovy.org',
             'http://www.jroller.com',

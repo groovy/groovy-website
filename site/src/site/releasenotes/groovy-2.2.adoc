@@ -48,7 +48,7 @@ by Java 8 lambda conversion:
 
 Similarly to our Closure memoization capability, you can now annotate
 your methods with the
-new link:http://jira.codehaus.org/browse/GROOVY-4993[@Memoized annotation].
+new link:https://issues.apache.org/jira/browse/GROOVY-4993[@Memoized annotation].
 It will use the same underlying cache solution used for closures, and
 will cache the result of previous executions of the annotated method
 with the same entry parameters.
@@ -114,7 +114,7 @@ to share common methods to all scripts.
 For DSL purposes, it’s interesting to actually delegate the method calls
 and unbound variable assignments to a different object than the script
 itself, thanks to the
-new link:http://jira.codehaus.org/browse/GROOVY-6076[DelegatingScript].
+new link:https://issues.apache.org/jira/browse/GROOVY-6076[DelegatingScript].
 
 To make it more concrete, let’s have a look at the following
 configuration script:
@@ -178,7 +178,7 @@ class MyClass {
 The @DelegatesTo annotation, introduced in Groovy 2.1 that helps the
 type checker, IDEs, tools, to provide better support for DSLs using
 closure delegation
-strategies, link:http://jira.codehaus.org/browse/GROOVY-6134[works with generics token types] as well.
+strategies, link:https://issues.apache.org/jira/browse/GROOVY-6134[works with generics token types] as well.
 You can tell Groovy that the delegatee is
 of the type of the generics component:
 
@@ -215,7 +215,7 @@ reference T, and we had to use an index to point at the right type.
 The static type checking extensions introduced in Groovy 2.1 were
 working solely with non-compiled scripts. But with this beta, you can
 also specify a fully-qualified name of
-the link:http://jira.codehaus.org/browse/GROOVY-6043[precompiled class implementing your extension]:
+the link:https://issues.apache.org/jira/browse/GROOVY-6043[precompiled class implementing your extension]:
 
 [source,groovy]
 ----
@@ -223,23 +223,23 @@ the link:http://jira.codehaus.org/browse/GROOVY-6043[precompiled class implemen
 ----
 
 Type checking extensions now also support two more
-events: link:http://jira.codehaus.org/browse/GROOVY-6039[ambiguousMethods] and link:http://jira.codehaus.org/browse/GROOVY-6044[incompatibleReturnType]. 
+events: link:https://issues.apache.org/jira/browse/GROOVY-6039[ambiguousMethods] and link:https://issues.apache.org/jira/browse/GROOVY-6044[incompatibleReturnType]. 
 
 [[Groovy2.2releasenotes-Groovyshenhancements]]
 == Groovysh enhancements
 
 Groovysh has been expanded with various enhancements:
 
-* support for link:http://jira.codehaus.org/browse/GROOVY-6073[code completion] in various places, like imports, package names, class names,
+* support for link:https://issues.apache.org/jira/browse/GROOVY-6073[code completion] in various places, like imports, package names, class names,
 variable names, parameter names, keywords, etc.
-* a link:http://jira.codehaus.org/browse/GROOVY-6150[doc command] allows you
+* a link:https://issues.apache.org/jira/browse/GROOVY-6150[doc command] allows you
 to open the relevant JavaDoc and Groovy GDK web pages to have more
 information for a given class, for example try in Groovysh: +
 ----
 doc java.util.List
 ----
 
-* you can link:http://jira.codehaus.org/browse/GROOVY-6145[complete file names] inside strings, particularly handy for your scripting tasks where
+* you can link:https://issues.apache.org/jira/browse/GROOVY-6145[complete file names] inside strings, particularly handy for your scripting tasks where
 you want to open a file with `new File('data.|')` (where the pipe
 character is the position of your cursor), and then hit the TAB key to
 have the completion of the file name

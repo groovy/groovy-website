@@ -27,7 +27,7 @@ layout 'layouts/main.groovy', true,
                                 h2("$type")
                                 ul {
                                     list.each { issue ->
-                                        li("[${$a(href: 'http://jira.codehaus.org/browse/' + issue.id, issue.id)}] - ${issue.description}")
+                                        li("[${$a(href: 'https://issues.apache.org/jira/browse/' + issue.id, issue.id)}] - ${issue.description}")
                                     }
                                 }
 

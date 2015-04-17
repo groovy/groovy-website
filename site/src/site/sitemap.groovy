@@ -187,19 +187,6 @@ ecosystem {
 }
 
 allEvents {
-    event('Greach 2015') {
-        location 'Madrid, Spain'
-        date 'April 10-11, 2015'
-        url 'http://greachconf.com/'
-        logo 'img/confs/greach2015.png'
-        description '''
-            <p>
-            Greach, the Spanish gathering of enthusiasts of Groovy, Grails, Griffon, Gradle, Spock, Vert.x, Gaelyk,
-            and many more. With inspirational talks from the makers and users of these projects, hands-on workshops with the rock stars,
-            join the 150+ attendees, designers, students, designers, the best professionals together in a great atmosphere.
-            </p>
-        '''
-    }
     event('GR8Conf EU 2015') {
         location 'Copenhagen, Denmark'
         date 'June 2-4, 2015'
@@ -232,6 +219,21 @@ allEvents {
             </p>
         '''
     }
+    event('SpringOne 2GX 2015') {
+        location 'Washington, DC, United States of America'
+        date 'September 14-17, 2015'
+        url 'http://springone2gx.com/'
+        logo 'img/confs/spring2gx2015.png'
+        description '''
+            <p>
+            SpringOne 2GX - The Premier Spring, Groovy/Grails, & Cloud Event
+            </p>
+            <p>
+            SpringOne2GX 2015 will be held September 14 - 17, 2015 at the Marriott Marquis in Washington DC. 5 tracks covering the Spring ecosystem & 4 tracks on Groovy/Grails & more!
+            </p>
+        '''
+    }
+
     event('Groovy Grails eXchange 2015') {
         location 'London, United Kingdom'
         date 'December 14-15, 2015'

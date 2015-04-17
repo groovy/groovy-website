@@ -146,7 +146,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' with your changes.'
                                 }
                                 p 'If you have git installed on your machine, you should be able to clone the Groovy repository with the following command:'
-                                pre { code 'git clone git://github.com/groovy/groovy-core.git' }
+                                pre { code 'git clone git://github.com/apache/incubator-groovy.git' }
                                 p 'Make sure you configure Git appropriately with the same email that you registered with on Github:'
                                 pre { code 'git config --global user.name "YOUR NAME"\n' +
                                         'git config --global user.email "YOUR EMAIL"' }
@@ -161,7 +161,7 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p {
                                     yield 'Then, to work on the Groovy code base, to build and test Groovy, you can follow the '
-                                    a(href: 'https://github.com/groovy/groovy-core/blob/master/README.adoc', 'instructions')
+                                    a(href: 'https://github.com/apache/incubator-groovy/blob/master/README.adoc', 'instructions')
                                     yield ' from the readme file in the Groovy repository.'
                                 }
                                 p 'The most important command you will have to run before sending your changes is the test command:'

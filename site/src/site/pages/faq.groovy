@@ -34,7 +34,7 @@ layout 'layouts/main.groovy', true,
                                     yield 'Yes, Groovy is an Open Source programming language project, licensed under the '
                                     a(href: 'http://www.apache.org/licenses/LICENSE-2.0', 'Apache License v2')
                                     yield '. You can see the license header in all the source files of the project, as well as a '
-                                    a(href: 'https://github.com/groovy/groovy-core/blob/master/LICENSE', 'license file')
+                                    a(href: 'https://github.com/apache/incubator-groovy/blob/master/LICENSE', 'license file')
                                     yield ' at the root of the project'
                                 }
 

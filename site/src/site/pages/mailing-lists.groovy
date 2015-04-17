@@ -41,6 +41,13 @@ layout 'layouts/main.groovy', true,
                                         td 'medium volume list that logs commits.'
                                         td { a(href: 'mailto:commits-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
+                                    tr {
+                                        td {
+                                            strong 'notifications@groovy.incubator.apache.org'
+                                        }
+                                        td 'medium volume list that JIRA and other project notifications.'
+                                        td { a(href: 'mailto:notifications-subscribe@groovy.incubator.apache.org', 'Subscribe') }
+                                    }
                                 }
                                 hr(class: 'divider')
 

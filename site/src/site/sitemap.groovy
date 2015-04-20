@@ -105,8 +105,8 @@ documentation {
         item 'Processing XML',                      'processing-xml',   'xml-userguide'
         item 'Scripting Ant tasks',                 'scripting-ant',    'ant-builder'
         item 'Template engines',                    'templating',       'template-engines'
-        item 'Creating Swing UIs',                  'swing',            'swing'
-        item 'Servlet support',                     'servlet',          'servlet'
+        item 'Creating Swing UIs',                  'swing',            'swing-builder'
+        item 'Servlet support',                     'servlet',          'servlet-userguide'
         item 'Working with JMX',                    'jmx',              'jmx'
     }
 

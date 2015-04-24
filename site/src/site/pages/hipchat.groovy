@@ -1,9 +1,6 @@
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Chatting',
-        extraFooter: contents {
-            script(src:'js/jquery.hipchat.js', type:'text/javascript') {}
-            script(src:'js/hipchatwidget.js', type:'text/javascript') {}
-        },
+        extraScripts: ['jquery.hipchat.js','hipchatwidget.js'],
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {

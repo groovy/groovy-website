@@ -18,66 +18,53 @@ layout 'layouts/main.groovy', true,
                             hr(class: 'divider')
 
                             article {
-                                h1 'Subscribing to the lists'
-                                p {
-                                    yield '''
-                                        Here are the public mailing lists that have been set up for the project.
-                                        In order to subscribe / unsubscribe you first need to get a special link from '''
-                                    a(href: 'http://xircles.codehaus.org/manage_email', 'http://xircles.codehaus.org/manage_email')
-                                }
-                                p {
-                                    yield 'Once you have got this link you can manage your subscriptions by going to the Groovy project page: '
-                                    a(href: 'http://xircles.codehaus.org/projects/groovy', 'http://xircles.codehaus.org/projects/groovy')
-                                }
-                                hr(class: 'divider')
-
-                                h2 'Available lists'
+                                h1 'Available lists'
                                 table(class: 'table') {
                                     tr {
                                         td {
-                                            strong 'user@groovy.codehaus.org'
+                                            strong 'users@groovy.incubator.apache.org'
                                         }
                                         td 'high volume list for questions and general discussion about Groovy'
+                                        td { a(href: 'mailto:users-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                     tr {
                                         td {
-                                            strong 'dev@groovy.codehaus.org'
+                                            strong 'dev@groovy.incubator.apache.org'
                                         }
                                         td 'medium volume list useful for those interested in ongoing developments'
+                                        td { a(href: 'mailto:dev-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                     tr {
                                         td {
-                                            strong 'announce@groovy.codehaus.org'
+                                            strong 'commits@groovy.incubator.apache.org'
                                         }
-                                        td 'is a low volume list for announcements about new releases or major news'
+                                        td 'medium volume list that logs commits.'
+                                        td { a(href: 'mailto:commits-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                     tr {
                                         td {
-                                            strong 'eclipse-plugin-user@groovy.codehaus.org'
+                                            strong 'notifications@groovy.incubator.apache.org'
                                         }
-                                        td 'low volume list for questions and problems using the Groovy Eclipse plugin'
-                                    }
-                                    tr {
-                                        td {
-                                            strong 'scm@groovy.codehaus.org'
-                                        }
-                                        td 'medium volume list that logs commits'
+                                        td 'medium volume list that JIRA and other project notifications.'
+                                        td { a(href: 'mailto:notifications-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                     }
                                 }
                                 hr(class: 'divider')
 
-                                h2 'Mailing-lists archive on Nabble'
-                                p '''
-                                    The mailing-lists are archived on Nabble.
+                                h1 'Old Codehaus Mailing Lists'
+                                p('''The Codehaus mailing-lists are deprecated and will be switched off soon. Please do
+not subscribe!''')
+                                h2 'Old Mailing-lists archive on Nabble'
+                                p """
+                                    The mailing-lists are archived on ${$a(href: 'http://www.nabble.com/', 'Nabble')}.
                                     Below you can see the archives of the lists.
-                                    In order to post messages to the mailing-lists through Nabble,
-                                    you first need to be registered to the Groovy mailing-lists,
-                                    as explained at the top of this page.
-                                '''
+                                    Even if you can post messages to the mailing-lists through Nabble,
+                                    you first need to be registered to the Codehaus Groovy mailing-lists,
+                                    but you should use the new mailing lists instead!
+                                """
                                 a(id: 'nabblelink', href: 'http://groovy.329449.n5.nabble.com/', 'Nabble forum')
-                                script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449')
+                                script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449') {}
                             }
-                            hr(class: 'divider')
                         }
                     }
                 }

@@ -46,6 +46,12 @@ layout 'layouts/main.groovy', true,
                                 }
                                 hr(class: 'divider')
                             }
+                            article {
+                                p """
+                                    There are of course many other projects using or built with the Groovy programming language.
+                                    For instance, you can find some more by having a look at the ${$a(href:'https://github.com/trending?l=groovy', 'trending Groovy projects')} on Github.
+                                """
+                            }
                         }
                     }
                 }

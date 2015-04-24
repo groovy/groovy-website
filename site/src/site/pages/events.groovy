@@ -1,5 +1,10 @@
 import model.Event
 
+/**
+ * This template is generating the events page.
+ * If you want to add a new event, please edit the "allEvents" section in src/site/sitemap.groovy
+ */
+
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Events',
         mainContent: contents {
@@ -26,10 +31,13 @@ layout 'layouts/main.groovy', true,
                                 allEvents.each {
                                     String eventName = it.key
                                     Event event = it.value
-
+                                    div(class: 'event-logo') {
+                                        img(src: "${event.logo}", class:'event-logo', alt:"${eventName}")
+                                    }
                                     h2 {
                                         a(href: event.url, eventName)
                                     }
+
                                     h3 {
                                         i(class: 'fa fa-globe') {}
                                         yieldUnescaped " &nbsp;${event.location} &nbsp; &mdash; &nbsp; "

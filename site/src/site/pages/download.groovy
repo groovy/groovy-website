@@ -22,10 +22,16 @@ layout 'layouts/main.groovy', true,
                                     a(href: '#otherways', class: 'anchor-link', 'Other ways to get Groovy')
                                 }
                                 li {
+                                    a(href: '#requirements', class: 'anchor-link', 'System requirements')
+                                }
+                                li {
                                     a(href: 'versioning.html', 'Groovy version scheme')
                                 }
                                 li {
                                     a(href: 'indy.html', 'Invoke dynamic support')
+                                }
+                                li {
+                                    a(href: 'releases.html', 'Release notes')
                                 }
                             }
                         }
@@ -50,9 +56,20 @@ layout 'layouts/main.groovy', true,
                                     yield ' (binary and source), the Windows installer (for some of the versions) and the documentation for Groovy.'
                                 }
                                 p {
+                                    yield 'All the downloads are hosted in '
+                                    a(href: 'http://bintray.com/groovy/', 'Bintray\'s Groovy repository')
+                                    yield '. Registering on Bintray allows you to rate, review, and register for new version notifications.'
+                                }
+                                p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
                                     a(href: 'http://gvmtool.net', 'GVM (Groovy enVironment Manager)')
-                                    yield ' to download and configure any Groovy version of your choice. Basic instructions can be found below.'
+                                    yield ' to download and configure any Groovy version of your choice. Basic '
+                                    a(href: '#gvm', 'instructions')
+                                    yield ' can be found below. '
+                                    br()
+                                    yield 'Windows users can use '
+                                    a(href: 'https://github.com/flofreud/posh-gvm', 'Posh-GVM')
+                                    yield ' (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI.'
                                 }
                             }
                             hr(class: 'divider')
@@ -106,7 +123,7 @@ layout 'layouts/main.groovy', true,
                                                 }
                                                 if (pkg.windowsInstaller) {
                                                     td {
-                                                        a(href: "http://dist.codehaus.org/groovy/distributions/installers/windows/nsis/groovy-${pkg.version}-installer.exe") {
+                                                        a(href: pkg.windowsInstaller) {
                                                             i(class: 'fa fa-windows fa-4x') {}
                                                             br()
                                                             yield ' Windows installer'
@@ -117,13 +134,22 @@ layout 'layouts/main.groovy', true,
                                         }
                                         p {
                                             yield 'Consult the '
-                                            a(href: pkg.releaseNotes, 'JIRA release notes')
+                                            a(href: "changelogs/changelog-${pkg.version}.html", ' change log')
                                             yield '.'
                                             br()
                                             yield 'Read the '
                                             a(href: "indy.html", 'invoke dynamic support information')
                                             yield ' if you wish to use it on JDK 7+'
                                         }
+                                    }
+                                }
+                                article {
+                                    h3 'Changelog'
+
+                                    p {
+                                        yield 'You can also read the changelogs for '
+                                        a(href: "changelogs.html", 'older versions')
+                                        yield '.'
                                     }
                                 }
                             }
@@ -216,6 +242,9 @@ layout 'layouts/main.groovy', true,
                                         }
                                     }
                                 }
+                                h3 'Maven repositories'
+                                p "Groovy releases are downloadable from ${$a(href:'http://repo1.maven.org/maven2/org/codehaus/groovy/','Maven Central')} or ${$a(href:'http://jcenter.bintray.com/org/codehaus/groovy/','JCenter')}."
+                                p "Groovy snapshots are downloadable from ${$a(href:'https://oss.jfrog.org/oss-snapshot-local/org/codehaus/groovy','JFrog OpenSource Snapshots repository')}"
                             }
                             hr(class: 'divider')
 
@@ -232,11 +261,51 @@ layout 'layouts/main.groovy', true,
                                     yield ' installed, you can install Groovy with:'
                                     pre { code 'sudo port install groovy' }
                                     yield 'If you prefer to live on the bleeding edge, you can also grab the '
-                                    a(href: 'http://github.com/groovy/groovy-core', 'source code from GitHub')
+                                    a(href: 'https://github.com/apache/incubator-groovy', 'source code from GitHub')
                                     br()
                                     yield 'If you are an IDE user, you can just grab the latest '
                                     a(href: 'ides.html', 'IDE plugin')
                                     yield ' and follow the plugin installation instructions.'
+                                }
+                            }
+                            a(name: 'requirements') {}
+                            article {
+                                h1 'System requirements'
+                                p {
+                                    table(class: 'table') {
+                                        thead {
+                                            tr {
+                                                th 'Groovy Branch'
+                                                th 'JVM Required (non-indy)'
+                                                th 'JVM Required (indy) *'
+                                            }
+                                        }
+                                        tbody {
+                                            tr {
+                                                td { b '2.3 - current' }
+                                                td '1.6'
+                                                td '1.7'
+                                            }
+                                            tr {
+                                                td { b '2.0 - 2.2' }
+                                                td '1.5'
+                                                td '1.7'
+                                            }
+                                            tr {
+                                                td { b '1.6 - 1.8' }
+                                                td '1.5'
+                                                td 'N/A'
+                                            }
+                                            tr {
+                                                td { b '1.0 - 1.5' }
+                                                td '1.4'
+                                                td 'N/A'
+                                            }
+                                        }
+                                    }
+                                    yield '* If you plan on using invoke dynamic support, read the '
+                                    a(href: "indy.html", 'support information')
+                                    yield '.'
                                 }
                             }
                         }

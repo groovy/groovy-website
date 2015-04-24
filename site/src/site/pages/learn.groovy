@@ -1,4 +1,5 @@
 import model.Book
+import model.Video
 
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Learn',
@@ -15,6 +16,9 @@ layout 'layouts/main.groovy', true,
                                 li {
                                     a(href: '#books', class: 'anchor-link', 'Books')
                                 }
+                                li {
+                                    a(href: '#videos', class: 'anchor-link', 'Presentations')
+                                }
                             }
                         }
 
@@ -26,22 +30,22 @@ layout 'layouts/main.groovy', true,
                             }
                             article {
                                 p 'Welcome to the learning section of the Groovy website.'
-                                p {
-                                    yield 'First of all, you will need to '
-                                    a(href: 'documentation.html#gettingstarted', 'get started')
-                                    yield ' by installing Groovy on your system or project.'
-                                }
-                                p {
-                                    yield 'Once all set up, we invite you to have a look at the Groovy '
-                                    a(href: 'documentation.html', 'documentation')
-                                    yield ', which explains all the '
-                                    a(href: 'documentation.html#languagespecification', 'details of the language')
-                                    yield ', such as how to use the '
-                                    a(href: 'documentation.html#tools', 'tools')
-                                    yield ' that come with a Groovy installation, and how to tackle more complex tasks with the various '
-                                    a(href: 'documentation.html#groovymoduleguides', 'module user guides')
-                                    yield '.'
-                                }
+                                p """
+                                    First of all, you will need to ${$a(href: 'documentation.html#gettingstarted', 'get started')}
+                                    by installing Groovy on your system or project.
+                                """
+                                p """
+                                    Once all set up, we invite you to have a look at the Groovy
+                                    ${$a(href: 'documentation.html', 'documentation')}, which explains all the
+                                    ${$a(href: 'documentation.html#languagespecification', 'details of the language')}, such as how to use the
+                                    ${$a(href: 'documentation.html#tools', 'tools')}
+                                    that come with a Groovy installation, and how to tackle more complex tasks with the various
+                                    ${$a(href: 'documentation.html#groovymoduleguides', 'module user guides')}.
+                                """
+                                p """
+                                    But there are other ways to learn more about Groovy, thanks to ${$a(href: '#books', 'books')}
+                                    and ${$a(href: '#videos', 'presentations')} given about Groovy at conferences.
+                                """
                                 hr(class: 'divider')
 
                                 a(name: 'books') {}
@@ -78,10 +82,73 @@ layout 'layouts/main.groovy', true,
                                             2.times { li {} }
                                         }
                                         figcaption {
-                                            h1 book.title
+                                            h1 { a(href: book.url, book.title) }
                                             span "By ${book.authors}"
                                             p book.description
                                         }
+                                    }
+                                }
+
+                                hr(class: 'divider')
+
+                                a(name: 'videos') {}
+                                h2 {
+                                    i(class: 'fa fa-film') {}
+                                    yield ' Presentations'
+                                }
+                                p """
+                                    Many Groovy-related presentations have been recorded at ${$a(href: 'events.html', 'conferences')}
+                                    that you might wish to have a look at, to learn more about Groovy, delve into particular topics, and more.
+                                """
+                                p """
+                                    Below are a few selected presentations given at the
+                                    ${$a(href: 'http://springone2gx.com/', 'SpringOne2GX')},
+                                    ${$a(href: 'http://gr8conf.eu/', 'GR8Conf')} and
+                                    ${$a(href: 'http://greach.es/', 'Greach')} conferences.
+                                """
+
+                                videos.each { Video video ->
+                                    div(class: 'presentations') {
+                                        a(href: video.videoUrl) {
+                                            img(class: 'screenshot', src: "img/videos/${video.pictureUrl}")
+                                        }
+                                        div(class: 'metadata') {
+                                            a(href: video.videoUrl) {
+                                                h1(class: 'title', video.title)
+                                            }
+                                            span(class: 'speaker', "By ${video.speaker}")
+                                            if(video.slidesUrl || video.codeUrl) {
+                                                p(class: 'urls') {
+                                                    if (video.slidesUrl) {
+                                                        i(class: 'fa fa-photo') {}
+                                                        yield ' '
+                                                        a(href: video.slidesUrl, 'slides')
+                                                    }
+                                                    if (video.slidesUrl && video.codeUrl) yield ' | '
+                                                    if (video.codeUrl) {
+                                                        i(class: 'fa fa-code') {}
+                                                        yield ' '
+                                                        a(href: video.codeUrl, 'source code')
+                                                    }
+                                                }
+                                            }
+                                            div(class: 'summary') {
+                                                yieldUnescaped video.summary
+                                            }
+                                        }
+                                    }
+                                }
+
+                                p "You can find more presentations:"
+                                ul {
+                                    li {
+                                        a(href: 'https://www.youtube.com/playlist?list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1', 'GR8Conf Europe 2014 YouTube playlist')
+                                    }
+                                    li {
+                                        a(href: 'http://www.infoq.com/SpringOne-2GX-2013/presentations/24', 'SpringOne2GX 2013 / InfoQ presentations')
+                                    }
+                                    li {
+                                        a(href: 'https://www.youtube.com/playlist?list=PLXcHRe1w86EdmLLNs1chNt5QdEJb_skTj', 'Greach 2014 YouTube channel')
                                     }
                                 }
                             }

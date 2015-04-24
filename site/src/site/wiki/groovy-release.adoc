@@ -1,0 +1,132 @@
+= Adapting the release process for Apache
+Cédric Champeau <cchampeau@apache.org>
+v1.0, March 27, 2015: First version
+
+:teamcity: http://ci.groovy-lang.org
+:groovy: http://groovy-lang.org
+:bintray: https://bintray.com/[Bintray]
+:gradle: http://gradle.org[Gradle]
+
+The goal of this document is to review the current release process for Groovy, and what adaptations are required to fit into the Apache model. 
+
+== The Groovy Way
+
+During the last 4 years, the Groovy team invested a lot of time in narrowing its release process to reduce human errors as much as possible. Releases were previously done from a despot personal computer, with a number of risks:
+
+* mix of development sources and sources found in the repository. This can happen if the release manager did the release without doing a clean checkout in a separate directory. Then there were risks that source files were present on the release manager computer and not in source control.
+* reliance on a local dependency repository. During development, committers usually do not suffer dependency management issues, because they do regular update and some third party dependencies are found in their local caches (Maven, Gradle). However, new developers may find themselves in a different situation, where they have no local cache. When they try to build, compilation fails because some dependencies cannot be fetched.
+* manual update of properties file for release numbers
+* manual tagging
+* manual update of VCS after release, that can easily be forgotten
+* upload of distribution to the Codehaus WebDAV repository, with a lot of failures due to the poor quality of the protocol (in particular stale lock files)
+* upload of documentation took up to several hours due to the WebDAV process, and were *erasing* previous versions of documentation (API, GAPI, GDK) so it wasn't possible to find online the reference API for a specific Groovy version.
+* Maven artifact uploading and signing done through the Codehaus repository, which was again very slow and error-prone
+
+It's worth noting that binary artifacts are currently published in the `org.codehaus.groovy` group id and that the build uses {gradle}.
+
+=== Automation
+
+For those reasons, we slowly migrated off the Codehaus infrastructure and built a new release process with a continuous integration server at its core. We reviewed several options and eventually found a sponsor, Jetbrains, for a {teamcity}[TeamCity continuous integration server]. The reasons to choose a dedicated server are not all related to the release process. The development process itself greatly benefits from it:
+
+* each branch of Groovy (currently 3 active branches: 2.3.x, 2.4.x, master) are built and tested against multiple JDKs : JDK 6, JDK 7, JDK 8, and older branches of Groovy are tested against older JDKs (JDK 5 for 1.8.x/2.x). Note that some Groovy versions are tested in two flavors: legacy and _invokedynamic_.
+* we build unreleased versions of OpenJDK from sources, so that we can test the master branch against upcoming JDK versions, such as JDK 8 updates and even JDK 9. Those builds allowed us to find a lot of bugs in the JDK before it was released.
+* some community projects are tested against development versions of Groovy (currently, Ratpack and Nextflow)
+
+Eventually, the {groovy}[new Groovy website] is built from https://github.com/groovy/groovy-website[sources] and deployed directly from the CI server, after each push on the _master_ branch.
+
+But in addition to those benefits, it's the release process itself which greatly improved:
+
+* the deployment infrastructure moved from Codehaus to {bintray} and http://www.jfrog.com/open-source/[Artifactory]
+* several build plans are dedicated to builds and releases:
+** the http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_UploadSnapshots&guest=1[snapshot upload] plan builds Groovy from sources and deploys the artifacts to the http://oss.jfrog.org/oss-snapshot-local/org/codehaus/groovy/[OSS Artifactory Snapshot Repository].
+** the http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_ReleasePlan&guest=1[release plan] allows a release manager to release a new version of Groovy directly from the CI server
+** the http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_GvmBroadcast[GVM broadcast] plan allows us to announce a new release of Groovy to http://gvmtool.net/[GVM] and its https://twitter.com/gvmtool[Twitter account] directly from the CI server
+** the http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_GvmMakeDefault[GVM default] plan allows us to notify GVM that a specific Groovy version is the new default version, directly from the CI server
+
+The last two GVM plans are separated because they need to be triggered manually, once we are ready to announce that a new Groovy version is out. Let's now describe what the release plan does, so that we can imagine what adaptations will be required to go the Apache Way.
+
+=== Release plan
+
+The release plan is at the core of the Groovy release process. It reduces human interactions to the bare minimal, dramatically reducing the potential errors. In particular:
+
+* builds are done using a verified JDK
+* the CI local Maven and Gradle repository caches are cleaned every day, making sure that the build is doable from source for any developer
+* release branches and tags are created automatically
+* properties files are updated automatically (sets the release version, then the next version to push on VCS)
+* binaries (sources, documentation, distribution, SDK) are uploaded to {bintray}
+* documentation is uploaded to the {groovy}[Groovy website] in a separate directory, so that each Groovy version has its own documentation readable online
+* all artifacts (binaries+maven) are signed through the {bintray} API
+* Maven artifacts are uploaded to https://bintray.com/bintray/jcenter[JCenter]
+* Maven Central synchronization is done through the {bintray} API
+* GVM gets notified that a new version is available
+
+To do this, the only requirement is to fill in a form and click a button. From that, everything is automated. So when the Groovy team decides that a new release can be done, after clicking the button, the release is available online in general less than 2 hours later. This has to be compared to the previous, error prone process, which took up to 12 hours for a single release. Groovy has a tradition of maintaining multiple branches, so this time has to be multiplied by the number of active branches that we maintain, which are usually released the same day.
+
+With that regards, the decision whether to release a new version or not is done collectively, on the mailing list or in a Skype channel where the core developers agree about releases. But once the decision is made, there is almost no human process involved anymore.
+
+Last but not least, Groovy doesn't make any difference between the source distribution (the zip of the source tree) and binary artifacts (distribution, documentation, maven artifacts). All are considered part of the release, and signed accordingly. But there is a technical difference between Maven artifacts and what we call the distribution (sources, binaries, documentation, SDKs). The distribution is only available in {bintray}. It consists of zip files that the developer can download from the Groovy website. The Maven artifacts, on the other hand, are hosted in JCenter and Maven Central. 
+
+To be able to upload the distribution, the release process automatically creates a new version of Groovy on {bintray}. This version is some kind of folder which will host files for this specific Groovy version. When the files are uploaded, they are kept in *staging* for at most 48 hours. Currently, the release process automatically publishes the artifacts, so there's effectively no staging for Groovy.
+
+It is unclear whether such a staging phase exists for the Maven artifacts uploaded to JCenter (but it seems we can), but it is clear that the Maven Central synchronization that is doable through {bintray} uses a staging phase, because it directly communicates with the Nexus OSS repository. Maven Central synchronization staging repositories are directly closed by {bintray}.
+
+Releasing a new version of Groovy also implies updating the website. Technically it involves two manual steps:
+
+* connect to the server and update the _symlinks_ in _/var/www/docs/docs_ for _latest_ and _next_ versions of Groovy, so that the latest documentation link points to the just released version of Groovy
+* *then* update the _sitemap.groovy_ file in the Groovy Website repo to add the new version, commit, and push, leading to the generation of the website. In particular, the static website generator will fetch the release notes from JIRA and generate a pretty page using the website template, as well as generating some documentation pages from the whole documentation, again decorated with the website template. 
+
+Optionally, for major versions, release notes can be written in Asciidoctor format, and published through the website (see https://github.com/groovy/groovy-website/tree/master/site/src/site/releasenotes).
+
+Eventually, the joint builds on the CI server need to be updated so that they use the latest snapshot versions of Groovy. This is done by changing the `CI_GROOVY_VERSION` environment variable of each build configuration.
+
+== Adaptations required for Apache
+
+The following section is based on our understanding of the Apache Way of releasing. This section is going to be updated based on the feedback we have from our mentors or fellow Apache members.
+
+First of all, the main and only important artifact for Apache is the *sources of the project*. This is going to be very important for our adaptation of the process. This means that binaries, documentation, Maven artifacts and such are not considered equally, and are not mandatory to be able to release a version.
+
+A detailed guide of the release process *during incubation* can be found http://incubator.apache.org/guides/releasemanagement.html[here] but those are derived from the final release process. Below are the main points with comments about how far we are from there.
+
+* 1.1 Checksums and PGP signatures are valid.
+
+_There are no such checksums or multiple PGP signatures for Groovy, apart from those generated through {bintray}. It is implied here that signatures must be checked before the release is done, that is to say that we *require* a staging phase and the ability to perform *multiple signatures*. Signatures are those of committers._
+
+* 2.1 Build is successful including automated tests.
+
+_We're all clear on that. Groovy is tested before each release, and the CI server does much more in testing that a normal user can do. In particular, testing with multiple JDKs. The sources zip has been verified to build and test from sources without any issue._
+
+* 3.1 DISCLAIMER is correct, filenames include "incubating".
+
+_We need to add the *DISCLAIMER*. The "incubating" part is disturbing. In particular, Groovy is not a new project. It's been there for 12 years, and the last release before Apache will be 2.4.2. Does it mean that the next release will have to be named 2.4.3-incubating? It will be very disturbing for our users, and it sounds pretty bad, just as if Groovy wasn't production ready. Should we do this, then the incubation phase should be shortened as much as possible. Another option that we consider is what are exactly the deliverables. If the only deliverable is the source zip, because only sources matter (see 3.6), then we could potentially rename only the source zip to include incubating. The binaries, the properties file, etc, could stay with 2.4.3 (without incubating) because it doesn't seem to be mandatory that the *version number* includes incubating, only the filenames. And if we produce binaries that are not hosted at Apache, like we do now, they can follow their own pattern. This would imply that in Groovy, the only deliverable that would be done through Apache would be the source zip, and the *filename* could include incubating. All other artifacts would *not* belong to the release checklist._
+
+* 3.2 Top-level LICENSE and NOTICE are correct for each distribution.
+
+_We do have those files_.
+
+* 3.3 All source files have license headers where appropriate.
+
+_It has to be checked, but it should already be the case_
+
+* 3.4 The provenance of all source files is clear (ASF or software grants).
+
+_This is going to be done during the incubation phase._
+
+* 3.5 Dependencies licenses are ok as per http://apache.org/legal/
+
+_We will have to remove the only dependency which is now unused and not a standard OSS license: Simian._
+
+* 3.6 Release consists of source code only, no binaries. Each Apache release must contain a source package. This package may not contain compiled components (such as "jar" files) because compiled components are not open source, even if they were built from open source. 
+
+_The source zip does contain a binary *dependency*: openbeans, which is not available in a third party Maven repository. We are unsure if the rule applies to it or not._
+ 
+It is also implied that we are going to change the group id from `org.codehaus.groovy` to `org.apache.groovy`. What it means for the release process (in particular synchronization with Maven Central through Bintray) are unclear.
+
+So it seems that the current process could be adapted if:
+
+* we only release the source zip on Apache, and only this item is voted
+* to do this we need to split the release process in at least 3 steps
+** building and deploying to a staging repository, including all artifacts. That staging period has to be extended to *at least* 72 hours, which is the minimal voting duration.
+** signing has to be done by individuals. This implies some way to download the full artifact list (there are more than 200 binary files in total !), sign them, and upload the signatures only.
+** publishing, which implies closing the Bintray staging repository, then synchronizing to Maven Central and publishing to GVM
+
+

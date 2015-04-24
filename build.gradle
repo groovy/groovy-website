@@ -1,3 +1,13 @@
+// Grab the plugin from a Maven Repo automatically
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.yahoo.platform.yui:yuicompressor:2.4.7'
+    }
+}
+
 allprojects {
     apply plugin: 'idea'
 }

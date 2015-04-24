@@ -3,6 +3,6 @@ $(document).ready(function () {
         url: "https://www.hipchat.com/gvUjrMN8d",
         timezone: "CET",
         buttonTitle: "I understand, please let me in!",
-        buttonClasses: "btn btn-default"
+        buttonClasses: "btn btn-default sign-in-fa-icon"
     });
 });

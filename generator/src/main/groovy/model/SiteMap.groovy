@@ -4,6 +4,7 @@ import groovy.transform.ToString
 import org.codehaus.groovy.control.CompilerConfiguration
 
 import groovy.transform.CompileStatic
+import org.codehaus.groovy.control.customizers.ImportCustomizer
 
 @CompileStatic
 @ToString(includeNames=true)
@@ -16,11 +17,16 @@ class SiteMap {
     final Library library = new Library()
     final List<String> allDocVersions = []
     final List<Page> pages = []
+    final List<UserGroup> usergroups = []
+    final List<Video> videos = []
 
     private SiteMap() {}
 
     public static SiteMap from(File source) {
         CompilerConfiguration config = new CompilerConfiguration()
+        def customizer = new ImportCustomizer()
+        config.addCompilationCustomizers(customizer)
+        customizer.addStaticImport('generator.DocUtils','DOCS_BASEURL')
         config.scriptBaseClass = 'groovy.util.DelegatingScript'
         GroovyShell shell = new GroovyShell(config)
         def script = shell.parse(source)
@@ -49,12 +55,22 @@ class SiteMap {
     }
 
     private void downloads(Closure dlSpec) {
-        def clone = dlSpec.rehydrate(this,this,this)
+        def clone = dlSpec.rehydrate(this, this, this)
         clone()
     }
 
     private void pages(Closure pagesSpec) {
-        def clone = pagesSpec.rehydrate(this,this,this)
+        def clone = pagesSpec.rehydrate(this, this, this)
+        clone()
+    }
+
+    private void usergroups(Closure groupsSpec) {
+        def clone = groupsSpec.rehydrate(this ,this ,this)
+        clone()
+    }
+
+    private void videos(Closure videosSpec) {
+        def clone = videosSpec.rehydrate(this, this, this)
         clone()
     }
 
@@ -89,4 +105,17 @@ class SiteMap {
         pages.add(new Page(source:source, target: target, model: model))
     }
 
+    private void userGroup(String name, Closure groupSpec) {
+        def group = new UserGroup(name: name)
+        def clone = groupSpec.rehydrate(group,group,group)
+        clone()
+        usergroups.add(group)
+    }
+
+    private void video(String title, Closure videoSpec) {
+        def video = new Video(title: title)
+        def clone = videoSpec.rehydrate(video, video, video)
+        clone()
+        videos.add(video)
+    }
 }

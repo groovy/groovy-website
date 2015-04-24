@@ -1,0 +1,65 @@
+.hdlist>table,.colist>table{
+    border:0;
+    background:none
+}
+
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{
+    background:none
+}
+
+td.hdlist1{
+    padding-right:.8em;
+    font-weight:bold
+}
+
+td.hdlist1,td.hdlist2{
+    vertical-align:top
+}
+
+.literalblock+.colist,.listingblock+.colist{
+    margin-top:-.5em
+}
+
+.colist>table tr>td:first-of-type{
+    padding:0 .8em;
+    line-height:1
+}
+
+.colist>table tr>td:last-of-type{
+    padding:.25em 0
+}
+
+.conum{
+    display:inline-block;
+    color:#fff!important;
+    background-color:#222;
+    -webkit-border-radius:100px;
+    border-radius:100px;
+    text-align:center;
+    width:20px;
+    height:20px;
+    font-size:12px;
+    font-weight:bold;
+    line-height:20px;
+    font-family:Arial,sans-serif;
+    font-style:normal;
+    position:relative;
+    top:-2px;
+    letter-spacing:-1px
+}
+
+.conum *{
+    color:#fff!important
+}
+
+.conum+b{
+    display:none
+}
+
+.conum:after{
+    content:attr(data-value)
+}
+
+.conum:not([data-value]):empty {
+    display:none
+}

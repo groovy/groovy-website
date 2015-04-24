@@ -253,6 +253,14 @@ allEvents {
 }
 
 books {
+	
+	book('Falando de Grails') {
+		authors 'Henrique Lobo Weissmann'
+		cover 'img/books/weissmann_groovy_grails.png'
+		url 'http://www.casadocodigo.com.br/livro-grails'
+		description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
+	}
+
     book('Groovy in Action, 2nd edition') {
         authors "Dierk König, Guillaume Laforge, Paul King, Cédric Champeau, Hamlet D'Arcy, Erik Pragt, and Jon Skeet"
         cover 'img/books/regina.png'

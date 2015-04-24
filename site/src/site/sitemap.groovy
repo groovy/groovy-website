@@ -257,7 +257,7 @@ books {
 	book('Falando de Grails') {
 		authors 'Henrique Lobo Weissmann'
 		cover 'img/books/weissmann_groovy_grails.png'
-		url 'http://www.casadocodigo.com.br/livro-grails'
+		url 'http://www.casadocodigo.com.br/products/livro-grails'
 		description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
 	}
 

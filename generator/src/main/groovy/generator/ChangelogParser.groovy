@@ -11,7 +11,7 @@ class ChangelogParser {
     private static final String PROJECT_NAME = 'GROOVY'
     private static final String PROJECT_ID = '12318123'
 
-    private static final String LOGNOTES_INTRO = /Release Notes - groovy/
+    private static final String LOGNOTES_INTRO = /Release Notes - Groovy/
     private static final String LOGNOTES_END = /<\/textarea>/
     private static final String BUGTYPE_MARK = '** '
     private static final String ITEM_MARK = '    * '

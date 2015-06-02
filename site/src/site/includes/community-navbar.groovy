@@ -5,7 +5,6 @@ ul(class: 'nav-sidebar') {
             'contribute': 'Contribute',
             'sponsors': 'Sponsors',
             'mailing-lists': 'Mailing-lists',
-            'hipchat': 'Chat',
             'events': 'Events',
             'usergroups': 'User groups',
             'groovy-weekly': 'Groovy Weekly newsletter'

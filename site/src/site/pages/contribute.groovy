@@ -60,7 +60,7 @@ layout 'layouts/main.groovy', true,
                                 h2 'Reporting issues'
                                 p {
                                     yield 'The Groovy project is using the '
-                                    a(href: 'contribute.html#reporting-issues', 'JIRA bug tracker')
+                                    a(href: 'https://issues.apache.org/jira/browse/GROOVY/', 'JIRA bug tracker')
                                     yield '''
                                         to report and track issues, feature enhancements, and new features.
                                         Be sure to be signed-up and logged-in, before proceeding.

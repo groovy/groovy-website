@@ -139,14 +139,19 @@ layout 'layouts/main.groovy', true,
                                 p {
                                     yield 'To work on the Groovy code base, you should be proficient enough in '
                                     a(href: 'http://git-scm.com/', 'git')
-                                    yield ' and you should ideally have an account on '
+                                    yield ' and you should have an account on '
                                     a(href: 'https://github.com/', 'Github')
                                     yield ' to be able to create '
                                     a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull requests')
                                     yield ' with your changes.'
                                 }
-                                p 'If you have git installed on your machine, you should be able to clone the Groovy repository with the following command:'
-                                pre { code 'git clone git://github.com/apache/incubator-groovy.git' }
+                                p { 
+                                    yield 'Please fork '
+                                    a(href: 'https://github.com/apache/incubator-groovy', 'https://github.com/apache/incubator-groovy')
+                                    yield ' and create a local clone of your fork as explained in '
+                                    a(href: 'https://help.github.com/articles/fork-a-repo/', 'fork a repo')
+                                    yield '.'
+                                }
                                 p 'Make sure you configure Git appropriately with the same email that you registered with on Github:'
                                 pre { code 'git config --global user.name "YOUR NAME"\n' +
                                         'git config --global user.email "YOUR EMAIL"' }

@@ -55,10 +55,7 @@ layout 'layouts/main.groovy', true,
                                 }
                                 hr(class: 'divider')
 
-                                h1 'Old Codehaus Mailing Lists'
-                                p('''The Codehaus mailing-lists are deprecated and will be switched off soon. Please do
-not subscribe!''')
-                                h2 'Old Mailing-lists archive on Nabble'
+                                h2 'Mailing-lists archive on Nabble'
                                 p """
                                     The mailing-lists are archived on ${$a(href: 'http://www.nabble.com/', 'Nabble')}.
                                     Below you can see the archives of the lists.

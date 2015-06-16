@@ -40,7 +40,7 @@ layout 'layouts/main.groovy', true,
                                         td {
                                             strong 'commits@groovy.incubator.apache.org'
                                         }
-                                        td 'medium volume list that logs commits.'
+                                        td 'medium volume list that logs commits'
                                         td { a(href: 'mailto:commits-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                         td { a(href: 'http://mail-archives.apache.org/mod_mbox/incubator-groovy-commits/', 'Archive') }
                                     }
@@ -48,7 +48,7 @@ layout 'layouts/main.groovy', true,
                                         td {
                                             strong 'notifications@groovy.incubator.apache.org'
                                         }
-                                        td 'medium volume list that JIRA and other project notifications.'
+                                        td 'high volume list for JIRA and Github notifications'
                                         td { a(href: 'mailto:notifications-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                         td { a(href: 'http://mail-archives.apache.org/mod_mbox/incubator-groovy-notifications/', 'Archive') }
                                     }
@@ -60,8 +60,7 @@ layout 'layouts/main.groovy', true,
                                     The mailing-lists are archived on ${$a(href: 'http://www.nabble.com/', 'Nabble')}.
                                     Below you can see the archives of the lists.
                                     Even if you can post messages to the mailing-lists through Nabble,
-                                    you first need to be registered to the Codehaus Groovy mailing-lists,
-                                    but you should use the new mailing lists instead!
+                                    you first need to be registered to the Apache Groovy mailing-lists!
                                 """
                                 a(id: 'nabblelink', href: 'http://groovy.329449.n5.nabble.com/', 'Nabble forum')
                                 script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449') {}

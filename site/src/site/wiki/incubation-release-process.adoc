@@ -76,6 +76,13 @@ NOTE: at this point it is possible that the MD5 files are missing, in which case
 for f in `ls *.zip`; do md5sum $f > $f.md5; done
 ```
 
+It is in general not accepted that the release is signed using the CI server key, so you *must* replace the signatures with your own. If you didn't yet,
+add your public key to the `KEYS` file, then sign each zip individually. This can be done, for each file, with a command line like:
+
+```
+gpg --armor --output apache-groovy-src-2.4.4-incubating.zip.asc --detach-sign apache-groovy-src-2.4.4-incubating.zip
+```
+
 Now you are ready to upload to your *personal* Apache space on people.apache.org. You can use `scp`, but in the end the layout must look like this:
 
 ```

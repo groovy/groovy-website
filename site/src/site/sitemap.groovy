@@ -63,7 +63,7 @@ documentation {
             '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
             '2.2.0', '2.2.1', '2.2.2',
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9', '2.3.10', '2.3.11',
-            '2.4.0', '2.4.1', '2.4.2', '2.4.3'
+            '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4'
     ])
 
     section('Getting started','fa-graduation-cap') {
@@ -121,22 +121,22 @@ downloads {
             yield 'Groovy 2.4 is our latest official '
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
+            yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and
+are provided as a convenience, without any warantee.'''
+            yieldUnescaped '''<p><pre>Apache Groovy is an effort undergoing incubation at The Apache Software
+Foundation (ASF) sponsored by the Apache Incubator PMC. Incubation is required
+of all newly accepted projects until a further review indicates that the
+infrastructure, communications, and decision making process have stabilized
+in a manner consistent with other successful ASF projects. While incubation
+status is not necessarily a reflection of the completeness or stability of
+the code, it does indicate that the project has yet to be fully endorsed by
+the ASF.</pre></p>
+'''
         }
 
-        version('2.4.3') {
+        version('2.4.4') {
             stable true
-            windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.3-installer.exe'
-        }
-    }
-    distribution('Groovy 2.3') {
-        description {
-            yield 'Groovy 2.3 is still '
-            a(href: 'versioning.html', 'a maintained version')
-            yield ' of Groovy.'
-        }
-
-        version('2.3.11') {
-            //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.3.9-installer.exe'
+            //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.3-installer.exe'
         }
     }
 }

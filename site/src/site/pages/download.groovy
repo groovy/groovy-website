@@ -94,28 +94,28 @@ layout 'layouts/main.groovy', true,
                                         table(width: '100%', class: 'download-table') {
                                             tr {
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-binary-${pkg.version}.zip") {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-binary-${pkg.version}.zip") {
                                                         i(class: 'fa fa-gears fa-4x') {}
                                                         br()
                                                         yield 'binary'
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-src-${pkg.version}.zip") {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-src-${pkg.version}-incubating.zip") {
                                                         i(class: 'fa fa-code fa-4x') {}
                                                         br()
                                                         yield ' source'
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-docs-${pkg.version}.zip") {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-docs-${pkg.version}.zip") {
                                                         i(class: 'fa fa-file-text fa-4x') {}
                                                         br()
                                                         yield ' documentation'
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/groovy-sdk-${pkg.version}.zip") {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-sdk-${pkg.version}.zip") {
                                                         i(class: 'fa fa-file-zip-o fa-4x') {}
                                                         br()
                                                         yield ' SDK bundle'

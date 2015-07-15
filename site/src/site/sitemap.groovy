@@ -39,6 +39,7 @@ pages {
     page 'download', 'download', [category: 'Download', distributions: distributions]
     page 'versioning', 'versioning', [category: 'Download']
     page 'indy', 'indy', [category: 'Download']
+    page 'security', 'security', [category: 'Learn']
     page 'community', 'community', [category: 'Community']
     page 'usergroups', 'usergroups', [category: 'Community', userGroups: usergroups]
     page 'groovy-weekly', 'groovy-weekly', [category: 'Community']

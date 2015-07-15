@@ -1,0 +1,50 @@
+layout 'layouts/main.groovy', true,
+        pageTitle: "The Groovy programming language - Security",
+        mainContent: contents {
+
+            div(id: 'content', class: 'page-1') {
+                div(class: 'row') {
+                    div(class: 'row-fluid') {
+                        div(class: 'col-lg-3') {
+                            ul(class: 'nav-sidebar') {
+                                li(class: 'active') {
+                                    a(href: '#security', "Security updates")
+                                }
+                            }
+                        }
+
+                        div(class: 'col-lg-8 col-lg-pull-0') {
+                            a(name: 'security') {}
+                            h1('Security updates')
+                            p '''Here you can find information about security patches or updates released for Apache Groovy. Note that unless specified otherwise,
+no binary or source patches are available. To obtain a security fix, you need to upgrade to the latest maintained version of Apache Groovy.'''
+                            p '''Releases prior to 2.4.4 were not released under Apache so no official patches for security updates are available for older versions.'''
+                            ul {
+                                li {
+                                    h2 "Groovy 2.4.x vulnerabilities"
+                                    h3 'Fixed in Groovy 2.4.4'
+                                    asciidoc '''
+*Important*: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3253[CVE-2015-3253: Remote execution of untrusted code]
+
+*Description*
+
+When an application has Groovy on classpath and that it uses standard Java serialization mechanims to communicate between servers, or to store local data, it is possible for an attacker to bake a special serialized object that will execute code directly when deserialized. All applications which rely on serialization and do not isolate the code which deserializes objects are subject to this vulnerability.
+
+*Mitigation*
+
+Apache Groovy 2.4.4 is the first and only supported release under the Apache Software Foundation. It is strongly recommanded that all users upgrade to this version. If you cannot upgrade or rely on an older, unsupported version of Groovy, you can apply the following patch on the `MethodClosure` class (`src/main/org/codehaus/groovy/runtime/MethodClosure.java`):
+
+```
+ public class MethodClosure extends Closure {
++    private Object readResolve() {
++        throw new UnsupportedOperationException();
++    }
+```
+'''
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }

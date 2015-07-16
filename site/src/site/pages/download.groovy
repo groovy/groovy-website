@@ -45,7 +45,7 @@ layout 'layouts/main.groovy', true,
                             def linkVersionToDownload = distributions.collect { it.packages }.flatten().find { it.stable }.version
                             button(id: 'big-download-button', type: 'button', class: 'btn btn-default',
                                     title: "Download Groovy ${linkVersionToDownload}",
-                                    onclick: "window.location.href=\"http://dl.bintray.com/groovy/maven/groovy-sdk-${linkVersionToDownload}.zip\"") {
+                                    onclick: "window.location.href=\"http://dl.bintray.com/groovy/maven/apache-groovy-sdk-${linkVersionToDownload}.zip\"") {
                                 i(class: 'fa fa-download') {}
                                 yield ' Download'
                             }

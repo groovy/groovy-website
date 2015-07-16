@@ -101,7 +101,7 @@ documentation {
 
     section('Groovy module guides', 'fa-cubes') {
         item 'Parsing and producing JSON',          'json',             'json-userguide'
-        item 'Working with a relational database',  'databases',        'databases'
+        item 'Working with a relational database',  'databases',        'sql-userguide'
         item 'Processing XML',                      'processing-xml',   'xml-userguide'
         item 'Scripting Ant tasks',                 'scripting-ant',    'ant-builder'
         item 'Template engines',                    'templating',       'template-engines'

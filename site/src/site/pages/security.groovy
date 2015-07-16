@@ -32,7 +32,7 @@ When an application has Groovy on the classpath and that it uses standard Java s
 
 *Mitigation*
 
-Apache Groovy 2.4.4 is the first and only supported release under the Apache Software Foundation. It is strongly recommended that all users upgrade to this version.
+Apache Groovy 2.4.4 is the first and only supported release under the Apache Software Foundation. It is strongly recommended that all users using serialization upgrade to this version.
 If you cannot upgrade or rely on an older, unsupported version of Groovy, you can apply the following patch on the `MethodClosure` class (`src/main/org/codehaus/groovy/runtime/MethodClosure.java`):
 
 ```

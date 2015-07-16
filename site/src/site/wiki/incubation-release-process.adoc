@@ -1,6 +1,6 @@
 = Incubation release process
 Cédric Champeau <cchampeau@apache.org>
-v1.0, June 7, 2015: First version
+v1.1, July 15, 2015: Update after concrete release
 
 :teamcity: http://ci.groovy-lang.org
 :groovy: http://groovy-lang.org
@@ -83,24 +83,37 @@ add your public key to the `KEYS` file, then sign each zip individually. This ca
 gpg --armor --output apache-groovy-src-2.4.4-incubating.zip.asc --detach-sign apache-groovy-src-2.4.4-incubating.zip
 ```
 
-Now you are ready to upload to your *personal* Apache space on people.apache.org. You can use `scp`, but in the end the layout must look like this:
+Now you are ready to upload to the dev space on _dist.apache.org_. First of all, please make sure your local layout
+looks like this:
 
 ```
 |-- KEYS
-|-- distribution
-|   |-- apache-groovy-binary-2.4.4.zip
-|   |-- apache-groovy-binary-2.4.4.zip.asc
-|   |-- apache-groovy-binary-2.4.4.zip.md5
-|   |-- apache-groovy-docs-2.4.4.zip
-|   |-- apache-groovy-docs-2.4.4.zip.asc
-|   |-- apache-groovy-docs-2.4.4.zip.md5
-|   |-- apache-groovy-sdk-2.4.4.zip
-|   |-- apache-groovy-sdk-2.4.4.zip.asc
-|   `-- apache-groovy-sdk-2.4.4.zip.md5
-`-- sources
-    |-- apache-groovy-src-2.4.4-incubating.zip
-    |-- apache-groovy-src-2.4.4-incubating.zip.asc
-    `-- apache-groovy-src-2.4.4-incubating.zip.md5
+|-- 2.4.4-incubating
+|     |
+|     -- distribution
+|     |  |-- apache-groovy-binary-2.4.4.zip
+|     |  |-- apache-groovy-binary-2.4.4.zip.asc
+|     |  |-- apache-groovy-binary-2.4.4.zip.md5
+|     |  |-- apache-groovy-docs-2.4.4.zip
+|     |  |-- apache-groovy-docs-2.4.4.zip.asc
+|     |  |-- apache-groovy-docs-2.4.4.zip.md5
+|     |  |-- apache-groovy-sdk-2.4.4.zip
+|     |  |-- apache-groovy-sdk-2.4.4.zip.asc
+|     |  `-- apache-groovy-sdk-2.4.4.zip.md5
+|     |-- sources
+         |-- apache-groovy-src-2.4.4-incubating.zip
+         |-- apache-groovy-src-2.4.4-incubating.zip.asc
+         `-- apache-groovy-src-2.4.4-incubating.zip.md5
+```
+
+Then you need to perform the upload:
+
+```
+svn https://dist.apache.org/repos/dist/dev/incubator/groovy groovy-release
+cd groovy-release
+cp -r ../path/to/local/groovy/<version> .
+svn add <version>
+svn ci <version>
 ```
 
 == Push the tag and new HEAD
@@ -125,9 +138,9 @@ The changelog for this release can be found here: https://issues.apache.org/jira
 
 Tag: https://git1-us-west.apache.org/repos/asf?p=incubator-groovy.git;a=tag;h=19f70958f39f0cc5c6b4d3e9471fd297400647d2
 
-The artifacts to be voted on are located here: http://people.apache.org/~cchampeau/groovy/
+The artifacts to be voted on are located here: https://dist.apache.org/repos/dist/dev/incubator/groovy/
 
-Release artifacts are signed with the following key: http://people.apache.org/~cchampeau/groovy/KEYS
+Release artifacts are signed with the following key: https://dist.apache.org/repos/dist/dev/incubator/groovy/KEYS
 
 Please vote on releasing this package as Apache Groovy 2.4.4-incubating.
 
@@ -142,3 +155,109 @@ Here is my vote:
 +1 (binding)
 ```
 
+After 72h, send another email summarizing the result of the vote. If it passed, you *must* send another vote to
+`general@incubator.apache.org` to ask the IPMC to vote:
+
+```
+Hi all!
+
+The Apache Groovy PPMC has successfully voted the release of Apache Groovy 2.4.4-incubating [1], with 6 "+1" binding votes, one "+1" non binding, no "0" votes and one "-1" vote (see the explanation below). We are now asking the IPMC to vote it too. Since it is our first release under the Apache Software Foundation umbrella, let me give a few more details:
+
+<decription of the release>
+
+Vote on dev list: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201507.mbox/%3CCADQzvm%3DzDNCxpOua3LQ1ZNo62Aq40QZM7SJwgER5MfkArWrTeA%40mail.gmail.com%3E
+Result of vote on dev list: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201507.mbox/%3CCADQzvmn1yEMMz_ZaCL5QqqUtQJdgd0NNcy8v7BVY8Lt4Uog0Zg%40mail.gmail.com%3E
+Relicensing of the documentation tracking: https://issues.apache.org/jira/browse/GROOVY-7470
+Vote for relicensing the docs: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201506.mbox/%3CCADQzvm%3DMfajQuMxoZJmpLe%2B4W22a_MDY_dC4W%2BNMWiakEEOyNg%40mail.gmail.com%3E
+Result of vote for relicensing the docs: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201506.mbox/%3CCADQzvmkQyOEk3ofOrnTHfnvTKO5xECY87hKAGf5pD%2BuePyA8UA%40mail.gmail.com%3E
+
+The changelog for this release can be found here: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12318123&version=12331941
+
+Tag for the release: https://git1-us-west.apache.org/repos/asf?p=incubator-groovy.git;a=commit;h=716b0b1bd56eeab04e4441eecc91c2cd8bfda8b6
+<https://git1-us-west.apache.org/repos/asf?p=incubator-groovy.git;a=tag;h=19f70958f39f0cc5c6b4d3e9471fd297400647d2>
+
+The artifacts to be voted on are located here: https://dist.apache.org/repos/dist/dev/incubator/groovy/
+
+Release artifacts are signed with the following keys: https://dist.apache.org/repos/dist/dev/incubator/groovy/KEYS
+
+Vote is open for at least 72 hours. Artifacts will be moved to dist as soon as the vote passes.
+
+[ ] +1, release Apache Groovy 2.4.4-incubating
+[ ] 0, I don't care
+[ ] -1, because...
+```
+
+If the vote passes:
+
+== Publish the release
+
+* Open `https://bintray.com/groovy/maven/groovy/2.4.4` and click `Publish` on the notice message (something like `ou have 532 unpublished item(s) for this version (expiring in 21 hours)`)
+* Perform Maven Central synchronization: on https://bintray.com/groovy/maven/groovy/2.4.4/view?sort=&order=#central[this page (update the link to the appropriate version)], click 'sync'. This step may take several minutes to complete.
+* Update the documentation symlinks on the website. You need credentials on the server:
+```
+cd /var/www/docs/docs
+rm -f latest
+ln -s groovy-2.4.4 latest
+```
+* Publish to GVM. Open http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_GvmPublish[the publish configuration], click on the 3 dots near `run` then on the _parameters_ tab, fill
+in the `groovyVersion` parameter. Click on `run build`.
+* if the release is NOT a beta or a release candidate, make it the default version on GVM. Open http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_GvmMakeDefault[the GVM make default configuration], click on the 3 dots near `run` then on the _parameters_ tab, fill
+in the `groovyVersion` parameter. Click on `run build`.
+
+== Update the web site
+
+If you don't have it locally, checkout `https://github.com/groovy/groovy-website`.
+
+* Update the https://github.com/melix/groovy-website/blob/master/site/src/site/sitemap.groovy[site map] to include the newly released version.
+* Push the changes
+* Wait for the http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_Website[CI website deployment build] to complete.
+
+== Send an announcement email
+
+You should wait 24h before doing this (in order for `dist.apache.org` to be properly mirrored).
+Send an email to `dev@`, `user@` and `announce@apache.org`.
+
+You can use this template. Please make sure that the email at least contains the DISCLAIMER:
+
+```
+Dear community,
+
+We are pleased to announce the first release of Apache Groovy done under the Apache Software Foundation
+Incubator sponsorship! Apache Groovy is a multi-facet programming language for the JVM. Details can be
+found at http://groovy-lang.org
+
+This release is a maintenance release of the 2.4.x branch, but contains critical fixes, in particular a fix
+for a 0-day vulnerability. Details can be found on http://groovy-lang.org/security.html
+
+It is strongly encouraged that all users upgrade to this version. There is no plan to provide patches for
+older versions of Groovy which were not developped under the Foundation umbrella.
+
+Changelog for this version can be found at: http://groovy-lang.org/changelogs/changelog-2.4.4.html
+Sources can be downloaded from: http://www.groovy-lang.org/download.html
+Convenience binaries, SDK and documentation can be found at: http://www.groovy-lang.org/download.html
+
+We would like to thank all people who contributed to this release. In particular, thanks to our mentors who are
+having hard days at explaining the Apache Way :) Despite comments we received about this release, we felt that
+the security issue is so important that we deserved this to our community.
+
+Best regards,
+
+----
+DISCLAIMER
+
+Apache Groovy is an effort undergoing incubation at the Apache
+Software Foundation (ASF), sponsored by the Apache Incubator PMC.
+
+Incubation is required of all newly accepted projects until a further
+review indicates that the infrastructure, communications, and decision
+making process have stabilized in a manner consistent with other
+successful ASF projects.
+
+While incubation status is not necessarily a reflection of the
+completeness or stability of the code, it does indicate that the
+project has yet to be fully endorsed by the ASF.
+
+```
+
+* Broadcast the release on GVM. Open http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_BintrayIntegration_GvmBroadcast[the GVM broadcast configuration], click on the 3 dots near `run` then on the _parameters_ tab, fill
+in the `groovyVersion` parameter. Click on `run build`.

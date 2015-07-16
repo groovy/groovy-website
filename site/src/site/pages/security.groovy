@@ -28,11 +28,12 @@ no binary or source patches are available. To obtain a security fix, you need to
 
 *Description*
 
-When an application has Groovy on classpath and that it uses standard Java serialization mechanims to communicate between servers, or to store local data, it is possible for an attacker to bake a special serialized object that will execute code directly when deserialized. All applications which rely on serialization and do not isolate the code which deserializes objects are subject to this vulnerability.
+When an application has Groovy on the classpath and that it uses standard Java serialization mechanim to communicate between servers, or to store local data, it is possible for an attacker to bake a special serialized object that will execute code directly when deserialized. All applications which rely on serialization and do not isolate the code which deserializes objects are subject to this vulnerability.
 
 *Mitigation*
 
-Apache Groovy 2.4.4 is the first and only supported release under the Apache Software Foundation. It is strongly recommanded that all users upgrade to this version. If you cannot upgrade or rely on an older, unsupported version of Groovy, you can apply the following patch on the `MethodClosure` class (`src/main/org/codehaus/groovy/runtime/MethodClosure.java`):
+Apache Groovy 2.4.4 is the first and only supported release under the Apache Software Foundation. It is strongly recommended that all users upgrade to this version.
+If you cannot upgrade or rely on an older, unsupported version of Groovy, you can apply the following patch on the `MethodClosure` class (`src/main/org/codehaus/groovy/runtime/MethodClosure.java`):
 
 ```
  public class MethodClosure extends Closure {
@@ -40,6 +41,9 @@ Apache Groovy 2.4.4 is the first and only supported release under the Apache Sof
 +        throw new UnsupportedOperationException();
 +    }
 ```
+
+Alternatively, you should make sure to use a custom security policy file (using the standard Java security manager) or make sure that you do not rely on serialization to communicate remotely.
+
 '''
                                 }
                             }

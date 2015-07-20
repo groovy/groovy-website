@@ -44,6 +44,12 @@ If you cannot upgrade or rely on an older, unsupported version of Groovy, you ca
 
 Alternatively, you should make sure to use a custom security policy file (using the standard Java security manager) or make sure that you do not rely on serialization to communicate remotely.
 
+*Credit*
+
+This vulnerability was discovered by:
+
+* cpnrodzc7 working with HP's Zero Day Initiative
+
 '''
                                 }
                             }

@@ -123,7 +123,7 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
             yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and
-are provided as a convenience, without any warantee.'''
+are provided as a convenience, without any warranty.'''
             yieldUnescaped '''<p><pre>Apache Groovy is an effort undergoing incubation at The Apache Software
 Foundation (ASF) sponsored by the Apache Incubator PMC. Incubation is required
 of all newly accepted projects until a further review indicates that the

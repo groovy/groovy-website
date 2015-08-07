@@ -16,7 +16,7 @@ layout 'layouts/main.groovy', true,
                             }
                             article {
                                 p '''
-                                    There are many ways you can help the Groovy development team improve the Groovy programming language.
+                                    There are many ways by which you can help the Groovy development team to improve the Groovy programming language.
                                     And all help is welcome to make a difference, by:
 
                                 '''
@@ -122,10 +122,10 @@ layout 'layouts/main.groovy', true,
                                     yield '''
                                         If you know the area you want to contribute to, this is great, but if you are looking for
                                         some first contributions, the Groovy development team tries to maintain a '''
-                                    a(href: 'https://issues.apache.org/jira/secure/IssueNavigator%21executeAdvanced.jspa?jqlQuery=project%3DGROOVY+and+labels+%3D+contrib+AND+resolution%3DUnresolved&runQuery=true&clear=true', 'list tickets')
+                                    a(href: 'https://issues.apache.org/jira/secure/IssueNavigator%21executeAdvanced.jspa?jqlQuery=project%3DGROOVY+and+labels+%3D+contrib+AND+resolution%3DUnresolved&runQuery=true&clear=true', 'list of tickets')
                                     yield '''
-                                        of possible easy contributions that you could get you started on your journey
-                                        to become of Groovy committer. Just raise your hand on the Groovy developer '''
+                                        of possible easy contributions that could get you started on your journey
+                                        to become a Groovy committer. Just raise your hand on the Groovy developer '''
                                     a(href: 'mailing-lists.html', 'mailing-list')
                                     yield ''' to tell us about your desire to work on that ticket.'''
                                 }
@@ -142,7 +142,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' and you should have an account on '
                                     a(href: 'https://github.com/', 'Github')
                                     yield ' to be able to create '
-                                    a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull requests')
+                                    a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull request')
                                     yield ' with your changes.'
                                 }
                                 p { 

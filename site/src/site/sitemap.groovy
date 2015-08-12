@@ -137,7 +137,7 @@ the ASF.</pre></p>
 
         version('2.4.4') {
             stable true
-            //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.3-installer.exe'
+            windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.4-installer.exe'
         }
     }
 }

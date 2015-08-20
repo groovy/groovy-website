@@ -163,7 +163,7 @@ ecosystem {
 
     project('GPars') {
         description 'The GPars framework offers Java developers intuitive and safe ways to handle Java or Groovy tasks concurrently. Leveraging the enormous flexibility of the Groovy programing language and building on proven Java technologies, we aim to make concurrent programming for multi-core hardware intuitive, robust and enjoyable.'
-        url 'http://gpars.codehaus.org/'
+        url 'http://gpars.github.io/'
         logo 'img/ecosystem/gpars.png'
     }
 
@@ -175,7 +175,7 @@ ecosystem {
 
     project('Griffon') {
         description 'Griffon is an application framework for developing desktop applications in the JVM, with Groovy being the primary language of choice. Inspired by Grails, Griffon follows the Convention over Configuration paradigm, paired with an intuitive MVC architecture and a command line interface.'
-        url 'http://griffon.codehaus.org/'
+        url 'http://griffon-framework.org/'
         logo 'img/ecosystem/griffon.png'
     }
 
@@ -253,14 +253,6 @@ allEvents {
 }
 
 books {
-	
-	book('Falando de Grails') {
-		authors 'Henrique Lobo Weissmann'
-		cover 'img/books/weissmann_groovy_grails.png'
-		url 'http://www.casadocodigo.com.br/products/livro-grails'
-		description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
-	}
-
     book('Groovy in Action, 2nd edition') {
         authors "Dierk König, Guillaume Laforge, Paul King, Cédric Champeau, Hamlet D'Arcy, Erik Pragt, and Jon Skeet"
         cover 'img/books/regina.png'
@@ -287,6 +279,13 @@ books {
         cover 'img/books/g2cook.jpg'
         url 'http://www.packtpub.com/groovy-2-cookbook/book'
         description 'Over 90 recipes that provide solutions to everyday programming challenges using the powerful features of Groovy 2'
+    }
+    
+    book('Falando de Grails') {
+	authors 'Henrique Lobo Weissmann'
+	cover 'img/books/weissmann_groovy_grails.png'
+	url 'http://www.casadocodigo.com.br/products/livro-grails'
+	description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
     }
 
     book('Groovy for Domain-Specific Languages') {

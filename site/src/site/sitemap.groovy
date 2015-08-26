@@ -362,6 +362,10 @@ usergroups {
         location 'North-America/United States'
         url 'http://www.dcgroovy.org'
     }
+    userGroup('Pittsburgh Groovy Programming') {
+    	location 'North-America/United States'
+    	url 'http://www.meetup.com/Pittsburgh-Groovy-Programming/'
+    }
 
     // South-America
     userGroup('Grails Brasil - Groovy and Grails users group of Brazil') {

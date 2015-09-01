@@ -27,6 +27,7 @@ layout 'layouts/main.groovy', true,
                                         td 'high volume list for questions and general discussion about Groovy'
                                         td { a(href: 'mailto:users-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                         td { a(href: 'http://mail-archives.apache.org/mod_mbox/incubator-groovy-users/', 'Archive') }
+                                        td { a(href: 'mailto:users-unsubscribe@groovy.incubator.apache.org', 'Unsubscribe') }
                                     }
                                     tr {
                                         td {
@@ -35,6 +36,7 @@ layout 'layouts/main.groovy', true,
                                         td 'medium volume list useful for those interested in ongoing developments'
                                         td { a(href: 'mailto:dev-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                         td { a(href: 'http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/', 'Archive') }
+                                        td { a(href: 'mailto:dev-unsubscribe@groovy.incubator.apache.org', 'Unsubscribe') }
                                     }
                                     tr {
                                         td {
@@ -43,6 +45,7 @@ layout 'layouts/main.groovy', true,
                                         td 'medium volume list that logs commits'
                                         td { a(href: 'mailto:commits-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                         td { a(href: 'http://mail-archives.apache.org/mod_mbox/incubator-groovy-commits/', 'Archive') }
+                                        td { a(href: 'mailto:commits-unsubscribe@groovy.incubator.apache.org', 'Unsubscribe') }
                                     }
                                     tr {
                                         td {
@@ -51,6 +54,7 @@ layout 'layouts/main.groovy', true,
                                         td 'high volume list for JIRA and Github notifications'
                                         td { a(href: 'mailto:notifications-subscribe@groovy.incubator.apache.org', 'Subscribe') }
                                         td { a(href: 'http://mail-archives.apache.org/mod_mbox/incubator-groovy-notifications/', 'Archive') }
+                                        td { a(href: 'mailto:notifications-unsubscribe@groovy.incubator.apache.org', 'Unsubscribe') }
                                     }
                                 }
                                 hr(class: 'divider')

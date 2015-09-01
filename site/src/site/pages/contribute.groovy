@@ -16,7 +16,7 @@ layout 'layouts/main.groovy', true,
                             }
                             article {
                                 p '''
-                                    There are many ways by which you can help the Groovy development team to improve the Groovy programming language.
+                                    There are many ways you can help the Groovy development team to improve the Groovy programming language.
                                     And all help is welcome to make a difference, by:
 
                                 '''
@@ -142,7 +142,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' and you should have an account on '
                                     a(href: 'https://github.com/', 'Github')
                                     yield ' to be able to create '
-                                    a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull request')
+                                    a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull requests')
                                     yield ' with your changes.'
                                 }
                                 p { 

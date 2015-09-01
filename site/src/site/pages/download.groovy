@@ -275,7 +275,7 @@ layout 'layouts/main.groovy', true,
                                     table(class: 'table') {
                                         thead {
                                             tr {
-                                                th 'Groovy Branch'
+                                                th 'Groovy'
                                                 th 'JVM Required (non-indy)'
                                                 th 'JVM Required (indy) *'
                                             }
@@ -283,22 +283,22 @@ layout 'layouts/main.groovy', true,
                                         tbody {
                                             tr {
                                                 td { b '2.3 - current' }
-                                                td '1.6'
-                                                td '1.7'
+                                                td '1.6+'
+                                                td '1.7+'
                                             }
                                             tr {
                                                 td { b '2.0 - 2.2' }
-                                                td '1.5'
-                                                td '1.7'
+                                                td '1.5+'
+                                                td '1.7+'
                                             }
                                             tr {
                                                 td { b '1.6 - 1.8' }
-                                                td '1.5'
+                                                td '1.5+'
                                                 td 'N/A'
                                             }
                                             tr {
                                                 td { b '1.0 - 1.5' }
-                                                td '1.4'
+                                                td '1.4+'
                                                 td 'N/A'
                                             }
                                         }

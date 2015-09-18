@@ -62,9 +62,9 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
-                                    a(href: 'http://gvmtool.net', 'GVM (Groovy enVironment Manager)')
+                                    a(href: 'http://sdkman.io/', 'SDKMAN (The Software Development Kit Manager)')
                                     yield ' to download and configure any Groovy version of your choice. Basic '
-                                    a(href: '#gvm', 'instructions')
+                                    a(href: '#sdkman', 'instructions')
                                     yield ' can be found below. '
                                     br()
                                     yield 'Windows users can use '
@@ -156,23 +156,23 @@ layout 'layouts/main.groovy', true,
 
                             hr(class: 'divider')
 
-                            a(name: 'gvm') {}
+                            a(name: 'sdkman') {}
                             article {
-                                h1 'GVM (the Groovy enVironment Manager)'
+                                h1 'SDKMAN (The Software Development Kit Manager)'
                                 p {
                                     yield 'This tool makes installing Groovy on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.'
                                     br()
                                     yield 'Simply open a new terminal and enter:'
                                 }
-                                pre { code '$ curl -s get.gvmtool.net | bash' }
+                                pre { code '$ curl -s get.gvm.io | bash' }
                                 p {
                                     yield 'Follow the instructions on-screen to complete installation.'
                                     br()
                                     yield 'Open a new terminal or type the command:'
                                 }
-                                pre { code '$ source "$HOME/.gvm/bin/gvm-init.sh"' }
+                                pre { code '$ source "$HOME/.sdkman/bin/sdkman-init.sh"' }
                                 p 'Then install the latest stable Groovy:'
-                                pre { code '$ gvm install groovy' }
+                                pre { code '$ sdk install groovy' }
                                 p 'After installation is complete and you\'ve made it your default version, test it with:'
                                 pre { code '$ groovy -version' }
                                 p 'That\'s all there is to it!'

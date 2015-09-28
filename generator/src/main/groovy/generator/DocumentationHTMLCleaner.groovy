@@ -20,7 +20,8 @@ class DocumentationHTMLCleaner {
      * A list of links which are badly generated, but we know how to fix them
      */
     private final static Map<String,String> KNOWN_REPLACEMENTS = [
-        /docs\.groovy-lang\.org\/(latest|next)\/html\/documentation\/gdk\.html/: 'groovy-lang.org/gdk.html'
+        /docs\.groovy-lang\.org\/(latest|next)\/html\/documentation\/gdk\.html/: 'groovy-lang.org/gdk.html',
+        /\/maven\/groovy-/: '/maven/apache-groovy-'
     ]
 
     private static String cleanupPage(String location) {

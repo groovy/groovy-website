@@ -11,6 +11,7 @@ menu {
         item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/apache/incubator-groovy'
         item 'Build status',                'buildstatus.html'
+        item 'Security',                    'http://www.apache.org/security/'
         item 'Books',                       'learn.html#books'
         item 'Sponsors',                    'sponsors.html'
         item 'FAQ',                         'faq.html'

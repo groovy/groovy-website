@@ -254,8 +254,8 @@ allEvents {
 }
 
 books {
-    book('Groovy in Action, 2nd edition') {
-        authors "Dierk König, Guillaume Laforge, Paul King, Cédric Champeau, Hamlet D'Arcy, Erik Pragt, and Jon Skeet"
+    book('Groovy in Action, Second Edition') {
+        authors "Dierk König, Paul King, Guillaume Laforge, Hamlet D'Arcy, Cédric Champeau, Erik Pragt, and Jon Skeet"
         cover 'img/books/regina.png'
         url 'http://www.manning.com/koenig2/'
         description 'The undisputed definitive reference on the Groovy programming language, authored by core members of the development team.'

@@ -289,11 +289,11 @@ books {
 	description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
     }
 
-    book('Groovy for Domain-Specific Languages') {
+    book('Groovy for Domain-Specific Languages - Second Edition') {
         authors 'Fergal Dearle'
         cover 'img/books/gdsl.jpg'
-        url 'http://www.packtpub.com/groovy-for-domain-specific-languages-dsl/book'
-        description 'Enhance and extend your Java applications with Domain-Specific Languages in Groovy'
+        url 'https://www.packtpub.com/application-development/groovy-domain-specific-languages-second-edition'
+        description 'Extend and enhance your Java applications with domain-specific scripting in Groovy'
     }
 
     book('Groovy Goodness Notebook') {

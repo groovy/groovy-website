@@ -47,7 +47,7 @@ pages {
     page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
     page 'mailing-lists', 'mailing-lists', [category: 'Community']
     page 'contribute', 'contribute', [category: 'Community']
-    page 'sponsors', 'sponsors', [category: 'Community']
+    page 'thanks', 'thanks', [category: 'Community']
     page 'buildstatus', 'buildstatus', [category: 'Community']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
     page 'events', 'events', [category: 'Community', allEvents: allEvents]

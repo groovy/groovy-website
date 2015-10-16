@@ -12,7 +12,7 @@ layout 'layouts/main.groovy', true,
                             include template: 'includes/contribute-button.groovy'
                             h1 {
                                 i(class: 'fa fa-building-o') {}
-                                yield ' Sponsors'
+                                yield ' Thanks'
                             }
                             article {
                                 p "Apache Groovy is generously sponsored by several companies:"

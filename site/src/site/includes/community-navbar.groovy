@@ -3,7 +3,7 @@ ul(class: 'nav-sidebar') {
     [
             'community': 'Community',
             'contribute': 'Contribute',
-            'sponsors': 'Sponsors',
+            'thanks': 'Thanks',
             'mailing-lists': 'Mailing-lists',
             'events': 'Events',
             'usergroups': 'User groups',

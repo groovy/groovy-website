@@ -306,8 +306,9 @@ books {
 
 usergroups {
     // Europe
-    userGroup('Aarhus Groovy & Grails meetup - no homepage yet') {
+    userGroup('Aarhus Groovy & Grails Meetup') {
         location 'Europe/Denmark'
+        url 'https://www.linkedin.com/grps/Groovy-Grails-Meetup-Aarhus-3702945/'
     }
     userGroup('Groovy & Grails Israel User Group') {
         location 'Europe/Israel'

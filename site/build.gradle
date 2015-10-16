@@ -71,7 +71,9 @@ task checkDeadLinks(dependsOn: generateSite) {
             'http://issues.apache.org/jira',
             'https://issues.apache.org/jira',
             'target.html',
+            'foo.html',
             'http://www.acme.com/cars',
+            'http://localhost:8080/groovy/hello.groovy'
     ]
 
     doLast {

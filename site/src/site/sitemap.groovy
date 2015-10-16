@@ -283,10 +283,10 @@ books {
     }
     
     book('Falando de Grails') {
-	authors 'Henrique Lobo Weissmann'
-	cover 'img/books/weissmann_groovy_grails.png'
-	url 'http://www.casadocodigo.com.br/products/livro-grails'
-	description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
+        authors 'Henrique Lobo Weissmann'
+        cover 'img/books/weissmann_groovy_grails.png'
+        url 'http://www.casadocodigo.com.br/products/livro-grails'
+        description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
     }
 
     book('Groovy for Domain-Specific Languages - Second Edition') {
@@ -306,10 +306,6 @@ books {
 
 usergroups {
     // Europe
-    userGroup('Belgium Groovy/Grails User Group') {
-        location 'Europe/Belgium'
-        url 'http://www.meetup.com/Belgium-Groovy-Grails-User-Group/'
-    }
     userGroup('Aarhus Groovy & Grails meetup - no homepage yet') {
         location 'Europe/Denmark'
     }
@@ -343,17 +339,9 @@ usergroups {
         location 'North-America/United States'
         url 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/'
     }
-    userGroup('Groovy and Grails Users of Columbus OH') {
-        location 'North-America/United States'
-        url 'http://www.meetup.com/Grails-and-Ales/'
-    }
     userGroup('NYC Groovy / Grails Meetup') {
         location 'North-America/United States'
         url 'http://www.meetup.com/grails/'
-    }
-    userGroup('Scottsdale Groovy Brigade') {
-        location 'North-America/United States'
-        url 'http://www.scottsdale-groovy.com/'
     }
     userGroup('Coder Consortium of Sacramento') {
         location 'North-America/United States'
@@ -364,8 +352,8 @@ usergroups {
         url 'http://www.dcgroovy.org'
     }
     userGroup('Pittsburgh Groovy Programming') {
-    	location 'North-America/United States'
-    	url 'http://www.meetup.com/Pittsburgh-Groovy-Programming/'
+        location 'North-America/United States'
+        url 'http://www.meetup.com/Pittsburgh-Groovy-Programming/'
     }
 
     // South-America

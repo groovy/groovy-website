@@ -310,6 +310,10 @@ usergroups {
         location 'Europe/Denmark'
         url 'https://www.linkedin.com/grps/Groovy-Grails-Meetup-Aarhus-3702945/'
     }
+    userGroup('Berlin Groovy User Group') {
+        location 'Europe/Germany'
+        url 'http://www.meetup.com/de/Berlin-Groovy-User-Group/'
+    }
     userGroup('Groovy & Grails Israel User Group') {
         location 'Europe/Israel'
         url 'http://www.meetup.com/Groovy-Grails-Israel-Meetup-Group/'
@@ -323,8 +327,8 @@ usergroups {
         url 'http://www.meetup.com/madrid-gug/'
     }
     userGroup('Dutch Groovy and Grails User Group (NLGUG)') {
-    	location 'Europe/The Netherlands'
-    	url 'http://www.meetup.com/nl-gug/'
+        location 'Europe/The Netherlands'
+        url 'http://www.meetup.com/nl-gug/'
     }
 
     // North-America

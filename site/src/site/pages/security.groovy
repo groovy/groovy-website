@@ -32,7 +32,7 @@ When an application has Groovy on the classpath and that it uses standard Java s
 
 *Mitigation*
 
-Apache Groovy 2.4.4 is the first and only supported release under the Apache Software Foundation. It is strongly recommended that all users using serialization upgrade to this version.
+Apache Groovy 2.4.4 is the first supported release under the Apache Software Foundation. It is strongly recommended that all users using serialization upgrade to this version.
 If you cannot upgrade or rely on an older, unsupported version of Groovy, you can apply the following patch on the `MethodClosure` class (`src/main/org/codehaus/groovy/runtime/MethodClosure.java`):
 
 ```
@@ -50,6 +50,15 @@ This vulnerability was discovered by:
 
 * cpnrodzc7 working with HP's Zero Day Initiative
 
+'''
+                                }
+                                li {
+                                    h2 "Reporting problems"
+                                    asciidoc '''
+The Apache Software Foundation takes a very active stance in eliminating security problems in its software products.
+If you have questions about how to configure or use Groovy securely, you should send them to the users ${$a(href: 'mailing-lists.html', 'mailing list')}.
+If you find any security problems due to bugs in Groovy software, you should raise issues in the ${$a(href: 'contribute.html#reporting-issues', 'bug tracker')}.
+The Apache Software Foundation has a dedicated http://www.apache.org/security/[security team] which you may contact should the need arise.
 '''
                                 }
                             }

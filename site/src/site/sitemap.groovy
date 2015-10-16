@@ -311,6 +311,9 @@ usergroups {
         location 'Europe/Denmark'
         url 'https://www.linkedin.com/grps/Groovy-Grails-Meetup-Aarhus-3702945/'
     }
+    userGroup('Paris Groovy Grails User Group') {
+         location 'Europe/France'
+    }
     userGroup('Berlin Groovy User Group') {
         location 'Europe/Germany'
         url 'http://www.meetup.com/de/Berlin-Groovy-User-Group/'

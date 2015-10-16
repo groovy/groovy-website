@@ -203,7 +203,7 @@ integers should be expected to be supported shortly.
 [[Groovy18releasenotes-GParsbundledwithintheGroovydistribution]]
 == GPars bundled within the Groovy distribution
 
-The http://gpars.codehaus.org[GPars] project offers developers new
+The http://gpars.github.io[GPars] project offers developers new
 intuitive and safe ways to handle Java or Groovy tasks concurrently,
 asynchronously, and distributed by utilizing the power of the Java
 platform and the flexibility of the Groovy language. Groovy 1.8 now
@@ -213,7 +213,7 @@ you can leverage all the features of the library for +
 all the Groovy goodness.
 
 To learn more about GPars, head over to the
-http://gpars.codehaus.org/[GPars website], read the
+http://gpars.github.io/[GPars website], read the
 http://gpars.org/guide/index.html[detailed online user guide], or check
 out chapter 17 of http://www.manning.com/koenig2[Groovy in Action, 2nd
 Edition (MEAP)].
@@ -297,7 +297,7 @@ assert times3plus2(3) == (times3 >> plus2)(3)
 
 To see more examples of Closure composition and reverse composition,
 please have a look at our
-http://svn.codehaus.org/groovy/trunk/groovy/groovy-core/src/test/groovy/ClosureComposeTest.groovy[test
+https://github.com/apache/incubator-groovy/blob/master/src/test/groovy/ClosureComposeTest.groovy[test
 case].
 
 [[Groovy18releasenotes-Closuretrampoline]]
@@ -439,7 +439,7 @@ doc.commits.message.each { println it }
 
 If you want to see some more examples of the usage of the JSON parser,
 you can have a look at the
-http://svn.codehaus.org/groovy/branches/GROOVY_1_8_X/src/test/groovy/json/JsonSlurperTest.groovy[JsonSlurper
+https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/json/JsonSlurperTest.groovy[JsonSlurper
 tests] in our code base.
 
 [[Groovy18releasenotes-JSONbuilder]]
@@ -472,7 +472,7 @@ Will create the JSON output:
 ------------------------------------------------------------------
 
 You can find some more usages of the JSON builder in our
-http://svn.codehaus.org/groovy/branches/GROOVY_1_8_X/src/test/groovy/json/JsonBuilderTest.groovy[JsonBuilder
+https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/json/JsonBuilderTest.groovy[JsonBuilder
 tests].
 
 [[Groovy18releasenotes-PrettyprintingJSONcontent]]
@@ -1525,7 +1525,7 @@ with their URLs:
 
 ----------------------------------------
 Grails     (http://grails.org)
-Griffon    (http://griffon.codehaus.org)
+Griffon    (http://griffon-framework.org)
 ----------------------------------------
 
 [[Groovy18releasenotes-StoringASTnodemetadata]]

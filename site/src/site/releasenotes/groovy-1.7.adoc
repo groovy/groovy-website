@@ -3,8 +3,8 @@
 
 Before diving directly into the new features in Groovy 1.7, please let
 me mention the great progress made in terms of IDE support for Groovy
-(and also for http://griffon.codehaus.org/[Griffon],
-http://gradle.org/[Gradle], http://gant.codehaus.org/[Gant] or
+(and also for http://griffon-framework.org/[Griffon],
+http://gradle.org/[Gradle], https://gant.github.io/[Gant] or
 http://grails.org/[Grails]). All the major IDEs (Eclipse,
 http://www.jetbrains.com/idea/features/groovy_grails.html[IntelliJ
 IDEA], http://wiki.netbeans.org/Groovy[NetBeans]) provide an excellent

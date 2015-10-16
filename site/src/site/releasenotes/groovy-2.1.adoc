@@ -415,7 +415,7 @@ more complete documentation of the various extension points and utility
 methods going forward.
 
 For more details take a look at
-the link:http://docs.codehaus.org/display/GROOVY/Type+checking+extensions[type checking extensions documentation].
+the link:http://docs.groovy-lang.org/latest/html/documentation/type-checking-extensions.html[type checking extensions documentation].
 
 [[Groovy21releasenotes-Compile-time-Meta-annotations]]
 == Compile-time Meta-annotations
@@ -691,7 +691,7 @@ The full example can be found in this Gist on
 Github: https://gist.github.com/4563430
 
 Additional details can be found in the
-link:http://docs.codehaus.org/display/GROOVY/Meta-annotations[meta-annotations documentation].
+link:http://www.groovy-lang.org/objectorientation.html#_meta_annotations[meta-annotations documentation].
 
 [[Groovy21releasenotes-Compilationcustomization]]
 == Compilation customization
@@ -889,7 +889,7 @@ org.codehaus.groovy.control.customizers.builder package to learn more
 about them.
 
 More details can be found in the
-link:http://docs.codehaus.org/display/GROOVY/Advanced+compiler+configuration[advanced compiler configuration documentation].
+link:http://www.groovy-lang.org/dsls.html#compilation-customizers[compilation customizers documentation].
 
 [[Groovy21releasenotes-OtherMinorEnhancements]]
 == Other Minor Enhancements
@@ -908,7 +908,7 @@ There is now a `closeStreams()` method for `Process` objects.
 [[Groovy21releasenotes-GroovyDoc]]
 === GroovyDoc
 
-You ca now explicitly set a file encoding.
+You can now explicitly set a file encoding.
 
 [[Groovy21releasenotes-Command-line]]
 === Command-line

@@ -7,7 +7,7 @@ converted transparently by Java to interface types that contain one
 single abstract method. With Groovy closures, except for a few cases, we
 have to explicitly use the as operator to do the coercion. In Groovy
 2.2, we are allowing the
-same link:http://docs.codehaus.org/display/GroovyJSR/GEP+12+-+SAM+coercion[transparent closure coercion] 
+same link:http://docs.groovy-lang.org/latest/html/documentation/core-semantics.html#closure-coercion[transparent closure coercion] 
 to happen, but without the explicit as type coercion,
 and furthermore, we make it possible to work as well with abstract
 classes as well.
@@ -83,10 +83,10 @@ faster when downloading dependencies for the first time.
 == Define base script classes with an annotation
 
 All scripts usually extend
-the kink:http://groovy.codehaus.org/api/groovy/lang/Script.html[groovy.lang.Script] abstract
+the link:http://docs.groovy-lang.org/latest/html/api/groovy/lang/Script.html[groovy.lang.Script] abstract
 class, but it’s possible to set up our own base script class extending
 Script
-through link:http://groovy.codehaus.org/api/org/codehaus/groovy/control/CompilerConfiguration.html[CompilerConfiguration].
+through link:http://docs.groovy-lang.org/latest/html/api/org/codehaus/groovy/control/CompilerConfiguration.html[CompilerConfiguration].
 A new AST transformation is introduced in Groovy 2.2 which allows you to
 define the base script class as follows:
 

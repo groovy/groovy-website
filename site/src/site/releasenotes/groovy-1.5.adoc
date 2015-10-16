@@ -1,4 +1,4 @@
-http://groovy.codehaus.org/[Groovy], the Java-like dynamic language for
+Groovy, the Java-like dynamic language for
 the JVM, matures over time like good wines. After the successful release
 of Groovy 1.0 in January 2007, the next major milestone with the 1.5
 label already hits the shelves. With it, come several interesting
@@ -547,8 +547,7 @@ at Codehaus which allows you to build your Java / Groovy applications:
 compile your Groovy and Java code, generate documentation from the
 JavaDoc tags, or it even lets you write your own Maven plugins in
 Groovy. There is also a Maven archetype to bootstrap your Groovy project
-more rapidly. For more information, you may have a look at the
-documentation of the plugin: http://mojo.codehaus.org/groovy/index.html
+more rapidly.
 
 [[Groovy15releasenotes-TheGroovyDocdocumentationtool]]
 === The GroovyDoc documentation tool
@@ -598,7 +597,7 @@ line editing capabilities. You can work with different script buffers,
 remember already imported classes, load existing scripts, save the
 current script to a file, browse the history, etc. For detailed
 explanations of the supported features, please have a look at
-thehttp://groovy.codehaus.org/Groovy+Shel[documentation].
+the http://www.groovy-lang.org/groovysh.html[documentation].
 
 The command-line shell isn’t the only one that received some care, the
 Swing console has also been improved, with a new toolbar, with advanced

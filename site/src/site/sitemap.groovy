@@ -309,10 +309,6 @@ usergroups {
     userGroup('Aarhus Groovy & Grails meetup - no homepage yet') {
         location 'Europe/Denmark'
     }
-    userGroup('Paris Groovy Grails User Group') {
-        location 'Europe/France'
-        url 'http://www.meetup.com/Belgium-Groovy-Grails-User-Group/'
-    }
     userGroup('Groovy & Grails Israel User Group') {
         location 'Europe/Israel'
         url 'http://www.meetup.com/Groovy-Grails-Israel-Meetup-Group/'

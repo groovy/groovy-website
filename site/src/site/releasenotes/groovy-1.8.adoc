@@ -439,7 +439,7 @@ doc.commits.message.each { println it }
 
 If you want to see some more examples of the usage of the JSON parser,
 you can have a look at the
-https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/json/JsonSlurperTest.groovy[JsonSlurper
+https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/groovy/json/JsonSlurperTest.groovy[JsonSlurper
 tests] in our code base.
 
 [[Groovy18releasenotes-JSONbuilder]]

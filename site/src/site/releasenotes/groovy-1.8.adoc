@@ -472,7 +472,7 @@ Will create the JSON output:
 ------------------------------------------------------------------
 
 You can find some more usages of the JSON builder in our
-https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/json/JsonBuilderTest.groovy[JsonBuilder
+https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/groovy/json/JsonBuilderTest.groovy[JsonBuilder
 tests].
 
 [[Groovy18releasenotes-PrettyprintingJSONcontent]]

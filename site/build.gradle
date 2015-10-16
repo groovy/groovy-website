@@ -1,3 +1,8 @@
+import org.apache.http.client.config.RequestConfig
+import org.apache.http.client.methods.CloseableHttpResponse
+import org.apache.http.client.methods.HttpGet
+import org.apache.http.impl.client.CloseableHttpClient
+import org.apache.http.impl.client.HttpClients
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import org.gradle.logging.ConsoleRenderer
@@ -5,6 +10,15 @@ import com.yahoo.platform.yui.compressor.CssCompressor
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor
 import org.apache.tools.ant.filters.BaseFilterReader
 import org.gradle.util.GFileUtils
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.apache.httpcomponents:httpclient:4.5.1'
+    }
+}
 
 ext.watchmode = project.hasProperty('watchmode')?project.getProperty('watchmode'):'false'
 
@@ -52,16 +66,12 @@ task checkDeadLinks(dependsOn: generateSite) {
     outputs.file reportFile
 
     // a collection of links which have either been validated
-    // or cannot be checked securely (false positives) due to user agent restrictions
+    // or are dummy links
     def excludeFromChecks = [
             'http://issues.apache.org/jira',
             'https://issues.apache.org/jira',
-            'http://www.meetup.com',
-            'http://www.dcgroovy.org',
-            'http://www.jroller.com',
             'target.html',
             'http://www.acme.com/cars',
-            'http://www.scottsdale-groovy.com/'
     ]
 
     doLast {
@@ -87,23 +97,25 @@ task checkDeadLinks(dependsOn: generateSite) {
                 logger.debug("Checking URL: $url")
                 def cx = url.openConnection()
                 if (cx instanceof HttpURLConnection) {
-                    cx.connectTimeout = 5000
-                    cx.readTimeout = 5000
-                    cx.requestMethod = 'GET'
+                    CloseableHttpClient httpclient = HttpClients.createDefault()
+                    RequestConfig requestConfig = RequestConfig.custom()
+                            .setSocketTimeout(5_000)
+                            .setConnectTimeout(5_000)
+                            .setConnectionRequestTimeout(5_000)
+                            .build()
+                    HttpGet httpget = new HttpGet(link)
+                    httpget.config = requestConfig
+                    CloseableHttpResponse response
                     try {
-                        cx.connect()
-                        if (cx.responseCode == 404) {
+                        response = httpclient.execute(httpget)
+                        if (response.statusLine.statusCode == 404) {
                             return true
                         }
                     } finally {
-                        cx.disconnect()
+                        response.close()
                     }
                 }
             } catch (e) {
-                if (link.startsWith('https')) {
-                    // workaround to be found
-                    return false
-                }
                 return true
             }
             return false

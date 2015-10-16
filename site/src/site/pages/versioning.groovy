@@ -13,7 +13,7 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'download.html#distro', class: 'anchor-link', 'Distributions')
                                 }
                                 li {
-                                    a(href: 'download.html#gvm', class: 'anchor-link', 'Through GVM')
+                                    a(href: 'download.html#sdkman', class: 'anchor-link', 'Through SDKMAN!')
                                 }
                                 li {
                                     a(href: 'download.html#buildtools', class: 'anchor-link', 'From your build tools')

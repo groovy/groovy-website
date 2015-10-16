@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Sponsors',
+        pageTitle: 'The Groovy programming language - Thanks',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
@@ -15,9 +15,13 @@ layout 'layouts/main.groovy', true,
                                 yield ' Sponsors'
                             }
                             article {
-                                p "The Groovy project is generously sponsored by several companies:"
+                                p "Apache Groovy is generously sponsored by several companies:"
                                 ul {
-                                    li "${$a(href: 'http://incubator.apache.org/projects/groovy.html', 'The Apache Software Foundation Incubator')} sponsors the project"
+                                    li """
+                                        ${$a(href: 'http://incubator.apache.org/projects/groovy.html', 'The Apache Software Foundation Incubator')} sponsors
+                                        the project while we undergo incubation. We want to http://www.apache.org/foundation/thanks.html[thank] the Apache
+                                        Software Foundation and its sponsors for providing support for the Apache Community of open-source software projects.
+                                     """
                                     li """
                                         ${$a(href: 'http://www.jetbrains.com/', 'JetBrains')} cover the cost of our server
                                         which runs our continuous integration server, hosts our documentation and website,
@@ -34,7 +38,7 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p """
                                     Sponsors are a key ingredient of the success of the Groovy project.
-                                    If you consider helping the project in a way or another,
+                                    If you consider helping the project in any way,
                                     please don't hesitate to contact the Groovy development team.
                                     Your help will be most appreciated.
                                 """

@@ -54,12 +54,12 @@ This vulnerability was discovered by:
                                 }
                                 li {
                                     h2 "Reporting problems"
-                                    asciidoc '''
+                                    asciidoc """
 The Apache Software Foundation takes a very active stance in eliminating security problems in its software products.
 If you have questions about how to configure or use Groovy securely, you should send them to the users ${$a(href: 'mailing-lists.html', 'mailing list')}.
 If you find any security problems due to bugs in Groovy software, you should raise issues in the ${$a(href: 'contribute.html#reporting-issues', 'bug tracker')}.
 The Apache Software Foundation has a dedicated http://www.apache.org/security/[security team] which you may contact should the need arise.
-'''
+"""
                                 }
                             }
                         }

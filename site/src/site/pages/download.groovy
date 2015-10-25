@@ -218,7 +218,7 @@ layout 'layouts/main.groovy', true,
                                             }
                                             td {
                                                 code '"$module"'
-                                                yield ' stands for the different optional groovy modules "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx", "json", "jsr223", "servlet", "sql", "swing", "test", "testng" and "xml".'
+                                                yield ' stands for the different optional groovy modules "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx", "json", "jsr223", "nio", "servlet", "sql", "swing", "test", "templates", "testng" and "xml".'
                                                 br()
                                                 yield 'Example: '
                                                 code '&lt;artifactId&gt;groovy-sql&lt;/artifactId&gt;'
@@ -235,10 +235,9 @@ layout 'layouts/main.groovy', true,
                                                 br()
                                                 code '&lt;version&gt;x.y.z&lt;/version&gt;'
                                             }
-                                            td 'The core plus all the modules. Also includes <em>jarjar\'ed</em> versions of Antlr, ASM, Commons-CLI runtime.\n ' +
-                                                    'Allows you or your other dependencies (e.g. Hibernate) to use other versions of these jars.\n ' +
-                                                    'Optional dependencies are marked as optional.\n ' +
-                                                    'You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans, etc.'
+                                            td 'The core plus all the modules. Also includes <em>jarjar\'ed</em> versions of Antlr, ASM, Commons-CLI.\n' +
+                                                    'Optional dependencies are marked as optional.\n' +
+                                                    'You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans...'
                                         }
                                     }
                                 }
@@ -262,6 +261,7 @@ layout 'layouts/main.groovy', true,
                                     pre { code 'sudo port install groovy' }
                                     yield 'If you prefer to live on the bleeding edge, you can also grab the '
                                     a(href: 'https://github.com/apache/incubator-groovy', 'source code from GitHub')
+                                    yield '.'
                                     br()
                                     yield 'If you are an IDE user, you can just grab the latest '
                                     a(href: 'ides.html', 'IDE plugin')

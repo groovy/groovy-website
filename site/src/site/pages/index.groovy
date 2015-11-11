@@ -1,7 +1,7 @@
 import model.Event
 
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language',
+        pageTitle: 'The Grails Framework',
         mainContent: contents {
             div(id: 'band', class: 'band') {
 
@@ -29,6 +29,7 @@ layout 'layouts/main.groovy', true,
                             }
                         }
                     }
+
                 }
             }
             include unescaped: 'html/they-use-groovy.html'

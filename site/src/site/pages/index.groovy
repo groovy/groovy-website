@@ -1,7 +1,7 @@
 import model.Event
 
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Grails Framework',
+        pageTitle: 'The Groovy programming language',
         mainContent: contents {
             div(id: 'band', class: 'band') {
 

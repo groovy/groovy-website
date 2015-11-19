@@ -17,10 +17,10 @@ footer(id: 'footer') {
             div(class: 'col-right') {
                 p {
                     yield "The Groovy programming language"; br()
-                    yield "is supported by "; a(href: 'http://incubator.apache.org/projects/groovy.html', 'Apache Incubator'); br()
+                    yield "is supported by "; a(href: 'http://www.apache.org', 'the Apache Software Foundation'); br()
                     yield "and the Groovy community"; br()
                 }
-                img(src: 'img/egg-logo.png', title: 'Apache Incubator', alt: 'Apache Incubator')
+                img(src: 'img/feather.png', title: 'The Apache Software Foundation', alt: 'The Apache Software Foundation')
             }
         }
         div(class: 'clearfix', "&copy; 2003-${Calendar.instance[Calendar.YEAR]} the Groovy project &mdash; Groovy is Open Source, ${$a(href: 'http://www.apache.org/licenses/LICENSE-2.0.html', 'Apache 2 License')}")

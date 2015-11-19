@@ -18,8 +18,8 @@ layout 'layouts/main.groovy', true,
                                 p "Apache Groovy is generously sponsored by several companies:"
                                 ul {
                                     li """
-                                        ${$a(href: 'http://incubator.apache.org/projects/groovy.html', 'The Apache Software Foundation Incubator')} sponsors
-                                        the project while we undergo incubation. We want to ${$a(href: 'http://www.apache.org/foundation/thanks.html', 'thank')} the Apache
+                                        ${$a(href: 'http://www.apache.org', 'The Apache Software Foundation')} sponsors
+                                        the project. We want to ${$a(href: 'http://www.apache.org/foundation/thanks.html', 'thank')} the Apache
                                         Software Foundation and its sponsors for providing support for the Apache Community of open-source software projects.
                                      """
                                     li """

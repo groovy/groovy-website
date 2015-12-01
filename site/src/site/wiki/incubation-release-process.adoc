@@ -136,7 +136,7 @@ This release includes bugfixes for ...
 
 The changelog for this release can be found here: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12318123&version=12331941
 
-Tag: https://git1-us-west.apache.org/repos/asf?p=incubator-groovy.git;a=tag;h=19f70958f39f0cc5c6b4d3e9471fd297400647d2
+Tag: https://git1-us-west.apache.org/repos/asf?p=groovy.git;a=tag;h=19f70958f39f0cc5c6b4d3e9471fd297400647d2
 
 The artifacts to be voted on are located here: https://dist.apache.org/repos/dist/dev/incubator/groovy/
 
@@ -165,16 +165,16 @@ The Apache Groovy PPMC has successfully voted the release of Apache Groovy 2.4.4
 
 <decription of the release>
 
-Vote on dev list: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201507.mbox/%3CCADQzvm%3DzDNCxpOua3LQ1ZNo62Aq40QZM7SJwgER5MfkArWrTeA%40mail.gmail.com%3E
-Result of vote on dev list: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201507.mbox/%3CCADQzvmn1yEMMz_ZaCL5QqqUtQJdgd0NNcy8v7BVY8Lt4Uog0Zg%40mail.gmail.com%3E
+Vote on dev list: http://mail-archives.apache.org/mod_mbox/groovy-dev/201507.mbox/%3CCADQzvm%3DzDNCxpOua3LQ1ZNo62Aq40QZM7SJwgER5MfkArWrTeA%40mail.gmail.com%3E
+Result of vote on dev list: http://mail-archives.apache.org/mod_mbox/groovy-dev/201507.mbox/%3CCADQzvmn1yEMMz_ZaCL5QqqUtQJdgd0NNcy8v7BVY8Lt4Uog0Zg%40mail.gmail.com%3E
 Relicensing of the documentation tracking: https://issues.apache.org/jira/browse/GROOVY-7470
-Vote for relicensing the docs: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201506.mbox/%3CCADQzvm%3DMfajQuMxoZJmpLe%2B4W22a_MDY_dC4W%2BNMWiakEEOyNg%40mail.gmail.com%3E
-Result of vote for relicensing the docs: http://mail-archives.apache.org/mod_mbox/incubator-groovy-dev/201506.mbox/%3CCADQzvmkQyOEk3ofOrnTHfnvTKO5xECY87hKAGf5pD%2BuePyA8UA%40mail.gmail.com%3E
+Vote for relicensing the docs: http://mail-archives.apache.org/mod_mbox/groovy-dev/201506.mbox/%3CCADQzvm%3DMfajQuMxoZJmpLe%2B4W22a_MDY_dC4W%2BNMWiakEEOyNg%40mail.gmail.com%3E
+Result of vote for relicensing the docs: http://mail-archives.apache.org/mod_mbox/groovy-dev/201506.mbox/%3CCADQzvmkQyOEk3ofOrnTHfnvTKO5xECY87hKAGf5pD%2BuePyA8UA%40mail.gmail.com%3E
 
 The changelog for this release can be found here: https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12318123&version=12331941
 
-Tag for the release: https://git1-us-west.apache.org/repos/asf?p=incubator-groovy.git;a=commit;h=716b0b1bd56eeab04e4441eecc91c2cd8bfda8b6
-<https://git1-us-west.apache.org/repos/asf?p=incubator-groovy.git;a=tag;h=19f70958f39f0cc5c6b4d3e9471fd297400647d2>
+Tag for the release: https://git1-us-west.apache.org/repos/asf?p=groovy.git;a=commit;h=716b0b1bd56eeab04e4441eecc91c2cd8bfda8b6
+<https://git1-us-west.apache.org/repos/asf?p=groovy.git;a=tag;h=19f70958f39f0cc5c6b4d3e9471fd297400647d2>
 
 The artifacts to be voted on are located here: https://dist.apache.org/repos/dist/dev/incubator/groovy/
 

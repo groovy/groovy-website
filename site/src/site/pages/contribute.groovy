@@ -147,7 +147,7 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p { 
                                     yield 'Please fork '
-                                    a(href: 'https://github.com/apache/incubator-groovy', 'https://github.com/apache/incubator-groovy')
+                                    a(href: 'https://github.com/apache/groovy', 'https://github.com/apache/groovy')
                                     yield ' and create a local clone of your fork as explained in '
                                     a(href: 'https://help.github.com/articles/fork-a-repo/', 'fork a repo')
                                     yield '.'
@@ -166,7 +166,7 @@ layout 'layouts/main.groovy', true,
                                 }
                                 p {
                                     yield 'Then, to work on the Groovy code base, to build and test Groovy, you can follow the '
-                                    a(href: 'https://github.com/apache/incubator-groovy/blob/master/README.adoc', 'instructions')
+                                    a(href: 'https://github.com/apache/groovy/blob/master/README.adoc', 'instructions')
                                     yield ' from the readme file in the Groovy repository.'
                                 }
                                 p 'The most important command you will have to run before sending your changes is the test command:'

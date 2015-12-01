@@ -297,7 +297,7 @@ assert times3plus2(3) == (times3 >> plus2)(3)
 
 To see more examples of Closure composition and reverse composition,
 please have a look at our
-https://github.com/apache/incubator-groovy/blob/master/src/test/groovy/ClosureComposeTest.groovy[test
+https://github.com/apache/groovy/blob/master/src/test/groovy/ClosureComposeTest.groovy[test
 case].
 
 [[Groovy18releasenotes-Closuretrampoline]]
@@ -439,7 +439,7 @@ doc.commits.message.each { println it }
 
 If you want to see some more examples of the usage of the JSON parser,
 you can have a look at the
-https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/groovy/json/JsonSlurperTest.groovy[JsonSlurper
+https://github.com/apache/groovy/blob/master/subprojects/groovy-json/src/test/groovy/groovy/json/JsonSlurperTest.groovy[JsonSlurper
 tests] in our code base.
 
 [[Groovy18releasenotes-JSONbuilder]]
@@ -472,7 +472,7 @@ Will create the JSON output:
 ------------------------------------------------------------------
 
 You can find some more usages of the JSON builder in our
-https://github.com/apache/incubator-groovy/blob/master/subprojects/groovy-json/src/test/groovy/groovy/json/JsonBuilderTest.groovy[JsonBuilder
+https://github.com/apache/groovy/blob/master/subprojects/groovy-json/src/test/groovy/groovy/json/JsonBuilderTest.groovy[JsonBuilder
 tests].
 
 [[Groovy18releasenotes-PrettyprintingJSONcontent]]

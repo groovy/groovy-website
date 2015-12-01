@@ -9,7 +9,7 @@ menu {
 
     group('About') {
         item 'Contributing',                'contribute.html'
-        item 'Source code',                 'https://github.com/apache/incubator-groovy'
+        item 'Source code',                 'https://github.com/apache/groovy'
         item 'Build status',                'buildstatus.html'
         item 'Security',                    'security.html'
         item 'Books',                       'learn.html#books'
@@ -24,7 +24,7 @@ menu {
         item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
         item 'Groovy on Twitter',           'https://twitter.com/hashtag/groovylang',           'fa-twitter'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
-        item 'Source code on GitHub',       'https://github.com/apache/incubator-groovy',       'fa-github'
+        item 'Source code on GitHub',       'https://github.com/apache/groovy',       'fa-github'
         item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'

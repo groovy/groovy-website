@@ -260,7 +260,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' installed, you can install Groovy with:'
                                     pre { code 'sudo port install groovy' }
                                     yield 'If you prefer to live on the bleeding edge, you can also grab the '
-                                    a(href: 'https://github.com/apache/incubator-groovy', 'source code from GitHub')
+                                    a(href: 'https://github.com/apache/groovy', 'source code from GitHub')
                                     yield '.'
                                     br()
                                     yield 'If you are an IDE user, you can just grab the latest '

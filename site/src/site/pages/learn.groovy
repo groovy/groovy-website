@@ -142,13 +142,13 @@ layout 'layouts/main.groovy', true,
                                 p "You can find more presentations:"
                                 ul {
                                     li {
-                                        a(href: 'https://www.youtube.com/playlist?list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1', 'GR8Conf Europe 2014 YouTube playlist')
+                                        a(href: 'https://www.youtube.com/channel/UCJXNOMywewNmau4hzAy4LjA/videos', 'GR8Conf YouTube channel')
                                     }
                                     li {
-                                        a(href: 'http://www.infoq.com/SpringOne-2GX-2013/presentations/24', 'SpringOne2GX 2013 / InfoQ presentations')
+                                        a(href: 'https://www.youtube.com/user/GR8ConfUS/videos', 'GR8Conf US YouTube channel')
                                     }
                                     li {
-                                        a(href: 'https://www.youtube.com/playlist?list=PLXcHRe1w86EdmLLNs1chNt5QdEJb_skTj', 'Greach 2014 YouTube channel')
+                                        a(href: 'https://www.youtube.com/user/TheGreachChannel/videos', 'Greach YouTube channel')
                                     }
                                 }
                             }

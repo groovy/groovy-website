@@ -377,19 +377,6 @@ usergroups {
 }
 
 videos {
-    video('Groovy in 2014 and beyond') {
-        speaker 'Guillaume Laforge'
-        summary '''
-            <p>Groovy is already 10 years old, but continues to evolve and innovate.</p>
-            <p>What's new under the hood? - implicit closure coercion - new AST transforms - finer grained script configuration - type checker extensions</p>
-            <p>In the upcoming versions of Groovy, you'll be able to create "traits", do tail recursions, and much more.</p>
-            <p>We'll also talk about what's cooking for Groovy 3.0, with its new Meta-Object Protocol, its new grammar, its JDK 8 support.</p>
-        '''
-        pictureUrl 'groovy-in-2014-and-beyond.png'
-        videoUrl 'https://www.youtube.com/watch?v=P63OHYc3q8s&list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1&index=2'
-        slidesUrl 'https://speakerdeck.com/glaforge/groovy-in-2014-and-beyond-at-gr8conf-europe-2014'
-    }
-
     video('The Groovy ecosystem revisited') {
         speaker 'Andrés Almiray'
         summary '''

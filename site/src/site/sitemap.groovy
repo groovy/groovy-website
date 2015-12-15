@@ -24,7 +24,7 @@ menu {
         item 'Groovy Weekly newsletter',    'groovy-weekly.html',                               'fa-envelope-o'
         item 'Groovy on Twitter',           'https://twitter.com/hashtag/groovylang',           'fa-twitter'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
-        item 'Source code on GitHub',       'https://github.com/apache/groovy',       'fa-github'
+        item 'Source code on GitHub',       'https://github.com/apache/groovy',                 'fa-github'
         item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
@@ -182,23 +182,6 @@ ecosystem {
 allEvents {
 
     // Note that the event image should be 257x180 to look nice
-
-    event('Groovy Grails eXchange 2015') {
-        location 'London, United Kingdom'
-        date 'December 14-15, 2015'
-        url 'https://skillsmatter.com/conferences/6863-groovy-grails-exchange-2015'
-        logo 'img/confs/ggex2015.png'
-        description '''
-            <p>
-            Do you love Groovy & Grails? Would you like to spend 2 days with 150+ Groovy & Grails developers, learning
-            and sharing skills with the world's leading experts on Groovy, Grails and modern enterprise development?
-            </p>
-            <p>
-            Then why not come to the 9th annual Groovy & Grails eXchange and be part of this passionate community of
-            creators, founders, developers and enthusiasts.
-            </p>
-        '''
-    }
     event('GR8Conf India 2016') {
         location 'New Delhi, India'
         date 'January 16, 2016'

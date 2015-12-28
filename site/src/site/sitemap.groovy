@@ -182,6 +182,7 @@ ecosystem {
 allEvents {
 
     // Note that the event image should be 257x180 to look nice
+
     event('GR8Conf India 2016') {
         location 'New Delhi, India'
         date 'January 16, 2016'
@@ -243,6 +244,23 @@ allEvents {
             </p>
         '''
     }
+    event('Groovy Grails eXchange 2016') {
+        location 'London, United Kingdom'
+        date 'December 12-13, 2016'
+        url 'https://skillsmatter.com/conferences/7433-groovy-and-grails-exchange-2016'
+        logo 'img/confs/ggex2016.png'
+        description '''
+            <p>
+            Do you love Groovy & Grails? Would you like to spend 2 days with 150+ Groovy & Grails developers, learning
+            and sharing skills with the world's leading experts on Groovy, Grails and modern enterprise development?
+            </p>
+            <p>
+            Then why not come to the 10th annual Groovy & Grails eXchange and be part of this passionate community of
+            creators, founders, developers and enthusiasts.
+            </p>
+        '''
+    }
+
 }
 
 books {

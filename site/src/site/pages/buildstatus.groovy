@@ -54,19 +54,14 @@ layout 'layouts/main.groovy', true,
                                         'Groovy master, JDK 7': ['Groovy_Jdk7Build', 'master'],
                                         'Groovy master, JDK 8': ['Groovy_Jdk8Build_2', 'master'],
                                         'Groovy master, JDK 9': ['Groovy_Jdk9Build', 'master'],
-                                        'Groovy 2.3.X, JDK 6': ['Groovy_Jdk6Build', 'GROOVY_2_3_X'],
-                                        'Groovy 2.3.X, JDK 7': ['Groovy_Jdk7Build', 'GROOVY_2_3_X'],
-                                        'Groovy 2.2.X, JDK 5': ['Groovy_Jdk5Build', 'GROOVY_2_2_X'],
-                                        'Groovy 2.2.X, JDK 6': ['Groovy_Jdk6Build', 'GROOVY_2_2_X'],
-                                        'Groovy 2.2.X, JDK 7': ['Groovy_Jdk7Build', 'GROOVY_2_2_X'],
+                                        'Groovy 2.4.X, JDK 6': ['Groovy_Jdk6Build', 'GROOVY_2_4_X'],
+                                        'Groovy 2.4.X, JDK 7': ['Groovy_Jdk7Build', 'GROOVY_2_4_X']
                                         ])
 
                                 hr(class: 'divider')
 
                                 h2 'Community joint builds'
-                                renderBuilds(['Nextflow master, Groovy 2.3.X': ['JointBuilds_Nextflow_Groovy23xJointBuil',''],
-                                              'Nextflow master, Groovy 2.4.X': ['JointBuilds_Nextflow_Groovy24xJointBuild', ''],
-                                              'Ratpack master, Groovy 2.3.X': ['JointBuilds_Ratpac_RatpackGroovy23x', ''],
+                                renderBuilds(['Nextflow master, Groovy 2.4.X': ['JointBuilds_Nextflow_Groovy24xJointBuild', ''],
                                               'Ratpack master, Groovy 2.4.X': ['JointBuilds_Ratpac_RatpackGroovy24x', '']
                                 ])
 

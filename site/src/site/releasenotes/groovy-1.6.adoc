@@ -1418,21 +1418,7 @@ to listen to JMX events, and much more.
 
 The Groovy jar files are released with correct OSGi metadata, so they
 can be loaded as a bundle into any OSGi compliant container, such as
-Eclipse Equinox or Apache Felix. You can
-find link:http://docs.codehaus.org/display/GROOVY/OSGi+and+Groovy[more information on how to use Groovy and OSGi] 
-on the Groovy project
-website. This tutorial will explain how to:
-
-* Load Groovy as an OSGi service
-* Write a Groovy OSGi service
-* Incude the Groovy JAR within a bundle
-* Plublish a service written in Groovy
-* Consume a service from Groovy
-* Troubleshoot in case you’re encountering any problem along the way
-
-You may also be interested in, for instance, how you
-can link:http://hamletdarcy.blogspot.com/2008/12/beginners-guide-to-osgi-on-desktop.html[use
-different versions of Groovy in your application], thanks to OSGi.
+Eclipse Equinox or Apache Felix.
 
 [[Groovy16releasenotes-Summary]]
 == Summary

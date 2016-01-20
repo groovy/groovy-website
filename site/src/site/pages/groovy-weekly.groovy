@@ -15,8 +15,8 @@ layout 'layouts/main.groovy', true,
                                 yield ' Groovy Newsletter '
                             }
                             article {
-                                p 'Once in a while, receive a newsletter, directly in your inbox, about all the news ' +
-                                        'about the Groovy ecosystem: the latest releases, interesting articles, interviews, ' +
+                                p 'Once in a while, receive a newsletter, directly in your inbox, with all the news ' +
+                                        'of the Groovy ecosystem: the latest releases, interesting articles, interviews, ' +
                                         'presentations, relevant tweets or Google+ posts, links to podcasts or screencasts, ' +
                                         'code snippets, books, upcoming events, and more.'
                                 p 'The Groovy newsletter is the best way to stay up-to-date with all things Groovy!'
@@ -35,7 +35,7 @@ layout 'layouts/main.groovy', true,
                             }
                             article {
                                 p 'To subscribe to the newsletter, please fill in the form below.'
-                                p 'Please note that all fields below are required.'
+                                p 'Please note that all fields are required.'
                             }
                             div(id: 'mc_embed_signup') {
                                 form(action: 'http://appspot.us4.list-manage2.com/subscribe/post?u=cb8b56e9d6a1cb1696cecc673&amp;id=1a76961630',

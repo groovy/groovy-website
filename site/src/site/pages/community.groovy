@@ -37,8 +37,8 @@ layout 'layouts/main.groovy', true,
                                 '''
                                 ul {
                                     li {
-                                        a(href: 'groovy-weekly.html', 'Groovy Weekly Newsletter')
-                                        yieldUnescaped ' &mdash; links to articles, presentations, tweets, podcasts, every Tuesday'
+                                        a(href: 'groovy-weekly.html', 'Groovy newsletter')
+                                        yieldUnescaped ' &mdash; links to articles, presentations, tweets, podcasts, etc.'
                                     }
                                     li {
                                         a(href: 'https://google.com/+groovy', 'Google+ Groovy page')

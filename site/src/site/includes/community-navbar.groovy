@@ -7,7 +7,7 @@ ul(class: 'nav-sidebar') {
             'mailing-lists': 'Mailing-lists',
             'events': 'Events',
             'usergroups': 'User groups',
-            'groovy-weekly': 'Groovy Weekly newsletter'
+            'groovy-weekly': 'Groovy newsletter'
     ].each { page, label ->
         if (currentPage == page) {
             li(class: 'active') { a(href: relative("${page}.html")) { strong(label) } }

@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Groovy Weekly newsletter',
+        pageTitle: 'The Groovy programming language - Groovy newsletter',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
@@ -12,14 +12,14 @@ layout 'layouts/main.groovy', true,
                             include template: 'includes/contribute-button.groovy'
                             h1 {
                                 i(class: 'fa fa-envelope-o') {}
-                                yield ' Groovy Weekly newsletter'
+                                yield ' Groovy Newsletter '
                             }
                             article {
-                                p 'Every Tuesday, you can receive a newsletter, directly in your inbox, about all the news ' +
+                                p 'Once in a while, receive a newsletter, directly in your inbox, about all the news ' +
                                         'about the Groovy ecosystem: the latest releases, interesting articles, interviews, ' +
                                         'presentations, relevant tweets or Google+ posts, links to podcasts or screencasts, ' +
                                         'code snippets, books, upcoming events, and more.'
-                                p 'The Groovy Weekly newsletter is the best way to stay up-to-date with all things Groovy!'
+                                p 'The Groovy newsletter is the best way to stay up-to-date with all things Groovy!'
                                 p {
                                     yield 'This newsletter is powered by '
                                     a(href: "http://eepurl.com/XXyCD", 'MailChimp')
@@ -93,7 +93,7 @@ layout 'layouts/main.groovy', true,
                             article {
                                 p {
                                     a(href: 'http://us4.campaign-archive2.com/home/?u=cb8b56e9d6a1cb1696cecc673&id=1a76961630',
-                                            'View past editions of the Groovy Weekly column.')
+                                            'View past editions of the Groovy newsletter.')
                                 }
                             }
                         }

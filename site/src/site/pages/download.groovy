@@ -56,7 +56,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' (binary and source), the Windows installer (for some of the versions) and the documentation for Groovy.'
                                 }
                                 p {
-                                    yield 'All the downloads are hosted in '
+                                    yield 'All the downloads (except the source download) are hosted in '
                                     a(href: 'http://bintray.com/groovy/', 'Bintray\'s Groovy repository')
                                     yield '. Registering on Bintray allows you to rate, review, and register for new version notifications.'
                                 }
@@ -101,7 +101,7 @@ layout 'layouts/main.groovy', true,
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-src-${pkg.version}-incubating.zip") {
+                                                    a(href: "https://dist.apache.org/repos/dist/release/groovy/${pkg.version}-incubating/sources/apache-groovy-src-${pkg.version}-incubating.zip") {
                                                         i(class: 'fa fa-code fa-4x') {}
                                                         br()
                                                         yield ' source'

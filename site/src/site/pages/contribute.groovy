@@ -188,7 +188,7 @@ layout 'layouts/main.groovy', true,
 
                             h2('Build status')
 
-                            p "The Groovy sources are tested thanks our ${$a(href:'buildstatus.html','continuous integration server')}."
+                            p "The Groovy sources are tested thanks to our ${$a(href:'buildstatus.html','continuous integration server')}."
                         }
                     }
                 }

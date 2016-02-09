@@ -16,8 +16,9 @@ layout 'layouts/main.groovy', true,
                             }
                             article {
                                 p '''
-                                    There are many ways you can help the Groovy development team to improve the Groovy programming language.
-                                    And all help is welcome to make a difference, by:
+                                    Would you like to help us make the Groovy programming language even better? 
+                                    There are many ways in which you can get involved, make a difference and help the Groovy development team to make Groovy even, well, groovier? 
+                                    We really appreciate and welcome contributions and you can help us by:
 
                                 '''
                                 ul {
@@ -52,7 +53,7 @@ layout 'layouts/main.groovy', true,
                                         If you encounter a problem, want to discuss a new feature,
                                         share interesting findings, and more, then the '''
                                     a(href: 'mailing-lists.html', 'mailing-lists')
-                                    yield ' are the place to go to to start a conversation with the Groovy developers and other Groovy users.'
+                                    yield ' are the place to go to start a conversation with the Groovy developers and other Groovy users.'
                                 }
                                 hr(class: 'divider')
 

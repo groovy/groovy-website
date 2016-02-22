@@ -101,7 +101,7 @@ layout 'layouts/main.groovy', true,
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://www.apache.org/dyn/closer.cgi/groovy/${pkg.version}-incubating/sources/apache-groovy-src-${pkg.version}-incubating.zip") {
+                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-src-${pkg.version}${(pkg.version in ['2.4.4', '2.4.5'])?'-incubating':''}.zip") {
                                                         i(class: 'fa fa-code fa-4x') {}
                                                         br()
                                                         yield ' source'

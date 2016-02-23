@@ -121,16 +121,14 @@ documentation {
 downloads {
     distribution('Groovy 2.4') {
         description {
-            yield 'Groovy 2.4 is our latest official '
+            yield 'Groovy 2.4 is the latest '
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
-            yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and
-are provided as a convenience, without any warranty.'''
         }
 
         version('2.4.6') {
             stable true
-            //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.5-installer.exe'
+            //windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.6-installer.exe'
         }
     }
 }

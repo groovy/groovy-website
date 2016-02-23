@@ -56,7 +56,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' (binary and source), the Windows installer (for some of the versions) and the documentation for Groovy.'
                                 }
                                 p {
-                                    yield 'All the downloads (except the source download) are hosted in '
+                                    yield 'All downloads (except the source download) are hosted in '
                                     a(href: 'http://bintray.com/groovy/', 'Bintray\'s Groovy repository')
                                     yield '. Registering on Bintray allows you to rate, review, and register for new version notifications.'
                                 }
@@ -77,7 +77,7 @@ layout 'layouts/main.groovy', true,
                             a(name: 'distro') {}
                             article {
                                 h1 'Distributions'
-                                p 'You can download a binary, a source, a documentation bundle, as well as a bundle of the three.'
+                                p 'You can download a binary, a source or a documentation bundle, as well as a bundle of all three.'
 
                                 distributions.each { dist ->
                                     h2 {
@@ -133,13 +133,11 @@ layout 'layouts/main.groovy', true,
                                             }
                                         }
                                         p {
-                                            yield 'Consult the '
+                                            yield 'Please consult the '
                                             a(href: "changelogs/changelog-${pkg.version}.html", ' change log')
-                                            yield '.'
-                                            br()
-                                            yield 'Read the '
+                                            yield ' for details. Please read the '
                                             a(href: "indy.html", 'invoke dynamic support information')
-                                            yield ' if you wish to use it on JDK 7+'
+                                            yield ' if you like to use Groovy on JDK 7+.'
                                         }
                                     }
                                 }
@@ -303,7 +301,7 @@ layout 'layouts/main.groovy', true,
                                             }
                                         }
                                     }
-                                    yield '* If you plan on using invoke dynamic support, read the '
+                                    yield '* If you plan to use invoke dynamic support, please read the '
                                     a(href: "indy.html", 'support information')
                                     yield '.'
                                 }

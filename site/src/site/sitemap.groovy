@@ -195,7 +195,7 @@ allEvents {
     }
     event('GR8Conf EU 2016') {
         location 'Copenhagen, Denmark'
-        date 'June 7-9, 2016'
+        date 'June 1-3, 2016'
         url 'http://gr8conf.eu/'
         logo 'img/confs/gr8confeu2016.png'
         description '''

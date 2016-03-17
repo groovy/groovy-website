@@ -129,7 +129,7 @@ downloads {
 
         version('2.4.6') {
             stable true
-            windowsInstaller 'http://dl.bintray.com/groovy/Distributions/groovy-2.4.6-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.6-installer.exe'
         }
     }
 }

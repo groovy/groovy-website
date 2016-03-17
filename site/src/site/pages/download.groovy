@@ -45,7 +45,7 @@ layout 'layouts/main.groovy', true,
                             def linkVersionToDownload = distributions.collect { it.packages }.flatten().find { it.stable }.version
                             button(id: 'big-download-button', type: 'button', class: 'btn btn-default',
                                     title: "Download Groovy ${linkVersionToDownload}",
-                                    onclick: "window.location.href=\"http://dl.bintray.com/groovy/maven/apache-groovy-sdk-${linkVersionToDownload}.zip\"") {
+                                    onclick: "window.location.href=\"https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${linkVersionToDownload}.zip\"") {
                                 i(class: 'fa fa-download') {}
                                 yield ' Download'
                             }
@@ -94,7 +94,7 @@ layout 'layouts/main.groovy', true,
                                         table(width: '100%', class: 'download-table') {
                                             tr {
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-binary-${pkg.version}.zip") {
+                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-binary-${pkg.version}.zip") {
                                                         i(class: 'fa fa-gears fa-4x') {}
                                                         br()
                                                         yield 'binary'
@@ -108,14 +108,14 @@ layout 'layouts/main.groovy', true,
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-docs-${pkg.version}.zip") {
+                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-docs-${pkg.version}.zip") {
                                                         i(class: 'fa fa-file-text fa-4x') {}
                                                         br()
                                                         yield ' documentation'
                                                     }
                                                 }
                                                 td {
-                                                    a(href: "http://dl.bintray.com/groovy/maven/apache-groovy-sdk-${pkg.version}.zip") {
+                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${pkg.version}.zip") {
                                                         i(class: 'fa fa-file-zip-o fa-4x') {}
                                                         br()
                                                         yield ' SDK bundle'

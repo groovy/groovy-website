@@ -180,19 +180,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('Greach 2016') {
-        location 'Madrid, Spain'
-        date 'April 8-9, 2016'
-        url 'http://greachconf.com/'
-        logo 'img/confs/greach2016.png'
-        description '''
-            <p>
-            Greach, the Spanish gathering of enthusiasts of Groovy, Grails, Griffon, Gradle, Spock, Vert.x, Gaelyk,
-            and many more. With inspirational talks from the makers and users of these projects, hands-on workshops with the rock stars,
-            join the 150+ attendees, designers, students, designers, the best professionals together in a great atmosphere.
-            </p>
-        '''
-    }
     event('GR8Conf EU 2016') {
         location 'Copenhagen, Denmark'
         date 'June 1-3, 2016'

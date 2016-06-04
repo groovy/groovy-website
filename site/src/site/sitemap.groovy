@@ -180,22 +180,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('GR8Conf EU 2016') {
-        location 'Copenhagen, Denmark'
-        date 'June 1-3, 2016'
-        url 'http://gr8conf.eu/'
-        logo 'img/confs/gr8confeu2016.png'
-        description '''
-            <p>
-            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
-            few years, and with good reason. To spread the word even more we have created GR8Conf.
-            </p>
-            <p>
-            GR8Conf is an independent, affordable series of conferences.
-            It's dedicated to the technologies in the Groovy ecosystem.
-            </p>
-        '''
-    }
     event('GR8Conf US 2016') {
         location 'Minneapolis, MN, United States of America'
         date 'July 27-29, 2016'

@@ -155,7 +155,7 @@ ecosystem {
 
     project('GPars') {
         description 'The GPars framework offers Java developers intuitive and safe ways to handle Java or Groovy tasks concurrently. Leveraging the enormous flexibility of the Groovy programming language and building on proven Java technologies, we aim to make concurrent programming for multi-core hardware intuitive, robust and enjoyable.'
-        url 'http://gpars.github.io/'
+        url 'http://www.gpars.org/'
         logo 'img/ecosystem/gpars.png'
     }
 

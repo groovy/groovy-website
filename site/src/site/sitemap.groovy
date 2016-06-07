@@ -66,7 +66,7 @@ documentation {
             '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
             '2.2.0', '2.2.1', '2.2.2',
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9', '2.3.10', '2.3.11',
-            '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4', '2.4.5', '2.4.6'
+            '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4', '2.4.5', '2.4.6', '2.4.7'
     ])
 
     section('Getting started','fa-graduation-cap') {
@@ -127,9 +127,9 @@ downloads {
             yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and are provided as a convenience, without any warranty.'''
         }
 
-        version('2.4.6') {
+        version('2.4.7') {
             stable true
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.6-installer.exe'
+            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.7-installer.exe'
         }
     }
 }

@@ -5,7 +5,7 @@ import org.apache.http.impl.client.CloseableHttpClient
 import org.apache.http.impl.client.HttpClients
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
-import org.gradle.logging.ConsoleRenderer
+import org.gradle.internal.logging.ConsoleRenderer
 import com.yahoo.platform.yui.compressor.CssCompressor
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor
 import org.apache.tools.ant.filters.BaseFilterReader

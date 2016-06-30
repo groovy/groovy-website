@@ -5,4 +5,4 @@
 build
 .gradle
 .classpath
-
+atlassian-ide-plugin.xml

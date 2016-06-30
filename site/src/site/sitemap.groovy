@@ -196,22 +196,64 @@ allEvents {
             </p>
         '''
     }
-    event('Groovy Grails eXchange 2016') {
-        location 'London, United Kingdom'
-        date 'December 12-13, 2016'
-        url 'https://skillsmatter.com/conferences/7433-groovy-and-grails-exchange-2016'
-        logo 'img/confs/ggex2016.png'
+    event('G3 Summit') {
+        location 'Fort Lauderdale, FL, United States of America'
+        date 'November 28 - December 1, 2016'
+        url 'https://g3summit.com'
+        logo 'img/confs/g3summit2016.png'
         description '''
             <p>
-            Do you love Groovy & Grails? Would you like to spend 2 days with 150+ Groovy & Grails developers, learning
-            and sharing skills with the world's leading experts on Groovy, Grails and modern enterprise development?
-            </p>
-            <p>
-            Then why not come to the 10th annual Groovy & Grails eXchange and be part of this passionate community of
-            creators, founders, developers and enthusiasts.
+            The G3 Summit is an annual event for the Groovy, Grails, and Gradle (G3) community.
+            This is your chance to learn awesome Groovy/Grails/Gradle technologies from project leaders, committers, authors, and industry experts.
             </p>
         '''
     }
+    event('GR8Conf India 2017') {
+        location 'New Delhi, India'
+        date 'January, 2017'
+        url 'http://gr8conf.in/'
+        logo 'img/confs/gr8confin2017.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences.
+            It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+    event('Greach 2017') {
+        location 'Madrid, Spain'
+        date 'April, 2017'
+        url 'http://greachconf.com/'
+        logo 'img/confs/greach2017.png'
+        description '''
+            <p>
+            Greach, the Spanish gathering of enthusiasts of Groovy, Grails, Griffon, Gradle, Spock, Vert.x, Gaelyk,
+            and many more. With inspirational talks from the makers and users of these projects, hands-on workshops with the rock stars,
+            join the 150+ attendees, designers, students, designers, the best professionals together in a great atmosphere.
+            </p>
+        '''
+    }
+    event('GR8Conf EU 2017') {
+        location 'Copenhagen, Denmark'
+        date 'May 31 - June 2, 2017'
+        url 'http://gr8conf.eu/'
+        logo 'img/confs/gr8confeu2017.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences.
+            It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+
 
 }
 

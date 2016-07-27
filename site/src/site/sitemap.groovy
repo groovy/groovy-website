@@ -436,7 +436,7 @@ videos {
 courses {
     course('The Complete Apache Groovy Developer Course') {
         instructor 'Dan Vega'
-        url 'https://www.udemy.com/apache-groovy'
+        url 'https://www.udemy.com/apache-groovy/?couponCode=LEARN_GROOVY'
         description '''
             <p>I am going to teach you everything you need to know to start using The Groovy Programming language. This course is really designed
             for 2 different types of people and I think both will benefit from it. If you’re a beginner programmer with a some experience in

@@ -19,6 +19,7 @@ class SiteMap {
     final List<Page> pages = []
     final List<UserGroup> usergroups = []
     final List<Video> videos = []
+    final List<Course> courses = []
 
     private SiteMap() {}
 
@@ -74,6 +75,11 @@ class SiteMap {
         clone()
     }
 
+    private void courses(Closure coursesSpec) {
+        def clone = coursesSpec.rehydrate(this, this, this)
+        clone()
+    }
+
     private void distribution(String name, Closure distSpec) {
         Distribution dist = new Distribution(name: name)
         def clone = distSpec.rehydrate(dist, dist, dist)
@@ -117,5 +123,12 @@ class SiteMap {
         def clone = videoSpec.rehydrate(video, video, video)
         clone()
         videos.add(video)
+    }
+
+    private void course(String title, Closure courseSpec) {
+        def course = new Course(title: title)
+        def clone = courseSpec.rehydrate(course,course,course)
+        clone()
+        courses.add(course)
     }
 }

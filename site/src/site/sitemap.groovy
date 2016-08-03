@@ -36,7 +36,7 @@ pages {
     page 'index', 'index', [allEvents: allEvents]
     page 'search', 'search', [category: 'Search']
     page 'ecosystem', 'ecosystem', [category: 'Ecosystem', ecosys: ecosystem]
-    page 'learn', 'learn', [category: 'Learn', docSections: documentationSections, allBooks: library, videos: videos]
+    page 'learn', 'learn', [category: 'Learn', docSections: documentationSections, allBooks: library, videos: videos, courses: courses]
     page 'documentation', 'documentation', [category: 'Documentation', docSections: documentationSections, allDocVersions: allDocVersions]
     page 'download', 'download', [category: 'Download', distributions: distributions]
     page 'versioning', 'versioning', [category: 'Download']
@@ -430,5 +430,23 @@ videos {
         '''
         pictureUrl 'groovy-puzzlers.png'
         videoUrl 'https://www.youtube.com/watch?v=GfIhxi7L6R0&list=PLwxhnQ2Qv3xuE4JEKBpyE2AbbM_7G0EN1&index=17'
+    }
+}
+
+courses {
+    course('The Complete Apache Groovy Developer Course') {
+        instructor 'Dan Vega'
+        url 'https://www.udemy.com/apache-groovy/?couponCode=LEARN_GROOVY'
+        description '''
+            <p>I am going to teach you everything you need to know to start using The Groovy Programming language. This course is really designed
+            for 2 different types of people and I think both will benefit from it. If you’re a beginner programmer with a some experience in
+            another language like Python or Ruby this course is for you. Dynamic languages are generally thought of as easier for total beginners
+            to learn because they’re flexible and fun. If you’re an existing Java Developer (Beginner or Experienced) this course is also for you.</p>
+
+            <p>This course is packed with almost 14 hours of content. We are going to start off with getting your development environment up and running
+            and then go through the very basics of the language. From there we are going to build on that in each section cover topics like closures, meta-programming,
+            builders and so much more. I feel like this is one of the most complete courses around and I am excited for you to join me on this adventure.</p>
+        '''
+        cover 'groovy-course-cover.png'
     }
 }

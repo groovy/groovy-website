@@ -1025,6 +1025,40 @@ html, body, .st-container, .st-pusher, .st-content {
 .presentations .urls {
 }
 
+/* Courses from the Learn Page */
+.courses {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.courses img.screenshot {
+    float: left;
+    margin-right: 40px;
+    margin-top: 1em;
+    margin-bottom: 0px;
+    width: 300px;
+    height: auto;
+}
+
+.courses .metadata {
+    display: table-cell;
+    min-width: 328px;
+}
+
+.courses .title {
+    margin-top: 1em !important;
+    margin-bottom: 0.5em !important;
+}
+
+.courses .instructor {
+    color: #245f78;
+    margin-bottom: 0.5em;
+}
+
+.courses .description {
+    line-height: 1.3;
+}
+
 @media screen and (max-width: 767px) {
     .presentations .img.screenshot, .video .metadata {
         float: none;

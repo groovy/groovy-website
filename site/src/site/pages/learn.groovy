@@ -1,5 +1,6 @@
 import model.Book
 import model.Video
+import model.Course
 
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Groovy programming language - Learn',
@@ -18,6 +19,9 @@ layout 'layouts/main.groovy', true,
                                 }
                                 li {
                                     a(href: '#videos', class: 'anchor-link', 'Presentations')
+                                }
+                                li {
+                                    a(href: '#courses', class: 'anchor-link', 'Courses')
                                 }
                             }
                         }
@@ -151,6 +155,36 @@ layout 'layouts/main.groovy', true,
                                         a(href: 'https://www.youtube.com/user/TheGreachChannel/videos', 'Greach YouTube channel')
                                     }
                                 }
+
+                                hr(class: 'divider')
+
+                                a(name: 'courses') {}
+                                h2 {
+                                    i(class: 'fa fa-film') {}
+                                    yield ' Courses'
+                                }
+                                p '''
+                                    Another great resource for learning Groovy is by watching a course. You could spend time hunting down
+                                    various videos on the web but these courses have all the information you need packed into one place.
+                                  '''
+
+                                courses.each { Course course ->
+                                    div(class: 'courses') {
+                                        a(href: course.url, target: "_blank") {
+                                            img(class: 'screenshot', src: "img/courses/${course.cover}")
+                                        }
+                                        div(class: 'metadata') {
+                                            a(href: course.url, target: '_blank') {
+                                                h1(class: 'title', course.title)
+                                            }
+                                            span(class: 'instructor', "By ${course.instructor}")
+                                            div(class: 'description') {
+                                                yieldUnescaped course.description
+                                            }
+                                        }
+                                    }
+                                }
+
                             }
                         }
                     }

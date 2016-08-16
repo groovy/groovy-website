@@ -59,6 +59,7 @@ layout 'layouts/main.groovy', true,
                                     yield 'All downloads (except the source download) are hosted in '
                                     a(href: 'http://bintray.com/groovy/', 'Bintray\'s Groovy repository')
                                     yield '. Registering on Bintray allows you to rate, review, and register for new version notifications.'
+                                    a(href: 'https://dl.bintray.com/groovy/maven/', '[direct link to the downloads]')
                                 }
                                 p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '

@@ -15,10 +15,10 @@ layout 'layouts/main.groovy', true,
                                 yield ' Thanks'
                             }
                             article {
-                                p "Apache Groovy is generously sponsored by several companies:"
+                                p "The Apache Groovy team would like to thank:"
                                 ul {
                                     li """
-                                        ${$a(href: 'http://www.apache.org', 'The Apache Software Foundation')} sponsors
+                                        ${$a(href: 'http://www.apache.org', 'The Apache Software Foundation')} which owns
                                         the project. We want to ${$a(href: 'http://www.apache.org/foundation/thanks.html', 'thank')} the Apache
                                         Software Foundation and its sponsors for providing support for the Apache Community of open-source software projects.
                                      """
@@ -37,7 +37,7 @@ layout 'layouts/main.groovy', true,
                                     """
                                 }
                                 p """
-                                    Sponsors are a key ingredient of the success of the Groovy project.
+                                    Sponsors are a key ingredient of the success of the Apache projects.
                                     If you consider helping the project in any way,
                                     please don't hesitate to contact the Groovy development team.
                                     Your help will be most appreciated.

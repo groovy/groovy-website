@@ -16,7 +16,8 @@ footer(id: 'footer') {
             }
             div(class: 'col-right') {
                 p {
-                    yield "The Groovy programming language is supported by "; a(href: 'http://www.apache.org', 'the Apache Software Foundation');
+                    yield "The Groovy programming language is supported by the " 
+                    a href: 'http://www.apache.org', 'Apache Software Foundation'
                     yield " and the Groovy community"
                 }
                 img(src: 'img/asf_logo.png', title: 'The Apache Software Foundation', alt: 'The Apache Software Foundation')

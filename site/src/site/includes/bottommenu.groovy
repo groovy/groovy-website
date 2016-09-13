@@ -23,6 +23,7 @@ footer(id: 'footer') {
                 img(src: 'img/asf_logo.png', title: 'The Apache Software Foundation', alt: 'The Apache Software Foundation', class:'img-responsive')
             }
         }
-        div(class: 'clearfix', "&copy; 2003-${Calendar.instance[Calendar.YEAR]} the Groovy project &mdash; Groovy is Open Source, ${$a(href: 'http://www.apache.org/licenses/LICENSE-2.0.html', 'Apache 2 License')}")
+        div(class: 'clearfix', "&copy; 2003-${Calendar.instance[Calendar.YEAR]} the Apache Groovy project &mdash; " +
+                "Groovy is Open Source, ${$a(href: 'http://www.apache.org/licenses/LICENSE-2.0.html', 'Apache 2 License')}")
     }
 }

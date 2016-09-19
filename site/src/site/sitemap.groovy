@@ -149,7 +149,7 @@ ecosystem {
 
     project('Spock') {
         description 'Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers.'
-        url 'https://code.google.com/p/spock/'
+        url 'http://spockframework.org/'
         logo ''
     }
 

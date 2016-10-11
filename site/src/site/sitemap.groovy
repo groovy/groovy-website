@@ -339,17 +339,9 @@ usergroups {
     }
 
     // North-America
-    userGroup('Groovy Users of Minnesota') {
-        location 'North-America/United States'
-        url 'http://groovy.mn'
-    }
     userGroup('Austin Groovy and Grails User Group (TX)') {
         location 'North-America/United States'
         url 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/'
-    }
-    userGroup('NYC Groovy / Grails Meetup') {
-        location 'North-America/United States'
-        url 'http://www.meetup.com/grails/'
     }
     userGroup('Coder Consortium of Sacramento') {
         location 'North-America/United States'
@@ -358,6 +350,18 @@ usergroups {
     userGroup('DC Groovy') {
         location 'North-America/United States'
         url 'http://www.dcgroovy.org'
+    }
+    userGroup('DFW Groovy & Grails User Group') {
+        location 'North-America/United States'
+        url 'http://dfw2gug.org'
+    }
+    userGroup('Groovy Users of Minnesota') {
+        location 'North-America/United States'
+        url 'http://groovy.mn'
+    }
+    userGroup('NYC Groovy / Grails Meetup') {
+        location 'North-America/United States'
+        url 'http://www.meetup.com/grails/'
     }
     userGroup('Pittsburgh Groovy Programming') {
         location 'North-America/United States'

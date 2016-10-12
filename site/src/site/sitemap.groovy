@@ -286,13 +286,6 @@ books {
         description 'Over 90 recipes that provide solutions to everyday programming challenges using the powerful features of Groovy 2'
     }
 
-    book('Falando de Grails') {
-        authors 'Henrique Lobo Weissmann'
-        cover 'img/books/weissmann_groovy_grails.png'
-        url 'http://www.casadocodigo.com.br/products/livro-grails'
-        description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
-    }
-
     book('Groovy for Domain-Specific Languages - Second Edition') {
         authors 'Fergal Dearle'
         cover 'img/books/gdsl.jpg'
@@ -306,6 +299,21 @@ books {
         url 'https://leanpub.com/groovy-goodness-notebook'
         description 'Experience the Groovy programming language through code snippets. Learn more about (hidden) Groovy features with code snippets and short articles. The articles and code will get you started quickly and will give more insight in Groovy.'
     }
+
+    book("Grails 3: A Practical Guide to Application Development") {
+        authors "Eric Helgeson"
+        cover 'img/books/pratical-grails-3-book-cover.png'
+        url 'https://www.grails3book.com/'
+        description "The first book dedicated to Grails 3. You will learn the concepts behind building Grails applications. Real, up-to-date code examples are provided so you can easily follow along."
+    }
+
+    book('Falando de Grails') {
+        authors 'Henrique Lobo Weissmann'
+        cover 'img/books/weissmann_groovy_grails.png'
+        url 'http://www.casadocodigo.com.br/products/livro-grails'
+        description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
+    }
+
 }
 
 usergroups {

@@ -194,7 +194,7 @@ allEvents {
     }
     event('GR8Conf India 2017') {
         location 'New Delhi, India'
-        date 'January, 2017'
+        date 'January 7-8, 2017'
         url 'http://gr8conf.in/'
         logo 'img/confs/gr8confin2017.png'
         description '''

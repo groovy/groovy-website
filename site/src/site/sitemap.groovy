@@ -180,22 +180,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('GR8Conf US 2016') {
-        location 'Minneapolis, MN, United States of America'
-        date 'July 27-29, 2016'
-        url 'http://gr8conf.us/'
-        logo 'img/confs/gr8confus2016.png'
-        description '''
-            <p>
-            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
-            few years, and with good reason. To spread the word even more we have created GR8Conf.
-            </p>
-            <p>
-            GR8Conf is an independent, affordable series of conferences.
-            It's dedicated to the technologies in the Groovy ecosystem.
-            </p>
-        '''
-    }
     event('G3 Summit') {
         location 'Fort Lauderdale, FL, United States of America'
         date 'November 28 - December 1, 2016'
@@ -226,7 +210,7 @@ allEvents {
     }
     event('Greach 2017') {
         location 'Madrid, Spain'
-        date 'April, 2017'
+        date 'March 31 - April 1, 2017'
         url 'http://greachconf.com/'
         logo 'img/confs/greach2017.png'
         description '''
@@ -242,6 +226,22 @@ allEvents {
         date 'May 31 - June 2, 2017'
         url 'http://gr8conf.eu/'
         logo 'img/confs/gr8confeu2017.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences.
+            It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+    event('GR8Conf US 2017') {
+        location 'Minneapolis, MN, United States of America'
+        date 'July 2017'
+        url 'http://gr8conf.us/'
+        logo 'img/confs/gr8confus2017.png'
         description '''
             <p>
             Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
@@ -286,13 +286,6 @@ books {
         description 'Over 90 recipes that provide solutions to everyday programming challenges using the powerful features of Groovy 2'
     }
 
-    book('Falando de Grails') {
-        authors 'Henrique Lobo Weissmann'
-        cover 'img/books/weissmann_groovy_grails.png'
-        url 'http://www.casadocodigo.com.br/products/livro-grails'
-        description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
-    }
-
     book('Groovy for Domain-Specific Languages - Second Edition') {
         authors 'Fergal Dearle'
         cover 'img/books/gdsl.jpg'
@@ -306,6 +299,21 @@ books {
         url 'https://leanpub.com/groovy-goodness-notebook'
         description 'Experience the Groovy programming language through code snippets. Learn more about (hidden) Groovy features with code snippets and short articles. The articles and code will get you started quickly and will give more insight in Groovy.'
     }
+
+    book("Grails 3: A Practical Guide to Application Development") {
+        authors "Eric Helgeson"
+        cover 'img/books/pratical-grails-3-book-cover.png'
+        url 'https://www.grails3book.com/'
+        description "The first book dedicated to Grails 3. You will learn the concepts behind building Grails applications. Real, up-to-date code examples are provided so you can easily follow along."
+    }
+
+    book('Falando de Grails') {
+        authors 'Henrique Lobo Weissmann'
+        cover 'img/books/weissmann_groovy_grails.png'
+        url 'http://www.casadocodigo.com.br/products/livro-grails'
+        description 'For Groovy and Grails developers, authored by the founder of Grails Brasil based on his experiences as a Groovy and Grails consultant.'
+    }
+
 }
 
 usergroups {

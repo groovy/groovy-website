@@ -50,8 +50,7 @@ layout 'layouts/main.groovy', true,
                                         }
                                     }
                                 }
-                                renderBuilds(['Groovy master, JDK 6': ['Groovy_Jdk6Build','master'],
-                                        'Groovy master, JDK 7': ['Groovy_Jdk7Build', 'master'],
+                                renderBuilds(['Groovy master, JDK 7': ['Groovy_Jdk7Build', 'master'],
                                         'Groovy master, JDK 8': ['Groovy_Jdk8Build_2', 'master'],
                                         'Groovy master, JDK 9': ['Groovy_Jdk9Build', 'master'],
                                         'Groovy 2.4.X, JDK 6': ['Groovy_Jdk6Build', 'GROOVY_2_4_X'],

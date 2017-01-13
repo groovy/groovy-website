@@ -9,9 +9,10 @@ layout 'layouts/main.groovy', true,
             div(id: 'content') {
                 include unescaped: 'html/index.html'
 
-                section(class: "row colset-3-article") {
-                    h1 { strong "Groovy events you shouldn't miss!" }
-                    allEvents.keySet().take(3).each { String eventName ->
+                def firstTreeEvents = allEvents.keySet().take(3)
+                section(class: 'row colset-3-article first-event-row') {
+                    h1 { strong "Groovy and Grails events you shouldn't miss!" }
+                    firstTreeEvents.each { String eventName ->
                         Event event = allEvents[eventName]
                         article {
                             div(class: 'content') {
@@ -29,8 +30,15 @@ layout 'layouts/main.groovy', true,
                             }
                         }
                     }
-
                 }
+                section(class: 'row  last-event-row') {
+                    p(class: 'text-center') {
+                        yield "For more events see the "
+                        a(href: relative("events.html")) { strong('Events') }
+                        yield " page"
+                    }
+                }
+
             }
             include unescaped: 'html/they-use-groovy.html'
         }

@@ -29,6 +29,7 @@ menu {
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
         item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
+	item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
     }
 }
 
@@ -144,12 +145,12 @@ ecosystem {
     project('Gradle') {
         description 'Gradle is build automation evolved. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation or indeed anything else.'
         url 'http://gradle.org'
-        logo 'img/ecosystem/gradle.gif'
+        logo 'img/ecosystem/gradle.png'
     }
 
     project('Spock') {
         description 'Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language. Thanks to its JUnit runner, Spock is compatible with most IDEs, build tools, and continuous integration servers.'
-        url 'https://code.google.com/p/spock/'
+        url 'http://spockframework.org/'
         logo ''
     }
 
@@ -171,6 +172,12 @@ ecosystem {
         logo 'img/ecosystem/griffon.png'
     }
 
+    project('Geb') {
+        description 'Geb is a powerful browser functional testing framework that lets you quickly and easily write functional tests in Groovy. It brings together the power of WebDriver, the elegance of jQuery content selection, the robustness of Page Object modelling and the expressiveness of the Groovy language.'
+        url 'http://www.gebish.org/'
+        logo 'img/ecosystem/geb.png'
+    }
+
     project('SDKMAN!') {
         description 'SDKMAN! is a tool for managing parallel versions of multiple Software Development Kits on most Unix based systems. It provides a convenient command line interface for installing, switching, removing and listing Candidates.'
         url 'http://sdkman.io/'
@@ -180,34 +187,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('G3 Summit') {
-        location 'Fort Lauderdale, FL, United States of America'
-        date 'November 28 - December 1, 2016'
-        url 'https://g3summit.com'
-        logo 'img/confs/g3summit2016.png'
-        description '''
-            <p>
-            The G3 Summit is an annual event for the Groovy, Grails, and Gradle (G3) community.
-            This is your chance to learn awesome Groovy/Grails/Gradle technologies from project leaders, committers, authors, and industry experts.
-            </p>
-        '''
-    }
-    event('GR8Conf India 2017') {
-        location 'New Delhi, India'
-        date 'January, 2017'
-        url 'http://gr8conf.in/'
-        logo 'img/confs/gr8confin2017.png'
-        description '''
-            <p>
-            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
-            few years, and with good reason. To spread the word even more we have created GR8Conf.
-            </p>
-            <p>
-            GR8Conf is an independent, affordable series of conferences.
-            It's dedicated to the technologies in the Groovy ecosystem.
-            </p>
-        '''
-    }
     event('Greach 2017') {
         location 'Madrid, Spain'
         date 'March 31 - April 1, 2017'
@@ -225,11 +204,15 @@ allEvents {
         location 'Copenhagen, Denmark'
         date 'May 31 - June 2, 2017'
         url 'http://gr8conf.eu/'
-        logo 'img/confs/gr8confeu2017.png'
+        logo 'img/confs/gr8confeu.png'
         description '''
             <p>
             Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
             few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            The 2017 Edition of GR8Conf Europe will feature a DevOps day. Focus will be on technologies to support your
+            everyday DevOps needs.
             </p>
             <p>
             GR8Conf is an independent, affordable series of conferences.
@@ -241,7 +224,23 @@ allEvents {
         location 'Minneapolis, MN, United States of America'
         date 'July 2017'
         url 'http://gr8conf.us/'
-        logo 'img/confs/gr8confus2017.png'
+        logo 'img/confs/gr8confus.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences.
+            It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+    event('GR8Conf India 2018') {
+        location 'New Delhi, India'
+        date 'January, 2018'
+        url 'http://gr8conf.in/'
+        logo 'img/confs/gr8confin.png'
         description '''
             <p>
             Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
@@ -354,10 +353,6 @@ usergroups {
     userGroup('Coder Consortium of Sacramento') {
         location 'North-America/United States'
         url 'http://coderconsortium.com/'
-    }
-    userGroup('DC Groovy') {
-        location 'North-America/United States'
-        url 'http://www.dcgroovy.org'
     }
     userGroup('DFW Groovy & Grails User Group') {
         location 'North-America/United States'

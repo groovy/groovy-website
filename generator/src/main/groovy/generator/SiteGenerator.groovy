@@ -242,11 +242,10 @@ class SiteGenerator {
             qualifier = version.substring(version.indexOf('-'))
             version = version - qualifier
         }
-        String[] parts = version.split(/\./)
+        List<String> parts = version.split(/\./).toList()
         if (qualifier) {
-            [*parts, qualifier]
-        } else {
-            parts.toList()
+            parts << qualifier
         }
+        parts
     }
 }

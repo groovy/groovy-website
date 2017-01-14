@@ -128,13 +128,13 @@ downloads {
             yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and are provided as a convenience, without any warranty.'''
         }
 
-        version('2.4.7') {
-            stable true
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.7-installer.exe'
-        }
         version('2.4.8') {
             stable true
             //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.8-installer.exe'
+        }
+        version('2.4.7') {
+            stable true
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.7-installer.exe'
         }
     }
 }

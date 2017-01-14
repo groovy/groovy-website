@@ -30,8 +30,8 @@ Vendor: The Apache Software Foundation
 
 Versions Affected:
 
-Unsupported Codehaus versions of Groovy from 1.7.0 to 2.4.3
-Fixed in version 2.4.4
+* Unsupported Codehaus versions of Groovy from 1.7.0 to 2.4.3
+* Fixed in version 2.4.4
 
 Impact:
 
@@ -63,8 +63,8 @@ This vulnerability was discovered by:
 
 References:
 
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3253[CVE-2015-3253: Remote execution of untrusted code]
-http://groovy-lang.org/security.html
+* http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3253[CVE-2015-3253: Remote execution of untrusted code]
+* http://groovy-lang.org/security.html
 
 '''
                                     h3 'CVE-2016-6814 Apache Groovy Information Disclosure'
@@ -75,9 +75,9 @@ Vendor: The Apache Software Foundation
 
 Versions Affected:
 
-Unsupported Codehaus versions of Groovy from 1.7.0 to 2.4.3
-Apache Groovy 2.4.4 to 2.4.7
-Fixed in version 2.4.8
+* Unsupported Codehaus versions of Groovy from 1.7.0 to 2.4.3
+* Apache Groovy 2.4.4 to 2.4.7
+* Fixed in version 2.4.8
 
 Impact:
 
@@ -99,9 +99,10 @@ Mitigation:
 
 Users of Groovy relying on (de)serialization with the affected versions
 should apply one of the following mitigations:
-- Isolate the code doing the (de)serialization
-- Upgrade to Apache Groovy 2.4.8 or later
-- Users of older versions of Groovy can apply the following patch to the
+
+* Isolate the code doing the (de)serialization
+* Upgrade to Apache Groovy 2.4.8 or later
+* Users of older versions of Groovy can apply the following patch to the
 `MethodClosure` class (`src/main/org/codehaus/groovy/runtime/MethodClosure.java`):
 
 ```
@@ -123,13 +124,13 @@ This vulnerability was discovered by:
 
 History:
 
-2016-09-20 Original advisory
-2017-01-12 Updated information on affected versions
+* 2016-09-20 Original advisory
+* 2017-01-12 Updated information on affected versions
 
 References:
 
-http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6814[CVE-2016-6814: Remote execution of untrusted code]
-http://groovy-lang.org/security.html
+* http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-6814[CVE-2016-6814: Remote execution of untrusted code]
+* http://groovy-lang.org/security.html
 
 '''
                                 }

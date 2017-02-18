@@ -226,7 +226,7 @@ allEvents {
     }
     event('GR8Conf US 2017') {
         location 'Minneapolis, MN, United States of America'
-        date 'July 2017'
+        date 'July 26 - 28, 2017'
         url 'http://gr8conf.us/'
         logo 'img/confs/gr8confus.png'
         description '''

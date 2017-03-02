@@ -258,6 +258,9 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'http://www.macports.org/', 'MacPorts')
                                     yield ' installed, you can install Groovy with:'
                                     pre { code 'sudo port install groovy' }
+                                    yield 'If you\'re using Docker, Groovy is available on '
+                                    a(href: 'https://hub.docker.com/_/groovy/', 'Docker Hub')
+                                    yield '.'
                                     yield 'If you prefer to live on the bleeding edge, you can also grab the '
                                     a(href: 'https://github.com/apache/groovy', 'source code from GitHub')
                                     yield '.'

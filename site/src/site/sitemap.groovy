@@ -130,11 +130,7 @@ downloads {
 
         version('2.4.9') {
             stable true
-            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.9-installer.exe'
-        }
-        version('2.4.8') {
-            stable true
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.8-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.9-installer.exe'
         }
     }
 }

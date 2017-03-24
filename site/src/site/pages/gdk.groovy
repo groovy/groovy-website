@@ -1,2 +1,2 @@
 layout 'layouts/iframedoc.groovy', true,
-        pageTitle: "The Groovy programming language - Groovy APIs"
+        pageTitle: "The Apache Groovy programming language - Groovy APIs"

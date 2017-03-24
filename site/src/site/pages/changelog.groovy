@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: "The Groovy programming language - Groovy $groovyVersion Changelog",
+        pageTitle: "The Apache Groovy programming language - Groovy $groovyVersion Changelog",
         mainContent: contents {
             def issueMap = issues.groupBy { it.type }
             def issueTypes = issueMap.keySet().sort()

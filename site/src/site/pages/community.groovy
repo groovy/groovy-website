@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Community',
+        pageTitle: 'The Apache Groovy programming language - Community',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {

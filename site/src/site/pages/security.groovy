@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: "The Groovy programming language - Security",
+        pageTitle: "The Apache Groovy programming language - Security",
         mainContent: contents {
 
             div(id: 'content', class: 'page-1') {

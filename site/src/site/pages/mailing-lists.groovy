@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Mailing-lists',
+        pageTitle: 'The Apache Groovy programming language - Mailing-lists',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {

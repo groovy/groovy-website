@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Download',
+        pageTitle: 'The Apache Groovy programming language - Download',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {

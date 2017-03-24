@@ -1,7 +1,7 @@
 import model.Event
 
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language',
+        pageTitle: 'The Apache Groovy programming language',
         mainContent: contents {
             div(id: 'band', class: 'band') {
 

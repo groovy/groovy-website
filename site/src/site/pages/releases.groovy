@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: "The Groovy programming language - Release notes",
+        pageTitle: "The Apache Groovy programming language - Release notes",
         mainContent: contents {
 
             div(id: 'content', class: 'page-1') {

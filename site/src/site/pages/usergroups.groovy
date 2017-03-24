@@ -6,7 +6,7 @@ import model.UserGroup
  */
 
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - User groups',
+        pageTitle: 'The Apache Groovy programming language - User groups',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {

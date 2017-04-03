@@ -121,14 +121,23 @@ documentation {
 }
 
 downloads {
+    distribution('Groovy 2.5') {
+        description {
+            yield 'Groovy 2.5 is the upcoming '
+            a(href: 'versioning.html', 'version')
+            yield ' of Groovy. Pre-release versions are available:'
+        }
+        version('2.5.0-alpha-1') {
+            stable false
+        }
+    }
     distribution('Groovy 2.4') {
         description {
-            yield 'Groovy 2.4 is the latest '
+            yield 'Groovy 2.4 is the latest stable '
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
             yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and are provided as a convenience, without any warranty.'''
         }
-
         version('2.4.10') {
             stable true
             windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.10-installer.exe'

@@ -13,7 +13,7 @@ layout 'layouts/main.groovy', true,
                                     li { a(href: "#${section.anchor}", class: 'anchor-link', section.name) }
                                 }
                                 li {
-                                    a(href: "#old-docs", class: 'anchor-link', 'Documentation for older versions')
+                                    a(href: "#all-versions", class: 'anchor-link', 'Documentation for other versions')
                                 }
                                 li {
                                     a(href: 'faq.html', 'FAQ')
@@ -32,7 +32,7 @@ layout 'layouts/main.groovy', true,
                                 a(href: "single-page-documentation.html", 'single-page document')
                                 yield ', or feel free to pick at a direct section below.'
                             }
-                            p "You can also browse ${$a(href: '#old-docs', 'documentation for older versions')}."
+                            p "You can also browse ${$a(href: '#all-versions', 'documentation for other versions')}."
                             hr(class: 'divider')
 
                             // group sections by 2, for 2 columns
@@ -59,10 +59,10 @@ layout 'layouts/main.groovy', true,
                             div(class: 'col-md-12') {
                                 hr(class: 'divider')
 
-                                a(name: 'old-docs') {}
+                                a(name: 'all-versions') {}
                                 article {
-                                    h2 'Documentation for older versions'
-                                    p 'You can browse the documentation of previous versions of Groovy since Groovy 1.7:'
+                                    h2 'Documentation for all Groovy versions'
+                                    p 'You can browse the documentation of a particular version of Groovy (since Groovy 1.7):'
                                     def allVersions =  [*allDocVersions, 'Select a version'].reverse()
 
                                     select(class: 'form-control', onchange: "window.location.href='http://docs.groovy-lang.org/docs/groovy-' + this.value + '/html/'") {

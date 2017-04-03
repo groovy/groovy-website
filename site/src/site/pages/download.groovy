@@ -147,7 +147,7 @@ layout 'layouts/main.groovy', true,
 
                                     p {
                                         yield 'You can also read the changelogs for '
-                                        a(href: "changelogs.html", 'older versions')
+                                        a(href: "changelogs.html", 'other versions')
                                         yield '.'
                                     }
                                 }

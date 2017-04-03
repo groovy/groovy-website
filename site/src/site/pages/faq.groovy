@@ -13,7 +13,7 @@ layout 'layouts/main.groovy', true,
                                     li { a(href: "documentation.html#${section.anchor}", class: 'anchor-link', section.name) }
                                 }
                                 li {
-                                    a(href: "documentation.html#old-docs", class: 'anchor-link', 'Documentation for older versions')
+                                    a(href: "documentation.html#all-versions", class: 'anchor-link', 'Documentation for other versions')
                                 }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }

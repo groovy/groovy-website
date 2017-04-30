@@ -11,7 +11,7 @@ layout 'layouts/main.groovy', true,
 
                 def firstTreeEvents = allEvents.keySet().take(3)
                 section(class: 'row colset-3-article first-event-row') {
-                    h1 { strong "Groovy and Grails events you shouldn't miss!" }
+                    h1 { strong "Apache Groovy events you shouldn't miss!" }
                     firstTreeEvents.each { String eventName ->
                         Event event = allEvents[eventName]
                         article {

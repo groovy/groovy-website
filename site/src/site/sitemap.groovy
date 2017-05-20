@@ -3,14 +3,13 @@ menu {
         item 'Learn',                       'learn.html'
         item 'Documentation',               'documentation.html'
         item 'Download',                    'download.html'
-        item 'Community',                   'community.html'
+        item 'Support',                     'support.html'
+        item 'Contribute',                  'http://groovy.apache.org'
         item 'Ecosystem',                   'ecosystem.html'
     }
 
     group('About') {
-        item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/apache/groovy'
-        item 'Build status',                'buildstatus.html'
         item 'Security',                    'security.html'
         item 'Books',                       'learn.html#books'
         item 'Thanks',                      'thanks.html'
@@ -29,7 +28,7 @@ menu {
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
         item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
-	item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
+	    item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
     }
 }
 
@@ -43,15 +42,16 @@ pages {
     page 'versioning', 'versioning', [category: 'Download']
     page 'indy', 'indy', [category: 'Download']
     page 'security', 'security', [category: 'Learn']
-    page 'community', 'community', [category: 'Community']
-    page 'usergroups', 'usergroups', [category: 'Community', userGroups: usergroups]
-    page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
-    page 'mailing-lists', 'mailing-lists', [category: 'Community']
-    page 'contribute', 'contribute', [category: 'Community']
-    page 'thanks', 'thanks', [category: 'Community']
-    page 'buildstatus', 'buildstatus', [category: 'Community']
+    page 'reporting-issues', 'reporting-issues', [category: 'Support']
+    page 'support', 'support', [category: 'Support']
+    page 'usergroups', 'usergroups', [category: 'Support', userGroups: usergroups]
+    page 'groovy-weekly', 'groovy-weekly', [category: 'Support']
+    page 'mailing-lists', 'mailing-lists', [category: 'Support']
+    page 'contribute', 'contribute', [category: 'Develop']
+    page 'thanks', 'thanks', [category: 'Support']
+    page 'buildstatus', 'buildstatus', [category: 'Develop']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
-    page 'events', 'events', [category: 'Community', allEvents: allEvents]
+    page 'events', 'events', [category: 'Support', allEvents: allEvents]
     page 'api', 'api', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/gapi"]
     page 'gdk', 'gdk', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/groovy-jdk"]
     page 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/documentation/"]
@@ -129,6 +129,7 @@ downloads {
         }
         version('2.5.0-alpha-1') {
             stable false
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-alpha-1-installer.exe'
         }
     }
     distribution('Groovy 2.4') {
@@ -140,11 +141,7 @@ downloads {
         }
         version('2.4.11') {
             stable true
-            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.11-installer.exe'
-        }
-        version('2.4.10') {
-            stable true
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.10-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.11-installer.exe'
         }
     }
 }

@@ -59,6 +59,12 @@ layout 'layouts/main.groovy', true,
                                 }
                                 hr(class: 'divider')
 
+                                h2 'Mailing-lists archive on MarkMail'
+                                p """
+                                    The mailing-lists are archived on ${$a(href: 'http://groovy.markmail.org/', 'MarkMail')}.
+                                    You can browse ${$a(href: 'http://groovy.markmail.org/search/?q=', 'recent emails')}.
+                                """
+
                                 h2 'Mailing-lists archive on Nabble'
                                 p """
                                     The mailing-lists are archived on ${$a(href: 'http://www.nabble.com/', 'Nabble')}.

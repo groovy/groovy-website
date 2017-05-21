@@ -24,7 +24,7 @@ menu {
         item 'Groovy on Twitter',           'https://twitter.com/ApacheGroovy',                 'fa-twitter'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
         item 'Source code on GitHub',       'https://github.com/apache/groovy',                 'fa-github'
-        item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'
+        item 'Report issues in Jira',       'reporting-issues.html',                            'fa-bug'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
         item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'

@@ -127,7 +127,7 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy. Pre-release versions are available:'
         }
-	version('2.5.0-alpha-1') {
+	version('2.5.0-beta-1') {
             stable false
         }
         version('2.5.0-alpha-1') {

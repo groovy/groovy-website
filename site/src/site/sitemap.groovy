@@ -127,6 +127,9 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy. Pre-release versions are available:'
         }
+	version('2.5.0-alpha-1') {
+            stable false
+        }
         version('2.5.0-alpha-1') {
             stable false
             windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-alpha-1-installer.exe'

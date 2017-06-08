@@ -3,14 +3,13 @@ menu {
         item 'Learn',                       'learn.html'
         item 'Documentation',               'documentation.html'
         item 'Download',                    'download.html'
-        item 'Community',                   'community.html'
+        item 'Support',                     'support.html'
+        item 'Contribute',                  'http://groovy.apache.org'
         item 'Ecosystem',                   'ecosystem.html'
     }
 
     group('About') {
-        item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/apache/groovy'
-        item 'Build status',                'buildstatus.html'
         item 'Security',                    'security.html'
         item 'Books',                       'learn.html#books'
         item 'Thanks',                      'thanks.html'
@@ -25,11 +24,11 @@ menu {
         item 'Groovy on Twitter',           'https://twitter.com/ApacheGroovy',                 'fa-twitter'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
         item 'Source code on GitHub',       'https://github.com/apache/groovy',                 'fa-github'
-        item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'
+        item 'Report issues in Jira',       'reporting-issues.html',                            'fa-bug'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
         item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
-	item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
+	    item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
     }
 }
 
@@ -43,15 +42,16 @@ pages {
     page 'versioning', 'versioning', [category: 'Download']
     page 'indy', 'indy', [category: 'Download']
     page 'security', 'security', [category: 'Learn']
-    page 'community', 'community', [category: 'Community']
-    page 'usergroups', 'usergroups', [category: 'Community', userGroups: usergroups]
-    page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
-    page 'mailing-lists', 'mailing-lists', [category: 'Community']
-    page 'contribute', 'contribute', [category: 'Community']
-    page 'thanks', 'thanks', [category: 'Community']
-    page 'buildstatus', 'buildstatus', [category: 'Community']
+    page 'reporting-issues', 'reporting-issues', [category: 'Support']
+    page 'support', 'support', [category: 'Support']
+    page 'usergroups', 'usergroups', [category: 'Support', userGroups: usergroups]
+    page 'groovy-weekly', 'groovy-weekly', [category: 'Support']
+    page 'mailing-lists', 'mailing-lists', [category: 'Support']
+    page 'contribute', 'contribute', [category: 'Develop']
+    page 'thanks', 'thanks', [category: 'Support']
+    page 'buildstatus', 'buildstatus', [category: 'Develop']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
-    page 'events', 'events', [category: 'Community', allEvents: allEvents]
+    page 'events', 'events', [category: 'Support', allEvents: allEvents]
     page 'api', 'api', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/gapi"]
     page 'gdk', 'gdk', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/groovy-jdk"]
     page 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/documentation/"]
@@ -67,7 +67,8 @@ documentation {
             '2.1.0', '2.1.1', '2.1.2', '2.1.3', '2.1.4', '2.1.5', '2.1.6', '2.1.7', '2.1.8', '2.1.9',
             '2.2.0', '2.2.1', '2.2.2',
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9', '2.3.10', '2.3.11',
-            '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4', '2.4.5', '2.4.6', '2.4.7'
+            '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4', '2.4.5', '2.4.6', '2.4.7', '2.4.8', '2.4.9', '2.4.10', '2.4.11',
+            '2.5.0-alpha-1', '2.5.0-beta-1'
     ])
 
     section('Getting started','fa-graduation-cap') {
@@ -120,17 +121,30 @@ documentation {
 }
 
 downloads {
+    distribution('Groovy 2.5') {
+        description {
+            yield 'Groovy 2.5 is the upcoming '
+            a(href: 'versioning.html', 'version')
+            yield ' of Groovy. Pre-release versions are available:'
+        }
+	version('2.5.0-beta-1') {
+            stable false
+        }
+        version('2.5.0-alpha-1') {
+            stable false
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-alpha-1-installer.exe'
+        }
+    }
     distribution('Groovy 2.4') {
         description {
-            yield 'Groovy 2.4 is the latest '
+            yield 'Groovy 2.4 is the latest stable '
             a(href: 'versioning.html', 'version')
             yield ' of Groovy.'
             yieldUnescaped ''' Important: Releases before 2.4.4 weren't done under the Apache Software Foundation and are provided as a convenience, without any warranty.'''
         }
-
-        version('2.4.7') {
+        version('2.4.11') {
             stable true
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.7-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.4.11-installer.exe'
         }
     }
 }
@@ -187,19 +201,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('Greach 2017') {
-        location 'Madrid, Spain'
-        date 'March 31 - April 1, 2017'
-        url 'http://greachconf.com/'
-        logo 'img/confs/greach2017.png'
-        description '''
-            <p>
-            Greach, the Spanish gathering of enthusiasts of Groovy, Grails, Griffon, Gradle, Spock, Vert.x, Gaelyk,
-            and many more. With inspirational talks from the makers and users of these projects, hands-on workshops with the rock stars,
-            join the 150+ attendees, designers, students, designers, the best professionals together in a great atmosphere.
-            </p>
-        '''
-    }
     event('GR8Conf EU 2017') {
         location 'Copenhagen, Denmark'
         date 'May 31 - June 2, 2017'
@@ -222,7 +223,7 @@ allEvents {
     }
     event('GR8Conf US 2017') {
         location 'Minneapolis, MN, United States of America'
-        date 'July 2017'
+        date 'July 26 - 28, 2017'
         url 'http://gr8conf.us/'
         logo 'img/confs/gr8confus.png'
         description '''
@@ -349,6 +350,10 @@ usergroups {
     userGroup('Austin Groovy and Grails User Group (TX)') {
         location 'North-America/United States'
         url 'http://www.meetup.com/Austin-Groovy-and-Grails-Users/'
+    }
+    userGroup('Boston Groovy, Grails, Spring Meetup (B2GS)') {
+        location 'North-America/United States'
+        url 'https://www.meetup.com/Grails-Boston/'
     }
     userGroup('Coder Consortium of Sacramento') {
         location 'North-America/United States'

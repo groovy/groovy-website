@@ -1,0 +1,112 @@
+(Material on this page is still under development!)
+
+[[Groovy2.5releasenotes-Macros]]
+== Macro support
+With Groovy 2.5, you can write macros in Groovy!
+
+Details: TBD
+
+[[Groovy2.5releasenotes-NewAstTransforms]]
+== New AST Transformations
+
+* `@MapConstructor` adds a `Map`-based constructor to a class. This allows a usage
+style similar to Groovy's named parameters but doesn't use the no-arg constructor
+and then call setters. This may be useful if you have final properties or wish the
+ class file to have the `Map` constructor for integration purposes
+(link:https://issues.apache.org/jira/browse/GROOVY-7353[GROOVY-7353]).
+* `@AutoImplement` allows you to provide dummy implementations of any abstract
+methods that might be inherited from super classes or interfaces
+(link:https://issues.apache.org/jira/browse/GROOVY-7860[GROOVY-7860]).
+
+[[Groovy2.5releasenotes-AstTransformImprovements]]
+== AST Transformation improvements
+
+* `@Canonical` becomes a meta-annotation allowing more flexible usage of the annotation attributes
+from its constituent annotations
+(link:https://issues.apache.org/jira/browse/GROOVY-6319[GROOVY-6319]).
+* `@Immutable` now supports Java's `Optional` container class
+(link:https://issues.apache.org/jira/browse/GROOVY-7600[GROOVY-7600])
+and handles inheritance hierarchies
+(link:https://issues.apache.org/jira/browse/GROOVY-7162[GROOVY-7162]).
+* `@Delegate` can now be used on getters
+(link:https://issues.apache.org/jira/browse/GROOVY-7769[GROOVY-7769]).
+* `@TupleConstructor` now supports `pre` and `post` closure conditions to match the functionality provided by `@MapConstructor`
+(link:https://issues.apache.org/jira/browse/GROOVY-7769[GROOVY-7769]).
+* `@TupleConstructor` and `@Builder` should be able to use defined setters rather than the field directly
+(link:https://issues.apache.org/jira/browse/GROOVY-7087[GROOVY-7087]).
+* Most annotations check property and field names provided to annotation attributes
+(link:https://issues.apache.org/jira/browse/GROOVY-7087[GROOVY-7087]).
+
+[[Groovy2.5releasenotes-Toolimprovements]]
+== Tool improvements
+
+Some improvements were made to Groovysh shell and the Groovy Console:
+
+* `groovysh` should offer easier access to grapes
+(link:https://issues.apache.org/jira/browse/GROOVY-6514[GROOVY-6514]).
+* `groovyconsole` now provides an ASMifier tab within the AstBrowser
+(link:https://issues.apache.org/jira/browse/GROOVY-8091[GROOVY-8091]).
+
+[[Groovy2.5releasenotes-OtherImprovements]]
+== Other improvements
+
+* Groovy's CliBuilder now supports annotation style definitions
+(link:https://issues.apache.org/jira/browse/GROOVY-7825[GROOVY-7825]).
+* Alternative to `with` called `tap` that has an implicit `return delegate`
+(link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-3976]).
+* Various JSON customization options are now supported
+(link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-6975] and
+link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-6854]).
+* Method parameter names are now accessible at runtime
+(link:https://issues.apache.org/jira/browse/GROOVY-7423[GROOVY-7423]).
+
+[[Groovy2.5releasenotes-Breakingchanges]]
+== Breaking changes
+
+A few issues fixed might also be considered breaking changes in some
+situations:
+
+* @TupleConstructor could use the order of properties listed in 'includes' when that option is used
+(link:https://issues.apache.org/jira/browse/GROOVY-8016[GROOVY-8016])
+* @ToString could output properties in a predefined order when 'includes' is used
+(link:https://issues.apache.org/jira/browse/GROOVY-8014[GROOVY-8014])
+* AstNodeToScriptAdapter should output source using the recommended modifier order
+(link:https://issues.apache.org/jira/browse/GROOVY-7967[GROOVY-7967])
+* ObjectRange iterator returns null instead of NoSuchElementException
+(link:https://issues.apache.org/jira/browse/GROOVY-7961[GROOVY-7961])
+* IntRange iterator returns null instead of NoSuchElementException
+(link:https://issues.apache.org/jira/browse/GROOVY-7960[GROOVY-7960])
+(link:https://issues.apache.org/jira/browse/GROOVY-7937[GROOVY-7937])
+* o.c.g.r.t.DefaultTypeTransformation does not apply the right toString on primitive arrays when transforming to String
+(link:https://issues.apache.org/jira/browse/GROOVY-7853[GROOVY-7853])
+* Remove synchronized methods of groovy.sql.Sql and document it as not thread-safe
+(link:https://issues.apache.org/jira/browse/GROOVY-7673[GROOVY-7673])
+* InvokerHelper formatting methods have inconsistent API
+(link:https://issues.apache.org/jira/browse/GROOVY-7563[GROOVY-7563])
+* Fix up transforms (apart from TupleConstructor) which are affected by empty includes default
+(link:https://issues.apache.org/jira/browse/GROOVY-7529[GROOVY-7529])
+* TupleConstructor with empty includes includes all
+(link:https://issues.apache.org/jira/browse/GROOVY-7523[GROOVY-7523])
+* TupleConstructor overwrites empty default constructors
+(link:https://issues.apache.org/jira/browse/GROOVY-7522[GROOVY-7522])
+* ResourceGroovyMethods/NioGroovyMethods BOM behavior is inconsistent
+(link:https://issues.apache.org/jira/browse/GROOVY-7465[GROOVY-7465])
+* API inconsistency between takeWhile, dropWhile and collectReplacements for CharSequences
+(link:https://issues.apache.org/jira/browse/GROOVY-7433[GROOVY-7433])
+* @ToString could support non-field properties
+(link:https://issues.apache.org/jira/browse/GROOVY-7394[GROOVY-7394])
+* same linkedlist code different behavior between groovy and java
+(link:https://issues.apache.org/jira/browse/GROOVY-6396[GROOVY-6396])
+* CLONE - same linkedlist code different behavior between groovy and java (fix priority of DGM methods vs actual methods on an object)
+* Accessing private methods from public ones using categories and inheritance causes MissingMethodException
+(link:https://issues.apache.org/jira/browse/GROOVY-6263[GROOVY-6263])
+
+[[Groovy2.5releasenotes-JDKrequirements]]
+== JDK requirements changes
+
+Groovy 2.5 requires JDK7+ to build and JDK7 is the minimum version of the JRE that we support.
+
+[[Groovy2.5releasenotes-Moreinformation]]
+== More information
+
+You can browse all the link:../changelogs/changelog-2.5.0.html[tickets closed for Groovy 2.5 in JIRA].

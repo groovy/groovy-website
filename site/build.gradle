@@ -9,7 +9,6 @@ import org.gradle.internal.logging.ConsoleRenderer
 import com.yahoo.platform.yui.compressor.CssCompressor
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor
 import org.apache.tools.ant.filters.BaseFilterReader
-import org.gradle.util.GFileUtils
 
 buildscript {
     repositories {

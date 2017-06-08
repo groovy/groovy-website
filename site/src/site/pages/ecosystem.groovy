@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Ecosystem',
+        pageTitle: 'The Apache Groovy programming language - Ecosystem',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 section(class: 'row') {

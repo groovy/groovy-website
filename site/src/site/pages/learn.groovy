@@ -3,7 +3,7 @@ import model.Video
 import model.Course
 
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Learn',
+        pageTitle: 'The Apache Groovy programming language - Learn',
         extraStyles: ['book.css'],
         mainContent: contents {
             div(id: 'content', class: 'page-1') {

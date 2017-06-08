@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Download',
+        pageTitle: 'The Apache Groovy programming language - Download',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
@@ -147,7 +147,7 @@ layout 'layouts/main.groovy', true,
 
                                     p {
                                         yield 'You can also read the changelogs for '
-                                        a(href: "changelogs.html", 'older versions')
+                                        a(href: "changelogs.html", 'other versions')
                                         yield '.'
                                     }
                                 }
@@ -258,6 +258,10 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'http://www.macports.org/', 'MacPorts')
                                     yield ' installed, you can install Groovy with:'
                                     pre { code 'sudo port install groovy' }
+                                    yield 'If you\'re using Docker, Groovy is available on '
+                                    a(href: 'https://hub.docker.com/_/groovy/', 'Docker Hub')
+                                    yield '.'
+                                    br()
                                     yield 'If you prefer to live on the bleeding edge, you can also grab the '
                                     a(href: 'https://github.com/apache/groovy', 'source code from GitHub')
                                     yield '.'
@@ -281,7 +285,12 @@ layout 'layouts/main.groovy', true,
                                         }
                                         tbody {
                                             tr {
-                                                td { b '2.3 - current' }
+                                                td { b '2.5 - current' }
+                                                td '1.7+'
+                                                td '1.7+'
+                                            }
+                                            tr {
+                                                td { b '2.3 - 2.4' }
                                                 td '1.6+'
                                                 td '1.7+'
                                             }

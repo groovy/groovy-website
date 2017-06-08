@@ -6,7 +6,7 @@ modelTypes = {
 }
 
 layout 'layouts/main.groovy', true,
-        pageTitle: "The Groovy programming language - Groovy $groovyVersion release notes",
+        pageTitle: "The Apache Groovy programming language - Groovy $groovyVersion release notes",
         extraStyles: ['https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css'],
         extraFooter: contents {
             script(src:'https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js') { }

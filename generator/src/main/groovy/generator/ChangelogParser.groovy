@@ -32,7 +32,7 @@ class ChangelogParser {
             println "Fetching changelog for version $name"
             new Changelog(groovyVersion: name, issues: changelogHTML(id, cacheDirectory))
         }
-        createAggregates(raw)
+        createAggregates(raw, versionMap.keySet())
     }
 
     private static String fixName(String name) {
@@ -51,11 +51,11 @@ class ChangelogParser {
         "$id$classifier"
     }
 
-    private static List<Changelog> createAggregates(final List<Changelog> changelogs) {
+    private static List<Changelog> createAggregates(final List<Changelog> changelogs, final Set<String> releasedVersions) {
         def allMajor = changelogs.groupBy {
             def v = it.groovyVersion
             v.contains('-')?v-v.substring(v.indexOf('-')):v
-        }
+        }.findAll { ver, logs -> ver in releasedVersions }
         allMajor.collect { k,v ->
             def changelog = changelogs.find { it.groovyVersion == k }
             if (!changelog) {

@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - FAQ - Frequently Asked Questions',
+        pageTitle: 'The Apache Groovy programming language - FAQ - Frequently Asked Questions',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
@@ -13,7 +13,7 @@ layout 'layouts/main.groovy', true,
                                     li { a(href: "documentation.html#${section.anchor}", class: 'anchor-link', section.name) }
                                 }
                                 li {
-                                    a(href: "documentation.html#old-docs", class: 'anchor-link', 'Documentation for older versions')
+                                    a(href: "documentation.html#all-versions", class: 'anchor-link', 'Documentation for other versions')
                                 }
                                 li(class: 'active') {
                                     a(href: 'faq.html') { strong('FAQ') }

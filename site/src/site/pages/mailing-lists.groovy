@@ -1,11 +1,11 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Mailing-lists',
+        pageTitle: 'The Apache Groovy programming language - Mailing-lists',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            include template: 'includes/community-navbar.groovy'
+                            include template: 'includes/support-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
@@ -58,6 +58,12 @@ layout 'layouts/main.groovy', true,
                                     }
                                 }
                                 hr(class: 'divider')
+
+                                h2 'Mailing-lists archive on MarkMail'
+                                p """
+                                    The mailing-lists are archived on ${$a(href: 'http://groovy.markmail.org/', 'MarkMail')}.
+                                    You can browse ${$a(href: 'http://groovy.markmail.org/search/?q=', 'recent emails')}.
+                                """
 
                                 h2 'Mailing-lists archive on Nabble'
                                 p """

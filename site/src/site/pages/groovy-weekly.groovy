@@ -1,11 +1,11 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Groovy newsletter',
+        pageTitle: 'The Apache Groovy programming language - Groovy newsletter',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            include template: 'includes/community-navbar.groovy'
+                            include template: 'includes/support-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {

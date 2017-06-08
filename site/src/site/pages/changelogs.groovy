@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: "The Groovy programming language - Changelogs",
+        pageTitle: "The Apache Groovy programming language - Changelogs",
         mainContent: contents {
             def majorize = { it.split(/\.|-/)[0..1].join('.')}
 

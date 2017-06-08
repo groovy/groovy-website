@@ -1,33 +1,35 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Contribute',
+        pageTitle: 'The Apache Groovy programming language - Contribute',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
-                        div(class: 'col-lg-3') {
-                            include template: 'includes/community-navbar.groovy'
-                        }
-
                         div(class: 'col-lg-8 col-lg-pull-0') {
                             include template: 'includes/contribute-button.groovy'
                             h1 {
                                 i(class: 'fa fa-pencil-square-o') {}
-                                yield ' Contribute'
+                                yield ' Getting Involved'
                             }
                             article {
                                 p '''
                                     Would you like to help us make the Groovy programming language even better? 
-                                    There are many ways in which you can get involved, make a difference and help the Groovy development team to make Groovy even, well, groovier? 
+                                    There are many ways in which you can get involved, make a difference and help
+                                    the Groovy development team to make Groovy even, well, groovier?
                                     We really appreciate and welcome contributions and you can help us by:
-
                                 '''
                                 ul {
                                     li {
-                                        yield 'helping other users on the '
+                                        yield 'helping other users or discussing future language directions on the '
                                         a(href: 'mailing-lists.html', 'mailing-lists')
                                     }
                                     li {
-                                        a(href: '#reporting-issues', 'reporting issues')
+                                        yield 'contribute to discussions on '
+                                        a(href: 'https://groovycommunity.com/', 'Slack')
+                                        yield " - this channel is not endorsed by the Apache Software Foundation, it's run by Groovy enthusiasts in the community for casual conversations and Q&A,"
+                                    }
+                                    li {
+                                        yield 'reporting or fixing '
+                                        a(href: '#reporting-issues', 'issues')
                                         yield ' you encounter in our '
                                         a(href: 'https://issues.apache.org/jira/browse/GROOVY', 'bug tracker')
                                     }
@@ -47,25 +49,34 @@ layout 'layouts/main.groovy', true,
                                 }
                                 hr(class: 'divider')
 
-                                h2 'Discussing on the mailing-lists'
+                                h2 'Discussing on the mailing-lists and forums'
                                 p {
                                     yield '''
                                         If you encounter a problem, want to discuss a new feature,
                                         share interesting findings, and more, then the '''
                                     a(href: 'mailing-lists.html', 'mailing-lists')
-                                    yield ' are the place to go to start a conversation with the Groovy developers and other Groovy users.'
+                                    yield '''
+                                        are the place to go to start a conversation with the Groovy developers
+                                        and other Groovy users. Discussions on the mailing list are archived.
+                                        It's the place to go to for all formal discussions or if you want to
+                                        search the archives. '''
                                 }
+                                p {
+                                    yield 'Alternatively, for more casual conversations and Q&A, consider using the '
+                                    a(href: 'https://groovycommunity.com/', 'Slack')
+                                    yield " channel. This channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community."
+                                }
+
                                 hr(class: 'divider')
 
                                 a(name: 'reporting-issues') {}
                                 h2 'Reporting issues'
                                 p {
-                                    yield 'The Groovy project is using the '
-                                    a(href: 'https://issues.apache.org/jira/browse/GROOVY/', 'JIRA bug tracker')
                                     yield '''
-                                        to report and track issues, feature enhancements, and new features.
-                                        Be sure to be signed-up and logged-in, before proceeding.
-                                    '''
+                                        If you are wanting to search existing issues, raise a new one or are keen
+                                        to fix some existing issues, then you should become familiar with Groovy's '''
+                                    a(href: 'reporting-issues.html', 'Bug tracker')
+                                    yield '.'
                                 }
                                 p {
                                     button(type: 'button', class: 'btn btn-default', 'Report an issue',

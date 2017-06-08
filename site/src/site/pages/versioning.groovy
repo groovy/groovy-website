@@ -1,5 +1,5 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Groovy programming language - Versioning',
+        pageTitle: 'The Apache Groovy programming language - Versioning',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
@@ -44,7 +44,7 @@ layout 'layouts/main.groovy', true,
 
                                 h2 'Before Groovy 2.0.0'
                                 p 'Before Groovy 2.0.0 we followed a version scheme where we had X.Y.Z, where X.Y was the major version, and Z the minor version.\n' +
-                                        'Bugfix versions where not really done, you had to upgrade to the next minor version for that.\n' +
+                                        'Bugfix versions were not really done, you had to upgrade to the next minor version for that.\n' +
                                         'Since Groovy 1.0 we incremented only the Y for a new major version.\n' +
                                         'The increment of X we wanted to leave for a very big breaking change, like a new Meta-Object Protocol.\n' +
                                         'The last major version in these scheme is 1.8(.0), 1.8.1 is the first minor and bugfix version.\n' +

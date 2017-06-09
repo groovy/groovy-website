@@ -198,26 +198,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('GR8Conf EU 2017') {
-        location 'Copenhagen, Denmark'
-        date 'May 31 - June 2, 2017'
-        url 'http://gr8conf.eu/'
-        logo 'img/confs/gr8confeu.png'
-        description '''
-            <p>
-            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
-            few years, and with good reason. To spread the word even more we have created GR8Conf.
-            </p>
-            <p>
-            The 2017 Edition of GR8Conf Europe will feature a DevOps day. Focus will be on technologies to support your
-            everyday DevOps needs.
-            </p>
-            <p>
-            GR8Conf is an independent, affordable series of conferences.
-            It's dedicated to the technologies in the Groovy ecosystem.
-            </p>
-        '''
-    }
     event('GR8Conf US 2017') {
         location 'Minneapolis, MN, United States of America'
         date 'July 26 - 28, 2017'
@@ -247,6 +227,25 @@ allEvents {
             <p>
             GR8Conf is an independent, affordable series of conferences.
             It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+    event('GR8Conf EU 2018') {
+        location 'Copenhagen, Denmark'
+        date 'May 30 - June 1, 2018'
+        url 'http://gr8conf.eu/'
+        logo 'img/confs/gr8confeu.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            The 2018 Edition of GR8Conf Europe is the 10th edition and will be a blast. Like in 2017 it will feature a DevOps day. 
+            Focus will be on technologies to support your everyday DevOps needs.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences and covers All Things Groovy
             </p>
         '''
     }

@@ -5,7 +5,7 @@ layout 'layouts/main.groovy', true,
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            include template: 'includes/community-navbar.groovy'
+                            include template: 'includes/support-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
@@ -15,6 +15,14 @@ layout 'layouts/main.groovy', true,
                                 yield ' Thanks'
                             }
                             article {
+                                p {
+                                    yield '''
+                                        Groovy would not be the successful Open Source project it is today,
+                                        without the help of its users, forming the base of a wider Groovy
+                                        community and '''
+                                    a(href: 'ecosystem.html', 'ecosystem')
+                                    yield ' of projects using Groovy.'
+                                }
                                 p "The Apache Groovy team would like to thank:"
                                 ul {
                                     li """

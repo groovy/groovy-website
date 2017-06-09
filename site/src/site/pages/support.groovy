@@ -1,35 +1,27 @@
 layout 'layouts/main.groovy', true,
-        pageTitle: 'The Apache Groovy programming language - Community',
+        pageTitle: 'The Apache Groovy programming language - Support',
         mainContent: contents {
             div(id: 'content', class: 'page-1') {
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            include template: 'includes/community-navbar.groovy'
+                            include template: 'includes/support-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {
                             include template: 'includes/contribute-button.groovy'
                             h1 {
                                 i(class: 'fa fa-users') {}
-                                yield ' Community'
+                                yield ' Support'
                             }
                             article {
-                                p {
-                                    yield '''
-                                        Groovy would not be the successful Open Source project it is today,
-                                        without the help of its users, forming the base of a wider Groovy community
-                                        and '''
-                                    a(href: 'ecosystem.html', 'ecosystem')
-                                    yield ' of projects using Groovy.'
-                                }
-                                p 'In this section of the website, you can find useful links and information about: '
+                                p 'There are numerous ways to get help with Groovy: '
                                 ul {
-                                    li "how you can ${$a(href: 'contribute.html', 'contribute')} to the project, its codebase, its documentation,"
-                                    li "how to raise issues in our ${$a(href: 'contribute.html#reporting-issues', 'bug tracker')},"
-                                    li "how to interact with other Groovy users and developers through the ${$a(href: 'mailing-lists.html', 'mailing-lists')} or ${$a(href: 'https://groovycommunity.com/', 'Slack')}. The Slack channel is not endorsed by the Apache Software Foundation, It's run by Groovy enthusiasts in the community for casual conversations and Q&A. Official discussions must happen on the mailing lists only,"
-                                    li "the upcoming ${$a(href: 'events.html', 'events and conferences')} you might want to attend to learn more about Groovy and to share your experience with others,"
-                                    li "the list of ${$a(href: 'usergroups.html', 'user groups')} you can attend and where to meet other Groovy users."
+                                    li "discuss language usage or direction with other Groovy users and developers through the ${$a(href: 'mailing-lists.html', 'mailing-lists')} - this is the place for all official discussions,"
+                                    li "discuss matters on ${$a(href: 'https://groovycommunity.com/', 'Slack')} - this channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community for casual conversations and Q&A,"
+                                    li "find known issues (or create new ones) in our ${$a(href: 'reporting-issues.html', 'bug tracker')},"
+                                    li "attend upcoming ${$a(href: 'events.html', 'events and conferences')} to learn more about Groovy and to share your experience with others,"
+                                    li "visit a local ${$a(href: 'usergroups.html', 'user group')} to meet other Groovy enthusiasts."
                                 }
                                 p '''
                                     If you click on the socialize link in the menu, you will also find other ways to interact

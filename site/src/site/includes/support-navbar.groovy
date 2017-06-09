@@ -1,12 +1,13 @@
 
 ul(class: 'nav-sidebar') {
     [
-            'community': 'Community',
-            'contribute': 'Contribute',
-            'thanks': 'Thanks',
+            'support': 'Support',
+            'http://groovy.apache.org/index': 'Contribute',
+            'reporting-issues': 'Reporting issues',
             'mailing-lists': 'Mailing-lists',
             'events': 'Events',
             'usergroups': 'User groups',
+            'thanks': 'Thanks',
             'groovy-weekly': 'Groovy newsletter'
     ].each { page, label ->
         if (currentPage == page) {

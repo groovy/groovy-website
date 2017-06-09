@@ -3,14 +3,13 @@ menu {
         item 'Learn',                       'learn.html'
         item 'Documentation',               'documentation.html'
         item 'Download',                    'download.html'
-        item 'Community',                   'community.html'
+        item 'Support',                     'support.html'
+        item 'Contribute',                  'http://groovy.apache.org'
         item 'Ecosystem',                   'ecosystem.html'
     }
 
     group('About') {
-        item 'Contributing',                'contribute.html'
         item 'Source code',                 'https://github.com/apache/groovy'
-        item 'Build status',                'buildstatus.html'
         item 'Security',                    'security.html'
         item 'Books',                       'learn.html#books'
         item 'Thanks',                      'thanks.html'
@@ -25,11 +24,11 @@ menu {
         item 'Groovy on Twitter',           'https://twitter.com/ApacheGroovy',                 'fa-twitter'
         item 'Events and conferences',      'events.html',                                      'fa-calendar'
         item 'Source code on GitHub',       'https://github.com/apache/groovy',                 'fa-github'
-        item 'Report issues in Jira',       'contribute.html#reporting-issues',                 'fa-bug'
+        item 'Report issues in Jira',       'reporting-issues.html',                            'fa-bug'
         item 'Google+ Groovy Page',         'https://google.com/+groovy',                       'fa-google-plus'
         item 'Google+ Groovy Community',    'http://bit.ly/g-community',                        'fa-google-plus'
         item 'Stack Overflow questions',    'http://stackoverflow.com/questions/tagged/groovy', 'fa-stack-overflow'
-	item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
+	    item 'Slack Community',             'http://groovycommunity.com/',                      'fa-slack'
     }
 }
 
@@ -43,15 +42,16 @@ pages {
     page 'versioning', 'versioning', [category: 'Download']
     page 'indy', 'indy', [category: 'Download']
     page 'security', 'security', [category: 'Learn']
-    page 'community', 'community', [category: 'Community']
-    page 'usergroups', 'usergroups', [category: 'Community', userGroups: usergroups]
-    page 'groovy-weekly', 'groovy-weekly', [category: 'Community']
-    page 'mailing-lists', 'mailing-lists', [category: 'Community']
-    page 'contribute', 'contribute', [category: 'Community']
-    page 'thanks', 'thanks', [category: 'Community']
-    page 'buildstatus', 'buildstatus', [category: 'Community']
+    page 'reporting-issues', 'reporting-issues', [category: 'Support']
+    page 'support', 'support', [category: 'Support']
+    page 'usergroups', 'usergroups', [category: 'Support', userGroups: usergroups]
+    page 'groovy-weekly', 'groovy-weekly', [category: 'Support']
+    page 'mailing-lists', 'mailing-lists', [category: 'Support']
+    page 'contribute', 'contribute', [category: 'Develop']
+    page 'thanks', 'thanks', [category: 'Support']
+    page 'buildstatus', 'buildstatus', [category: 'Develop']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
-    page 'events', 'events', [category: 'Community', allEvents: allEvents]
+    page 'events', 'events', [category: 'Support', allEvents: allEvents]
     page 'api', 'api', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/gapi"]
     page 'gdk', 'gdk', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/groovy-jdk"]
     page 'singlepagedocumentation', 'single-page-documentation', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/documentation/"]
@@ -68,7 +68,7 @@ documentation {
             '2.2.0', '2.2.1', '2.2.2',
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9', '2.3.10', '2.3.11',
             '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4', '2.4.5', '2.4.6', '2.4.7', '2.4.8', '2.4.9', '2.4.10', '2.4.11',
-            '2.5.0-alpha-1'
+            '2.5.0-alpha-1', '2.5.0-beta-1'
     ])
 
     section('Getting started','fa-graduation-cap') {
@@ -127,9 +127,9 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy. Pre-release versions are available:'
         }
-        version('2.5.0-alpha-1') {
+	version('2.5.0-beta-1') {
             stable false
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-alpha-1-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-beta-1-installer.exe'
         }
     }
     distribution('Groovy 2.4') {
@@ -198,26 +198,6 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('GR8Conf EU 2017') {
-        location 'Copenhagen, Denmark'
-        date 'May 31 - June 2, 2017'
-        url 'http://gr8conf.eu/'
-        logo 'img/confs/gr8confeu.png'
-        description '''
-            <p>
-            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
-            few years, and with good reason. To spread the word even more we have created GR8Conf.
-            </p>
-            <p>
-            The 2017 Edition of GR8Conf Europe will feature a DevOps day. Focus will be on technologies to support your
-            everyday DevOps needs.
-            </p>
-            <p>
-            GR8Conf is an independent, affordable series of conferences.
-            It's dedicated to the technologies in the Groovy ecosystem.
-            </p>
-        '''
-    }
     event('GR8Conf US 2017') {
         location 'Minneapolis, MN, United States of America'
         date 'July 26 - 28, 2017'
@@ -247,6 +227,25 @@ allEvents {
             <p>
             GR8Conf is an independent, affordable series of conferences.
             It's dedicated to the technologies in the Groovy ecosystem.
+            </p>
+        '''
+    }
+    event('GR8Conf EU 2018') {
+        location 'Copenhagen, Denmark'
+        date 'May 30 - June 1, 2018'
+        url 'http://gr8conf.eu/'
+        logo 'img/confs/gr8confeu.png'
+        description '''
+            <p>
+            Groovy, Grails and the related technologies have seen astounding growth in interest and adoption the past
+            few years, and with good reason. To spread the word even more we have created GR8Conf.
+            </p>
+            <p>
+            The 2018 Edition of GR8Conf Europe is the 10th edition and will be a blast. Like in 2017 it will feature a DevOps day. 
+            Focus will be on technologies to support your everyday DevOps needs.
+            </p>
+            <p>
+            GR8Conf is an independent, affordable series of conferences and covers All Things Groovy
             </p>
         '''
     }

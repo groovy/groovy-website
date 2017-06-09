@@ -5,7 +5,7 @@ layout 'layouts/main.groovy', true,
                 div(class: 'row') {
                     div(class: 'row-fluid') {
                         div(class: 'col-lg-3') {
-                            include template: 'includes/community-navbar.groovy'
+                            include template: 'includes/support-navbar.groovy'
                         }
 
                         div(class: 'col-lg-8 col-lg-pull-0') {

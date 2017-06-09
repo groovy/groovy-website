@@ -100,6 +100,10 @@ situations:
 * CLONE - same linkedlist code different behavior between groovy and java (fix priority of DGM methods vs actual methods on an object)
 * Accessing private methods from public ones using categories and inheritance causes MissingMethodException
 (link:https://issues.apache.org/jira/browse/GROOVY-6263[GROOVY-6263])
+* Have the elvis operator (?:) support the Optional type in Java 8
+(link:https://issues.apache.org/jira/browse/GROOVY-6744[GROOVY-6744])
+* java.util.Optional should evaluate to false if empty
+(link:https://issues.apache.org/jira/browse/GROOVY-7611[GROOVY-7611])
 
 [[Groovy2.5releasenotes-JDKrequirements]]
 == JDK requirements changes

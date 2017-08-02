@@ -300,6 +300,13 @@ books {
         description 'Experience the Groovy programming language through code snippets. Learn more about (hidden) Groovy features with code snippets and short articles. The articles and code will get you started quickly and will give more insight in Groovy.'
     }
 
+    book('Learning Groovy') {
+        authors 'Adam L. Davis'
+        cover 'img/books/learning_groovy.jpg'
+        url 'http://www.apress.com/us/book/9781484221167'
+        description "Start building powerful apps that take advantage of the dynamic scripting capabilities of the Groovy language. This book covers Groovy fundamentals, such as installing Groovy, using Groovy tools, and working with the Groovy Development Kit (GDK). You'll also learn more advanced aspects of Groovy."
+    }
+
     book("Grails 3: A Practical Guide to Application Development") {
         authors "Eric Helgeson"
         cover 'img/books/pratical-grails-3-book-cover.png'

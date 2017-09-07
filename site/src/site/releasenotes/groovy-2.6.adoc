@@ -72,6 +72,10 @@ assert pets.size() == 2 && pets.sum() == 'catdog'
 assert pets.class.name == '[Ljava.lang.String;'
 ```
 
+=== Elvis assignment
+
+TBD
+
 === Java-style Lambda syntax
 
 TBD
@@ -94,4 +98,4 @@ Groovy 2.6 requires JDK8+ to build and JDK7 is the minimum version of the JRE th
 [[Groovy2.6releasenotes-Moreinformation]]
 == More information
 
-You can browse all the link:../changelogs/changelog-2.6.0.html[tickets closed for Groovy 2.6 in JIRA].
+You can browse all the link:../changelogs/changelog-2.6.0-alpha-1.html[tickets closed for Groovy 2.6 in JIRA].

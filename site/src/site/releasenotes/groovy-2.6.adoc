@@ -1,0 +1,97 @@
+(Material on this page is still under development!)
+
+[[Groovy2.6releasenotes-Macros]]
+== Parrot Parser
+
+With Groovy 2.6, you can enable the Parrot parser which has the following features.
+
+=== do/while loop
+
+Example:
+```
+// classic Java-style do..while loop
+def count = 5
+def fact = 1
+do {
+    fact *= count--
+} while(count > 1)
+assert fact == 120
+```
+
+=== Enhanced classic Java-style for loop
+
+Example:
+```
+// classic Java-style for loop with comma-separated expressions
+def facts = []
+def count = 5
+for (int fact = 1, i = 1; i <= count; i++, fact *= i) {
+    facts << fact
+}
+assert facts == [1, 2, 6, 24, 120]
+```
+
+=== Multi-assignment in combination with for loop
+
+Groovy has supported multi-assignment statements since Groovy 1.6:
+```
+// multi-assignment with types
+def (String x, int y) = ['foo', 42]
+assert "$x $y" == 'foo 42'
+```
+
+These can now appear in for loops:
+```
+// multi-assignment goes loopy
+def baNums = []
+for (def (String u, int v) = ['bar', 42]; v < 45; u++, v++) {
+    baNums << "$u $v"
+}
+assert baNums == ['bar 42', 'bas 43', 'bat 44']
+```
+
+=== !in and !instanceof
+
+Examples:
+```
+assert 45 !instanceof Date
+
+assert 4 !in [1, 3, 5, 7]
+```
+
+=== Java-style array initialization
+
+Examples:
+```
+def primes = new int[] {2, 3, 5, 7, 11}
+assert primes.size() == 6 && primes.sum() == 28
+assert primes.class.name == '[I'
+
+def pets = new String[] {'cat', 'dog'}
+assert pets.size() == 2 && pets.sum() == 'catdog'
+assert pets.class.name == '[Ljava.lang.String;'
+```
+
+=== Java-style Lambda syntax
+
+TBD
+
+=== Method references
+
+TBD
+
+[[Groovy2.6releasenotes-Groovydocchanges]]
+== GroovyDoc changes
+
+=== Embedded GroovyDoc
+
+TBD
+
+== JDK requirements
+
+Groovy 2.6 requires JDK8+ to build and JDK7 is the minimum version of the JRE that we support.
+
+[[Groovy2.6releasenotes-Moreinformation]]
+== More information
+
+You can browse all the link:../changelogs/changelog-2.6.0.html[tickets closed for Groovy 2.6 in JIRA].

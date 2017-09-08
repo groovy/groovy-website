@@ -1,14 +1,24 @@
 (Material on this page is still under development!)
 
-[[Groovy2.6releasenotes-Macros]]
+[[Groovy2.6releasenotes-Parrot]]
 == Parrot Parser
 
-With Groovy 2.6, you can enable the Parrot parser which has the following features.
+With Groovy 2.6, you can enable the Parrot parser which supports additional syntax options and language features.
+
+=== Enabling the parser
+
+The plan for Groovy 3.0, is to have the new parser enabled by default.
+For Groovy 2.6, you enable the new parser using a system property.
+Use `-Dgroovy.antlr4=true` (set via `JAVA_OPTS` if needed).
+
+If building from source, you need to provide Gradle with `-PuseAntlr4`
+in order to include the classes which support the new parser.
 
 === do/while loop
 
-Example:
-```
+Java's class do/while loop is now supported. Example:
+
+--------------------------------------
 // classic Java-style do..while loop
 def count = 5
 def fact = 1
@@ -16,78 +26,183 @@ do {
     fact *= count--
 } while(count > 1)
 assert fact == 120
-```
+--------------------------------------
 
 === Enhanced classic Java-style for loop
 
-Example:
-```
-// classic Java-style for loop with comma-separated expressions
+The more elaborate form of Java's classic for loop with comma-separate expressions
+is now supported. Example:
+
+--------------------------------------
 def facts = []
 def count = 5
 for (int fact = 1, i = 1; i <= count; i++, fact *= i) {
     facts << fact
 }
 assert facts == [1, 2, 6, 24, 120]
-```
+--------------------------------------
 
 === Multi-assignment in combination with for loop
 
 Groovy has supported multi-assignment statements since Groovy 1.6:
-```
+
+--------------------------------------
 // multi-assignment with types
 def (String x, int y) = ['foo', 42]
 assert "$x $y" == 'foo 42'
-```
+--------------------------------------
 
 These can now appear in for loops:
-```
+
+--------------------------------------
 // multi-assignment goes loopy
 def baNums = []
 for (def (String u, int v) = ['bar', 42]; v < 45; u++, v++) {
     baNums << "$u $v"
 }
 assert baNums == ['bar 42', 'bas 43', 'bat 44']
-```
+--------------------------------------
 
 === !in and !instanceof
 
-Examples:
-```
+When wanting the negated form, rather than having to bracket expressions containing
+the `in` and `instanceof` infix operators and placing the exclamation operator in
+front of the brackets, an inline variant is now also supported. Examples:
+
+--------------------------------------
+/* assert !(45 instanceof Date) // old form */
 assert 45 !instanceof Date
 
 assert 4 !in [1, 3, 5, 7]
-```
+--------------------------------------
 
 === Java-style array initialization
 
+Groovy has always supported literal list/array definitions using square brackets
+and has avoided Java-style curly braces so as not to conflict with closure definitions.
+In the case where the curly braces come immediately after an array type declaration however,
+there is no ambiguity with closure definitions, so the Java style is now also supported.
+
 Examples:
-```
+--------------------------------------
 def primes = new int[] {2, 3, 5, 7, 11}
-assert primes.size() == 6 && primes.sum() == 28
+assert primes.size() == 5 && primes.sum() == 28
 assert primes.class.name == '[I'
 
 def pets = new String[] {'cat', 'dog'}
 assert pets.size() == 2 && pets.sum() == 'catdog'
 assert pets.class.name == '[Ljava.lang.String;'
-```
+
+// traditional Groovy alternative still supported
+String[] groovyBooks = [ 'Groovy in Action', 'Making Java Groovy' ]
+assert groovyBooks.every{ it.contains('Groovy') }
+--------------------------------------
 
 === Elvis assignment
 
-TBD
+Groovy introduced the Elvis operator Example:
+
+--------------------------------------
+import groovy.transform.ToString
+
+@ToString
+class Element {
+    String name
+    int atomicNumber
+}
+def he = new Element(name: 'Helium')
+he.with {
+    name = name ?: 'Hydrogen'   // existing Elvis operator
+    atomicNumber ?= 2           // new Elvis assignment shorthand
+}
+assert he.toString() == 'Element(Helium, 2)'
+--------------------------------------
 
 === Java-style Lambda syntax
 
-TBD
+Examples:
 
 === Method references
 
-TBD
+The Java 8 method reference syntax using the double colon syntax is now supported.
 
-[[Groovy2.6releasenotes-Groovydocchanges]]
-== GroovyDoc changes
+.Experimental Status
+CAUTION: While this feature will remain, we regard it's current implementation as experimental.
+Currently, the method reference is turned into a Groovy method closure. This means that it even
+works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE).
+We are currently exploring supporting native method references either instead of or in addition
+to method closures. If we change the implementation, we would expect no change in logical behavior
+though the new implementation may have different performance characteristics in some circumstances
+and the native implementation would only work on JDK8+.
+
+The following examples illustrate referencing both static and instance methods of a class:
+--------------------------------------
+import java.util.stream.Stream
+import static java.util.stream.Collectors.toList
+
+// class::staticMethod
+assert ['1', '2', '3'] ==
+        Stream.of(1, 2, 3)
+                .map(String::valueOf)
+                .collect(toList())
+
+// class::instanceMethod
+assert ['A', 'B', 'C'] ==
+        ['a', 'b', 'c'].stream()
+                .map(String::toUpperCase)
+                .collect(toList())
+--------------------------------------
+
+The following examples illustrate referencing methods of instance variables:
+
+--------------------------------------
+// instance::instanceMethod
+def sizeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'::length
+assert sizeAlphabet() == 26
+
+// instance::staticMethod
+def hexer = 42::toHexString
+assert hexer(127) == '7f'
+--------------------------------------
+
+The following examples illustrate referencing constructors:
+
+--------------------------------------
+// normal constructor
+def r = Random::new
+assert r().nextInt(10) in 0..9
+
+// array constructor
+def make2d = String[][]::new
+def tictac = make2d(3, 3)
+tictac[0] = ['X', 'O', 'X']
+tictac[1] = ['X', 'X', 'O']
+tictac[2] = ['O', 'X', 'O']
+assert tictac*.join().join('\n') == 'XOX\nXXO\nOXO'
+
+// for your own classes too
+import groovy.transform.Canonical
+
+@Canonical
+class Animal {
+    String kind
+}
+
+def a = Animal::new
+assert a('lion').kind == 'lion'
+
+def c = Animal
+assert c::new('cat').kind == 'cat'
+--------------------------------------
+
+[[Groovy2.6releasenotes-Miscimprovements]]
+== Miscellaneous improvements
 
 === Embedded GroovyDoc
+
+TBD
+
+=== JSR308 improvements
 
 TBD
 

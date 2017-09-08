@@ -1,3 +1,7 @@
+:source-highlighter: pygments
+:pygments-style: emacs
+:icons: font
+
 (Material on this page is still under development!)
 
 [[Groovy2.6releasenotes-Parrot]]
@@ -18,6 +22,7 @@ in order to include the classes which support the new parser.
 
 Java's class do/while loop is now supported. Example:
 
+[source,groovy]
 --------------------------------------
 // classic Java-style do..while loop
 def count = 5
@@ -33,6 +38,7 @@ assert fact == 120
 The more elaborate form of Java's classic for loop with comma-separate expressions
 is now supported. Example:
 
+[source,groovy]
 --------------------------------------
 def facts = []
 def count = 5
@@ -46,6 +52,7 @@ assert facts == [1, 2, 6, 24, 120]
 
 Groovy has supported multi-assignment statements since Groovy 1.6:
 
+[source,groovy]
 --------------------------------------
 // multi-assignment with types
 def (String x, int y) = ['foo', 42]
@@ -54,6 +61,7 @@ assert "$x $y" == 'foo 42'
 
 These can now appear in for loops:
 
+[source,groovy]
 --------------------------------------
 // multi-assignment goes loopy
 def baNums = []
@@ -69,6 +77,7 @@ When wanting the negated form, rather than having to bracket expressions contain
 the `in` and `instanceof` infix operators and placing the exclamation operator in
 front of the brackets, an inline variant is now also supported. Examples:
 
+[source,groovy]
 --------------------------------------
 /* assert !(45 instanceof Date) // old form */
 assert 45 !instanceof Date
@@ -84,6 +93,8 @@ In the case where the curly braces come immediately after an array type declarat
 there is no ambiguity with closure definitions, so the Java style is now also supported.
 
 Examples:
+
+[source,groovy]
 --------------------------------------
 def primes = new int[] {2, 3, 5, 7, 11}
 assert primes.size() == 5 && primes.sum() == 28
@@ -102,6 +113,7 @@ assert groovyBooks.every{ it.contains('Groovy') }
 
 Groovy introduced the Elvis operator Example:
 
+[source,groovy]
 --------------------------------------
 import groovy.transform.ToString
 
@@ -110,6 +122,7 @@ class Element {
     String name
     int atomicNumber
 }
+
 def he = new Element(name: 'Helium')
 he.with {
     name = name ?: 'Hydrogen'   // existing Elvis operator
@@ -120,22 +133,52 @@ assert he.toString() == 'Element(Helium, 2)'
 
 === Java-style Lambda syntax
 
+The Java syntax for lambda expressions is now supported.
+
+[width="80%",align="center"]
+|===
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, lambda expressions are turned into equivalent Groovy closures. This approach works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native lambda expression either instead of or in addition to conversion to closures. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.
+|===
+
 Examples:
+
+[source,groovy]
+--------------------------------------
+import static java.util.stream.Collectors.toList
+
+(1..10).forEach((it) -> { println it })
+
+assert (1..10).stream()
+        .filter((it) -> it % 2 == 0)
+        .map((it) -> it * 2)
+        .collect(toList()) == [4, 8, 12, 16, 20]
+--------------------------------------
+
+The normal variants are supported and Groovy adds additional features such as default parameter values:
+
+[source,groovy]
+--------------------------------------
+// all the shapes
+(x, y) -> x + y
+(x, y) -> { x + y }
+(int x, int y) -> x + y
+
+def c = (int x, int y = 100) -> x + y
+assert c(1) == 101
+--------------------------------------
 
 === Method references
 
 The Java 8 method reference syntax using the double colon syntax is now supported.
 
-.Experimental Status
-CAUTION: While this feature will remain, we regard it's current implementation as experimental.
-Currently, the method reference is turned into a Groovy method closure. This means that it even
-works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE).
-We are currently exploring supporting native method references either instead of or in addition
-to method closures. If we change the implementation, we would expect no change in logical behavior
-though the new implementation may have different performance characteristics in some circumstances
-and the native implementation would only work on JDK8+.
+[width="80%",align="center"]
+|===
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, the method reference is turned into a Groovy method closure. This means that it even works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native method references either instead of or in addition to method closures. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.
+|===
 
 The following examples illustrate referencing both static and instance methods of a class:
+
+[source,groovy]
 --------------------------------------
 import java.util.stream.Stream
 import static java.util.stream.Collectors.toList
@@ -155,6 +198,7 @@ assert ['A', 'B', 'C'] ==
 
 The following examples illustrate referencing methods of instance variables:
 
+[source,groovy]
 --------------------------------------
 // instance::instanceMethod
 def sizeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'::length
@@ -167,6 +211,7 @@ assert hexer(127) == '7f'
 
 The following examples illustrate referencing constructors:
 
+[source,groovy]
 --------------------------------------
 // normal constructor
 def r = Random::new
@@ -195,16 +240,29 @@ def c = Animal
 assert c::new('cat').kind == 'cat'
 --------------------------------------
 
+=== Identity comparison operator
+
+Both `===` and `!==` are supported which are the same as calling the `is()` method.
+
+=== Safe indexing
+
+TBD
+
+=== ARM Try with resources
+
+TBD
+
 [[Groovy2.6releasenotes-Miscimprovements]]
 == Miscellaneous improvements
 
 === Embedded GroovyDoc
 
-TBD
+You can now embed the Groovydoc within the class file via annotations.
 
-=== JSR308 improvements
+=== JSR308 improvements (work in progress)
 
-TBD
+Groovy has been improving JSR-308 support over recent versions.
+As part of implementing the new grammar, additional support has been added.
 
 == JDK requirements
 

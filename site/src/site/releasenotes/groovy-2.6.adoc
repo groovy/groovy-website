@@ -71,20 +71,6 @@ for (def (String u, int v) = ['bar', 42]; v < 45; u++, v++) {
 assert baNums == ['bar 42', 'bas 43', 'bat 44']
 --------------------------------------
 
-=== !in and !instanceof
-
-When wanting the negated form, rather than having to bracket expressions containing
-the `in` and `instanceof` infix operators and placing the exclamation operator in
-front of the brackets, an inline variant is now also supported. Examples:
-
-[source,groovy]
---------------------------------------
-/* assert !(45 instanceof Date) // old form */
-assert 45 !instanceof Date
-
-assert 4 !in [1, 3, 5, 7]
---------------------------------------
-
 === Java-style array initialization
 
 Groovy has always supported literal list/array definitions using square brackets
@@ -109,35 +95,13 @@ String[] groovyBooks = [ 'Groovy in Action', 'Making Java Groovy' ]
 assert groovyBooks.every{ it.contains('Groovy') }
 --------------------------------------
 
-=== Elvis assignment
-
-Groovy introduced the Elvis operator Example:
-
-[source,groovy]
---------------------------------------
-import groovy.transform.ToString
-
-@ToString
-class Element {
-    String name
-    int atomicNumber
-}
-
-def he = new Element(name: 'Helium')
-he.with {
-    name = name ?: 'Hydrogen'   // existing Elvis operator
-    atomicNumber ?= 2           // new Elvis assignment shorthand
-}
-assert he.toString() == 'Element(Helium, 2)'
---------------------------------------
-
 === Java-style Lambda syntax
 
 The Java syntax for lambda expressions is now supported.
 
 [width="80%",align="center"]
 |===
-a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, lambda expressions are turned into equivalent Groovy closures. This approach works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native lambda expression either instead of or in addition to conversion to closures. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, lambda expressions are turned into equivalent Groovy closures. An advantage of this approach is that it works even when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE) but it doesn't easily enable the same level of type inference and checking that Java 8 offers even when using `@TypeChecked` or `@CompileStatic` and might be much less performant in a range of scenarios. We are currently exploring supporting native lambda expression either instead of, or in addition to, conversion to closures. If we change the implementation, most users would experience no behavioral differences in their programs though a native implementation would likely be faster but only work on JDK8+. Our goal is to clarify this aspect of the language before reaching release candidate status.
 |===
 
 Examples:
@@ -158,13 +122,35 @@ The normal variants are supported and Groovy adds additional features such as de
 
 [source,groovy]
 --------------------------------------
-// all the shapes
-(x, y) -> x + y
-(x, y) -> { x + y }
-(int x, int y) -> x + y
+// general form
+def add = (int x, int y) -> { def z = y; return x + z }
+assert add(3, 4) == 7
 
-def c = (int x, int y = 100) -> x + y
-assert c(1) == 101
+// curly braces are optional for a single expression
+def sub = (int x, int y) -> x - y
+assert sub(4, 3) == 1
+
+// parameter types are optional
+def mult = (x, y) -> x * y
+assert mult(3, 4) == 12
+
+// no parentheses required for a single parameter with no type
+def isEven = n -> n % 2 == 0
+assert isEven(6)
+assert !isEven(7)
+
+// no arguments case
+def theAnswer = () -> 42
+assert theAnswer() == 42
+
+// any statement requires braces
+def checkMath = () -> { assert 1 + 1 == 2 }
+checkMath()
+
+// example showing default parameter values (no Java equivalent)
+def addWithDefault = (int x, int y = 100) -> x + y
+assert addWithDefault(1, 200) == 201
+assert addWithDefault(1) == 101
 --------------------------------------
 
 === Method references
@@ -173,7 +159,7 @@ The Java 8 method reference syntax using the double colon syntax is now supporte
 
 [width="80%",align="center"]
 |===
-a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, the method reference is turned into a Groovy method closure. This means that it even works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native method references either instead of or in addition to method closures. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, a method reference is turned into a Groovy method closure. This means that it even works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native method references either instead of, or in addition to, method closures. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.  Our goal is to clarify this aspect of the language before reaching release candidate status.
 |===
 
 The following examples illustrate referencing both static and instance methods of a class:
@@ -217,16 +203,25 @@ The following examples illustrate referencing constructors:
 def r = Random::new
 assert r().nextInt(10) in 0..9
 
-// array constructor
+// array constructor refs are handy when working with various Java libraries, e.g. streams
+assert [1, 2, 3].stream().toArray().class.name == '[Ljava.lang.Object;'
+assert [1, 2, 3].stream().toArray(Integer[]::new).class.name == '[Ljava.lang.Integer;'
+
+// works with multi-dimensional arrays too
 def make2d = String[][]::new
 def tictac = make2d(3, 3)
 tictac[0] = ['X', 'O', 'X']
 tictac[1] = ['X', 'X', 'O']
 tictac[2] = ['O', 'X', 'O']
-assert tictac*.join().join('\n') == 'XOX\nXXO\nOXO'
+assert tictac*.join().join('\n') == '''
+XOX
+XXO
+OXO
+'''.trim()
 
-// for your own classes too
+// also useful for your own classes
 import groovy.transform.Canonical
+import java.util.stream.Collectors
 
 @Canonical
 class Animal {
@@ -238,19 +233,141 @@ assert a('lion').kind == 'lion'
 
 def c = Animal
 assert c::new('cat').kind == 'cat'
+
+def pets = ['cat', 'dog'].stream().map(Animal::new)
+def names = pets.map(Animal::toString).collect(Collectors.joining( "," ))
+assert names == 'Animal(cat),Animal(dog)'
 --------------------------------------
 
-=== Identity comparison operator
+=== !in and !instanceof operators
+
+When wanting the negated form, rather than having to bracket expressions containing
+the `in` and `instanceof` infix operators and placing the exclamation operator in
+front of the brackets, an inline variant is now also supported. Examples:
+
+[source,groovy]
+--------------------------------------
+/* assert !(45 instanceof Date) // old form */
+assert 45 !instanceof Date
+
+assert 4 !in [1, 3, 5, 7]
+--------------------------------------
+
+=== Elvis assignment operator
+
+Groovy introduced the Elvis operator Example:
+
+[source,groovy]
+--------------------------------------
+import groovy.transform.ToString
+
+@ToString
+class Element {
+    String name
+    int atomicNumber
+}
+
+def he = new Element(name: 'Helium')
+he.with {
+    name = name ?: 'Hydrogen'   // existing Elvis operator
+    atomicNumber ?= 2           // new Elvis assignment shorthand
+}
+assert he.toString() == 'Element(Helium, 2)'
+--------------------------------------
+
+=== Identity comparison operators
 
 Both `===` and `!==` are supported which are the same as calling the `is()` method.
 
+[source,groovy]
+--------------------------------------
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode
+class Creature { String type }
+
+def cat = new Creature(type: 'cat')
+def copyCat = cat
+def lion = new Creature(type: 'cat')
+
+assert cat.equals(lion) // Java logical equality
+assert cat == lion      // Groovy shorthand operator
+
+assert cat.is(copyCat)  // Groovy identity
+assert cat === copyCat  // operator shorthand
+assert cat !== lion     // negated operator shorthand
+--------------------------------------
+
 === Safe indexing
 
-TBD
+[source,groovy]
+--------------------------------------
+String[] array = ['a', 'b']
+assert 'b' == array?[1]      // get using normal array index
+array?[1] = 'c'              // set using normal array index
+assert 'c' == array?[1]
+
+array = null
+assert null == array?[1]     // return null for all index values
+array?[1] = 'c'              // quietly ignore attempt to set value
+assert array == null
+--------------------------------------
 
 === ARM Try with resources
 
+Groovy often provides better alternatives to Java 7's `try`-with-resources statement for Automatic Resource Management (ARM).
+That syntax is now supported for Java programmers migrating to Groovy and still wanting to use the old style:
+
+[source,groovy]
+--------------------------------------
+class FromResource extends ByteArrayInputStream {
+    boolean closed = false
+
+    @Override
+    void close() throws IOException {
+        super.close()
+        closed = true
+    }
+
+    FromResource(String input) {
+        super(input.bytes)
+    }
+}
+
+class ToResource extends ByteArrayOutputStream {
+    boolean closed = false
+
+    @Override
+    void close() throws IOException {
+        super.close()
+        closed = true
+    }
+}
+
+try(
+        FromResource from = new FromResource("ARM was here!")
+        ToResource to = new ToResource()
+) {
+    to << from
+} finally {
+    assert from.closed
+    assert to.closed
+    assert to.toString() == 'ARM was here!'
+}
+--------------------------------------
+
+=== Nested code blocks
+
 TBD
+
+===  Interface default methods
+
+TBD
+
+[width="80%",align="center"]
+|===
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, interface default methods are implemented using traits. This means that they work even when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native default methods in interfaces instead of, or in addition to, the trait implementation. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.  Our goal is to clarify this aspect of the language before reaching release candidate status.
+|===
 
 [[Groovy2.6releasenotes-Miscimprovements]]
 == Miscellaneous improvements

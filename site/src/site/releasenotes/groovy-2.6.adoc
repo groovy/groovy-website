@@ -451,9 +451,10 @@ class Foo {
     /** @Groovydoc fo fum */
     def bar() { }
 }
-// assumes groovy.attach.runtime.groovydoc system property is true
+// next line assumes groovy.attach.runtime.groovydoc system property is true
 assert Foo.class.groovydoc.content.contains('fee fi')
 def bar = Foo.methods.find{ it.name == 'bar' }
+// next line always true due to explicit @Groovydoc
 assert bar.groovydoc.content.contains('@Groovydoc fo fum')
 --------------------------------------
 

@@ -432,7 +432,30 @@ a| NOTE: _Experimental Status:_ While this feature will remain, we regard its cu
 
 === Embedded GroovyDoc
 
-You can now embed the Groovydoc within the class file via annotations.
+You can now embed Groovydoc in various ways.
+
+It can be attached to the AST as node metadata and available during compilation for use by for instance
+AST transformations or other tools. This is enabled using the `groovy.attach.groovydoc` system property.
+
+It can also be embedded into the class file via an annotation and available at runtime for access
+via reflection or via other tools. This is enabled using the 'groovy.attach.runtime.groovydoc' system property
+to globally enable the attachment of all Groovydoc or by using a special `@Groovydoc` tag/annotation at
+the start of any Groovydoc comment. You normally don't deal with the annotation directly - the compiler handles
+proper placement of the annotation and an extension method allows easy access to the Groovydoc comment value.
+Here is a typical example:
+
+[source,groovy]
+--------------------------------------
+/** fee fi */
+class Foo {
+    /** @Groovydoc fo fum */
+    def bar() { }
+}
+// assumes groovy.attach.runtime.groovydoc system property is true
+assert Foo.class.groovydoc.content.contains('fee fi')
+def bar = Foo.methods.find{ it.name == 'bar' }
+assert bar.groovydoc.content.contains('@Groovydoc fo fum')
+--------------------------------------
 
 === JSR308 improvements (work in progress)
 

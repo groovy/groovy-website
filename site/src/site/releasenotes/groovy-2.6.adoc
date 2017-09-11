@@ -358,11 +358,69 @@ try(
 
 === Nested code blocks
 
-TBD
+An infrequently used structure within Java is the anonymous code block.
+It's generally not encouraged as it's often a sign that refactoring the
+related code into a method is in order. But it's sometimes useful to
+restrict scoping and is now available in Groovy:
+
+[source,groovy]
+--------------------------------------
+{
+    def a = 1
+    a++
+    assert 2 == a
+}
+try {
+    a++ // not defined at this point
+} catch(MissingPropertyException ex) {
+    println ex.message
+}
+{
+    {
+        // inner nesting is another scope
+        def a = 'banana'
+        assert a.size() == 6
+    }
+    def a = 1
+    assert a == 1
+}
+--------------------------------------
+
+Be aware though that in Groovy having a code block looking structure after any method
+call will be seen as an attempt to pass a closure as the last parameter in the method call.
+This happens even after a new line. So it's safe to start an anonymous code block after any other
+block (e.g. an if-then-else statement or another anonymous code block). Anywhere else and
+you might need to terminate the previous statement with a semicolon. In which case, see the
+note above about refactoring your code! :-)
 
 ===  Interface default methods
 
-TBD
+Java 8 supports adding default implementations to interfaces. Groovy now supports this too:
+
+[source,groovy]
+--------------------------------------
+interface Greetable {
+    String target()
+
+    default String salutation() {
+        'Greetings'
+    }
+
+    default String greet() {
+        "${salutation()}, ${target()}"
+    }
+}
+
+class Greetee implements Greetable {
+    String name
+    @Override
+    String target() { name }
+}
+
+def daniel = new Greetee(name: 'Daniel')
+assert 'Greetings, Daniel' == "${daniel.salutation()}, ${daniel.target()}"
+assert 'Greetings, Daniel' == daniel.greet()
+--------------------------------------
 
 [width="80%",align="center"]
 |===

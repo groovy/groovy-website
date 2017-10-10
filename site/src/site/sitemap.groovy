@@ -128,9 +128,9 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy designed for JDK7+ and with the new Parrot parser. Pre-release versions are available:'
         }
-	version('2.6.0-alpha-1') {
+        version('2.6.0-alpha-1') {
             stable false
-            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.6.0-alpha-1-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.6.0-alpha-1-installer.exe'
         }
     }
     distribution('Groovy 2.5') {
@@ -139,9 +139,9 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy. Pre-release versions are available:'
         }
-	version('2.5.0-beta-2') {
+        version('2.5.0-beta-2') {
             stable false
-            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-beta-2-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-beta-2-installer.exe'
         }
     }
     distribution('Groovy 2.4') {

@@ -13,7 +13,7 @@ Material on this page is still under development! We are currently creating alph
 
 Groovy 3.0, has a new parser that is far more flexible and maintainable than the parser in previous versions of Groovy. It's called the Parrot parser because in the early days of creating the parser, the goal was for the new parser's output to be an exact echo of what the old parser produced. The new parser has since been extended to support additional syntax options and language features.
 
-=== Disbling the parser
+=== Disabling the parser
 
 The new parser is enabled by default in Groovy 3.0.
 You can disable the new parser by using a system property.

@@ -285,7 +285,12 @@ layout 'layouts/main.groovy', true,
                                         }
                                         tbody {
                                             tr {
-                                                td { b '2.5 - current' }
+                                                td { b '3.0 - current' }
+                                                td '1.8+'
+                                                td '1.8+'
+                                            }
+                                            tr {
+                                                td { b '2.5 - 2.6' }
                                                 td '1.7+'
                                                 td '1.7+'
                                             }

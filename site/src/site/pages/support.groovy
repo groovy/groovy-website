@@ -17,11 +17,12 @@ layout 'layouts/main.groovy', true,
                             article {
                                 p 'There are numerous ways to get help with Groovy: '
                                 ul {
-                                    li "discuss language usage or direction with other Groovy users and developers through the ${$a(href: 'mailing-lists.html', 'mailing-lists')} - this is the place for all official discussions,"
-                                    li "discuss matters on ${$a(href: 'https://groovycommunity.com/', 'Slack')} - this channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community for casual conversations and Q&A,"
-                                    li "find known issues (or create new ones) in our ${$a(href: 'reporting-issues.html', 'bug tracker')},"
-                                    li "attend upcoming ${$a(href: 'events.html', 'events and conferences')} to learn more about Groovy and to share your experience with others,"
-                                    li "visit a local ${$a(href: 'usergroups.html', 'user group')} to meet other Groovy enthusiasts."
+                                    li "discuss language usage or direction with other Groovy users and developers through the ${$a(href: 'mailing-lists.html', 'mailing-lists')} - this is the place for all official discussions"
+                                    li "discuss matters on ${$a(href: 'https://groovycommunity.com/', 'Slack')}; it's run by Groovy enthusiasts in the community for casual conversations and Q&A"
+                                    li "ask a question on ${$a(href: 'https://stackoverflow.com/questions/tagged/groovy', 'Stack Overflow')}; these are answered by Groovy enthusiasts in the community"
+                                    li "find known issues (or create new ones) in our ${$a(href: 'reporting-issues.html', 'bug tracker')}"
+                                    li "attend upcoming ${$a(href: 'events.html', 'events and conferences')} to learn more about Groovy and to share your experience with others"
+                                    li "visit a local ${$a(href: 'usergroups.html', 'user group')} to meet other Groovy enthusiasts"
                                 }
                                 p '''
                                     If you click on the socialize link in the menu, you will also find other ways to interact

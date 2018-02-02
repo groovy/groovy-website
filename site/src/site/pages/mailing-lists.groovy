@@ -14,7 +14,7 @@ layout 'layouts/main.groovy', true,
                                 i(class: 'fa fa-envelope-o') {}
                                 yield ' Mailing-lists'
                             }
-                            p '''The Groovy mailing-lists is the main means of interaction with the Groovy developers and Groovy users.'''
+                            p '''The Groovy mailing lists are a great way to interact with the Groovy developers and Groovy users.'''
                             hr(class: 'divider')
 
                             article {
@@ -22,58 +22,106 @@ layout 'layouts/main.groovy', true,
                                 table(class: 'table') {
                                     tr {
                                         td {
-                                            strong 'users@groovy.apache.org'
+                                            h3 'users@groovy.apache.org'
+                                            em 'General purpose list for questions and discussion about Groovy'
                                         }
-                                        td 'high volume list for questions and general discussion about Groovy'
+                                        td { a(href: 'https://lists.apache.org/list.html?users@groovy.apache.org', 'Browse') }
                                         td { a(href: 'mailto:users-subscribe@groovy.apache.org', 'Subscribe') }
-                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-users/', 'Archive') }
                                         td { a(href: 'mailto:users-unsubscribe@groovy.apache.org', 'Unsubscribe') }
+                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-users/', 'Archive') }
                                     }
                                     tr {
                                         td {
-                                            strong 'dev@groovy.apache.org'
+                                            h3 'dev@groovy.apache.org'
+                                            em 'More focused list about the language implementation and its evolution'
                                         }
-                                        td 'medium volume list useful for those interested in ongoing developments'
+                                        td { a(href: 'https://lists.apache.org/list.html?dev@groovy.apache.org', 'Browse') }
                                         td { a(href: 'mailto:dev-subscribe@groovy.apache.org', 'Subscribe') }
-                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-dev/', 'Archive') }
                                         td { a(href: 'mailto:dev-unsubscribe@groovy.apache.org', 'Unsubscribe') }
+                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-dev/', 'Archive') }
                                     }
                                     tr {
                                         td {
-                                            strong 'commits@groovy.apache.org'
+                                            h3 'commits@groovy.apache.org'
+                                            em 'Tracks all commits'
                                         }
-                                        td 'medium volume list that logs commits'
+                                        td { a(href: 'https://lists.apache.org/list.html?commits@groovy.apache.org', 'Browse') }
                                         td { a(href: 'mailto:commits-subscribe@groovy.apache.org', 'Subscribe') }
-                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-commits/', 'Archive') }
                                         td { a(href: 'mailto:commits-unsubscribe@groovy.apache.org', 'Unsubscribe') }
+                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-commits/', 'Archive') }
                                     }
                                     tr {
                                         td {
-                                            strong 'notifications@groovy.apache.org'
+                                            h3 'notifications@groovy.apache.org'
+                                            em 'Contains JIRA and Github notifications'
                                         }
-                                        td 'high volume list for JIRA and Github notifications'
+                                        td { a(href: 'https://lists.apache.org/list.html?notifications@groovy.apache.org', 'Browse') }
                                         td { a(href: 'mailto:notifications-subscribe@groovy.apache.org', 'Subscribe') }
-                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-notifications/', 'Archive') }
                                         td { a(href: 'mailto:notifications-unsubscribe@groovy.apache.org', 'Unsubscribe') }
+                                        td { a(href: 'http://mail-archives.apache.org/mod_mbox/groovy-notifications/', 'Archive') }
                                     }
                                 }
                                 hr(class: 'divider')
 
-                                h2 'Mailing-lists archive on MarkMail'
-                                p """
-                                    The mailing-lists are archived on ${$a(href: 'http://groovy.markmail.org/', 'MarkMail')}.
-                                    You can browse ${$a(href: 'http://groovy.markmail.org/search/?q=', 'recent emails')}.
-                                """
+                                h2 'Alternative mailing list archives'
+                                ul {
+                                    li {
+                                        p """
+                                        The mailing lists are archived on ${
+                                            $a(href: 'http://groovy.markmail.org/', 'MarkMail')
+                                        }.
+                                        You can browse ${
+                                            $a(href: 'http://groovy.markmail.org/search/?q=', 'recent emails')
+                                        }."""
+                                        p """
+                                        MarkMail also provide RSS feeds: ${
+                                            $a(href: 'http://groovy.markmail.org/atom/+list:org.apache.groovy.users', 'users')
+                                        } ${
+                                            $a(href: 'http://groovy.markmail.org/atom/+list:org.apache.groovy.dev', 'dev')
+                                        } ${
+                                            $a(href: 'http://groovy.markmail.org/atom/+list:org.apache.groovy.commits', 'commits')
+                                        } ${
+                                            $a(href: 'http://groovy.markmail.org/atom/+list:org.apache.groovy.notifications', 'notifications')
+                                        }
+                                        """
+                                    }
 
-                                h2 'Mailing-lists archive on Nabble'
-                                p """
-                                    The mailing-lists are archived on ${$a(href: 'http://www.nabble.com/', 'Nabble')}.
-                                    Below you can see the archives of the lists.
-                                    Even if you can post messages to the mailing-lists through Nabble,
-                                    you first need to be registered to the Apache Groovy mailing-lists!
-                                """
-                                a(id: 'nabblelink', href: 'http://groovy.329449.n5.nabble.com/', 'Nabble forum')
-                                script(src: 'http://groovy.329449.n5.nabble.com/embed/f329449') {}
+                                    li {
+                                        p """
+                                        The mailing lists are archived on ${
+                                            $a(href: 'http://www.nabble.com/', 'Nabble')
+                                        }: ${
+                                            $a(href: 'http://groovy.329449.n5.nabble.com/', 'combined')
+                                        } ${
+                                            $a(href: 'http://groovy.329449.n5.nabble.com/Groovy-Users-f329450.html', 'users')
+                                        } ${
+                                            $a(href: 'http://groovy.329449.n5.nabble.com/Groovy-Dev-f372993.html', 'dev')
+                                        } ${
+                                            $a(href: 'http://groovy.329449.n5.nabble.com/Groovy-Commits-f5723493.html', 'commits')
+                                        } ${
+                                            $a(href: 'http://groovy.329449.n5.nabble.com/Groovy-Notifications-f5723494.html', 'notifications')
+                                        }"""
+                                        p """
+                                        You can even post messages to a mailing list through Nabble
+                                        but you first need to be subscribed to the appropriate list!
+                                        """
+                                    }
+
+                                    li """
+                                    You can also find archives on mail-archive.com: ${
+                                        $a(href: 'https://www.mail-archive.com/users@groovy.apache.org/', 'users')} ${
+                                        $a(href: 'https://www.mail-archive.com/dev@groovy.apache.org/', 'dev')} ${
+                                        $a(href: 'https://www.mail-archive.com/commits@groovy.apache.org/', 'commits')} ${
+                                        $a(href: 'https://www.mail-archive.com/notifications@groovy.apache.org/', 'notifications')
+                                    }
+                                    """
+
+                                    li """
+                                    You can also find some historic dev mailing list archives on MARC: ${
+                                        $a(href: 'https://marc.info/?l=groovy-dev&r=1&s=groovy&q=b&w=4', 'groovy-dev')
+                                    }
+                                    """
+                                }
                             }
                         }
                     }

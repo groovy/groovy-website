@@ -13,7 +13,6 @@ import java.nio.file.FileSystems
 import java.nio.file.Path
 import java.nio.file.WatchEvent
 
-import static generator.DocumentationHTMLCleaner.cleanupPage
 import static generator.DocumentationHTMLCleaner.parsePage
 import static java.nio.file.StandardWatchEventKinds.*
 
@@ -247,5 +246,15 @@ class SiteGenerator {
             parts << qualifier
         }
         parts
+    }
+
+    static boolean exists(String u) {
+        def url = new URL(u)
+        HttpURLConnection.setFollowRedirects(false)
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection()
+        connection.setRequestMethod("HEAD")
+        // pretend to be a browser to keep fussy websites a little happier
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 (.NET CLR 3.5.30729)")
+        return connection.responseCode == HttpURLConnection.HTTP_OK
     }
 }

@@ -7,11 +7,15 @@ v1.0, March 27, 2015: First version
 :bintray: https://bintray.com/[Bintray]
 :gradle: http://gradle.org[Gradle]
 
-The goal of this document is to review the current release process for Groovy, and what adaptations are required to fit into the Apache model. 
+_NOTE_
+****
+This document captures some historical information and discussion about Groovy's release process both before joining Apache and during incubation.
+Many of the ideas went into Groovy's current release process which involves use of a gradle build at the following repo: https://github.com/apache/groovy-release/
+****
 
 == The Groovy Way
 
-During the last 4 years, the Groovy team invested a lot of time in narrowing its release process to reduce human errors as much as possible. Releases were previously done from a despot personal computer, with a number of risks:
+Between 2010 and 2015, the Groovy team invested a lot of time in narrowing its release process to reduce human errors as much as possible. Releases were previously done from a despot personal computer, with a number of risks:
 
 * mix of development sources and sources found in the repository. This can happen if the release manager did the release without doing a clean checkout in a separate directory. Then there were risks that source files were present on the release manager computer and not in source control.
 * reliance on a local dependency repository. During development, committers usually do not suffer dependency management issues, because they do regular update and some third party dependencies are found in their local caches (Maven, Gradle). However, new developers may find themselves in a different situation, where they have no local cache. When they try to build, compilation fails because some dependencies cannot be fetched.

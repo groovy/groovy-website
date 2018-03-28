@@ -71,7 +71,7 @@ layout 'layouts/main.groovy', true,
                                             yield "Apache's "
                                             a(href: 'http://www.apache.org/dyn/closer.cgi/groovy/', 'release mirrors')
                                             yield ' and '
-                                            a(href: 'https://archive.apache.org/dist/groovy/', 'archive repostitory')
+                                            a(href: 'https://archive.apache.org/dist/groovy/', 'archive repository')
                                             yield '.'
                                         }
                                     }

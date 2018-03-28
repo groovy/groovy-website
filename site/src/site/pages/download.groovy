@@ -1,3 +1,5 @@
+import generator.SiteGenerator
+
 layout 'layouts/main.groovy', true,
         pageTitle: 'The Apache Groovy programming language - Download',
         mainContent: contents {
@@ -51,15 +53,28 @@ layout 'layouts/main.groovy', true,
                             }
                             article {
                                 p {
-                                    yield 'In this download area, you will be able to download the '
-                                    a(href: '#distro', 'distribution')
-                                    yield ' (binary and source), the Windows installer (for some of the versions) and the documentation for Groovy.'
+                                    yield 'In this download area, you will find the latest Groovy '
+                                    a(href: '#distro', 'distributions')
+                                    yield ' including binary, source, downloadable documentation and a Windows installer convenience file (if available).'
                                 }
                                 p {
-                                    yield 'All downloads (except the source download) are hosted in '
-                                    a(href: 'http://bintray.com/groovy/', 'Bintray\'s Groovy repository')
-                                    yield '. Registering on Bintray allows you to rate, review, and register for new version notifications.'
-                                    a(href: 'https://dl.bintray.com/groovy/maven/', '[direct link to the downloads]')
+                                    yield 'Downloads are hosted in:'
+                                    ul {
+                                        li {
+                                            yield "Bintray's "
+                                            a(href: 'http://bintray.com/groovy/', 'Groovy repository')
+                                            yield '. Register on Bintray to rate, review, and register for new version notifications. Or '
+                                            a(href: 'https://dl.bintray.com/groovy/maven/', 'browse')
+                                            yield ' all versions.'
+                                        }
+                                        li {
+                                            yield "Apache's "
+                                            a(href: 'http://www.apache.org/dyn/closer.cgi/groovy/', 'release mirrors')
+                                            yield ' and '
+                                            a(href: 'https://archive.apache.org/dist/groovy/', 'archive repostitory')
+                                            yield '.'
+                                        }
+                                    }
                                 }
                                 p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
@@ -78,7 +93,14 @@ layout 'layouts/main.groovy', true,
                             a(name: 'distro') {}
                             article {
                                 h1 'Distributions'
-                                p 'You can download a binary, a source or a documentation bundle, as well as a bundle of all three.'
+                                p 'You can download a binary, a source, a documentation bundle or an SDK bundle combining all three. A convenience Windows installer is also provided when available.'
+                                p {
+                                    yield "We provide OpenPGP signatures ('.asc') files and checksums for every release file. We recommend that you "
+                                    a(href: 'https://www.apache.org/info/verification.html', 'verify')
+                                    yield ' the integrity of downloaded files by generating your own checksums and matching them against ours and checking signatures using the '
+                                    a(href: 'https://www.apache.org/dist/groovy/KEYS', 'KEYS')
+                                    yield " file which contains the OpenPGP keys of Groovy's Release Managers."
+                                }
 
                                 distributions.each { dist ->
                                     h2 {
@@ -88,6 +110,27 @@ layout 'layouts/main.groovy', true,
                                     if (dist.description) {
                                         p {
                                             dist.description.rehydrate(this, this, this)()
+                                        }
+                                    }
+                                    def distUrl = { String type, String area, v, String ext -> "https://archive.apache.org/dist/groovy/${v}/${area}/apache-groovy-${type}-${v}.zip.$ext".toString() }
+                                    def buildExtras = { String type, String area, String v ->
+                                        def extras = [:]
+                                        def url = distUrl(type, area, v, 'asc')
+                                        if (SiteGenerator.exists(url)) { extras.asc = url }
+                                        url = distUrl(type, area, v, 'md5')
+                                        if (SiteGenerator.exists(url)) { extras.md5 = url }
+                                        url = distUrl(type, area, v, 'sha256')
+                                        if (SiteGenerator.exists(url)) { extras.sha256 = url }
+                                        if (extras) {
+                                            def first = true
+                                            br()
+                                            yield '('
+                                            extras.each { ext, u ->
+                                                if (first) first = false
+                                                else yield ' '
+                                                a(href: u, ext)
+                                            }
+                                            yield ')'
                                         }
                                     }
                                     dist.packages.each { pkg ->
@@ -100,6 +143,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield 'binary'
                                                     }
+                                                    buildExtras('binary', 'distribution', pkg.version)
                                                 }
                                                 td {
                                                     a(href: "http://www.apache.org/dyn/closer.cgi/groovy/${pkg.version}/sources/apache-groovy-src-${pkg.version}.zip") {
@@ -107,6 +151,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield ' source'
                                                     }
+                                                    buildExtras('src', 'sources', pkg.version)
                                                 }
                                                 td {
                                                     a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-docs-${pkg.version}.zip") {
@@ -114,6 +159,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield ' documentation'
                                                     }
+                                                    buildExtras('docs', 'distribution', pkg.version)
                                                 }
                                                 td {
                                                     a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${pkg.version}.zip") {
@@ -121,6 +167,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield ' SDK bundle'
                                                     }
+                                                    buildExtras('sdk', 'distribution', pkg.version)
                                                 }
                                                 if (pkg.windowsInstaller) {
                                                     td {

@@ -135,7 +135,7 @@ layout 'layouts/main.groovy', true,
                                         }
                                     }
                                     def srcUrl = { v ->
-                                        def u = "http://www.apache.org/dyn/closer.cgi/groovy/${pkg.version}/sources/apache-groovy-src-${v}.zip"
+                                        def u = "http://www.apache.org/dyn/closer.cgi/groovy/${v}/sources/apache-groovy-src-${v}.zip"
                                         if (!SiteGenerator.exists(u)) {
                                             u = archiveUrl('src', 'sources', v)
                                         }

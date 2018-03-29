@@ -1,6 +1,6 @@
 = Initial release process proposal
-Cédric Champeau <cchampeau@apache.org>
-v1.1, July 15, 2015: Update after concrete release
+
+v1.2, March 28, 2018
 
 :teamcity: http://ci.groovy-lang.org
 :groovy: http://groovy-lang.org

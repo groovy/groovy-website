@@ -112,14 +112,15 @@ layout 'layouts/main.groovy', true,
                                             dist.description.rehydrate(this, this, this)()
                                         }
                                     }
-                                    def distUrl = { String type, String area, v, String ext -> "https://archive.apache.org/dist/groovy/${v}/${area}/apache-groovy-${type}-${v}.zip.$ext".toString() }
+                                    def archiveUrl = { String type, String area, v -> "https://archive.apache.org/dist/groovy/${v}/${area}/apache-groovy-${type}-${v}.zip".toString() }
+                                    def archiveExtUrl = { String type, String area, v, String ext -> "${archiveUrl(type, area, v)}.$ext".toString() }
                                     def buildExtras = { String type, String area, String v ->
                                         def extras = [:]
-                                        def url = distUrl(type, area, v, 'asc')
+                                        def url = archiveExtUrl(type, area, v, 'asc')
                                         if (SiteGenerator.exists(url)) { extras.asc = url }
-                                        url = distUrl(type, area, v, 'md5')
+                                        url = archiveExtUrl(type, area, v, 'md5')
                                         if (SiteGenerator.exists(url)) { extras.md5 = url }
-                                        url = distUrl(type, area, v, 'sha256')
+                                        url = archiveExtUrl(type, area, v, 'sha256')
                                         if (SiteGenerator.exists(url)) { extras.sha256 = url }
                                         if (extras) {
                                             def first = true
@@ -132,6 +133,13 @@ layout 'layouts/main.groovy', true,
                                             }
                                             yield ')'
                                         }
+                                    }
+                                    def srcUrl = { v ->
+                                        def u = "http://www.apache.org/dyn/closer.cgi/groovy/${pkg.version}/sources/apache-groovy-src-${v}.zip"
+                                        if (!SiteGenerator.exists(u)) {
+                                            u = archiveUrl('src', 'sources', v)
+                                        }
+                                        u
                                     }
                                     dist.packages.each { pkg ->
                                         h3 "${pkg.version} distributions"
@@ -146,7 +154,7 @@ layout 'layouts/main.groovy', true,
                                                     buildExtras('binary', 'distribution', pkg.version)
                                                 }
                                                 td {
-                                                    a(href: "http://www.apache.org/dyn/closer.cgi/groovy/${pkg.version}/sources/apache-groovy-src-${pkg.version}.zip") {
+                                                    a(href: srcUrl(pkg.version)) {
                                                         i(class: 'fa fa-code fa-4x') {}
                                                         br()
                                                         yield ' source'

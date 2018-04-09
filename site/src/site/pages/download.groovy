@@ -193,7 +193,7 @@ layout 'layouts/main.groovy', true,
                                             a(href: "changelogs/changelog-${pkg.version}.html", ' change log')
                                             yield ' for details. Please read the '
                                             a(href: "indy.html", 'invoke dynamic support information')
-                                            yield ' if you like to use Groovy on JDK 7+.'
+                                            yield ' if you like to enable that feature and are using Groovy on JDK 7+.'
                                         }
                                     }
                                 }

@@ -133,6 +133,10 @@ downloads {
             stable false
             // windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-3.0.0-alpha-2-installer.exe'
         }
+        version('3.0.0-alpha-1') {
+            stable false
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-3.0.0-alpha-1-installer.exe'
+        }
     }
     distribution('Groovy 2.6') {
         description {

@@ -4,24 +4,43 @@
 == Macro support
 With Groovy 2.5, you can write macros in Groovy!
 
-Details: TBD
+=== Expressions and statements
+
+TBD
+
+=== Macro classes
+
+TBD
+
+=== AST matching
+
+TBD
 
 [[Groovy2.5releasenotes-NewAstTransforms]]
 == New AST Transformations
 
+* `@AutoFinal`
+* `@AutoImplement` allows you to provide dummy implementations of any abstract
+methods that might be inherited from super classes or interfaces
+(link:https://issues.apache.org/jira/browse/GROOVY-7860[GROOVY-7860]).
+* `@ImmutableBase`
+* `@ImmutableOptions`
 * `@MapConstructor` adds a `Map`-based constructor to a class. This allows a usage
 style similar to Groovy's named parameters but doesn't use the no-arg constructor
 and then call setters. This may be useful if you have final properties or wish the
  class file to have the `Map` constructor for integration purposes
 (link:https://issues.apache.org/jira/browse/GROOVY-7353[GROOVY-7353]).
-* `@AutoImplement` allows you to provide dummy implementations of any abstract
-methods that might be inherited from super classes or interfaces
-(link:https://issues.apache.org/jira/browse/GROOVY-7860[GROOVY-7860]).
+* `@NamedDelegate`
+* `@NamedParam`
+* `@NamedParams`
+* `@NamedVariant`
+* `@PropertyOptions`
+* `@VisibilityOptions`
 
 [[Groovy2.5releasenotes-AstTransformImprovements]]
 == AST Transformation improvements
 
-* `@Canonical` becomes a meta-annotation allowing more flexible usage of the annotation attributes
+* `@Canonical` and `@Immutable` become meta-annotations allowing more flexible usage of the annotation attributes
 from its constituent annotations
 (link:https://issues.apache.org/jira/browse/GROOVY-6319[GROOVY-6319]).
 * `@Immutable` now supports Java's `Optional` container class
@@ -47,11 +66,16 @@ Some improvements were made to Groovysh shell and the Groovy Console:
 * `groovyconsole` now provides an ASMifier tab within the AstBrowser
 (link:https://issues.apache.org/jira/browse/GROOVY-8091[GROOVY-8091]).
 
-[[Groovy2.5releasenotes-OtherImprovements]]
-== Other improvements
+[[Groovy2.5releasenotes-clibuilder]]
+== CliBuilder changes
 
 * Groovy's CliBuilder now supports annotation style definitions
 (link:https://issues.apache.org/jira/browse/GROOVY-7825[GROOVY-7825]).
+
+[[Groovy2.5releasenotes-OtherImprovements]]
+== Other improvements
+
+* Repeated annotation support has been added
 * Alternative to `with` called `tap` that has an implicit `return delegate`
 (link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-3976]).
 * Various JSON customization options are now supported

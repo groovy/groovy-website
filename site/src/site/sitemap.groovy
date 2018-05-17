@@ -222,6 +222,12 @@ ecosystem {
         url 'http://sdkman.io/'
         logo 'img/ecosystem/sdkman.png'
     }
+
+    project('BeakerX') {
+        description 'BeakerX brings Groovy to the Jupyter interactive computing environment.  It provides interactive plots, tables, and a notebook-style web UI.'
+        url 'http://beakerx.com/'
+        logo 'img/ecosystem/beakerx.png'
+    }
 }
 
 allEvents {

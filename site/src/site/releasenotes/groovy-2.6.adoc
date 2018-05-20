@@ -24,13 +24,17 @@ Use `-Dgroovy.antlr4=true` (set via `JAVA_OPTS` if needed).
 If building from source, you need to provide Gradle with `-PuseAntlr4`
 in order to include the classes which support the new parser.
 
-== Differences with Groovy 3.0
+== Feature differences with Groovy 3.0
 
-TBD
+Groovy 2.6 doesn't support native lambdas.
+
+== Bundled dependencies
+
+Groovy 2.6 optionally uses an earlier version of Ant (vs a later version in Groovy 3.0 which requires JDK8).
 
 == JDK requirements
 
-Groovy 2.6 requires JDK8+ to build and JDK7 is the minimum version of the JRE that we support.
+Groovy 2.6 requires JDK8+ to build and JDK7 (vs JDK8 for Groovy 3.0) is the minimum version of the JRE that we support.
 
 [[Groovy2.6releasenotes-Moreinformation]]
 == More information

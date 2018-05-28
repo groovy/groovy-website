@@ -50,7 +50,7 @@ to the `macro` method ensures we get a statement here which is what `addMethod` 
 Frequently you will want to receive parameters or resolve surrounding variables.
 This is supported using a special `$v` notation. Suppose we want to augment the `getInfo`
 method to additionally output the time the class was compiled and the Groovy version used.
-Our code might looke like this:
+Our code might look like this:
 
 [source,groovy]
 ----
@@ -63,6 +63,13 @@ def body = macro(true) {
     Using Groovy version: ${$v{ version }}""".stripIndent()
 }
 ----
+
+What the macro does is convert any Groovy code inside the closure
+argument into its internal representation. When it gets to the
+`$v` placeholders it does no conversion and just inserts
+those sections directly. This is exactly what we want here since
+we wrote those parts old-school style using the internal
+AST data structures.
 
 === Macro classes
 
@@ -93,6 +100,18 @@ ClassNode buildInfoClass(ClassNode reference) {
 NOTE: Types inside the `MacroClass` implementation should be resolved inside, that's why we had to write
 `java.lang.String` instead of simply writing `String`. See the documentation for further details.
 
+The result of all this is that if we annotate a `Foo` class with `@Info`,
+then it is as if we also typed the following source code in as well:
+
+[source,groovy]
+----
+class FooInfo {
+    String getName() { 'Foo' }
+    String getVersion() { '2.5.0' }
+    String getCompiled() { 'Mon May 28 02:09:35 AEST 2018' }
+}
+----
+
 === AST matching
 
 AST transforms typically add additional ASTNodes into the AST tree
@@ -104,7 +123,7 @@ This is where `ASTMatcher` comes to the rescue. `ASTMatcher` compares
 two expressions and each expression can be created with or without macros.
 
 Here's a trivial example of a transformer that looks for binary expressions
-of the form `1 + 1` in our code and if it finds it, replaces it with the constant `2`{
+of the form `1 + 1` in our code and if it finds it, replaces it with the constant `2`:
 
 [source,groovy]
 ----
@@ -185,7 +204,6 @@ our source code in as:
 
 [source,groovy]
 ----
-@SmartOps
 class Foo {
     int theAnswer = 42
     int eight = 8
@@ -219,7 +237,7 @@ class StringMacroMethods {
 If you register the method in the same way as you would with extension methods (by creating
 a reference to the class in a `META-INF/groovy/org.codehaus.groovy.runtime.ExtensionMethods` file).
 
-Now, assuming the META-INF file and class are on your classpath, you can use the upper method in
+Now, assuming the META-INF file and class are on your classpath, you can use the `upper` method in
 your code such as shown in the following test code:
 
 [source,groovy]

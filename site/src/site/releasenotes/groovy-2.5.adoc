@@ -524,6 +524,7 @@ link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-6854]).
 
 A few issues fixed might also be considered breaking changes in some
 situations:
+
 * The extension methods for the `java.util.Date` class are now in a separate
 `groovy-dateutil` module which isn't included by default when using the `groovy-all`
 pom dependency. Add the additional module as a dependency if you need it or consider
@@ -584,16 +585,17 @@ will be removed from the next major version of Groovy.
 * Users of Spock 1.1-groovy-2.4 may find strange ClassCastException errors with some tests, e.g. with `cleanup:`
 clauses. Using Spock 1.2-groovy-2.4-SNAPSHOT from the https://oss.sonatype.org/content/repositories/snapshots/
 repo may help but work is on-going to improve Spock support.
-* Users combining final and `@CompileStatic` or final and Spock may see errors from
+* Users combining `final` and `@CompileStatic` or `final` and Spock may see errors from
 the final variable analyzer. Work is underway to resolve those error messages.
+You may need to temporarily remove the `final` modifier in the meantime.
 * Users needing the groovy-xml module and running on JDK9 and above may need to use
 the `--add-modules java.xml.bind` command-line option to fix the break in backwards
-compatibility in JDK9+.
+compatibility caused by JDK9+.
 * JDK9+ produces warnings with many libraries including Groovy due to some planned
 future restrictions in the JDK. Work is underway to re-engineer parts of Groovy
 to reduce/remove those warnings. Users wanting to hush the warnings as an interim
-measure may consider using the add-opens escape clause offered by JDK9.
-See commit 92bd96f (currently reverted) on the Groovy master branch for a potential
+measure may consider using the `--add-opens` escape clause offered by JDK9+.
+See commit `92bd96f` (currently reverted) on the Groovy master branch for a potential
 list to add.
 
 [[Groovy2.5releasenotes-JDKrequirements]]

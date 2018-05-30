@@ -201,6 +201,16 @@ layout 'layouts/main.groovy', true,
                             h2('Build status')
 
                             p "The Groovy sources are tested thanks to our ${$a(href:'buildstatus.html','continuous integration server')}."
+
+                            h2('Help Wanted')
+
+                            p {
+                                yield "We try to keep a list of tasks that we would greatly appreciate help with in the Apache "
+                                a(href: 'https://helpwanted.apache.org/', 'Help Wanted')
+                                yield " app:"
+                            }
+                            div(style: "width: 100%; margin-left: 0px; margin-right: 0px;", type:"helpwanted", project:"groovy", description:"the Apache Groovy Project")
+                            script(src: "https://helpwanted.apache.org/widget.js", type: "text/javascript")
                         }
                     }
                 }

@@ -270,6 +270,10 @@ to the class to support immutability.
 Normally not used directly but brought in automatically by the `@Immutable` meta annotation.
 * `@ImmutableOptions` allows known immutable properties/classes to be declared.
 Normally not used directly but brought in automatically by the `@Immutable` meta annotation.
+* `@KnownImmutable` is a marker interface used to designate a class as being immutable.
+Not usually used explicitly but rather implicitly added via the `@Immutable` meta annotation.
+If you create your own Java or Groovy immutable class manually, you can add this annotation
+to save you having to list your class as one of the known immutable classes.
 * `@MapConstructor` adds a `Map`-based constructor to a class. This allows a usage
 style similar to Groovy's named parameters but doesn't use the no-arg constructor
 and then call setters. This is useful if you have final properties in your class or you

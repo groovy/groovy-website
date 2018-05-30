@@ -265,19 +265,30 @@ of an annotated class/method/closure/ctor.
 * `@AutoImplement` allows you to provide dummy implementations of any abstract
 methods that might be inherited from super classes or interfaces
 (link:https://issues.apache.org/jira/browse/GROOVY-7860[GROOVY-7860]).
-* `@ImmutableBase`
-* `@ImmutableOptions`
+* `@ImmutableBase` checks the validity of an immutable class and makes some preliminary changes
+to the class to support immutability.
+Normally not used directly but brought in automatically by the `@Immutable` meta annotation.
+* `@ImmutableOptions` allows known immutable properties/classes to be declared.
+Normally not used directly but brought in automatically by the `@Immutable` meta annotation.
 * `@MapConstructor` adds a `Map`-based constructor to a class. This allows a usage
 style similar to Groovy's named parameters but doesn't use the no-arg constructor
-and then call setters. This may be useful if you have final properties or wish the
- class file to have the `Map` constructor for integration purposes
+and then call setters. This is useful if you have final properties in your class or you
+need the class file to have the `Map` constructor for polyglot integration purposes
 (link:https://issues.apache.org/jira/browse/GROOVY-7353[GROOVY-7353]).
-* `@NamedDelegate`
-* `@NamedParam`
-* `@NamedParams`
-* `@NamedVariant`
-* `@PropertyOptions`
-* `@VisibilityOptions`
+* `@NamedDelegate` is a marker interface used to indicate that the property names of the annotated
+parameter represent valid key names when using named arguments and that the property types are
+applicable for type checking purposes
+* `@NamedParam` is a marker interface used to indicate that the name of the annotated parameter
+(or specified optional name) is a valid key name when using named arguments
+and that the parameter type is applicable for type checking purposes
+* `@NamedParams` is the collector annotation for `@NamedParam`
+* `@NamedVariant` allows construction of a named-arg equivalent of a method or constructor.
+This allows the creation of methods or constructors which can be used with Groovy's named-argument
+syntax yet still retain good type checking capabilities.
+* `@PropertyOptions` a marker annotation used to indicate that special property handling code will be generated for this class.
+It can be used to override how properties are set within the constructor or accessed via getters. This lets you customize
+for instance how `@Immutable` classes are generated.
+* `@VisibilityOptions` is a marker annotation used in the context of AST transformations to provide a custom visibility.
 
 [[Groovy2.5releasenotes-AstTransformImprovements]]
 == AST Transformation improvements

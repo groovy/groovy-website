@@ -259,7 +259,9 @@ at compile time.
 [[Groovy2.5releasenotes-NewAstTransforms]]
 == New AST Transformations
 
-* `@AutoFinal`
+* `@AutoFinal` automatically applies the "final"-keyword to every parameter/field
+of an annotated class/method/closure/ctor.
+(link:https://issues.apache.org/jira/browse/GROOVY-8300[GROOVY-8300]).
 * `@AutoImplement` allows you to provide dummy implementations of any abstract
 methods that might be inherited from super classes or interfaces
 (link:https://issues.apache.org/jira/browse/GROOVY-7860[GROOVY-7860]).
@@ -293,17 +295,59 @@ and handles inheritance hierarchies
 (link:https://issues.apache.org/jira/browse/GROOVY-7769[GROOVY-7769]).
 * `@TupleConstructor` and `@Builder` should be able to use defined setters rather than the field directly
 (link:https://issues.apache.org/jira/browse/GROOVY-7087[GROOVY-7087]).
+* `@Newify` supports an additional attribute that allows selecting the classes whose constructors
+can be invoked without the `new` keyword using a regex pattern for the class name:
+[source,groovy]
+----
+@Newify(pattern="[A-Z].*")}
+class MyTreeProcessor {
+    final myTree = Tree(Tree(Leaf("A"), Leaf("B")), Leaf("C"))
+    ...
+}
+----
 * Most annotations check property and field names provided to annotation attributes
 (link:https://issues.apache.org/jira/browse/GROOVY-7087[GROOVY-7087]).
 
 [[Groovy2.5releasenotes-Toolimprovements]]
 == Tool improvements
 
-Some improvements were made to Groovysh shell and the Groovy Console:
+Some improvements were made to various tools:
 
+* `groovy` and `groovyConsole` now let you run JUnit 5 tests directly:
+[source,groovy]
+----
+import org.junit.jupiter.api.*
+// other imports not shown ...
+
+class MyTest {
+  @Test
+  void streamSum() {
+    assert Stream.of(1, 2, 3).mapToInt{ i -> i }.sum() > 5
+  }
+
+  @RepeatedTest(value=2, name = "{displayName} {currentRepetition}/{totalRepetitions}")
+  void streamSumRepeated() {
+    assert Stream.of(1, 2, 3).mapToInt{i -> i}.sum() == 6
+  }
+
+  private boolean isPalindrome(s) { s == s.reverse()  }
+
+  @ParameterizedTest // requires org.junit.jupiter:junit-jupiter-params
+  @ValueSource(strings = [ "racecar", "radar", "able was I ere I saw elba" ])
+  void palindromes(String candidate) {
+    assert isPalindrome(candidate)
+  }
+
+  @TestFactory
+  def dynamicTestCollection() {[
+    dynamicTest("Add test") { -> assert 1 + 1 == 2 },
+    dynamicTest("Multiply Test") { -> assert 2 * 3 == 6 }
+  ]}
+}
+----
 * `groovysh` should offer easier access to grapes
 (link:https://issues.apache.org/jira/browse/GROOVY-6514[GROOVY-6514]).
-* `groovyconsole` now provides an ASMifier tab within the AstBrowser
+* `groovyConsole` now provides an ASMifier tab within the AstBrowser
 (link:https://issues.apache.org/jira/browse/GROOVY-8091[GROOVY-8091]).
 
 [[Groovy2.5releasenotes-clibuilder]]
@@ -311,6 +355,7 @@ Some improvements were made to Groovysh shell and the Groovy Console:
 
 * Groovy's CliBuilder now supports annotation style definitions
 (link:https://issues.apache.org/jira/browse/GROOVY-7825[GROOVY-7825]).
+* Revamped versions of CliBuilder now exist supporting Commons CLI and Picocli backed implementations
 
 [[Groovy2.5releasenotes-OtherImprovements]]
 == Other improvements
@@ -375,7 +420,7 @@ of a handful of methods will throw a DeprecationException which mentions the alt
 [[Groovy2.5releasenotes-JDKrequirements]]
 == JDK requirements changes
 
-Groovy 2.5 requires JDK7+ to build and JDK7 is the minimum version of the JRE that we support.
+Groovy 2.5 requires JDK8+ to build and JDK7 is the minimum version of the JRE that we support.
 
 [[Groovy2.5releasenotes-Moreinformation]]
 == More information

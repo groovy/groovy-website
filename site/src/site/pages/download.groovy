@@ -114,14 +114,23 @@ layout 'layouts/main.groovy', true,
                                     }
                                     def archiveUrl = { String type, String area, v -> "https://archive.apache.org/dist/groovy/${v}/${area}/apache-groovy-${type}-${v}.zip".toString() }
                                     def archiveExtUrl = { String type, String area, v, String ext -> "${archiveUrl(type, area, v)}.$ext".toString() }
+                                    def distUrl = { String type, String area, v -> "https://www.apache.org/dist/groovy/${v}/${area}/apache-groovy-${type}-${v}.zip".toString() }
+                                    def distExtUrl = { String type, String area, v, String ext -> "${distUrl(type, area, v)}.$ext".toString() }
+                                    def findUrl = { String type, String area, v, String ext ->
+                                        def u = archiveExtUrl(type, area, v, ext)
+                                        if (SiteGenerator.exists(u)) return u
+                                        u = distExtUrl(type, area, v, ext)
+                                        if (SiteGenerator.exists(u)) return u
+                                        null
+                                    }
                                     def buildExtras = { String type, String area, String v ->
                                         def extras = [:]
-                                        def url = archiveExtUrl(type, area, v, 'asc')
-                                        if (SiteGenerator.exists(url)) { extras.asc = url }
-                                        url = archiveExtUrl(type, area, v, 'md5')
-                                        if (SiteGenerator.exists(url)) { extras.md5 = url }
-                                        url = archiveExtUrl(type, area, v, 'sha256')
-                                        if (SiteGenerator.exists(url)) { extras.sha256 = url }
+                                        def url = findUrl(type, area, v, 'asc')
+                                        if (url) { extras.asc = url }
+                                        url = findUrl(type, area, v, 'md5')
+                                        if (url) { extras.md5 = url }
+                                        url = findUrl(type, area, v, 'sha256')
+                                        if (url) { extras.sha256 = url }
                                         if (extras) {
                                             def first = true
                                             br()

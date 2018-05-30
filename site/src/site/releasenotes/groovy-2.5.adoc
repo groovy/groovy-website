@@ -253,8 +253,7 @@ assert msg.contains("Can't use upper with non-String")
 ----
 
 It's important to realise that use of `upper` doesn't cause a call to `toUpperCase`
- to be embedded in the bytecode but rather causes `toUpperCase` to be called
-at compile time.
+to be embedded in the bytecode but rather causes `toUpperCase` to be called at compile time.
 
 [[Groovy2.5releasenotes-NewAstTransforms]]
 == New AST Transformations
@@ -297,13 +296,75 @@ for instance how `@Immutable` classes are generated.
 [[Groovy2.5releasenotes-AstTransformImprovements]]
 == AST Transformation improvements
 
-* `@Canonical` and `@Immutable` become meta-annotations allowing more flexible usage of the annotation attributes
-from its constituent annotations
-(link:https://issues.apache.org/jira/browse/GROOVY-6319[GROOVY-6319]).
+* `@Canonical` is now a meta-annotation (link:https://issues.apache.org/jira/browse/GROOVY-6319[GROOVY-6319])
+allowing more flexible usage of the annotation attributes from its constituent annotations and allowing
+you to define an alternative custom meta-annotation.
+`@Canonical` expands into the `@TupleConstructor`, `@EqualsAndHashCode` and `@ToString` annotations.
+Any annotation attributes are automatically distributed to the component annotations that support them
+as shown in the following example:
+[source,groovy]
+----
+@Canonical(cache = true, useSetters = true, includeNames = true)
+class Point {
+  int x, y
+}
+----
+is expanded into:
+[source,groovy]
+----
+@ToString(cache = true, includeNames = true)
+@TupleConstructor(useSetters = true)
+@EqualsAndHashCode(cache = true)
+class Point {
+  int x, y
+}
+----
+* `@Immutable` is now a meta-annotation (link:https://issues.apache.org/jira/browse/GROOVY-8440[GROOVY-8440])
+with the same advantages as described for `@Canonical`. It expands into numerous other annotations as shown
+in the following example:
+[source,groovy]
+----
+@Immutable
+class Point {
+  int x, y
+}
+----
+is equivalent to:
+[source,groovy]
+----
+@ToString(includeSuperProperties = true, cache = true)
+@EqualsAndHashCode(cache = true)
+@ImmutableBase
+@ImmutableOptions
+@PropertyOptions(propertyHandler = groovy.transform.options.ImmutablePropertyHandler)
+@TupleConstructor(defaults = false)
+@MapConstructor(noArg = true, includeSuperProperties = true, includeFields = true)
+@KnownImmutable
+class Point {
+  int x, y
+}
+----
+This might seem like quite a few component annotations but you rarely see
+the expanded list and having these annotations gives you fine-grained control
+when combing the bits you want, for example you can create a dependency injection
+(one constructor only) friendly immutable class by using this combination:
+[source,groovy]
+----
+@ImmutableBase
+@PropertyOptions(propertyHandler = ImmutablePropertyHandler)
+@Canonical(defaults=false)
+class Shopper {
+  String first, last
+  Date born
+  List items
+}
+----
 * `@Immutable` now supports Java's `Optional` container class
-(link:https://issues.apache.org/jira/browse/GROOVY-7600[GROOVY-7600])
-and handles inheritance hierarchies
+(link:https://issues.apache.org/jira/browse/GROOVY-7600[GROOVY-7600]).
+* `@Immutable` handles inheritance hierarchies
 (link:https://issues.apache.org/jira/browse/GROOVY-7162[GROOVY-7162]).
+* `@Immutable` handles JSR-310 `java.time` classes
+(link:https://issues.apache.org/jira/browse/GROOVY-7599[GROOVY-7599]).
 * `@Delegate` can now be used on getters
 (link:https://issues.apache.org/jira/browse/GROOVY-7769[GROOVY-7769]).
 * `@TupleConstructor` now supports `pre` and `post` closure conditions to match the functionality provided by `@MapConstructor`

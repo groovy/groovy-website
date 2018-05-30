@@ -288,10 +288,66 @@ and that the parameter type is applicable for type checking purposes
 * `@NamedVariant` allows construction of a named-arg equivalent of a method or constructor.
 This allows the creation of methods or constructors which can be used with Groovy's named-argument
 syntax yet still retain good type checking capabilities.
+Combining `@NamedDelegate` and `@NamedParam` when using `@NamedVariant` can be quite powerful.
+For example, given these class definitions:
+[source,groovy]
+----
+class Animal {
+    String type, name
+}
+
+@ToString(includeNames=true)
+class Color {
+    Integer r, g, b
+}
+
+@NamedVariant
+String foo(String s1, @NamedParam String s2,
+           @NamedDelegate Color shade,
+           @NamedDelegate Animal pet) {
+    "$s1 $s2 ${pet.type?.toUpperCase()}:$pet.name $shade"
+}
+----
+the constructed foo method will look like:
+[source,groovy]
+----
+String foo(@NamedParam(value = 's2', type = String)
+           @NamedParam(value = 'r', type = Integer)
+           @NamedParam(value = 'g', type = Integer)
+           @NamedParam(value = 'b', type = Integer)
+           @NamedParam(value = 'type', type = String)
+           @NamedParam(value = 'name', type = String)
+           Map __namedArgs, String s1) {
+    // some key validation code ...
+    return this.foo(s1, __namedArgs.s2,
+            ['r': __namedArgs.r, 'g': __namedArgs.g, 'b': __namedArgs.b] as Color,
+            ['type': __namedArgs.type, 'name': __namedArgs.name] as Animal)
+}
+----
 * `@PropertyOptions` a marker annotation used to indicate that special property handling code will be generated for this class.
 It can be used to override how properties are set within the constructor or accessed via getters. This lets you customize
 for instance how `@Immutable` classes are generated.
 * `@VisibilityOptions` is a marker annotation used in the context of AST transformations to provide a custom visibility.
+One example of its use would be when you want to create a private constructor
+that might perhaps be called only from within a static factory method of the class:
+[source,groovy]
+----
+import groovy.transform.*
+import static groovy.transform.options.Visibility.PRIVATE
+
+@TupleConstructor
+@VisibilityOptions(PRIVATE)
+class Person {
+    String name
+    static makePerson(String first, String last) {
+        new Person("$first $last")
+    }
+}
+----
+Here using `@TupleConstructor` saves us the effort of writing the typical
+boiler-plate code within the constructor but we don't need to make it public
+but instead use it within our hand-written factory method which can focus
+on our particular business logic relevant to that factory method.
 
 [[Groovy2.5releasenotes-AstTransformImprovements]]
 == AST Transformation improvements
@@ -421,8 +477,25 @@ class MyTest {
   ]}
 }
 ----
-* `groovysh` should offer easier access to grapes
+which when run will show:
+[source]
+----
+JUnit5 launcher: passed=8, failed=0, skipped=0, time=246ms
+----
+with additional information available via logging if needed.
+* `groovysh` offers easier access to grapes
 (link:https://issues.apache.org/jira/browse/GROOVY-6514[GROOVY-6514]).
+[source,groovy]
+----
+groovy:000> :grab 'com.google.guava:guava:24.1-jre'
+groovy:000> import com.google.common.collect.ImmutableBiMap
+===> com.google.common.collect.ImmutableBiMap
+groovy:000> m = ImmutableBiMap.of('foo', 'bar')
+===> [foo:bar]
+groovy:000> m.inverse()
+===> [bar:foo]
+groovy:000>
+----
 * `groovyConsole` now provides an ASMifier tab within the AstBrowser
 (link:https://issues.apache.org/jira/browse/GROOVY-8091[GROOVY-8091]).
 
@@ -431,7 +504,8 @@ class MyTest {
 
 * Groovy's CliBuilder now supports annotation style definitions
 (link:https://issues.apache.org/jira/browse/GROOVY-7825[GROOVY-7825]).
-* Revamped versions of CliBuilder now exist supporting Commons CLI and Picocli backed implementations
+* Revamped versions of CliBuilder now exist supporting Commons CLI and Picocli backed implementations. See
+this https://blogs.apache.org/logging/entry/groovy-2-5-clibuilder-renewal[blog post] for more details.
 
 [[Groovy2.5releasenotes-OtherImprovements]]
 == Other improvements
@@ -450,7 +524,11 @@ link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-6854]).
 
 A few issues fixed might also be considered breaking changes in some
 situations:
-
+* The extension methods for the `java.util.Date` class are now in a separate
+`groovy-dateutil` module which isn't included by default when using the `groovy-all`
+pom dependency. Add the additional module as a dependency if you need it or consider
+migrating to the java.time JSR-310 classes (similar Groovy extension methods exist
+for those classes and they are included by default when using the `groovy-all` pom dependency).
 * @TupleConstructor could use the order of properties listed in 'includes' when that option is used
 (link:https://issues.apache.org/jira/browse/GROOVY-8016[GROOVY-8016])
 * @ToString could output properties in a predefined order when 'includes' is used

@@ -297,6 +297,8 @@ layout 'layouts/main.groovy', true,
                                                 code '&lt;artifactId&gt;groovy-all&lt;/artifactId&gt;'
                                                 br()
                                                 code '&lt;version&gt;x.y.z&lt;/version&gt;'
+                                                br()
+                                                code '&lt;type&gt;pom&lt;/type&gt; &lt;!-- required JUST since Groovy 2.5.0 --&gt;'
                                             }
                                             td 'The core plus all the modules. Also includes <em>jarjar\'ed</em> versions of Antlr, ASM, Commons-CLI.\n' +
                                                     'In order to cater to the module system of Java 9+, only the individual jar files of the core and all modules will be provided since Groovy 2.5.0, i.e. the fat jar file <em>groovy-all-x.y.z.jar</em> will not be available.\n' +

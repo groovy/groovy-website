@@ -5,10 +5,17 @@
 [width="80%",align="center"]
 |===
 a| NOTE: _WARNING:_
-Material on this page is still under development! We are currently creating alpha versions of Groovy 2.6 with a goal of gathering feedback on the language changes from our community. In addition, the alpha versions assist other projects and tool vendors within the Groovy ecosystem to begin assessing the impact of moving to/supporting Groovy 2.6. Caution should be exercised if using new features as the details may change before final release.)
+The Groovy 2.6 version of Groovy has been retired to focus on faster delivery of Groovy 3.0.
 |===
 
-Groovy 2.6 is simply a back-port of Groovy 3.0 for JDK7. We encourage all users on JDK8 or above to move directly to Groovy 3.0. Only users that must run on JDK7 need to use 2.6. You should consult the link:../groovy-3.0.html[Groovy 3.0 release notes] for a list of supported language changes. Only differences with 3.0 due to the different JVM requirements are reported here.
+Groovy 2.6 was intended to be a back-port of Groovy 3.0 for JDK7 but with
+features requiring JDK 8 removed. Alpha versions have been released which support
+the new Parrot parser (when enabled) but these versions are not feature complete wrt Groovy 3.0 functionality.
+We have left the alpha versions available to help people wanting to port towards Groovy 3.0
+but who are stuck on JDK7. However, we strongly encourage all users on JDK8 or above
+to move directly to Groovy 3.0.
+You should consult the link:../groovy-3.0.html[Groovy 3.0 release notes] for a list of supported language changes.
+Only differences with 3.0 due to the different JVM requirements are reported here.
 
 [[Groovy2.6releasenotes-Parrot]]
 == Parrot Parser

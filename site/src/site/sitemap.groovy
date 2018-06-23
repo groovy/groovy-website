@@ -138,7 +138,9 @@ downloads {
         description {
             yield 'Groovy 2.6 is a bleeding edge '
             a(href: 'versioning.html', 'version')
-            yield ' of Groovy designed for JDK7+ and supporting the new Parrot parser when enabled. Pre-release versions are available:'
+            yield ' of Groovy designed for JDK7+ and supporting the new Parrot parser (when enabled). This version has been'
+            yield ' retired before reaching final release to focus on Groovy 3.0 but alpha versions are available to help'
+            yield ' people wanting to port towards Groovy 3.0 but who are stuck on JDK7. Alpha versions are available:'
         }
         version('2.6.0-alpha-3') {
             stable false
@@ -152,12 +154,8 @@ downloads {
             yield ' of Groovy. Pre-release versions are available:'
         }
         version('2.5.0') {
-            stable false
-            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-installer.exe'
-        }
-        version('2.5.0-rc-3') {
-            stable false
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-rc-3-installer.exe'
+            stable true
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.0-installer.exe'
         }
     }
     distribution('Groovy 2.4') {

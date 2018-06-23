@@ -597,6 +597,9 @@ to reduce/remove those warnings. Users wanting to hush the warnings as an interi
 measure may consider using the `--add-opens` escape clause offered by JDK9+.
 See commit `92bd96f` (currently reverted) on the Groovy master branch for a potential
 list to add.
+* Users of the Spring Boot Gradle plugin wanting to upgrade to Groovy 2.5.0
+might like to re-check the plugin doco if you have any troubles. More comments here:
+https://github.com/spring-projects/spring-boot/issues/13444
 
 [[Groovy2.5releasenotes-JDKrequirements]]
 == JDK requirements changes

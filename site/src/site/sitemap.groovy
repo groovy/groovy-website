@@ -69,7 +69,7 @@ documentation {
             '2.3.0', '2.3.1', '2.3.2', '2.3.3', '2.3.4', '2.3.5', '2.3.6', '2.3.7', '2.3.8', '2.3.9', '2.3.10', '2.3.11',
             '2.4.0', '2.4.1', '2.4.2', '2.4.3', '2.4.4', '2.4.5', '2.4.6', '2.4.7', '2.4.8', '2.4.9', '2.4.10', '2.4.11', '2.4.12', '2.4.13', '2.4.14', '2.4.15',
             '2.5.0-alpha-1', '2.5.0-beta-1', '2.5.0-beta-2', '2.5.0-beta-3', '2.5.0-rc-1', '2.5.0-rc-2', '2.5.0-rc-3', '2.5.0',
-            '2.6.0-alpha-1', '2.6.0-alpha-2', '2.6.0-alpha-3',
+            '2.6.0-alpha-1', '2.6.0-alpha-2', '2.6.0-alpha-3', '2.6.0-alpha-4',
             '3.0.0-alpha-1', '3.0.0-alpha-2',
     ])
 
@@ -141,6 +141,10 @@ downloads {
             yield ' of Groovy designed for JDK7+ and supporting the new Parrot parser (when enabled). This version has been'
             yield ' retired before reaching final release to focus on Groovy 3.0 but alpha versions are available to help'
             yield ' people wanting to port towards Groovy 3.0 but who are stuck on JDK7. Alpha versions are available:'
+        }
+        version('2.6.0-alpha-4') {
+            stable false
+//             windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.6.0-alpha-4-installer.exe'
         }
         version('2.6.0-alpha-3') {
             stable false

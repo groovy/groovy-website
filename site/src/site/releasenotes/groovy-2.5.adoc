@@ -1,5 +1,36 @@
 Groovy 2.5 comes with a host of new features and capabilities.
 
+[[Groovy2.5releasenotes-Packaging]]
+
+== Jar packaging and JDK9 support
+
+Groovy versions prior to 2.5 included a core groovy jar and
+numerous "module" jars, e.g. groovy-xml.jar. Note: Groovy's
+existing "modules" aren't (currently) the same as Java9+ modules (more on that later).
+
+We also provided a convenience "all" jar by jarjar'ing the core and
+"module" jars. As part of moving to better JDK9+ support,
+the "all" jar is no longer available but we do provide an
+"all" pom which brings in the equivalent component jars.
+
+For most users referencing Groovy's "all" dependency, simply
+bumping the version number should be sufficient for you to
+get all the same class files and transitive dependencies as before.
+For users with complex builds, which might (perhaps implcitly)
+reference the actual "all" jar itself, perhaps more remediation
+work might be required. There are two caveats:
+
+* please read the breaking changes section for unrelated changes
+to the included classes referenced by the "all" pom
+* also note that since the current jars don't comply fully
+yet with JDK9+ requirements (e.g. split package requirements)
+you may not be able to place the Groovy jars on your module path.
+Instead, place them on the classpath. On-going work for
+Groovy 3.0 will address split package issues (see https://issues.apache.org/jira/browse/GROOVY-8647). If the
+Groovy "modules" you want to use aren't in the list being rectified for Groovy 3.0, then
+you can probably use them on the module path. The Groovy build currently
+doesn't test such usage.
+
 [[Groovy2.5releasenotes-Macros]]
 
 == Macro support

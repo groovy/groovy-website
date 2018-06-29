@@ -15,11 +15,24 @@ the "all" jar is no longer available but we do provide an
 
 For most users referencing Groovy's "all" dependency, simply
 bumping the version number should be sufficient for you to
-get all the same class files and transitive dependencies as before.
-For users with complex builds, which might (perhaps implcitly)
+get all the same class files and transitive dependencies as before
+but there are some slight differences discussed below.
+For users with complex builds, which might (perhaps implicitly)
 reference the actual "all" jar itself, perhaps more remediation
-work might be required. There are two caveats:
+work might be required.
 
+There are some caveats:
+
+* the groovy-all jar used to have all the transitive dependencies
+(e.g. bsf.jar, testng.jar, ant.jar) listed as optional when referenced
+via the all dependency but included when referenced by the module
+dependencies (e.g. groovy-bsf, groovy-testng, groovy-ant). Now with the
+groovy-all pom since it references the module dependencies, those transitive
+dependencies are all now automatically added. This means that you might
+be able to delete explicit references to those dependencies if you are
+actually using them, and conversely, you might wish to explicitly exclude
+the respective groovy-module (or transitive dependency) for those modules
+you aren't in fact using.
 * please read the breaking changes section for unrelated changes
 to the included classes referenced by the "all" pom
 * also note that since the current jars don't comply fully
@@ -631,6 +644,11 @@ list to add.
 * Users of the Spring Boot Gradle plugin wanting to upgrade to Groovy 2.5.0
 might like to re-check the plugin doco if you have any troubles. More comments here:
 https://github.com/spring-projects/spring-boot/issues/13444
+* proper OSGi operation was inadvertently broken due to split package
+issues. This should be fixed in 2.5.1. You can only use combinations of
+Groovy classes/modules which avoid the split package problem in the meantime.
+See https://issues.apache.org/jira/browse/GROOVY-8647 for the list of work being
+done on split packages to identify the affected modules/classes.
 
 [[Groovy2.5releasenotes-JDKrequirements]]
 == JDK requirements changes

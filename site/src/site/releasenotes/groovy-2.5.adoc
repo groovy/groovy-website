@@ -659,3 +659,18 @@ Groovy 2.5 requires JDK8+ to build and JDK7 is the minimum version of the JRE th
 == More information
 
 You can browse all the link:../changelogs/changelog-2.5.0.html[tickets closed for Groovy 2.5.0 in JIRA].
+
+[[Groovy2.5releasenotes-Addendum251]]
+== Addendum for 2.5.1
+
+We normally try very hard not to have breaking changes in minor releases, and that remains
+the case for the APIs within 2.5.1, but due to some bugs that slipped through 2.5.0 release
+candidate shakedown and also some usability feedback, we have made the following breaking
+packaging changes in 2.5.1:
+
+* `groovy-bsf` is now an optional module and isn't referenced by default when using the `groovy-all` pom dependency
+* Groovy's extension methods for JAXB are now in the optional `groovy-jaxb` module
+* an issue with traits when used in combination with stubs has been fixed
+but traits produced by earlier versions of Groovy will not have the fix even when
+applied using Groovy 2.5.1. The solution is to recompile the trait using 2.5.1.
+(link:https://issues.apache.org/jira/browse/GROOVY-8233[GROOVY-8233])

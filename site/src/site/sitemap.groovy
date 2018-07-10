@@ -131,11 +131,7 @@ downloads {
         }
         version('3.0.0-alpha-3') {
             stable false
-//            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-3.0.0-alpha-3-installer.exe'
-        }
-        version('3.0.0-alpha-2') {
-            stable false
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-3.0.0-alpha-2-installer.exe'
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-3.0.0-alpha-3-installer.exe'
         }
     }
     distribution('Groovy 2.6') {
@@ -148,11 +144,7 @@ downloads {
         }
         version('2.6.0-alpha-4') {
             stable false
-//             windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.6.0-alpha-4-installer.exe'
-        }
-        version('2.6.0-alpha-3') {
-            stable false
-             windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.6.0-alpha-3-installer.exe'
+             windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.6.0-alpha-4-installer.exe'
         }
     }
     distribution('Groovy 2.5') {

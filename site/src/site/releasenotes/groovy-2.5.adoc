@@ -668,8 +668,45 @@ the case for the APIs within 2.5.1, but due to some bugs that slipped through 2.
 candidate shakedown and also some usability feedback, we have made the following breaking
 packaging changes in 2.5.1:
 
-* `groovy-bsf` is now an optional module and isn't referenced by default when using the `groovy-all` pom dependency
-* Groovy's extension methods for JAXB are now in the optional `groovy-jaxb` module
+* Groovy's extension methods for JAXB are now in the optional `groovy-jaxb` module.
+If you need the JAXB extension methods, please add that module to your dependency list,
+and depending on your JDK version, you may need to add additional dependencies or
+command-line switches, or set one of the JAVA_OPTS or JDK_JAVA_OPTIONS environment variables.
+[cols="2a,2a"]
+|===
+|JDK Version |Options
+| JDK8 | Do nothing
+| JDK9/10 | Command-line switch/environment variable value: +
+{nbsp}{nbsp}{nbsp}{nbsp}--add-modules java.xml.bind +
+when starting the JDK that Groovy will use or see solution for JDK11.
+For a gradle build that needs to work across JDK versions, you might need something like:
+
+`if (JavaVersion.current().isJava9Compatible()) {` +
+{nbsp}{nbsp} `def jaxbJvmArg = '--add-modules java.xml.bind'` +
+{nbsp}{nbsp} `tasks.withType(GroovyCompile) {` +
+{nbsp}{nbsp}{nbsp}{nbsp} `groovyOptions.fork = true` +
+{nbsp}{nbsp}{nbsp}{nbsp} `groovyOptions.forkOptions.jvmArgs.add(jaxbJvmArg)` +
+{nbsp}{nbsp} `}` +
+{nbsp}{nbsp} `tasks.withType(Test) {` +
+{nbsp}{nbsp}{nbsp}{nbsp} `jvmArgs jaxbJvmArg` +
+{nbsp}{nbsp} `}` +
+`}`
+
+The command-line switch approach is automatically done for the Groovy command-line tools, e.g. `groovyc`, `groovy`, `groovyConsole`, etc.
+since `groovy-jaxb` is currently bundled in the Groovy install.
+| JDK11 | Add these dependencies: +
+{nbsp}{nbsp}{nbsp}{nbsp}javax.xml.bind:jaxb-api:2.3.0 +
+{nbsp}{nbsp}{nbsp}{nbsp}com.sun.xml.bind:jaxb-core:2.3.0.1 +
+{nbsp}{nbsp}{nbsp}{nbsp}com.sun.xml.bind:jaxb-impl:2.3.0.1 +
+{nbsp}{nbsp}{nbsp}{nbsp}javax.activation:activation:1.1.1 +
+The first is required at compile time, the last three at runtime, the last only required for JDK11.
+For an example Gradle build that works JDK8 through 11, see
+link:https://github.com/apache/groovy/blob/master/subprojects/groovy-jaxb/build.gradle[build.gradle]
+in the groovy-jaxb subproject.
+|===
+
+* `groovy-bsf` is now an optional module and isn't referenced by default when using the
+`groovy-all` pom dependency (this helps with an OSGi issue)
 * an issue with traits when used in combination with stubs has been fixed
 but traits produced by earlier versions of Groovy will not have the fix even when
 applied using Groovy 2.5.1. The solution is to recompile the trait using 2.5.1.

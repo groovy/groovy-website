@@ -668,16 +668,15 @@ the case for the APIs within 2.5.1, but due to some bugs that slipped through 2.
 candidate shakedown and also some usability feedback, we have made the following breaking
 packaging changes in 2.5.1:
 
-* an issue with traits when used in combination with stubs has been fixed
-but traits produced by earlier versions of Groovy will not have the fix even when
-applied using Groovy 2.5.1. The solution is to recompile the trait using 2.5.1.
-(link:https://issues.apache.org/jira/browse/GROOVY-8233[GROOVY-8233])
 * `groovy-bsf` is now an optional module and isn't referenced by default when using the
 `groovy-all` pom dependency (this helps with an OSGi issue)
 * Groovy's extension methods for JAXB are now in the optional `groovy-jaxb` module.
-If you need the JAXB extension methods, please add that module to your dependency list,
-and depending on your JDK version, you may need to add additional dependencies or
-command-line switches, or set one of the JAVA_OPTS or JDK_JAVA_OPTIONS environment variables.
+This means that you aren't using JAXB, you don't need to worry about the
+JDK JAXB changes even if you are using the `groovy-all` pom, you should have nothing to do. +
+If you do need the JAXB extension methods, please add that module to your dependency list,
+and depending on your JDK version (see table below), you may have some further steps, e.g.
+add additional dependencies or command-line switches,
+or set one of the JAVA_OPTS or JDK_JAVA_OPTIONS environment variables.
 [cols="2a,2a"]
 |===
 |JDK Version |Options
@@ -710,7 +709,7 @@ For an example Gradle build that works JDK8 through 11, see
 link:https://github.com/apache/groovy/blob/master/subprojects/groovy-jaxb/build.gradle[build.gradle]
 in the groovy-jaxb subproject.
 |===
-Note: The above description isn't our final plan in this space. For 2.5.1, we focused just on making
+Note: The above above steps aren't our final plan in this space. For 2.5.1, we focused just on making
 life better for non-JAXB users using Groovy via Gradle or Maven. For 2.5.2, we hope to make much
 of the above details as hidden as possible and certainly hidden for users of the groovy command-line
 tools for JDK9+.
@@ -719,6 +718,6 @@ If you are using JDK9+ and the command-line tools (e.g. groovy, groovyc, groovyC
 and want to make your life easier on 2.5.1 in the meantime,
 please consider doing one of the following:
 
-* remove groovy-jaxb jar from your Groovy distribution
-* copying the startGroovy or startGroovy.bat script files from master
-* copying the above four files into your lib directory
+* remove groovy-jaxb jar from your Groovy distribution's lib directory
+* copy the startGroovy or startGroovy.bat script files from master
+* copy the four jars mentioned in the above JDK11 table entry into your lib directory

@@ -116,20 +116,27 @@ layout 'layouts/main.groovy', true,
                                     def archiveExtUrl = { String type, String area, v, String ext -> "${archiveUrl(type, area, v)}.$ext".toString() }
                                     def distUrl = { String type, String area, v -> "https://www.apache.org/dist/groovy/${v}/${area}/apache-groovy-${type}-${v}.zip".toString() }
                                     def distExtUrl = { String type, String area, v, String ext -> "${distUrl(type, area, v)}.$ext".toString() }
-                                    def findUrl = { String type, String area, v, String ext ->
-                                        def u = archiveExtUrl(type, area, v, ext)
-                                        if (SiteGenerator.exists(u)) return u
+                                    def findUrl = { String type, String area, v, String ext, boolean preferPermalink ->
+                                        def u
+                                        if (preferPermalink) {
+                                            u = archiveExtUrl(type, area, v, ext)
+                                            if (SiteGenerator.exists(u)) return u
+                                        }
                                         u = distExtUrl(type, area, v, ext)
                                         if (SiteGenerator.exists(u)) return u
+                                        if (!preferPermalink) {
+                                            u = archiveExtUrl(type, area, v, ext)
+                                            if (SiteGenerator.exists(u)) return u
+                                        }
                                         null
                                     }
-                                    def buildExtras = { String type, String area, String v ->
+                                    def buildExtras = { String type, String area, String v, boolean preferPermalink ->
                                         def extras = [:]
-                                        def url = findUrl(type, area, v, 'asc')
+                                        def url = findUrl(type, area, v, 'asc', preferPermalink)
                                         if (url) { extras.asc = url }
-                                        url = findUrl(type, area, v, 'md5')
+                                        url = findUrl(type, area, v, 'md5', preferPermalink)
                                         if (url) { extras.md5 = url }
-                                        url = findUrl(type, area, v, 'sha256')
+                                        url = findUrl(type, area, v, 'sha256', preferPermalink)
                                         if (url) { extras.sha256 = url }
                                         if (extras) {
                                             def first = true
@@ -160,7 +167,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield 'binary'
                                                     }
-                                                    buildExtras('binary', 'distribution', pkg.version)
+                                                    buildExtras('binary', 'distribution', pkg.version, true)
                                                 }
                                                 td {
                                                     a(href: srcUrl(pkg.version)) {
@@ -168,7 +175,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield ' source'
                                                     }
-                                                    buildExtras('src', 'sources', pkg.version)
+                                                    buildExtras('src', 'sources', pkg.version, false)
                                                 }
                                                 td {
                                                     a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-docs-${pkg.version}.zip") {
@@ -176,7 +183,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield ' documentation'
                                                     }
-                                                    buildExtras('docs', 'distribution', pkg.version)
+                                                    buildExtras('docs', 'distribution', pkg.version, true)
                                                 }
                                                 td {
                                                     a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${pkg.version}.zip") {
@@ -184,7 +191,7 @@ layout 'layouts/main.groovy', true,
                                                         br()
                                                         yield ' SDK bundle'
                                                     }
-                                                    buildExtras('sdk', 'distribution', pkg.version)
+                                                    buildExtras('sdk', 'distribution', pkg.version, true)
                                                 }
                                                 if (pkg.windowsInstaller) {
                                                     td {

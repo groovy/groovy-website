@@ -46,35 +46,17 @@ layout 'layouts/main.groovy', true,
                             }
                             def linkVersionToDownload = distributions.collect { it.packages }.flatten().find { it.stable }.version
                             button(id: 'big-download-button', type: 'button', class: 'btn btn-default',
-                                    title: "Download Groovy ${linkVersionToDownload}\nSee below for verification information",
+                                    title: "Download Apache Groovy ${linkVersionToDownload} binary zip\nSee below for verification information",
                                     onclick: "window.location.href=\"https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${linkVersionToDownload}.zip\"") {
                                 i(class: 'fa fa-download') {}
-                                yield ' Download'
+                                yield " Download ${linkVersionToDownload}"
                             }
                             article {
                                 p {
-                                    yield 'In this download area, you will find the latest Groovy '
+                                    yield 'In this download area, you will find the latest Apache Groovy '
                                     a(href: '#distro', 'distributions')
-                                    yield ' including binary, source, downloadable documentation and a Windows installer convenience file (if available).'
-                                }
-                                p {
-                                    yield 'Downloads are hosted in:'
-                                    ul {
-                                        li {
-                                            yield "Bintray's "
-                                            a(href: 'http://bintray.com/groovy/', 'Groovy repository')
-                                            yield '. Register on Bintray to rate, review, and register for new version notifications. Or '
-                                            a(href: 'https://dl.bintray.com/groovy/maven/', 'browse')
-                                            yield ' all versions.'
-                                        }
-                                        li {
-                                            yield "Apache's "
-                                            a(href: 'http://www.apache.org/dyn/closer.cgi/groovy/', 'release mirrors')
-                                            yield ' and '
-                                            a(href: 'https://archive.apache.org/dist/groovy/', 'archive repository')
-                                            yield '.'
-                                        }
-                                    }
+                                    yield '. Distributions are bundles of source or class files needed to build or use Groovy.'
+                                    yield ' In addition to the zip distribution bundles, various packages exist that allow you to install Groovy for your operating system.'
                                 }
                                 p {
                                     yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
@@ -86,6 +68,10 @@ layout 'layouts/main.groovy', true,
                                     yield 'Windows users can use '
                                     a(href: 'https://github.com/flofreud/posh-gvm', 'Posh-GVM')
                                     yield ' (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI.'
+                                    br()
+                                    yield ' If your operating system supports a packaging system, there might be '
+                                    a(href: '#otherways', 'alternative ways')
+                                    yield ' to install Groovy.'
                                 }
                             }
                             hr(class: 'divider')
@@ -93,13 +79,39 @@ layout 'layouts/main.groovy', true,
                             a(name: 'distro') {}
                             article {
                                 h1 'Distributions'
-                                p 'You can download a binary, a source, a documentation bundle or an SDK bundle combining all three. A convenience Windows installer is also provided when available.'
                                 p {
-                                    yield "We provide OpenPGP signatures ('.asc') files and checksums for every release file. We recommend that you "
+                                    yield 'A feature of all Apache projects is that they always provide a source zip which'
+                                    yield ' lets anyone build the software from scratch. If any doubt arises, you can regard'
+                                    yield ' the source zip as the authoritative artifact for each release. Not everyone wants'
+                                    yield ' to build from scratch, so we also provide binary, downloadable documentation and'
+                                    yield ' SDK (combines src, binary and docs) convenience artifacts. You can also find a link'
+                                    yield ' to a community created Windows installer convenience executable (if available).'
+                                }
+                                p {
+                                    yield "We provide OpenPGP signatures ('.asc') files and checksums for every release artifact. We recommend that you "
                                     a(href: 'https://www.apache.org/info/verification.html', 'verify')
                                     yield ' the integrity of downloaded files by generating your own checksums and matching them against ours and checking signatures using the '
                                     a(href: 'https://www.apache.org/dist/groovy/KEYS', 'KEYS')
-                                    yield " file which contains the OpenPGP keys of Groovy's Release Managers."
+                                    yield " file which contains the OpenPGP keys of Groovy's Release Managers across all releases."
+                                }
+                                p {
+                                    yield 'Downloads are hosted (and mirrored) in:'
+                                    ul {
+                                        li {
+                                            yield "Apache's "
+                                            a(href: 'http://www.apache.org/dyn/closer.cgi/groovy/', 'release mirrors')
+                                            yield ' and '
+                                            a(href: 'https://archive.apache.org/dist/groovy/', 'archive repository')
+                                            yield '.'
+                                        }
+                                        li {
+                                            yield "Bintray's "
+                                            a(href: 'http://bintray.com/groovy/', 'Groovy repository')
+                                            yield '. Register on Bintray to rate, review, and register for new version notifications. Or '
+                                            a(href: 'https://dl.bintray.com/groovy/maven/', 'browse')
+                                            yield ' all versions.'
+                                        }
+                                    }
                                 }
 
                                 distributions.each { dist ->
@@ -273,7 +285,7 @@ layout 'layouts/main.groovy', true,
                                                 br()
                                                 code '&lt;version&gt;x.y.z&lt;/version&gt;'
                                             }
-                                            td 'Just the core of Groovy without the modules (see below). Also includes jarjar\'ed versions of Antlr, ASM, and Commons-CLI.'
+                                            td 'Just the core of Groovy without the modules*. Also includes jarjar\'ed versions of Antlr, ASM, and an internal copy of needed CLI implementation classes.'
                                         }
                                         tr {
                                             td {
@@ -288,10 +300,10 @@ layout 'layouts/main.groovy', true,
                                             }
                                             td {
                                                 code '"$module"'
-                                                yield ' stands for the different optional groovy modules "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx", "json", "jsr223", "nio", "servlet", "sql", "swing", "test", "templates", "testng" and "xml".'
-                                                br()
-                                                yield 'Example: '
+                                                yield ' stands for the different optional groovy modules*.'
+                                                yield ' Example: '
                                                 code '&lt;artifactId&gt;groovy-sql&lt;/artifactId&gt;'
+                                                yield '.'
                                             }
                                         }
                                         tr {
@@ -307,16 +319,46 @@ layout 'layouts/main.groovy', true,
                                                 br()
                                                 code '&lt;type&gt;pom&lt;/type&gt; &lt;!-- required JUST since Groovy 2.5.0 --&gt;'
                                             }
-                                            td 'The core plus all the modules. Also includes <em>jarjar\'ed</em> versions of Antlr, ASM, Commons-CLI.\n' +
-                                                    'In order to cater to the module system of Java 9+, only the individual jar files of the core and all modules will be provided since Groovy 2.5.0, i.e. the fat jar file <em>groovy-all-x.y.z.jar</em> will not be available.\n' +
-                                                    'Optional dependencies are marked as optional.\n' +
-                                                    'You may need to include some of the optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans...'
+                                            td {
+                                                yield 'Core plus all of the modules (excluding optional modules) according to the version packaging scheme**.'
+                                            }
+                                        }
+                                        tr {
+                                            td(colspan: 3) {
+                                                yield '* Modules:'
+                                                br()
+                                                em '2.4.X:'
+                                                yield ' "ant", "bsf", "console", "docgenerator", "groovydoc", "groovysh", "jmx", "json", "jsr223", "nio", "servlet", "sql", "swing", "test", "templates", "testng" and "xml"'
+                                                br()
+                                                em '2.5.0:'
+                                                yield ' as above but excluding optional module "bsf" plus "cli-picocli", "datetime", "macro", "test-junit5". Optional modules: "bsf", "dateutil", "cli-commons"'
+                                                br()
+                                                em '2.5.1+:'
+                                                yield ' as above but "groovy-jaxb" is moved to become optional'
+                                            }
+                                        }
+                                        tr {
+                                            td(colspan: 3) {
+                                                yield '** Packaging Scheme:'
+                                                br()
+                                                em '2.4.X:'
+                                                yield ' The core plus all the modules merged into one "fat jar". Optional dependencies are marked as optional, so you may need to include some of the' +
+                                                        ' optional dependencies to use some features of Groovy, e.g. AntBuilder, GroovyMBeans...'
+                                                br()
+                                                em '2.5+:'
+                                                yield ' A "fat pom" '
+                                                code 'groovy-all-x.y.z.pom'
+                                                yield ' referring to the core plus all modules (excluding optional ones).'
+                                                yield ' In order to cater to the module system of Java 9+, the '
+                                                code 'groovy-all-x.y.z.jar'
+                                                yield ' file is no longer available.'
+                                            }
                                         }
                                     }
                                 }
                                 h3 'Maven repositories'
-                                p "Groovy releases are downloadable from ${$a(href:'http://repo1.maven.org/maven2/org/codehaus/groovy/','Maven Central')} or ${$a(href:'http://jcenter.bintray.com/org/codehaus/groovy/','JCenter')}."
-                                p "Groovy snapshots are downloadable from ${$a(href:'https://oss.jfrog.org/oss-snapshot-local/org/codehaus/groovy','JFrog OpenSource Snapshots repository')}."
+                                p "Groovy release jars are available from ${$a(href:'http://repo1.maven.org/maven2/org/codehaus/groovy/','Maven Central')} or ${$a(href:'http://jcenter.bintray.com/org/codehaus/groovy/','JCenter')}."
+                                p "Groovy snapshot jars are available from ${$a(href:'https://oss.jfrog.org/oss-snapshot-local/org/codehaus/groovy','JFrog OpenSource Snapshots repository')}. Snapshots are not official releases but are provided to assist with integration testing leading up to an official release."
                             }
                             hr(class: 'divider')
 
@@ -336,9 +378,11 @@ layout 'layouts/main.groovy', true,
                                     a(href: 'https://hub.docker.com/_/groovy/', 'Docker Hub')
                                     yield '.'
                                     br()
-                                    yield 'If you prefer to live on the bleeding edge, you can also grab the '
-                                    a(href: 'https://github.com/apache/groovy', 'source code from GitHub')
-                                    yield '.'
+                                    yield 'If you prefer to live on the bleeding edge, you can find the latest source code in the '
+                                    a(href: 'https://git-wip-us.apache.org/repos/asf/groovy.git', 'Git repo')
+                                    yield ' (or the '
+                                    a(href: 'https://github.com/apache/groovy', 'GitHub mirror')
+                                    yield ').'
                                     br()
                                     yield 'If you are an IDE user, you can just grab the latest '
                                     a(href: 'ides.html', 'IDE plugin')

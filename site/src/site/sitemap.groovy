@@ -127,7 +127,7 @@ downloads {
         description {
             yield 'Groovy 3.0 is a bleeding edge '
             a(href: 'versioning.html', 'version')
-            yield ' of Groovy designed for JDK8+ and with the new Parrot parser enabled by default. Pre-release versions are available:'
+            yield ' of Groovy designed for JDK8+ and with the new Parrot parser enabled by default. Pre-stable versions are available:'
         }
         version('3.0.0-alpha-3') {
             stable false
@@ -140,7 +140,7 @@ downloads {
             a(href: 'versioning.html', 'version')
             yield ' of Groovy designed for JDK7+ and supporting the new Parrot parser (when enabled). This version has been'
             yield ' retired before reaching final release to focus on Groovy 3.0 but alpha versions are available to help'
-            yield ' people wanting to port towards Groovy 3.0 but who are stuck on JDK7. Alpha versions are available:'
+            yield ' people wanting to port towards Groovy 3.0 but who are stuck on JDK7:'
         }
         version('2.6.0-alpha-4') {
             stable false

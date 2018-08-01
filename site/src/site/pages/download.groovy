@@ -85,7 +85,7 @@ layout 'layouts/main.groovy', true,
                                     yield ' the source zip as the authoritative artifact for each release. Not everyone wants'
                                     yield ' to build from scratch, so we also provide binary, downloadable documentation and'
                                     yield ' SDK (combines src, binary and docs) convenience artifacts. You can also find a link'
-                                    yield ' to a community created Windows installer convenience executable (if available).'
+                                    yield ' to a community-created Windows installer convenience executable (if available).'
                                 }
                                 p {
                                     yield "We provide OpenPGP signatures ('.asc') files and checksums for every release artifact. We recommend that you "
@@ -211,6 +211,8 @@ layout 'layouts/main.groovy', true,
                                                             i(class: 'fa fa-windows fa-4x') {}
                                                             br()
                                                             yield ' Windows installer'
+                                                            br()
+                                                            yield ' (community artifact)'
                                                         }
                                                     }
                                                 }

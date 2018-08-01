@@ -211,9 +211,9 @@ layout 'layouts/main.groovy', true,
                                                             i(class: 'fa fa-windows fa-4x') {}
                                                             br()
                                                             yield ' Windows installer'
-                                                            br()
-                                                            yield ' (community artifact)'
                                                         }
+                                                        br()
+                                                        yield '(community artifact)'
                                                     }
                                                 }
                                             }

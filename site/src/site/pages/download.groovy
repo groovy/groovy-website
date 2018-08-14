@@ -52,26 +52,40 @@ layout 'layouts/main.groovy', true,
                                 yield " Download ${linkVersionToDownload}"
                             }
                             article {
-                                p {
-                                    yield 'In this download area, you will find the latest Apache Groovy '
-                                    a(href: '#distro', 'distributions')
-                                    yield '. Distributions are bundles of source or class files needed to build or use Groovy.'
-                                    yield ' In addition to the zip distribution bundles, various packages exist that allow you to install Groovy for your operating system.'
-                                }
-                                p {
-                                    yield 'For a quick and effortless start on Mac OSX, Linux or Cygwin, you can use '
-                                    a(href: 'http://sdkman.io/', 'SDKMAN! (The Software Development Kit Manager)')
-                                    yield ' to download and configure any Groovy version of your choice. Basic '
-                                    a(href: '#sdkman', 'instructions')
-                                    yield ' can be found below. '
-                                    br()
-                                    yield 'Windows users can use '
-                                    a(href: 'https://github.com/flofreud/posh-gvm', 'Posh-GVM')
-                                    yield ' (POwerSHell Groovy enVironment Manager), a PowerShell clone of the GVM CLI.'
-                                    br()
-                                    yield ' If your operating system supports a packaging system, there might be '
-                                    a(href: '#otherways', 'alternative ways')
-                                    yield ' to install Groovy.'
+                                p 'Ways to get Apache Groovy:'
+                                ul {
+                                    li {
+                                        yield 'Download a source or binary '
+                                        a(href: '#distro', 'distribution')
+                                        yield '.'
+                                    }
+                                    li {
+                                        yield 'Use a package manager or bundle for your '
+                                        a(href: '#osinstall', 'operating system')
+                                        yield '.'
+                                    }
+                                    li {
+                                        yield 'Refer to the appropriate Apache Groovy jars from your '
+                                        a(href: '#buildtools', 'build tools')
+                                        yield '.'
+                                    }
+                                    li {
+                                        yield 'Grab the latest '
+                                        a(href: 'ides.html', 'plugin')
+                                        yield ' for your IDE and follow the installation instructions.'
+                                    }
+                                    li {
+                                        yield 'Find the latest source code in the '
+                                        a(href: 'https://git-wip-us.apache.org/repos/asf/groovy.git', 'Git repo')
+                                        yield ' (or the '
+                                        a(href: 'https://github.com/apache/groovy', 'GitHub mirror')
+                                        yield ').'
+                                    }
+                                    li {
+                                        yield 'If you\'re using Docker, Groovy is available on '
+                                        a(href: 'https://hub.docker.com/_/groovy/', 'Docker Hub')
+                                        yield '.'
+                                    }
                                 }
                             }
                             hr(class: 'divider')
@@ -80,38 +94,22 @@ layout 'layouts/main.groovy', true,
                             article {
                                 h1 'Distributions'
                                 p {
-                                    yield 'A feature of all Apache projects is that they always provide a source zip which'
-                                    yield ' lets anyone build the software from scratch. If any doubt arises, you can regard'
-                                    yield ' the source zip as the authoritative artifact for each release. Not everyone wants'
-                                    yield ' to build from scratch, so we also provide binary, downloadable documentation and'
-                                    yield ' SDK (combines src, binary and docs) convenience artifacts. You can also find a link'
-                                    yield ' to a community-created Windows installer convenience executable (if available).'
+                                    yield 'Distributions are bundles of source or class files needed to build or use Groovy.'
                                 }
+                                p {
+                                    yield 'All Apache projects provide a source zip which'
+                                    yield ' lets anyone build the software from scratch. If any doubt arises, you can regard'
+                                    yield ' the source zip as the authoritative artifact for each release. We also provide binary, downloadable documentation and'
+                                    yield ' SDK (combines src, binary and docs) convenience artifacts. You can also find a link'
+                                    yield ' to a non-ASF Windows installer convenience executable (if available).'
+                                }
+                                h3 'Verification'
                                 p {
                                     yield "We provide OpenPGP signatures ('.asc') files and checksums for every release artifact. We recommend that you "
                                     a(href: 'https://www.apache.org/info/verification.html', 'verify')
                                     yield ' the integrity of downloaded files by generating your own checksums and matching them against ours and checking signatures using the '
                                     a(href: 'https://www.apache.org/dist/groovy/KEYS', 'KEYS')
                                     yield " file which contains the OpenPGP keys of Groovy's Release Managers across all releases."
-                                }
-                                p {
-                                    yield 'Downloads are hosted (and mirrored) in:'
-                                    ul {
-                                        li {
-                                            yield "Apache's "
-                                            a(href: 'http://www.apache.org/dyn/closer.cgi/groovy/', 'release mirrors')
-                                            yield ' and '
-                                            a(href: 'https://archive.apache.org/dist/groovy/', 'archive repository')
-                                            yield '.'
-                                        }
-                                        li {
-                                            yield "Bintray's "
-                                            a(href: 'http://bintray.com/groovy/', 'Groovy repository')
-                                            yield '. Register on Bintray to rate, review, and register for new version notifications. Or '
-                                            a(href: 'https://dl.bintray.com/groovy/maven/', 'browse')
-                                            yield ' all versions.'
-                                        }
-                                    }
                                 }
 
                                 distributions.each { dist ->
@@ -162,48 +160,46 @@ layout 'layouts/main.groovy', true,
                                             yield ')'
                                         }
                                     }
-                                    def srcUrl = { v ->
-                                        def u = "http://www.apache.org/dyn/closer.cgi/groovy/${v}/sources/apache-groovy-src-${v}.zip"
-                                        if (!SiteGenerator.exists(u)) {
-                                            u = archiveUrl('src', 'sources', v)
-                                        }
-                                        u
+                                    def srcUrl = { pkg ->
+                                        def v = pkg.version
+                                        pkg.archive ? archiveUrl('src', 'sources', v) : "http://www.apache.org/dyn/closer.cgi/groovy/${v}/sources/apache-groovy-src-${v}.zip"
                                     }
                                     dist.packages.each { pkg ->
-                                        h3 "${pkg.version} distributions"
+                                        def v = pkg.version
+                                        h3 "${v} distributions"
                                         table(width: '100%', class: 'download-table') {
                                             tr {
                                                 td {
-                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-binary-${pkg.version}.zip") {
+                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-binary-${v}.zip") {
                                                         i(class: 'fa fa-gears fa-4x') {}
                                                         br()
                                                         yield 'binary'
                                                     }
-                                                    buildExtras('binary', 'distribution', pkg.version, true)
+                                                    buildExtras('binary', 'distribution', v, true)
                                                 }
                                                 td {
-                                                    a(href: srcUrl(pkg.version)) {
+                                                    a(href: srcUrl(pkg)) {
                                                         i(class: 'fa fa-code fa-4x') {}
                                                         br()
                                                         yield ' source'
                                                     }
-                                                    buildExtras('src', 'sources', pkg.version, false)
+                                                    buildExtras('src', 'sources', v, pkg.archive)
                                                 }
                                                 td {
-                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-docs-${pkg.version}.zip") {
+                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-docs-${v}.zip") {
                                                         i(class: 'fa fa-file-text fa-4x') {}
                                                         br()
                                                         yield ' documentation'
                                                     }
-                                                    buildExtras('docs', 'distribution', pkg.version, true)
+                                                    buildExtras('docs', 'distribution', v, true)
                                                 }
                                                 td {
-                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${pkg.version}.zip") {
+                                                    a(href: "https://dl.bintray.com/groovy/maven/apache-groovy-sdk-${v}.zip") {
                                                         i(class: 'fa fa-file-zip-o fa-4x') {}
                                                         br()
                                                         yield ' SDK bundle'
                                                     }
-                                                    buildExtras('sdk', 'distribution', pkg.version, true)
+                                                    buildExtras('sdk', 'distribution', v, true)
                                                 }
                                                 if (pkg.windowsInstaller) {
                                                     td {
@@ -220,46 +216,104 @@ layout 'layouts/main.groovy', true,
                                         }
                                         p {
                                             yield 'Please consult the '
-                                            a(href: "changelogs/changelog-${pkg.version}.html", ' change log')
-                                            yield ' for details. Please read the '
-                                            a(href: "indy.html", 'invoke dynamic support information')
-                                            yield ' if you like to enable that feature and are using Groovy on JDK 7+.'
+                                            a(href: "changelogs/changelog-${v}.html", ' change log')
+                                            yield ' for details. '
                                         }
                                     }
                                 }
                                 article {
-                                    h3 'Changelog'
+                                    h3 'Other versions'
 
+                                    p {
+                                        yield 'Downloads for all versions are hosted (and mirrored) in:'
+                                        ul {
+                                            li {
+                                                yield "Apache's "
+                                                a(href: 'http://www.apache.org/dyn/closer.cgi/groovy/', 'release mirrors')
+                                                yield ' and '
+                                                a(href: 'https://archive.apache.org/dist/groovy/', 'archive repository')
+                                                yield '.'
+                                            }
+                                            li {
+                                                yield "Bintray's "
+                                                a(href: 'http://bintray.com/groovy/', 'Groovy repository')
+                                                yield '. Register on Bintray to rate, review, and register for new version notifications. Or '
+                                                a(href: 'https://dl.bintray.com/groovy/maven/', 'browse')
+                                                yield ' all versions.'
+                                            }
+                                        }
+                                    }
                                     p {
                                         yield 'You can also read the changelogs for '
                                         a(href: "changelogs.html", 'other versions')
                                         yield '.'
                                     }
                                 }
+                                article {
+                                    h3 'Invoke dynamic support'
+
+                                    p {
+                                        yield 'Please read the '
+                                        a(href: "indy.html", 'invoke dynamic support information')
+                                        yield ' if you would like to enable indy support and are using Groovy on JDK 7+.'
+                                    }
+                                }
                             }
 
                             hr(class: 'divider')
 
-                            a(name: 'sdkman') {}
+                            a(name: 'osinstall') {}
                             article {
-                                h1 'SDKMAN! (The Software Development Kit Manager)'
+                                h1 'Operating system installation'
+
                                 p {
-                                    yield 'This tool makes installing Groovy on any Bash platform (Mac OSX, Linux, Cygwin, Solaris or FreeBSD) very easy.'
-                                    br()
-                                    yield 'Simply open a new terminal and enter:'
+                                    a(href: 'http://groovy-lang.org/install.html', 'Installing')
+                                    yield ' Apache Groovy from a distribution zip is not hard but if you don\'t want'
+                                    yield ' the hassle, consider the alternatives listed here.'
                                 }
-                                pre { code '$ curl -s get.sdkman.io | bash' }
-                                p {
-                                    yield 'Follow the instructions on-screen to complete installation.'
-                                    br()
-                                    yield 'Open a new terminal or type the command:'
+                                a(name: 'sdkman') {}
+                                article {
+                                    h3 'SDKMAN! (The Software Development Kit Manager)'
+                                    p {
+                                        a(href: 'http://sdkman.io/', 'SDKMAN!')
+                                        yield ' makes installing Groovy on any Bash platform (macOS, Linux, Cygwin, Solaris or FreeBSD) very easy.'
+                                        br()
+                                        yield 'Simply open a new terminal and enter:'
+                                    }
+                                    pre { code '$ curl -s get.sdkman.io | bash' }
+                                    p 'Follow the instructions on-screen to complete installation.'
+                                    p 'Then install the latest stable Groovy:'
+                                    pre { code '$ sdk install groovy' }
+                                    p 'After installation is complete and you\'ve made it your default version, test it with:'
+                                    pre { code '$ groovy -version' }
+                                    p 'That\'s all there is to it!'
+                                    p {
+                                        yield '(Windows users see the SDKMAN '
+                                        a(href: 'https://sdkman.io/install', 'install')
+                                        yield ' instructions for your options.)'
+                                    }
                                 }
-                                pre { code '$ source "$HOME/.sdkman/bin/sdkman-init.sh"' }
-                                p 'Then install the latest stable Groovy:'
-                                pre { code '$ sdk install groovy' }
-                                p 'After installation is complete and you\'ve made it your default version, test it with:'
-                                pre { code '$ groovy -version' }
-                                p 'That\'s all there is to it!'
+                                article {
+                                    h3 'macOS'
+                                    p {
+                                        yield 'If you have '
+                                        a(href: 'http://brew.sh/', 'Homebrew')
+                                        yield ' installed, you can install Groovy with:'
+                                        pre { code 'brew install groovy' }
+                                        yield 'If you have '
+                                        a(href: 'http://www.macports.org/', 'MacPorts')
+                                        yield ' installed, you can install Groovy with:'
+                                        pre { code 'sudo port install groovy' }
+                                    }
+                                }
+                                article {
+                                    h3 'Linux/*nix'
+                                    p 'Consider using SDKMAN (see above), or you may find Groovy is available using your preferred package manager: apt, dpkg, pacman, etc.'
+                                }
+                                article {
+                                    h3 'Windows'
+                                    p 'Use the Windows installer (see above), or consider using SDKMAN with some restrictions (see above).'
+                                }
                             }
                             hr(class: 'divider')
 
@@ -364,33 +418,6 @@ layout 'layouts/main.groovy', true,
                             }
                             hr(class: 'divider')
 
-                            a(name: 'otherways') {}
-                            article {
-                                h1 'Other ways to get Groovy'
-                                p {
-                                    yield 'If you\'re on MacOS and have '
-                                    a(href: 'http://brew.sh/', 'Homebrew')
-                                    yield ' installed, you can install Groovy with:'
-                                    pre { code 'brew install groovy' }
-                                    yield 'If you\'re on MacOS and have '
-                                    a(href: 'http://www.macports.org/', 'MacPorts')
-                                    yield ' installed, you can install Groovy with:'
-                                    pre { code 'sudo port install groovy' }
-                                    yield 'If you\'re using Docker, Groovy is available on '
-                                    a(href: 'https://hub.docker.com/_/groovy/', 'Docker Hub')
-                                    yield '.'
-                                    br()
-                                    yield 'If you prefer to live on the bleeding edge, you can find the latest source code in the '
-                                    a(href: 'https://git-wip-us.apache.org/repos/asf/groovy.git', 'Git repo')
-                                    yield ' (or the '
-                                    a(href: 'https://github.com/apache/groovy', 'GitHub mirror')
-                                    yield ').'
-                                    br()
-                                    yield 'If you are an IDE user, you can just grab the latest '
-                                    a(href: 'ides.html', 'IDE plugin')
-                                    yield ' and follow the plugin installation instructions.'
-                                }
-                            }
                             a(name: 'requirements') {}
                             article {
                                 h1 'System requirements'

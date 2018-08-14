@@ -301,9 +301,9 @@ code, kbd, pre, samp {
 
 #big-download-button {
     float: right;
-    font-size: 24px;
-    padding: 12px;
-    margin: 8px 0px 8px 16px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 6px 0px 6px 12px;
     border: 2px solid #db4800;
     border-radius: 6px;
     background-color: #db4800;

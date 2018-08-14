@@ -15,13 +15,10 @@ layout 'layouts/main.groovy', true,
                                     a(href: '#distro', class: 'anchor-link', 'Distributions')
                                 }
                                 li {
-                                    a(href: '#sdkman', class: 'anchor-link', 'Through SDKMAN!')
+                                    a(href: '#osinstall', class: 'anchor-link', 'OS install/package manager')
                                 }
                                 li {
                                     a(href: '#buildtools', class: 'anchor-link', 'From your build tools')
-                                }
-                                li {
-                                    a(href: '#otherways', class: 'anchor-link', 'Other ways to get Groovy')
                                 }
                                 li {
                                     a(href: '#requirements', class: 'anchor-link', 'System requirements')

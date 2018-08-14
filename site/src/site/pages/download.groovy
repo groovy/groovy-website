@@ -285,9 +285,9 @@ layout 'layouts/main.groovy', true,
                                     pre { code '$ groovy -version' }
                                     p 'That\'s all there is to it!'
                                     p {
-                                        yield '(Windows users see the SDKMAN '
+                                        yield 'Windows users: see the SDKMAN '
                                         a(href: 'https://sdkman.io/install', 'install')
-                                        yield ' instructions for your options.)'
+                                        yield ' instructions for your options.'
                                     }
                                 }
                                 article {

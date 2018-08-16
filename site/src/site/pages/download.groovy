@@ -15,7 +15,7 @@ layout 'layouts/main.groovy', true,
                                     a(href: '#distro', class: 'anchor-link', 'Distributions')
                                 }
                                 li {
-                                    a(href: '#osinstall', class: 'anchor-link', 'OS install/package manager')
+                                    a(href: '#osinstall', class: 'anchor-link', 'OS/package manager install')
                                 }
                                 li {
                                     a(href: '#buildtools', class: 'anchor-link', 'From your build tools')
@@ -242,7 +242,7 @@ layout 'layouts/main.groovy', true,
                                     }
                                     p {
                                         yield 'You can also read the changelogs for '
-                                        a(href: "changelogs.html", 'other versions')
+                                        a(href: "changelogs.html", 'all versions')
                                         yield '.'
                                     }
                                 }
@@ -285,28 +285,28 @@ layout 'layouts/main.groovy', true,
                                         a(href: 'http://brew.sh/', 'Homebrew')
                                         yield ' is "the missing package manager for macOS":'
                                     }
-                                    pre { code 'brew install groovy' }
+                                    pre { code '$ brew install groovy' }
                                 }
                                 article {
                                     p {
                                         a(href: 'http://www.macports.org/', 'MacPorts')
                                         yield ' is a system for managing tools on macOS:'
                                     }
-                                    pre { code 'sudo port install groovy' }
+                                    pre { code '$ sudo port install groovy' }
                                 }
                                 article {
                                     p {
                                         a(href: 'http://scoop.sh/', 'Scoop')
                                         yield ' is a command-line installer for Windows inspired by Homebrew:'
                                     }
-                                    pre { code 'scoop install groovy' }
+                                    pre { code '> scoop install groovy' }
                                 }
                                 article {
                                     p {
                                         a(href: 'https://chocolatey.org/', 'Chocolatey')
                                         yield ' provides a sane way to manage software on Windows:'
                                     }
-                                    pre { code 'choco install groovy' }
+                                    pre { code '> choco install groovy' }
                                 }
                                 p 'Linux/*nix users: you may also find Groovy is available using your preferred package manager: apt, dpkg, pacman, etc.'
                                 p 'Windows users: consider also the Windows installer (see links above under Distributions).'

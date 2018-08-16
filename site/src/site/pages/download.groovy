@@ -261,56 +261,55 @@ layout 'layouts/main.groovy', true,
 
                             a(name: 'osinstall') {}
                             article {
-                                h1 'Operating system installation'
+                                h1 'Operating system/package manager installation'
 
                                 p {
                                     a(href: 'http://groovy-lang.org/install.html', 'Installing')
                                     yield ' Apache Groovy from a distribution zip is not hard but if you don\'t want'
                                     yield ' the hassle, consider the alternatives listed here.'
                                 }
-                                a(name: 'sdkman') {}
                                 article {
-                                    h3 'SDKMAN! (The Software Development Kit Manager)'
                                     p {
                                         a(href: 'http://sdkman.io/', 'SDKMAN!')
-                                        yield ' makes installing Groovy on any Bash platform (macOS, Linux, Cygwin, Solaris or FreeBSD) very easy.'
-                                        br()
-                                        yield 'Simply open a new terminal and enter:'
+                                        yield ' is a tool for managing parallel versions of multiple Software Development Kits on most Unix-based systems:'
                                     }
-                                    pre { code '$ curl -s get.sdkman.io | bash' }
-                                    p 'Follow the instructions on-screen to complete installation.'
-                                    p 'Then install the latest stable Groovy:'
                                     pre { code '$ sdk install groovy' }
-                                    p 'After installation is complete and you\'ve made it your default version, test it with:'
-                                    pre { code '$ groovy -version' }
-                                    p 'That\'s all there is to it!'
                                     p {
                                         yield 'Windows users: see the SDKMAN '
                                         a(href: 'https://sdkman.io/install', 'install')
-                                        yield ' instructions for your options.'
+                                        yield ' instructions for potential options.'
                                     }
                                 }
                                 article {
-                                    h3 'macOS'
                                     p {
-                                        yield 'If you have '
                                         a(href: 'http://brew.sh/', 'Homebrew')
-                                        yield ' installed, you can install Groovy with:'
-                                        pre { code 'brew install groovy' }
-                                        yield 'If you have '
-                                        a(href: 'http://www.macports.org/', 'MacPorts')
-                                        yield ' installed, you can install Groovy with:'
-                                        pre { code 'sudo port install groovy' }
+                                        yield ' is "the missing package manager for macOS":'
                                     }
+                                    pre { code 'brew install groovy' }
                                 }
                                 article {
-                                    h3 'Linux/*nix'
-                                    p 'Consider using SDKMAN (see above), or you may find Groovy is available using your preferred package manager: apt, dpkg, pacman, etc.'
+                                    p {
+                                        a(href: 'http://www.macports.org/', 'MacPorts')
+                                        yield ' is a system for managing tools on macOS:'
+                                    }
+                                    pre { code 'sudo port install groovy' }
                                 }
                                 article {
-                                    h3 'Windows'
-                                    p 'Use the Windows installer (see above), or consider using SDKMAN with some restrictions (see above).'
+                                    p {
+                                        a(href: 'http://scoop.sh/', 'Scoop')
+                                        yield ' is a command-line installer for Windows inspired by Homebrew:'
+                                    }
+                                    pre { code 'scoop install groovy' }
                                 }
+                                article {
+                                    p {
+                                        a(href: 'https://chocolatey.org/', 'Chocolatey')
+                                        yield ' provides a sane way to manage software on Windows:'
+                                    }
+                                    pre { code 'choco install groovy' }
+                                }
+                                p 'Linux/*nix users: you may also find Groovy is available using your preferred package manager: apt, dpkg, pacman, etc.'
+                                p 'Windows users: consider also the Windows installer (see links above under Distributions).'
                             }
                             hr(class: 'divider')
 

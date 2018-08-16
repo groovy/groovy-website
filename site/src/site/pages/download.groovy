@@ -308,7 +308,7 @@ layout 'layouts/main.groovy', true,
                                     }
                                     pre { code '> choco install groovy' }
                                 }
-                                p 'Linux/*nix users: you may also find Groovy is available using your preferred package manager: apt, dpkg, pacman, etc.'
+                                p 'Linux/*nix users: you may also find Groovy is available using your preferred operating system package manager, e.g.: apt, dpkg, pacman, etc.'
                                 p 'Windows users: consider also the Windows installer (see links above under Distributions).'
                             }
                             hr(class: 'divider')

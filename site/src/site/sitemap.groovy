@@ -149,12 +149,8 @@ downloads {
         }
         version('2.5.2') {
             stable true
-            //windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.2-installer.exe'
-        }
-        version('2.5.1') {
-            archive true
-            stable true
-            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.1-installer.exe'
+            //archive true
+            windowsInstaller 'https://dl.bintray.com/groovy/Distributions/groovy-2.5.2-installer.exe'
         }
     }
     distribution('Groovy 2.4') {

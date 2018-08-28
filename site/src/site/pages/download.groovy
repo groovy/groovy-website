@@ -406,6 +406,13 @@ layout 'layouts/main.groovy', true,
                                                 yield ' file is no longer available.'
                                             }
                                         }
+                                        tr {
+                                            td(colspan: 3) {
+                                                yield 'Indy jars'
+                                                br()
+                                                yield "You can access the indy version of the core or a module jar by using the 'indy' classifier."
+                                            }
+                                        }
                                     }
                                 }
                                 h3 'Maven repositories'

@@ -93,6 +93,9 @@ layout 'layouts/main.groovy', true,
                                      invokedynamic or call site caching. The sets of jars are mutually exclusive (don't put both on classpath) and the key difference between 
                                      them has to do with how the Groovy source files that make up Groovy itself are compiled.
                                 '''
+                                p '''
+                                    When accessing a Groovy jar from a Maven repository, you can select the indy version using the 'indy' classifier.
+                                '''
 
                                 h3 'Command-line and indy'
                                 p '''

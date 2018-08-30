@@ -192,7 +192,7 @@ layout 'layouts/main.groovy', true,
                                     li 'push your changes to your remote branch on Github'
                                     li {
                                         yield 'send us a '
-                                        a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull requests')
+                                        a(href: 'https://help.github.com/articles/creating-a-pull-request', 'pull request')
                                     }
                                 }
                             }

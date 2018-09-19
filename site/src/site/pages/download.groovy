@@ -460,8 +460,13 @@ layout 'layouts/main.groovy', true,
                                                 td 'N/A'
                                             }
                                             tr {
-                                                td { b '1.0 - 1.5' }
+                                                td { b '1.5' }
                                                 td '1.4+'
+                                                td 'N/A'
+                                            }
+                                            tr {
+                                                td { b '1.0' }
+                                                td '1.4-1.7'
                                                 td 'N/A'
                                             }
                                         }

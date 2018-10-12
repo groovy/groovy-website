@@ -9,13 +9,10 @@
 *Type*:: Feature
 *Target*:: Groovy 1.7
 *Status*:: Final
+*Comment*:: Included in Groovy but somewhat _superseded by macros_
 *Leader*:: Hamlet D'Arcy
 *Created*:: 2009-04-01
 *Last modification*&#160;:: 2018-10-12
-****
-
-****
-*WARNING*: The ASTBuilder is somewhat superseded by macros.
 ****
 
 == Abstract

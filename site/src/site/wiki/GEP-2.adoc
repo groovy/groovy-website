@@ -1,4 +1,4 @@
-= Groovy Enhancement Proposal
+= GEP-2: AST Builder Support
 
 .Metadata
 ****
@@ -7,14 +7,16 @@
 *Title*:: AST Builder Support
 *Version*:: 8
 *Type*:: Feature
-*Target*:: 1.7
+*Target*:: Groovy 1.7
 *Status*:: Final
 *Leader*:: Hamlet D'Arcy
 *Created*:: 2009-04-01
 *Last modification*&#160;:: 2018-10-12
 ****
 
-WARNING: The ASTBuilder is somewhat superseded by macros.
+****
+*WARNING*: The ASTBuilder is somewhat superseded by macros.
+****
 
 == Abstract
 
@@ -200,15 +202,15 @@ https://groovy.markmail.org/thread/4pw7uzl5ulkb5zbe[groovy-dev: Groovy AST Build
 
 https://groovy.markmail.org/thread/bbusithri2xmhmiw[groovy-dev: Several issues with GEP-2 AST Builder "from specification"]
 
-https://web.archive.org/web/20090224081007/http://www.haskell.org:80/th[Template Haskell]
+https://en.wikipedia.org/wiki/Template_Haskell[Template Haskell]
 
-http://blogs.codehaus.org:80/people/bamboo/archives/001593_boo_meta_methods.html[Boo meta methods]
+https://web.archive.org/web/20090213045341/http://blogs.codehaus.org:80/people/bamboo/archives/001593_boo_meta_methods.html[Boo meta methods]
 
 https://github.com/cython/cython/wiki/enhancements-metaprogramming[Cython Metaprogramming Proposal] by Martin C Martin - Contains nice write up of some use cases
 
 === JIRA issues:
 
-This feature is dependent on allowing annotations on local variables: http://jira.codehaus.org/browse/GROOVY-3481[GROOVY-3481]
+This feature is dependent on allowing annotations on local variables: https://issues.apache.org/jira/browse/GROOVY-3481[GROOVY-3481]
 
 == Update history
 

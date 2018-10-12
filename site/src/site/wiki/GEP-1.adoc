@@ -1,4 +1,4 @@
-= Groovy Enhancement Proposal
+= GEP-1: Groovy Enhancement Proposal
 
 .Metadata
 ****

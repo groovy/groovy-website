@@ -5,7 +5,7 @@
 [horizontal,options="compact"]
 *Number*:: GEP-1
 *Title*:: Groovy Enhancement Proposal
-*Version*:: 1.1
+*Version*:: 2.0
 *Type*:: Informational
 *Status*:: Final
 *Leader*:: Apache Project Leader
@@ -100,5 +100,5 @@ https://issues.apache.org/jira/browse/GROOVY-1709[GROOVY-1709]: GEP: Groovy Enha
 
 == Update history
 
-1.0 (2009-03-26):: Initial version
-1.1 (2018-10-11):: Update to reflect changes since joining Apache
+1.0 (2009-03-26):: Version as extracted from Codehaus wiki
+2.0 (2018-10-11):: Update to reflect changes since joining Apache

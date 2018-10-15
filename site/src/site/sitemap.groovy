@@ -226,6 +226,11 @@ ecosystem {
         url 'http://beakerx.com/'
         logo 'img/ecosystem/beakerx.png'
     }
+    project('Micronaut') {
+        description 'Micronaut is a modern, JVM-based, full-stack framework for building modular, easily testable microservice applications. '
+        url 'http://micronaut.io/'
+        logo 'img/ecosystem/micronaut.png'
+    }
 }
 
 allEvents {

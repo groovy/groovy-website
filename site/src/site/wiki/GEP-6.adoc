@@ -1,0 +1,88 @@
+= GEP-6: NIO2 Support for Groovy
+
+:icons: font
+
+.Metadata
+****
+[horizontal,options="compact"]
+*Number*:: GEP-6
+*Title*:: NIO2 Support for Groovy
+*Version*:: 2
+*Type*:: Feature
+*Status*:: Final
+*Comment*:: Delivered in Groovy 2.3
+*Leader*:: Merlyn Albery-Speyer/Hamlet D'Arcy
+*Created*:: 2010-09-25
+*Last modification*&#160;:: 2018-10-12
+****
+
+== Abstract
+
+JDK 7 includes a new java.nio.file package and Path class.
+These provide extended capabilities for filesystem tasks.
+We should explore incorporation into Groovy.
+
+== Approach
+
+I propose:
+
+* Create an openjdk7 build of Groovy
+* Move NIO2 support to a Groovy Module for now
+* Move NIO2 Groovy Module to Groovy-core when JDK7 is officially released
+
+JDK7 is still in beta. It is subject to change. If we build NIO2 support into Groovy today and make a release,
+then we risk having JDK7 make an API change, which would force us to support 2 different APIs. That would be bad.
+
+=== Todo in Groovy NIO Module:
+
+* Support new Path object
+* All of the GDK File API needs to be on Path
+* NIO2 contains a new WatchService API. We need to probably provide a GDK on WatchService to make it easy to work
+with using closures, etc. This is the most interesting piece of work IMO.
+
+=== Todo in Groovy Core:
+
+Groovy has a FileNameFinder and FileNameRegExFinder. This stuff needs to work with Paths as well:
+http://mrhaki.blogspot.com/2009/11/groovy-goodness-finding-files-with.html
+
+I haven't looked at each file in this list yet, but we need to analyze these Groovy source files and see if
+any parallel Path implementations are needed. The first 3 files look like the most important:
+
+```
+./groovy/util/IFileNameFinder.java
+./groovy/io/FileType.java
+./groovy/io/FileVisitResult.java
+./org/codehaus/groovy/runtime/WritableFile.java
+./org/codehaus/groovy/ant/FileIterator.java
+./org/codehaus/groovy/ant/FileScanner.java
+./org/codehaus/groovy/control/io/FileReaderSource.java
+```
+
+I couldn't find any instances of this in Groovy-core, but any `asType(File)` methods need a parallel
+`asType(Path)` - I believe `asWritable(Path)` is the only change required. In NIO2, I believe `File.list`
+and another method now return an iterator, which enables this method to work better over networks.
+We need to update the File GDK to use this approach by default to also support network dir or ls style listings.
+NIO2 has a new `FileVisitor` class. We need to unify this new `FileVisitor` JDK method with what Groovy does
+today in with GDK with the `.eachFile` method. As well as the `.eachFileXXX` methods and the `.eachDirXXX`
+methods we should include the `.traverse` method when looking through potential places for unification.
+The `.traverse` method's primary role was to make some `FileVisitor` like functionality available in the pre-JDK 7
+world but having NIO2 there might open up some more possibilities. There was also some thought at the time of having
+additional overloaded traverse methods with a more statically typed flavor rather than just the current Map solution.
+I guess now is a good time to also look at that option.
+
+== References and useful links
+
+=== Mailing-list discussions
+
+* https://markmail.org/thread/osst6q4obk56fxqg[groovy-dev: OpenJDK 7 Groovy Build and NIO2 support]
+* https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html[Java I/O, NIO and NIO.2]
+
+=== JIRA issues
+
+* https://issues.apache.org/jira/browse/GROOVY-4390[GROOVY-4390: Add GDK File methods to the NIO2 API]
+* https://issues.apache.org/jira/browse/GROOVY-4391[GROOVY-4391: Groovy build fails test target using Java 1.7.0]
+
+== Update history
+
+1 (2010-02-16):: Version as extracted from Codehaus wiki
+2 (2018-10-14):: Numerous minor tweaks

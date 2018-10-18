@@ -230,18 +230,9 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
-    event('Greach: The Groovy Spanish Conference') {
-        location 'Madrid, Spain'
-        date 'March 15 - 17, 2018'
-        url 'http://greachconf.com'
-        logo 'img/confs/greach.png'
-        description '<p>' +
-            'Enhance your knowledge and skills with some of the most recognizable names from the Groovy development scene from all around the world. Experience three days full of Groovy and Grails talks and networking ... plus our famous Friday Beers Party!' +
-            '</p>'
-    }
-    event('GR8Conf EU 2018') {
+    event('GR8Conf EU') {
         location 'Copenhagen, Denmark'
-        date 'May 30 - June 1, 2018'
+        date 'May 27 - 29, 2019'
         url 'http://gr8conf.eu/'
         logo 'img/confs/gr8confeu.png'
         description '''
@@ -255,9 +246,9 @@ allEvents {
             </p>
         '''
     }
-    event('GR8Conf US 2018') {
+    event('GR8Conf US') {
         location 'Minneapolis, MN, USA'
-        date 'July 25 - July 27, 2018'
+        date 'July, 2019'
         url 'http://gr8conf.us/'
         logo 'img/confs/gr8confus.png'
         description '''
@@ -268,8 +259,15 @@ allEvents {
             <p>The goal is the same. It is founded to spread the word about the fantastic Groovy technologies and community.
             </p>'''
     }
-
-
+    event('Greach: The Groovy Spanish Conference') {
+        location 'Madrid, Spain'
+        date 'Hopefully back in 2020'
+        url 'http://greachconf.com'
+        logo 'img/confs/greach.png'
+        description '<p>' +
+                'Enhance your knowledge and skills with some of the most recognizable names from the Groovy development scene from all around the world. Experience three days full of Groovy and Grails talks and networking ... plus our famous Friday Beers Party!' +
+                '</p>'
+    }
 }
 
 books {

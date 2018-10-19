@@ -14,14 +14,14 @@ and improved tooling support.
 [[Groovy15releasenotes-AgroovierGroovyandwhyitmatters]]
 == A groovier Groovy and why it matters
 
-Groovy’s key selling point has always been its *seamless integration
+Groovy's key selling point has always been its *seamless integration
 with Java*. You can mix and match Groovy and Java classes together in
 very easy ways: You may have a Groovy class extending a Java class
 implementing a Groovy interface, and vice versa. Most of the other
-alternative JVM languages unfortunately won’t let you seamlessly
+alternative JVM languages unfortunately won't let you seamlessly
 interchange classes of two different languages. So if you want to use
 the best language for the job without compromising your nice class
-hierarchy, you won’t have many options to choose from, and Groovy gives
+hierarchy, you won't have many options to choose from, and Groovy gives
 you all the freedom for integrating both languages in the most
 transparent way.
 
@@ -35,7 +35,7 @@ languages, Groovy is certainly the language that provides the *flattest
 learning curve to Java developers*, thanks to a very similar syntax.
 
 This is even more important to keep in mind that Groovy generates normal
-Java bytecode and uses the usual JDK libraries, so you won’t need to
+Java bytecode and uses the usual JDK libraries, so you won't need to
 learn whole new APIs or have complex integration mechanisms: out of the
 box, Groovy and Java are interchangeable. The added benefit is that you
 can *protect the investment*you made in Java *skills for your
@@ -44,8 +44,8 @@ or *home-grown libraries*, as you can reuse all of them without a
 problem from Groovy.
 
 Speaking of calling into JDK, third party, or in-house libraries,
-alternative languages which don’t support strong typing, can’t always
-call all Java methods because of the fact they can’t choose a certain
+alternative languages which don't support strong typing, can't always
+call all Java methods because of the fact they can't choose a certain
 polymorphic variation of the same method. When choosing an alternative
 language to improve your productivity or make your code more readable,
 if you need to call other Java classes, you will have to be very careful
@@ -55,7 +55,7 @@ blocks along the way.
 These days, all major Enterprise frameworks require the use of features
 like annotations, enums or generics, to be leveraged at their fullest
 extent. Fortunately, with Groovy 1.5, developers can benefit from the
-support of all these Java 5 features in their projects. Let’s see how
+support of all these Java 5 features in their projects. Let's see how
 annotations, enums and generics can be used from Groovy.
 
 [[Groovy15releasenotes-Java5additions]]
@@ -122,7 +122,7 @@ you can sum all of them in a single line of code:
 assert [1, 2, 3].sum() == 6
 ---------------------------
 
-Varargs in Groovy don’t require JDK 5 as the underlying Java runtime,
+Varargs in Groovy don't require JDK 5 as the underlying Java runtime,
 unlike annotations that we are now going to look at in the following
 section.
 
@@ -155,12 +155,12 @@ class Hotel implements Serializable {
 }
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-The Hotel entity is marked with the @Entity annotation, and it’s given a
+The Hotel entity is marked with the @Entity annotation, and it's given a
 name through @Name. Different parameters can be passed to your
 annotations like in the @Length annotation constraint where different
 upper and lower bound can be set for validation purpose. You can also
 notice *Groovy properties* in action: Where are all the getters and
-setters? Where are the public or private modifiers? You don’t have to
+setters? Where are the public or private modifiers? You don't have to
 wait for Java 7 or 8 to get properties! By convention, defining a
 property is as simple as String country: a private country field will be
 auto-generated, as well as a public getter and setter. *Your code
@@ -216,7 +216,7 @@ switch (today) {
 }
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Notice that Groovy’s switch is a bit more powerful than C-like languages
+Notice that Groovy's switch is a bit more powerful than C-like languages
 switches in that it is possible to use any kind of object in the switch
 and case. Instead of stacking up seven different case block with each
 enumerated value, you can regroup them in lists or ranges: whenever the
@@ -268,7 +268,7 @@ characters by dropping the Planet prefix:
 import static Planet.*SATURN.printMe()
 --------------------------------------
 
-No more Planet prefix. But of course, static imports aren’t only
+No more Planet prefix. But of course, static imports aren't only
 available for enums, but also work for other classes and static fields.
 What about doing some math?
 
@@ -345,11 +345,11 @@ yes, *talks* is a *List*, but a *List* of *Talks*.
 
 In Java 5, if you have a method in a subclass with the same name and
 parameter types as in a parent class, but with a return type derived
-from the parent method’s return type, then we can override the parent
+from the parent method's return type, then we can override the parent
 method. In Groovy 1.0, covariant return types were not supported. But in
 Groovy 1.5, you can use them. Additionally, if you are trying to
 override a method with a return type not deriving from the parent class
-method’s return type, a compilation error will be thrown. Covariant
+method's return type, a compilation error will be thrown. Covariant
 return types also work with parameterized types.
 
 Beyond the support of Java 5 features which brought a few additions to
@@ -390,7 +390,7 @@ String displayName = name ? name : "Unknown"
 ---------------------------------------------------------------------
 
 However, you will still notice the repetition of the name variable,
-which would violate the DRY principle (Don’t Repeat Yourself). As this
+which would violate the DRY principle (Don't Repeat Yourself). As this
 construct is pretty common, the Elvis operator was introduced to
 simplify such recurring cases, and the statements become:
 
@@ -406,7 +406,7 @@ concise form.
 
 It is also worth noticing that there are no side effects to this new
 construct, since the first element (here the name) is not evaluated
-twice as it would be the case with the ternary operator, so there’s no
+twice as it would be the case with the ternary operator, so there's no
 need to introduce some intermediate temporary value to hold the result
 of the first evaluation of the first element of the ternary operator.
 
@@ -424,7 +424,7 @@ strings), or closures, etc. Groovy offers a rather flat learning curve
 to Java developers.
 
 However, there was one omission to this Java-syntax compatibility in the
-fact the classical for loop inherited from Java’s C background wasn’t
+fact the classical for loop inherited from Java's C background wasn't
 allowed in Groovy. Initially, the Groovy developers thought it was not
 the nicest syntax of all and preferred using the for / in construct
 which was more readable. But as the Groovy users regularly asked for
@@ -494,7 +494,7 @@ the designers of the business DSL.
 == Improved tooling support
 
 A common show-stopper when Groovy was a young language, was the lack of
-good tooling support: both the tool chain and the IDE support weren’t up
+good tooling support: both the tool chain and the IDE support weren't up
 to the task. Fortunately, with the maturity and success of Groovy and
 the Grails web framework, this situation has changed.
 
@@ -506,14 +506,14 @@ Java. But this is not just about being able to call Java methods from
 Groovy scripts, no, the integration between both languages goes well
 beyond that. For instance, it is totally possible to have a Groovy class
 extending a Java class which in turns implements a Groovy interface, or
-vice versa. This is something other alternative languages don’t alway
+vice versa. This is something other alternative languages don't always
 support, unfortunately. However, when mixing Groovy and Java classes
 together, so far, you had to be careful when compiling both type of
 classes by cleverly choosing the order of compilation, and when cyclic
 dependencies were spanning both languages, you may have hit a ``chicken
 and egg'' problem. Fortunately with Groovy 1.5, this is not the case
 anymore, and thanks to a contribution from JetBrains, the makers of the
-award winning http://www.jetbrains/idea/[Java IDE IntelliJ IDEA], a
+award winning http://www.jetbrains.com/idea/[Java IDE IntelliJ IDEA], a
 ``joint'' compiler is available with which you can compile both Groovy
 and Java sources together in one go without having to think about
 dependencies between classes.
@@ -558,7 +558,7 @@ methods. In Groovy, you can also use such tags in your comments, and
 have them being used by a tool called GroovyDoc to generate the
 equivalent JavaDoc documentation for all your Groovy classes.
 
-There’s an Ant task you can define then use to generate the
+There's an Ant task you can define then use to generate the
 documentation as follows:
 
 [source,xml]
@@ -599,7 +599,7 @@ current script to a file, browse the history, etc. For detailed
 explanations of the supported features, please have a look at
 the http://www.groovy-lang.org/groovysh.html[documentation].
 
-The command-line shell isn’t the only one that received some care, the
+The command-line shell isn't the only one that received some care, the
 Swing console has also been improved, with a new toolbar, with advanced
 undo capabilities, the possibility to increase or decrease the font
 size, syntax highlighting. A lot of polishing has been applied to the
@@ -629,27 +629,27 @@ together and is able to resolve dependencies between both languages.
 variables, methods, keywords, and even specific support for the Swing UI
 builder.
 * Advanced class search and find usage.
-* *Refactorings*: most of the usual refactorings you’ve come to love in
+* *Refactorings*: most of the usual refactorings you've come to love in
 Java are available as well and work across Java and Groovy, like
 ``surround with'', introduce, inline or rename a variable, renaming for
 packages, classes, methods, and fields.
 * *Imports optimizations and code formatting*.
-* Structure view: to have a bird’s eye view of your classes.
+* Structure view: to have a bird's eye view of your classes.
 
-At the end of the day, you won’t even notice whether you’re developing a
+At the end of the day, you won't even notice whether you're developing a
 class in Groovy or in Java, considering the level of interplay and
 support offered inside IntelliJ IDEA. This is definitely a plugin to
-install if you’re considering adding some dose of Groovy in your Java
+install if you're considering adding some dose of Groovy in your Java
 project, or if you plan to develop Grails applications.
 
 More information can be found
 on http://www.jetbrains.net/confluence/display/GRVY/Groovy+Home[JetBrains
 website].
 
-Although I’m only mentioning the plugin for IntelliJ IDEA, for your
-Groovy developments, you don’t have to change your habits. You can also
+Although I'm only mentioning the plugin for IntelliJ IDEA, for your
+Groovy developments, you don't have to change your habits. You can also
 use the Eclipse plugin which is regularly improved by the IBM Project
-Zero developers, or Sun’s brand new support of Groovy and Grails in
+Zero developers, or Sun's brand new support of Groovy and Grails in
 NetBeans.
 
 [[Groovy15releasenotes-Performanceimprovements]]
@@ -739,10 +739,10 @@ instance to create dynamic finders: no need for DAOs in most
 circumstances, as you are able to call a *findByTitle()* dynamic method
 on a Book domain class. Through meta-classes, Grails automatically
 decorates the domain classes with such methods. Furthermore, if the
-method doesn’t exist yet, it will be created and cached on first use.
+method doesn't exist yet, it will be created and cached on first use.
 This can be accomplished by other advanced hooks as explained below.
 
-Beyond those examples we’ve seen so far, expando meta-classes also
+Beyond those examples we've seen so far, expando meta-classes also
 provide some complementary hooks. Four other kind of methods can be
 added to an expando meta-class:
 
@@ -797,7 +797,7 @@ custom component factories. There are additional modules, not bundled
 with Groovy by default, which integrates the Swing components from JIDE
 or from the SwingX project into the usual Swing builder code.
 
-Although this topic would deserve a full article, I’m only going to list
+Although this topic would deserve a full article, I'm only going to list
 some of the other improvements in this release, for instance, the bind()
 method. Inspired by the beans binding JSR (JSR-295), you can easily bind
 components or beans together to have them react upon changes made on
@@ -855,4 +855,4 @@ The developer experience has progressed significantly through the work
 poured in the tooling support, this is no more a show stopper to the
 adoption of Groovy. Overall, with Groovy 1.5, the goal of simplifying
 the life of developers has never been so well fulfilled, and Groovy
-should definitely be part of all the Java developers’ toolbox.
+should definitely be part of all the Java developers' toolbox.

@@ -49,7 +49,7 @@ layout 'layouts/main.groovy', true,
                                     yield 'Author: '
                                     i(header.author.fullName)
                                 }
-                            } else {
+                            } else if (header.authors) {
                                 p {
                                     yield 'Authors: '
                                     i(header.authors*.fullName.join(', '))

@@ -1,3 +1,5 @@
+wiki = false
+
 menu {
     group('Groovy') {
         item 'Learn',                       'learn.html'
@@ -49,7 +51,6 @@ pages {
     page 'mailing-lists', 'mailing-lists', [category: 'Support']
     page 'contribute', 'contribute', [category: 'Develop']
     page 'thanks', 'thanks', [category: 'Support']
-    page 'buildstatus', 'buildstatus', [category: 'Develop']
     page 'faq', 'faq', [category: 'Documentation', docSections: documentationSections]
     page 'events', 'events', [category: 'Support', allEvents: allEvents]
     page 'api', 'api', [category: 'Learn', iframeTarget: "${DOCS_BASEURL}/html/gapi"]

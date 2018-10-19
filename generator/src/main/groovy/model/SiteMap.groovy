@@ -20,10 +20,13 @@ class SiteMap {
     final List<UserGroup> usergroups = []
     final List<Video> videos = []
     final List<Course> courses = []
+    boolean changelogs = true
+    boolean releaseNotes = true
+    boolean wiki = true
 
     private SiteMap() {}
 
-    public static SiteMap from(File source) {
+    static SiteMap from(File source) {
         CompilerConfiguration config = new CompilerConfiguration()
         def customizer = new ImportCustomizer()
         config.addCompilationCustomizers(customizer)

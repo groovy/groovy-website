@@ -55,6 +55,7 @@ class SiteGenerator {
 
     File sourcesDir
     File outputDir
+    String sitemapFilename
 
     private MarkupTemplateEngine tplEngine
     private SiteMap siteMap
@@ -71,7 +72,7 @@ class SiteGenerator {
         def classLoader = new URLClassLoader([sourcesDir.toURI().toURL()] as URL[], this.class.classLoader)
         tplEngine = new MarkupTemplateEngine(classLoader, tplConf, new MarkupTemplateEngine.CachingTemplateResolver())
 
-        siteMap = SiteMap.from(new File(sourcesDir, "sitemap.groovy"))
+        siteMap = SiteMap.from(new File(sourcesDir, sitemapFilename))
 
     }
 
@@ -95,10 +96,13 @@ class SiteGenerator {
         long sd = System.currentTimeMillis()
         setup()
 
-        def cacheDir = new File(new File('build'), 'cache')
-        cacheDir.mkdirs()
-        println "Cache directory: $cacheDir"
-        def changelogs = ChangelogParser.fetchReleaseNotes(cacheDir);
+        List<Changelog> changelogs = []
+        if (siteMap.changelogs) {
+            def cacheDir = new File(new File('build'), 'cache')
+            cacheDir.mkdirs()
+            println "Cache directory: $cacheDir"
+            changelogs = ChangelogParser.fetchReleaseNotes(cacheDir)
+        }
 
         renderDocumentation()
 
@@ -106,10 +110,13 @@ class SiteGenerator {
 
         renderChangelogs(changelogs)
 
-        renderReleaseNotes()
+        if (siteMap.releaseNotes) {
+            renderReleaseNotes()
+        }
 
-        renderWiki()
-
+        if (siteMap.wiki) {
+            renderWiki()
+        }
 
         long dur = System.currentTimeMillis() - sd
         println "Generated site into $outputDir in ${dur}ms"
@@ -171,17 +178,21 @@ class SiteGenerator {
         wikiDir.eachFileRecurse { f->
             if (f.name.endsWith('.adoc')) {
                 def header = asciidoctor.readDocumentHeader(f)
-                def bn = f.name.substring(0,f.name.lastIndexOf('.adoc'))
-                println "Rendering $header.documentTitle.main by ${header.author?.fullName}"
+                def bn = f.name.substring(0, f.name.lastIndexOf('.adoc'))
+                def docCategory = header.attributes.category
+                def author = header.author?.fullName
+                if (!author) {
+                    author = header.authors*.fullName.join(', ')
+                }
+                println "Rendering $header.documentTitle.main${author ? ' by ' + author : ''}"
                 def relativePath = []
                 def p = f.parentFile
-                while (p!=wikiDir) {
+                while (p != wikiDir) {
                     relativePath << p.name
                     p = p.parentFile
                 }
-                String baseDir = relativePath?"wiki${File.separator}${relativePath.join(File.separator)}":'wiki'
+                String baseDir = relativePath ? "wiki${File.separator}${relativePath.join(File.separator)}" : 'wiki'
                 render 'wiki', bn, [notes:f.getText('utf-8'), header: header], baseDir
-                println baseDir
             }
         }
     }
@@ -189,8 +200,9 @@ class SiteGenerator {
     static void main(String... args) {
         def sourcesDir = args[0] as File
         def outputDir = args[1] as File
-        def generator = new SiteGenerator(sourcesDir: sourcesDir, outputDir: outputDir)
-        boolean watchMode = args.length > 2 ? Boolean.valueOf(args[2]) : false
+        def sitemapFilename = args[2]
+        def generator = new SiteGenerator(sourcesDir: sourcesDir, outputDir: outputDir, sitemapFilename: sitemapFilename)
+        boolean watchMode = args.length > 3 ? Boolean.valueOf(args[3]) : false
         generator.generateSite()
 
         if (watchMode) {

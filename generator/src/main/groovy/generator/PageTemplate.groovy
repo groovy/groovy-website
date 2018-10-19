@@ -4,12 +4,10 @@ import groovy.text.markup.BaseTemplate
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
-import org.asciidoctor.Asciidoctor
-import org.asciidoctor.AttributesBuilder
 
 @CompileStatic
 abstract class PageTemplate extends BaseTemplate {
-    public static final String BASEDIR = "basePath";
+    public static final String BASEDIR = "basePath"
 
     private final Map model
 
@@ -40,7 +38,7 @@ abstract class PageTemplate extends BaseTemplate {
 
     /**
      * Converts and returns asciidoctor markup into HTML. This method
-     * does *not* automatically renders the result so it is possible
+     * does *not* automatically render the result so it is possible
      * to post-process the generated HTML.
      * @param body the asciidoctor markup
      */

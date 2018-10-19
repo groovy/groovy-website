@@ -6,6 +6,7 @@ v1.1, March 28, 2018
 :groovy: http://groovy-lang.org
 :bintray: https://bintray.com/[Bintray]
 :gradle: http://gradle.org[Gradle]
+:category: dev
 
 _NOTE_
 ****

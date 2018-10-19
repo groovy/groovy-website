@@ -1,5 +1,7 @@
 = GEP-1: Groovy Enhancement Proposal
 
+:category: dev
+
 .Metadata
 ****
 [horizontal,options="compact"]
@@ -35,7 +37,7 @@ A GEP:
 
 * is led by a "Leader" who is responsible for the writing and progress of the proposal
 * is assigned a unique "Number"
-* has got a "Title" describing succinctly its intent
+* has a "Title" describing succinctly its intent
 * has a "Type"
 * has a "Status" giving information on its progress
 * has a "Version" number indicating its current revision

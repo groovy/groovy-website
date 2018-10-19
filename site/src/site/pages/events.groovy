@@ -2,7 +2,7 @@ import model.Event
 
 /**
  * This template is generating the events page.
- * If you want to add a new event, please edit the "allEvents" section in src/site/sitemap.groovy
+ * If you want to add a new event, please edit the "allEvents" section in src/site/sitemap-user.groovy
  */
 
 layout 'layouts/main.groovy', true,

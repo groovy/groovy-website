@@ -1,0 +1,101 @@
+import groovy.text.markup.MarkupTemplateEngine
+import groovy.text.markup.TemplateConfiguration
+import org.gradle.internal.logging.ConsoleRenderer
+import util.CssFilter
+import util.JsFilter
+import util.CheckLinks
+
+ext.watchmode = project.hasProperty('watchmode')?project.getProperty('watchmode'):'false'
+// a collection of links which have either been validated or are dummy links
+ext.excludeFromChecks = [
+        'http://issues.apache.org/jira',
+        'https://issues.apache.org/jira',
+        'target.html',
+        'foo.html',
+        'http://www.acme.com/cars',
+        'http://localhost:8080/groovy/hello.groovy'
+]
+
+apply plugin: 'base'
+
+task copyAssets(type:Copy) {
+    from file('../site/src/site/assets')
+    into file("$buildDir/site")
+    filesMatching('**/*.css') { f->
+        if (!f.name.contains('.min.')) {
+            filter(CssFilter)
+        }
+    }
+    filesMatching('**/*.js') { f->
+        if (!f.name.contains('.min.')) {
+            filter(JsFilter)
+        }
+    }
+}
+
+task generateSite(type:JavaExec) {
+
+    description = 'Generates the Groovy Dev Website'
+    dependsOn copyAssets
+    ext.sources = file('../site/src/site')
+    ext.outputDir = file("$buildDir/site")
+
+    inputs.files fileTree(sources)
+    outputs.files fileTree(outputDir)
+
+    classpath = project(':generator').sourceSets.main.runtimeClasspath
+    main = 'generator.SiteGenerator'
+    args = [sources, outputDir, 'sitemap-dev.groovy', project.watchmode]
+    systemProperties.docs_baseurl = System.getProperty('docs_baseurl')
+}
+
+task checkDeadLinks(dependsOn: generateSite) {
+    description = "Checks for dead links in the generated Groovy website"
+
+    ext.outputDir = file("$buildDir/reports")
+    ext.reportFile = file("$outputDir/deadlinks.html")
+
+    inputs.files fileTree(generateSite.outputDir)
+    outputs.file reportFile
+
+    doLast {
+        def baseDir = generateSite.outputDir
+        def checkLinks = new CheckLinks(baseDir: baseDir,
+                excludeFromChecks: excludeFromChecks,
+                logger: logger)
+
+        file(baseDir).eachFileRecurse {
+            if (it.name.endsWith('.html')) {
+                checkLinks.checkPage(it)
+            }
+        }
+
+        outputDir.mkdirs()
+        def tplConf = new TemplateConfiguration()
+        tplConf.with {
+            autoIndent = true
+            autoNewLine = true
+        }
+        def tplEngine = new MarkupTemplateEngine(this.class.classLoader, file('../site/gradle/templates'), tplConf)
+
+        def report = tplEngine.createTemplateByPath("deadlinks.groovy").make(deadLinks: checkLinks.deadLinks).toString()
+
+        reportFile.write(report, 'utf-8')
+        def reportURL = new ConsoleRenderer().asClickableFileUrl(reportFile)
+        logger.lifecycle "Dead links report written at $reportURL"
+    }
+}
+
+task webzip(type:Zip, dependsOn: checkDeadLinks) {
+    description = "Creates a zip with the generated website and the deadlink report"
+    destinationDir = file("$buildDir/distributions")
+
+    baseName = 'groovy'
+    appendix = 'website'
+    from(generateSite.outputDir) {
+        into 'site'
+    }
+    from (checkDeadLinks.outputDir) {
+        into 'reports'
+    }
+}

@@ -619,9 +619,7 @@ of a handful of methods will throw a DeprecationException which mentions the alt
 [[Groovy2.5releasenotes-Knownissues]]
 == Known issues
 
-* The GDK documentation for the java.time extensions wasn't included in the release.
-It will be included in the first maintenance release (2.5.1) but can be found in the meantime at:
-http://docs.groovy-lang.org/docs/groovy-2.5.1-SNAPSHOT/html/groovy-jdk/
+* The GDK documentation for the java.time extensions wasn't included in the 2.5.0 release (please see 2.5.1+).
 * Users of `groovy.util.CliBuilder` need to also include the `org.codehaus.groovy:groovy-cli-commons`
 dependency on their compile classpath in addition to `groovy` or `groovy-all`. This won't be required
 after the next maintenance release but users should migrate away from that class in any case as it

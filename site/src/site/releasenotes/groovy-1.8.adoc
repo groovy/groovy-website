@@ -730,8 +730,8 @@ show up, I encourage you to have a look at the
 
 Cédric Champeau, our most recent Groovy committer, who implemented those
 features, has a
-http://www.jroller.com/melix/entry/upcoming_groovy_goodness_automatic_thread[very
-nice blog post] covering those code interruption transformations.
+http://melix.github.io/blog/2010/11/30/upcoming_groovy_goodness_automatic_thread.html[nice blog post]
+covering those code interruption transformations.
 
 [[Groovy18releasenotes-ThreadInterrupt]]
 ==== @ThreadInterrupt

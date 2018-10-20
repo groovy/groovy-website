@@ -148,14 +148,10 @@ JsonSlurper's API should mirror closely what XmlParser/XmlSlurper offers in term
 
 == References and useful links
 
-JSON Spec
+JSON Spec and Java implementations
 
 * http://json.org/[json.org]
 * http://tools.ietf.org/html/rfc4627[RFC-4627]
-
-Java Implementations
-
-* http://json.org/java[json.org]
 * http://json-lib.sourceforge.net/[json-lib]
 
 === Mailing-list discussions

@@ -296,7 +296,7 @@ books {
     book('Groovy 2 Cookbook') {
         authors 'Andrey Adamovitch, Luciano Fiandeso'
         cover 'img/books/g2cook.jpg'
-        url 'http://www.packtpub.com/groovy-2-cookbook/book'
+        url 'https://www.packtpub.com/application-development/groovy-2-cookbook'
         description 'Over 90 recipes that provide solutions to everyday programming challenges using the powerful features of Groovy 2'
     }
 
@@ -323,7 +323,7 @@ books {
 
     book("Grails 3: A Practical Guide to Application Development") {
         authors "Eric Helgeson"
-        cover 'img/books/pratical-grails-3-book-cover.png'
+        cover 'img/books/practical-grails-3-book-cover.png'
         url 'https://www.grails3book.com/'
         description "The first book dedicated to Grails 3. You will learn the concepts behind building Grails applications. Real, up-to-date code examples are provided so you can easily follow along."
     }

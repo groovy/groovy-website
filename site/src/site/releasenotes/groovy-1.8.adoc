@@ -203,7 +203,7 @@ integers should be expected to be supported shortly.
 [[Groovy18releasenotes-GParsbundledwithintheGroovydistribution]]
 == GPars bundled within the Groovy distribution
 
-The http://gpars.github.io[GPars] project offers developers new
+The http://www.gpars.org/[GPars] project offers developers new
 intuitive and safe ways to handle Java or Groovy tasks concurrently,
 asynchronously, and distributed by utilizing the power of the Java
 platform and the flexibility of the Groovy language. Groovy 1.8 now
@@ -213,10 +213,10 @@ you can leverage all the features of the library for +
 all the Groovy goodness.
 
 To learn more about GPars, head over to the
-http://gpars.github.io/[GPars website], read the
+http://www.gpars.org/[GPars website], read the
 http://gpars.org/guide/index.html[detailed online user guide], or check
 out chapter 17 of http://www.manning.com/koenig2[Groovy in Action, 2nd
-Edition (MEAP)].
+Edition].
 
 [[Groovy18releasenotes-Closureenhancements]]
 == Closure enhancements

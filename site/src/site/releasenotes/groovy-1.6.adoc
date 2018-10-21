@@ -1076,27 +1076,27 @@ being run, by adding a new JAR or a directory to the classpath as shown
 in the screenshot below.
 +
 +
-image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-add-jar.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-add-jar.png[image]
 +
 * A couple options have been added to the view menu item: for showing
 the script being run in the output area, and for visualizing the
 execution results.
 +
 +
-image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-options.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-options.png[image]
 +
 * When an exception is thrown in your script, the lines of the
 stacktrace relative to your script are clickable, for easy navigation to
 the point where the error occurred.
 +
 +
-image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-click-stack.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-click-stack.png[image]
 +
 * Also, when your script contains compilation errors, the error messages
 are clickable too.
 +
 +
-image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-click-comp-error.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-click-comp-error.png[image]
 +
 
 Back on the visualization of the results in the script output area, a
@@ -1104,7 +1104,7 @@ fun system was added to let you customize how certain results are
 rendered. When you execute a script returning a map of Jazz musicians,
 you may see something like this in your console:
 
-image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-without-visu.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-with-visu.png[image]
 
 What you see here is the usual textual representation of a `Map`. But,
 what if we enabled custom visualization of certain results? The Swing

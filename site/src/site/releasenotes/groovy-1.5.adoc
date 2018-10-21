@@ -181,7 +181,7 @@ With annotations in Groovy 1.5, you can easily define your JPA or
 Hibernate annotated beans
 in Groovy, add an `@Transactional` annotation on your Spring services,
 test your Swing UI with TestNG and Fest
-(http://www.jroller.com/aalmiray/entry/testing_groovy_uis_with_fest).
+(https://web.archive.org/web/20150504160556/http://jroller.com/aalmiray/entry/testing_groovy_uis_with_fest[http://jroller.com/aalmiray/entry/testing_groovy_uis_with_fest]).
 All the useful and powerful enterprise frameworks leveraging annotations
 can be used from your Groovy-powered projects.
 

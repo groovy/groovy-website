@@ -1104,7 +1104,7 @@ fun system was added to let you customize how certain results are
 rendered. When you execute a script returning a map of Jazz musicians,
 you may see something like this in your console:
 
-image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-with-visu.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-without-visu.png[image]
 
 What you see here is the usual textual representation of a `Map`. But,
 what if we enabled custom visualization of certain results? The Swing
@@ -1141,8 +1141,9 @@ a `transforms` list in the binding of the script, so that you can add
 your own script results representations. In our case, we transform
 the `Map` into a nice-looking Swing `JTable`. And we're now able to
 visualize maps in a friendly and attractive fashion, as the screenshot
-below
-shows:image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-with-visu.png[image]
+below shows:
+
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-with-visu.png[image]
 
 The Swing console is obviously not to be confused with a real full-blown
 IDE, but for daily scripting tasks, the console is a handy tool in your

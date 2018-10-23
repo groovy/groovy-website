@@ -122,7 +122,6 @@ follows:
 -------------------------------------
 def (int i, String s) = [1, 'Groovy']
 
-
 assert i == 1
 assert s == 'Groovy'
 -------------------------------------
@@ -134,9 +133,7 @@ the `def` keyword:
 ------------------------------------------------------
 def firstname, lastname
 
-
 (firstname, lastname) = "Guillaume Laforge".tokenize()
-
 
 assert firstname == "Guillaume"
 assert lastname == "Laforge"
@@ -155,7 +152,6 @@ be `null`:
 def elements = [1, 2]
 def (a, b, c) = elements
 
-
 assert a == 1
 assert b == 2
 assert c == null
@@ -168,7 +164,6 @@ we'll get the following expectations:
 ---------------------------
 def elements = [1, 2, 3, 4]
 def (a, b, c) = elements
-
 
 assert a == 1
 assert b == 2
@@ -183,10 +178,8 @@ do the standard school swap case in one line:
 // given those two variables
 def a = 1, b = 2
 
-
 // swap variables with a list
 (a, b) = [b, a]
-
 
 assert a == 2
 assert b == 1
@@ -224,7 +217,6 @@ def method() {
     if (true) 1 else 0
 }
 
-
 assert method() == 1
 ----------------------
 
@@ -245,7 +237,6 @@ def method(bool) {
         3
     }
 }
-
 
 assert method(false) == 1
 assert method(true) == 2
@@ -391,10 +382,8 @@ follow:
     Double latitude, longitude
 }
 
-
 def c1 = new Coordinates(latitude: 48.824068, longitude: 2.531733)
 def c2 = new Coordinates(48.824068, 2.531733)
-
 
 assert c1 == c2
 ------------------------------------------------------------------
@@ -429,7 +418,6 @@ class Person {
     @Lazy pets = ['Cat', 'Dog', 'Bird']
 }
 
-
 def p = new Person()
 assert !(p.dump().contains('Cat'))
 
@@ -459,7 +447,6 @@ class Person {
     @Lazy(soft = true) List pets = ['Cat', 'Dog', 'Bird']
 }
 
-
 def p = new Person()
 assert p.pets.contains('Cat')
 ---------------------------------------------------------
@@ -485,15 +472,12 @@ all of `Date`'s methods.
 --------------------------------------------------------------
 import java.text.SimpleDateFormat
 
-
 class Event {
     @Delegate Date when
     String title, url
 }
 
-
 def df = new SimpleDateFormat("yyyy/MM/dd")
-
 
 def gr8conf = new Event(title: "GR8 Conference",
                           url: "http://www.gr8conf.org",
@@ -531,15 +515,12 @@ be `instanceof` the delegate's interface.
 -----------------------------------------------------
 import java.util.concurrent.locks.*
 
-
 class LockableList {
     @Delegate private List list = []
     @Delegate private Lock lock = new ReentrantLock()
 }
 
-
 def list = new LockableList()
-
 
 list.lock()
 try {
@@ -549,7 +530,6 @@ try {
 } finally {
     list.unlock()
 }
-
 
 assert list.size() == 3
 assert list instanceof Lock
@@ -579,7 +559,6 @@ instances with a `new()` class method:
     assert Integer.new(42) == 42
 }
 
-
 rubyLikeNew()
 --------------------------------
 
@@ -593,17 +572,14 @@ class Tree {
     Tree(Object... elements) { this.elements = elements as List }
 }
 
-
 class Leaf {
     def value
     Leaf(value) { this.value = value }
 }
 
-
 def buildTree() {
     new Tree(new Tree(new Leaf(1), new Leaf(2)), new Leaf(3))
 }
-
 
 buildTree()
 -----------------------------------------------------------------
@@ -638,11 +614,9 @@ creating a path with a concise but type-safe manner:
     Double latitude, longitude
 }
 
-
 @Immutable final class Path {
     Coordinates[] coordinates
 }
-
 
 @Newify([Coordinates, Path])
 def build() {
@@ -652,7 +626,6 @@ def build() {
         Coordinates(48.858429, 2.342622)
     )
 }
-
 
 assert build().coordinates.size() == 3
 -----------------------------------------
@@ -677,17 +650,14 @@ final class Distance {
     String toString() { "${number}m" }
 }
 
-
 class NumberCategory {
     static Distance getMeters(Number self) {
         new Distance(number: self)
     }
 }
 
-
 use(NumberCategory) {
     def dist = 300.meters
-
 
     assert dist instanceof Distance
     assert dist.toString() == "300m"
@@ -742,40 +712,33 @@ multiple inheritance:
     def fly() { "I'm the ${name} and I fly!" }
 }
 
-
 @Category(Vehicle) class DivingAbility {
     def dive() { "I'm the ${name} and I dive!" }
 }
 
-
 interface Vehicle {
     String getName()
 }
-
 
 @Mixin(DivingAbility)
 class Submarine implements Vehicle {
     String getName() { "Yellow Submarine" }
 }
 
-
 @Mixin(FlyingAbility)
 class Plane implements Vehicle {
     String getName() { "Concorde" }
 }
-
 
 @Mixin([DivingAbility, FlyingAbility])
 class JamesBondVehicle implements Vehicle {
     String getName() { "James Bond's vehicle" }
 }
 
-
 assert new Plane().fly() ==
        "I'm the Concorde and I fly!"
 assert new Submarine().dive() ==
        "I'm the Yellow Submarine and I dive!"
-
 
 assert new JamesBondVehicle().fly() ==
        "I'm the James Bond's vehicle and I fly!"
@@ -850,7 +813,6 @@ through Grape:
 ------------------------------------------------------------------------
 import org.ccil.cowan.tagsoup.Parser
 
-
 // find the PDF links in the Java 1.5.0 documentation
 @Grab(group='org.ccil.cowan.tagsoup', module='tagsoup', version='0.9.7')
 def getHtml() {
@@ -873,7 +835,6 @@ import org.mortbay.jetty.Server
 import org.mortbay.jetty.servlet.*
 import groovy.servlet.*
 
-
 @Grab(group = 'org.mortbay.jetty', module = 'jetty-embedded', version = '6.1.0')
 def runServer(duration) {
     def server = new Server(8080)
@@ -884,7 +845,6 @@ def runServer(duration) {
     sleep duration
     server.stop()
 }
-
 
 runServer(10000)
 --------------------------------------------------------------------------------
@@ -919,28 +879,22 @@ boiler-plate code in your Java beans:
 import com.googlecode.openbeans.PropertyChangeSupport;
 import com.googlecode.openbeans.PropertyChangeListener;
 
-
 public class MyBean {
     private String prop;
 
-
     PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         pcs.add(l);
     }
 
-
     public void removePropertyChangeListener(PropertyChangeListener l) {
         pcs.remove(l);
     }
 
-
     public String getProp() {
         return prop;
     }
-
 
     public void setProp(String prop) {
         pcs.firePropertyChanged("prop", this.prop, this.prop = prop);
@@ -996,11 +950,9 @@ contain the letter `z':
 import com.googlecode.openbeans.*
 import groovy.beans.Vetoable
 
-
 class Trumpetist {
     @Vetoable String name
 }
-
 
 def me = new Trumpetist()
 me.vetoableChange = { PropertyChangeEvent pce ->
@@ -1008,9 +960,7 @@ me.vetoableChange = { PropertyChangeEvent pce ->
         throw new PropertyVetoException("The letter 'z' is not allowed in a name", pce)
 }
 
-
 me.name = "Louis Armstrong"
-
 
 try {
     me.name = "Dizzy Gillespie"
@@ -1028,14 +978,11 @@ import groovy.swing.SwingBuilder
 import groovy.beans.Bindable
 import static javax.swing.JFrame.EXIT_ON_CLOSE
 
-
 class TextModel {
     @Bindable String text
 }
 
-
 def textModel = new TextModel()
-
 
 SwingBuilder.build {
     frame( title: 'Binding Example (Groovy)', size: [240,100], show: true,
@@ -1051,7 +998,7 @@ SwingBuilder.build {
 Running this script shows up the frame below with a text field and a
 label below, and the label's text is bound on the text field's content.
 
-image:http://www.infoq.com/resource/articles/groovy-1-6/en/resources/bindable-example.png[image]
+image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/bindable-example.png[image]
 
 SwingBuilder has evolved so nicely in the past year that the Groovy
 Swing team decided to launch a new project based on it, and on the
@@ -1075,29 +1022,23 @@ Swinging along the topic of UIs, the Swing console has also evolved:
 being run, by adding a new JAR or a directory to the classpath as shown
 in the screenshot below.
 +
-+
 image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-add-jar.png[image]
-+
+
 * A couple options have been added to the view menu item: for showing
 the script being run in the output area, and for visualizing the
 execution results.
 +
-+
 image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-options.png[image]
-+
+
 * When an exception is thrown in your script, the lines of the
 stacktrace relative to your script are clickable, for easy navigation to
 the point where the error occurred.
 +
-+
 image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-click-stack.png[image]
-+
-* Also, when your script contains compilation errors, the error messages
-are clickable too.
-+
+
+* Also, when your script contains compilation errors, the error messages are clickable too.
 +
 image:https://web.archive.org/web/20160102200636/http://www.infoq.com/resource/articles/groovy-1-6/en/resources/sc-click-comp-error.png[image]
-+
 
 Back on the visualization of the results in the script output area, a
 fun system was added to let you customize how certain results are
@@ -1184,7 +1125,6 @@ manipulation DSL] dealing with operator overloading:
 Number.metaClass.multiply = { Amount amount -> amount.times(delegate) }
 Number.metaClass.div =      { Amount amount -> amount.inverse().times(delegate) }
 
-
 Amount.metaClass.div =      { Number factor -> delegate.divide(factor) }
 Amount.metaClass.div =      { Amount factor -> delegate.divide(factor) }
 Amount.metaClass.multiply = { Number factor -> delegate.times(factor) }
@@ -1201,7 +1141,6 @@ Number.metaClass {
     multiply { Amount amount -> amount.times(delegate) }
     div      { Amount amount -> amount.inverse().times(delegate) }
 }
-
 
 Amount.metaClass {
     div <<   { Number factor -> delegate.divide(factor) }
@@ -1226,7 +1165,6 @@ approach:
 // add a fqn() method to Class to get the fully
 // qualified name of the class (ie. simply Class#getName)
 Class.metaClass.static.fqn = { delegate.name }
-
 
 assert String.fqn() == "java.lang.String"
 ---------------------------------------------------------
@@ -1258,7 +1196,6 @@ File.metaClass.getWordCount = {
     delegate.text.split(/\w/).size()
 }
 
-
 new File('myFile.txt').wordCount
 ------------------------------------
 
@@ -1277,7 +1214,6 @@ class Car {
     void turnOff() {}
 }
 
-
 Car.metaClass {
     lastAccessed = null
     invokeMethod = { String name, args ->
@@ -1291,20 +1227,15 @@ Car.metaClass {
     }
 }
 
-
-
 def car = new Car()
 println "Last accessed: ${car.lastAccessed ?: 'Never'}"
-
 
 car.turnOn()
 println "Last accessed: ${car.lastAccessed ?: 'Never'}"
 
-
 car.drive()
 sleep 1000
 println "Last accessed: ${car.lastAccessed ?: 'Never'}"
-
 
 sleep 1000
 car.turnOff()
@@ -1337,15 +1268,12 @@ interface Vehicle {
     String getName()
 }
 
-
 // provided by a third-party
 class JamesBondVehicle implements Vehicle {
     String getName() { "James Bond's vehicle" }
 }
 
-
 JamesBondVehicle.mixin DivingAbility, FlyingAbility
-
 
 assert new JamesBondVehicle().fly() ==
        "I'm the James Bond's vehicle and I fly!"
@@ -1374,10 +1302,8 @@ in Groovy, but it's straightforward to convert it back to Java):
 ----------------------------------------------
 import javax.script.*
 
-
 def manager = new ScriptEngineManager()
 def engine = manager.getEngineByName("groovy")
-
 
 assert engine.evaluate("2 + 3") == 5
 ----------------------------------------------

@@ -10,7 +10,7 @@
 *Version*:: 9
 *Type*:: Feature
 *Status*:: Final
-*Comment*:: Delivered in Groovy 1.8
+*Comment*:: Delivered in Groovy 2.0 and enhanced in later versions
 *Leader*:: Cédric Champeau
 *Created*:: 2011-10-08
 *Last modification*&#160;:: 2018-10-12

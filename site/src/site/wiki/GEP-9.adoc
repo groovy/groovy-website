@@ -1,4 +1,4 @@
-= GEP-8: Modularization
+= GEP-9: Modularization
 
 :icons: font
 

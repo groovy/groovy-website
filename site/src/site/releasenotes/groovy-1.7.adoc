@@ -251,7 +251,7 @@ working on in the console: for instance, writing the code you’d like to
 create in your AST transformation. The AST viewer greatly help with
 figuring out how Groovy builds its AST when compiling your Groovy
 code. +
- image:attachments/126320769/134184968.png[image]
+image:img/AstBrowser.png[image]
 
 [[Groovy17releasenotes-ASTBuilder]]
 ==== AST Builder
@@ -394,7 +394,7 @@ in the bottom output pane, it’s now possible to use an external window
 for viewing those results. Run your script with CTRL-R or CMD-R, you
 will see something like the following screenshot. You can then dismiss
 the window by hitting Escape, CTRL-W (CMD-W on Macs) or Enter.
-image:attachments/126320769/135528463.png[image] +
+image:img/newoutputwindow.png[image] +
  You will also notice the addition of line numbers in the gutter of the
 editor area.
 

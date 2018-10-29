@@ -1,0 +1,223 @@
+= GEP-12: SAM coercion
+
+:icons: font
+
+.Metadata
+****
+[horizontal,options="compact"]
+*Number*:: GEP-12
+*Title*:: SAM coercion
+*Version*:: 4
+*Type*:: Feature
+*Status*:: Final
+*Leader*:: Jochen "blackdrag" Theodorou
+*Created*:: 2013-05-30
+*Last modification*&#160;:: 2018-10-29
+****
+
+== Abstract: SAM coercion
+
+SAM stands for Single Abstract Method.  SAM coercion is here a Groovy style transformation of a
+`groovy.lang.Closure` instance into an object suitable for our SAM type.
+A SAM type is an abstract class or interface with a single abstract method. The coercion can happen as part of an assignment or as the result of a method call. Since this transformation might be outside of the types provided by Closure itself, it can be more than a simple Java style cast. Closure becomes a kind of sub type to all SAM types. Groovy has other such transformations without explicit cast or asType usage, which are number object transformations as well as the conversion of GString to String.
+
+=== Motivation
+Even before Java8 we had discussions about supporting different interfaces with Closure like Runnable and Callable.
+These two being easy cases, any framework can define a myriad of interfaces and abstract classes.
+This then requires to "groovify" the library by writing a helper layer capable of transforming Closure
+objects into something the library then understand. While it is unlikely of this approach to make Groovy
+Builder surplus, it can still help with a more simple integration.
+
+==== Meaning of  "Single Abstract Method"
+
+For a SAM type to be a SAM type according to this GEP an abstract class or interface with a single
+abstract method is required. Any static methods, as well as non-abstract methods are not counted.
+The abstract method may be defined in the SAM class itself, but it can also be a parent.
+The required visibility modifier for the method is public though.
+
+SAM examples:
+
+* Simple Interface:
+
+```
+interface SAM {
+  def foo()
+}
+```
+
+* Interface with defender method (aka virtual extension method):
+
+```
+interface SAM {
+  def foo()
+  def bar() default { 1 }
+}
+```
+
+* Interface inheriting from another interface:
+
+```
+interface ParentOfSAM {}
+interface SAM extends ParentOfSAM {
+  def foo()
+}
+```
+
+* Interface inheriting from another interface, but not defining a method on its own:
+
+```
+interface ParentOfSAM {
+  def foo()
+}
+interface SAM extends ParentOfSAM {}
+```
+
+* simple abstract class
+
+```
+abstract class SAM {
+  abstract foo()
+}
+```
+
+* abstract class with a abstract and a non abstract method:
+
+```
+abstract class SAM {
+  abstract foo()
+  def bar() { 1 }
+}
+```
+
+* abstract class extending other class:
+
+```
+abstract class ParentOfSAM1 {
+  abstract foo()
+}
+```
+
+* abstract class SAM1 extends ParentOfSAM1 {}
+
+```
+class ParentOfSAM {
+   def bar() { 1 }
+}
+abstract class SAM2 extends  {
+  abstract foo()
+}
+```
+
+* abstract class implementing interface:
+
+```
+interface SomeInterface{
+  def foo()
+}
+abstract class SAM1 implements SomeInterface {}
+abstract class SAM2 implements Runnable{}
+interface AnotherInterface {}
+abstract class SAM3 implements AnotherInterface {
+  abstract foo()
+}
+```
+
+Non-SAM examples:
+
+* empty interface:
+
+```
+interface SomeMarker {}
+```
+
+* interface with two methods:
+
+```
+interface TwoMethods {
+  def foo()
+  def bar()
+}
+```
+
+* abstract class with two abstract methods:
+
+```
+abstract class TwoMethods {
+  abstract foo()
+  abstract bar()
+}
+```
+
+* empty abstract class:
+
+```
+abstract class Empty {}
+```
+
+==== Influence on method selection
+
+The normal method selection algorithm tries to find the most specific method to the given argument
+runtime types and the most general for null. Since a SAM type and a target method parameter type
+are not in an inheritance relation "most specific" needs a redefinition in parts.
+It will be assumed the SAM type is like a direct child of the given target type,
+but if the SAM type is one implemented by Closure (Runnable and Callable),
+then no SAM coercion will be needed. This case is preferred in method selection.
+In case of an overloaded method, where each can be used as target for the SAM coercion,
+method selection will thus fail, regardless their internal relation.
+In Groovy the actual method signature of the SAM type and the coercion target are not important.
+Also it is not important if the target type is an abstract class or an interface.
+
+Example of two SAM targets with failing runtime method selection:
+
+```
+interface SAM1 { def foo(String s)}
+interface SAM2 { def bar(Integer i)}
+def method(x, SAM1 s1){s1.foo(x)}
+def method(x, SAM2 s2){s2.bar(x)}
+method (1)   {it}  // fails because SAM1 and SAM2 are seen as equal
+method ("1") {it}  // fails because SAM1 and SAM2 are seen as equal
+```
+
+Example of SAM type being ignore as a non-coercion case is available:
+
+```
+interface SAM {def foo(String s)}
+def method(SAM s) {1}
+def method(Runnable r) {2}
+assert method {it} == 2
+```
+
+==== Influence on static typing system
+
+The Scope for the static type system is split into a basic part for Groovy 2.2 and an extended one
+for a later version (2.3 or 3.0)
+
+==== Groovy 2.2 static checks
+
+The type checking in Groovy 2.2 will be limited to mimic the behavior of normal Groovy.
+No method signature checks are performed, as well as there will be no additional test or method
+selection based on the type provided by the open block.
+
+==== Groovy 2.2+ static checks
+
+In later versions of Groovy the static type checker has to be improved to refine method selection by the given type
+signature through the open block or lambda. A SAM type is then a fitting type for the coercion only if the provided
+types and the target types in the SAM are matching by number and type itself. A more detailed description can be
+found here: http://cr.openjdk.java.net/~dlsmith/jsr335-0.6.1/F.html
+
+== References and useful links
+
+* https://web.archive.org/web/20150508054422/http://docs.codehaus.org/display/GroovyJSR/GEP+12+-+SAM+coercion[GEP-12: SAM coercion] (web archive link)
+
+=== Reference implementation
+
+* https://github.com/groovy/groovy-core/commits/SAM (feature branch on github)
+
+=== JIRA issues
+
+* https://issues.apache.org/jira/browse/GROOVY-6188[GROOVY-6188: Java8 lambda style coercion for Closure]
+
+== Update history
+
+3 (2013-07-01):: Version as extracted from Codehaus wiki
+4 (2018-10-29):: Numerous minor tweaks

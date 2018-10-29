@@ -258,10 +258,10 @@ Differences to groovy.mop.internal.DefaultMetaProperty:
 
 * https://markmail.org/message/zujumywsb73px2ky[groovy-user: Groovy 3]
 
-=== JIRA issues
+=== Reference implementation
 
-* https://web.archive.org/web/20150508123746/https://github.com/groovy/groovy-core/tree/GROOVY_3_FEATURE[GROOVY_3_FEATURE] +
-feature branch on giithub
+* https://github.com/groovy/groovy-core/tree/GROOVY_3_FEATURE[GROOVY_3_FEATURE] +
+feature branch on github
 
 == Update history
 

@@ -1,5 +1,6 @@
 package generator
 
+import groovy.io.FileType
 import groovy.text.markup.MarkupTemplateEngine
 import groovy.text.markup.TemplateConfiguration
 import groovy.transform.CompileStatic
@@ -160,7 +161,7 @@ class SiteGenerator {
                 v2.toDouble() <=> v1.toDouble()
             }
         })
-        new File(sourcesDir, 'releasenotes').eachFile { File file ->
+        new File(sourcesDir, 'releasenotes').eachFile(FileType.FILES) { File file ->
             def name = file.name.substring(0, file.name.lastIndexOf('.adoc'))
             def version = name - 'groovy-'
             releaseNotesVersions << version

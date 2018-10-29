@@ -33,10 +33,16 @@ task copyAssets(type:Copy) {
     }
 }
 
+task copyReleaseNotesAssets(type:Copy) {
+    from file('../site/src/site/releasenotes/img')
+    into file("$buildDir/site/releasenotes/img")
+}
+
 task generateSite(type:JavaExec) {
 
     description = 'Generates the Groovy User Website'
     dependsOn copyAssets
+    dependsOn copyReleaseNotesAssets
     ext.sources = file('../site/src/site')
     ext.outputDir = file("$buildDir/site")
 

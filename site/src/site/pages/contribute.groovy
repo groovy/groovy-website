@@ -69,7 +69,7 @@ layout 'layouts/main.groovy', true,
                                 p {
                                     yield 'Alternatively, for more casual conversations and Q&A, consider using the '
                                     a(href: 'https://groovycommunity.com/', 'Slack')
-                                    yield " channel. This channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community."
+                                    yield " channel. (This channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community.)"
                                 }
 
                                 hr(class: 'divider')

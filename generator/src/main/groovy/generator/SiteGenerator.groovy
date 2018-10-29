@@ -176,16 +176,16 @@ class SiteGenerator {
         println "Rendering wiki"
 
         def wikiDir = new File(sourcesDir, "wiki")
+        def gepList = [:]
         wikiDir.eachFileRecurse { f->
             if (f.name.endsWith('.adoc')) {
                 def header = asciidoctor.readDocumentHeader(f)
                 def bn = f.name.substring(0, f.name.lastIndexOf('.adoc'))
-                def docCategory = header.attributes.category
                 def author = header.author?.fullName
                 if (!author) {
                     author = header.authors*.fullName.join(', ')
                 }
-                println "Rendering $header.documentTitle.main${author ? ' by ' + author : ''}"
+                println "Rendering $header.documentTitle.combined${author ? ' by ' + author : ''}"
                 def relativePath = []
                 def p = f.parentFile
                 while (p != wikiDir) {
@@ -194,8 +194,12 @@ class SiteGenerator {
                 }
                 String baseDir = relativePath ? "wiki${File.separator}${relativePath.join(File.separator)}" : 'wiki'
                 render 'wiki', bn, [notes:f.getText('utf-8'), header: header], baseDir
+                if (f.name.startsWith('GEP-')) {
+                    gepList[bn] = header.documentTitle.subtitle
+                }
             }
         }
+        render 'geps', "geps", [list: gepList], 'wiki'
     }
 
     static void main(String... args) {

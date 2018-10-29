@@ -20,7 +20,7 @@ footer(id: 'footer') {
                     a href: 'http://www.apache.org', 'Apache Software Foundation'
                     yield " and the Groovy community"
                 }
-                img(src: 'img/asf_logo.png', title: 'The Apache Software Foundation', alt: 'The Apache Software Foundation', class:'img-responsive')
+                img(src: relative('img/asf_logo.png'), title: 'The Apache Software Foundation', alt: 'The Apache Software Foundation', class:'img-responsive')
             }
         }
         div(class: 'clearfix', "&copy; 2003-${Calendar.instance[Calendar.YEAR]} the Apache Groovy project &mdash; " +

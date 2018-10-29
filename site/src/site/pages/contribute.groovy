@@ -20,7 +20,7 @@ layout 'layouts/main.groovy', true,
                                 ul {
                                     li {
                                         yield 'helping other users or discussing future language directions on the '
-                                        a(href: 'mailing-lists.html', 'mailing-lists')
+                                        a(href: 'http://groovy-lang.org/mailing-lists.html', 'mailing-lists')
                                     }
                                     li {
                                         yield 'contribute to discussions on '
@@ -36,6 +36,11 @@ layout 'layouts/main.groovy', true,
                                     li {
                                         a(href: '#documenting', 'documenting')
                                         yield ' various aspects of the language or its APIs'
+                                    }
+                                    li {
+                                        yield 'Creating or commenting on the '
+                                        a(href: 'wiki/geps.html', 'Groovy Enhancement Proposals')
+                                        yield ' which describe how we make significant changes to the language'
                                     }
                                     li {
                                         yield 'improving this '
@@ -64,7 +69,7 @@ layout 'layouts/main.groovy', true,
                                 p {
                                     yield 'Alternatively, for more casual conversations and Q&A, consider using the '
                                     a(href: 'https://groovycommunity.com/', 'Slack')
-                                    yield " channel. This channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community."
+                                    yield " channel. (This channel is not endorsed by the Apache Software Foundation; it's run by Groovy enthusiasts in the community.)"
                                 }
 
                                 hr(class: 'divider')
@@ -75,8 +80,12 @@ layout 'layouts/main.groovy', true,
                                     yield '''
                                         If you are wanting to search existing issues, raise a new one or are keen
                                         to fix some existing issues, then you should become familiar with Groovy's '''
-                                    a(href: 'reporting-issues.html', 'Bug tracker')
+                                    a(href: 'https://issues.apache.org/jira/browse/GROOVY', 'Bug tracker')
                                     yield '.'
+                                }
+                                p {
+                                    yield 'Before submitting a new issue, we recommend you read our guide to '
+                                    a(href: 'http://groovy-lang.org/reporting-issues.html', 'reporting issues')
                                 }
                                 p {
                                     button(type: 'button', class: 'btn btn-default', 'Report an issue',

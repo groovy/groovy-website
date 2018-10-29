@@ -10,7 +10,12 @@ dependencies {
     compile "org.codehaus.groovy:groovy:$groovyVersion"
     compile "org.codehaus.groovy:groovy-json:$groovyVersion"
     compile "org.codehaus.groovy:groovy-templates:$groovyVersion"
-    compile "org.asciidoctor:asciidoctorj:$asciidocVersion"
+    compile("org.asciidoctor:asciidoctorj:$asciidocVersion") {
+        // fix intermittent errors like as described here:
+        // https://github.com/asciidoctor/asciidoctorj/issues/680
+        exclude(group: 'org.jruby', module: 'jruby-complete')
+    }
+    compile "org.jruby:jruby-complete:9.1.17.0"
 }
 
 compileGroovy.sourceCompatibility = '1.7'

@@ -103,7 +103,7 @@ org.codehaus.groovy.runtime.SerializedCategoryMethods | allow the module to defi
 m| META-INF/services/ +
 org.codehaus.groovy.runtime.ExpandoMethods | allow the module to define additional ExpandoMetaClass methods | deferred
 m| META-INF/services/ +
-org.codehaus.groovy.runtime.DefaultMetaClasses | allow the module to define additional metaclasses similar to the current magic package mechanism** | deferred
+org.codehaus.groovy.runtime.DefaultMetaClasses | allow the module to define additional metaclasses similar to the current magic package mechanism footnote:[This needs to mesh in with the existing magic package mechanism for defining custom metaclasses.] | deferred
 m| META-INF/services/groovy/defaultImports | allow the module to define additional normal, star, static imports, aliases | moved to compiler configuration
 m| META-INF/services/groovy/defaultExtensions | allow the module to define supported file extensions | moved to compiler configuration
 m| META-INF/services/groovy/defaultAstTransforms | allow the module to define AST transforms | now in `META-INF/services/ +
@@ -115,8 +115,6 @@ m| META-INF/services/groovy/defaultAstTransforms | allow the module to define AS
 | ? | provide a way to register special compiler flags, e.g. '--indy' | deferred
 | ? | provide a way to inject special AST customizations | deferred
 |===
-
-**This needs to mesh in with the existing magic package mechanism for defining custom metaclasses.
 
 This is also where we could specify additional requirements, e.g. require 'invoke dynamic' - but see later also. Could we declaratively specify our security policy requirements. Or can we disable specific aspects of functionality, e.g. disable some standard global AST transform because we want to provide a better one. (There are obviously security implications for this!)
 

@@ -6,16 +6,17 @@ repositories {
 
 dependencies {
     ext.groovyVersion = '2.4.15'
-    ext.asciidocVersion = '1.5.7'
+    ext.asciidocVersion = '1.5.8.1'
     compile "org.codehaus.groovy:groovy:$groovyVersion"
     compile "org.codehaus.groovy:groovy-json:$groovyVersion"
     compile "org.codehaus.groovy:groovy-templates:$groovyVersion"
     compile("org.asciidoctor:asciidoctorj:$asciidocVersion") {
-        // fix intermittent errors like as described here:
+        // to fix intermittent errors, e.g. as described here:
         // https://github.com/asciidoctor/asciidoctorj/issues/680
-        exclude(group: 'org.jruby', module: 'jruby-complete')
+        // you might need to use a custom jruby version
+        //exclude(group: 'org.jruby', module: 'jruby-complete')
     }
-    compile "org.jruby:jruby-complete:9.1.17.0"
+    //compile "org.jruby:jruby-complete:9.1.17.0"
 }
 
 compileGroovy.sourceCompatibility = '1.7'

@@ -231,6 +231,15 @@ ecosystem {
 
 allEvents {
     // Note that the event image should be 257x180 to look nice
+    event('Greach: The Groovy Spanish Conference') {
+        location 'Madrid, Spain'
+        date 'March 28 - 30, 2019'
+        url 'http://greachconf.com'
+        logo 'img/confs/greach.png'
+        description '<p>' +
+                'Android + JVM langs + JVM frameworks conference in Madrid, Spain with 100% English talks.' +
+                '</p>'
+    }
     event('GR8Conf EU') {
         location 'Copenhagen, Denmark'
         date 'May 27 - 29, 2019'
@@ -259,15 +268,6 @@ allEvents {
             <p>
             <p>The goal is the same. It is founded to spread the word about the fantastic Groovy technologies and community.
             </p>'''
-    }
-    event('Greach: The Groovy Spanish Conference') {
-        location 'Madrid, Spain'
-        date 'Hopefully back in 2020'
-        url 'http://greachconf.com'
-        logo 'img/confs/greach.png'
-        description '<p>' +
-                'Enhance your knowledge and skills with some of the most recognizable names from the Groovy development scene from all around the world. Experience three days full of Groovy and Grails talks and networking ... plus our famous Friday Beers Party!' +
-                '</p>'
     }
 }
 

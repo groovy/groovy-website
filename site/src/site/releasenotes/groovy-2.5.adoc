@@ -558,8 +558,8 @@ this https://blogs.apache.org/logging/entry/groovy-2-5-clibuilder-renewal[blog p
 * Alternative to `with` called `tap` that has an implicit `return delegate`
 (link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-3976]).
 * Various JSON customization options are now supported
-(link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-6975] and
-link:https://issues.apache.org/jira/browse/GROOVY-3976[GROOVY-6854]).
+(link:https://issues.apache.org/jira/browse/GROOVY-6975[GROOVY-6975] and
+link:https://issues.apache.org/jira/browse/GROOVY-6854[GROOVY-6854]).
 * Method parameter names are now accessible at runtime
 (link:https://issues.apache.org/jira/browse/GROOVY-7423[GROOVY-7423]).
 

@@ -17,7 +17,7 @@
 *Last modification*&#160;:: 2018-10-12
 ****
 
-== Abstract
+== Abstract: JSON Support
 
 Provide a builder/slurper combination for handling data in JSON format in a similar fashion as it's already done for XML.
 

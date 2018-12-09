@@ -216,6 +216,8 @@ article .content time {
 
 .doc-embed {
     border: 0;
+    border-right: 1px solid #e7e7e7;
+    width: 87%;
     height: 100vh;
     min-height: 100%;
 }

@@ -778,7 +778,8 @@ ul.nav-sidebar li.active a {
 }
 
 body {
-    background: #444
+    background: #444;
+    overflow: auto;
 }
 
 html.noScroll {
@@ -789,18 +790,10 @@ html.noScroll body, html.noScroll .st-container, html.noScroll .st-pusher, html.
     overflow: hidden
 }
 
-html, body, .st-container, .st-pusher, .st-content {
-    overflow: auto
-}
-
 .sign-in-fa-icon:before {
     font-family: FontAwesome;
     content: '\f090';
     padding-right: 10px;
-}
-
-#st-container {
-    height: 100%;
 }
 
 .st-content {

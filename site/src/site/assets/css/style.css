@@ -79,6 +79,9 @@ a.navbar-brand {
 /* specific to index.html */
 
 @media (max-width: 999px) {
+    .doc-embed {
+        width: 100% !important;
+    }
     #fork-me {
         display: none;
     }

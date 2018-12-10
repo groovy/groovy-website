@@ -1,0 +1,77 @@
+= Groovy website
+The Groovy development team
+:revdate: 24-02-2014
+:build-icon: http://ci.groovy-lang.org:8111/app/rest/builds/buildType:(id:Groovy_Website)/statusIcon
+:noheader:
+:groovy-www: http://groovy-lang.org/
+:groovy-ci: http://ci.groovy-lang.org/viewType.html?buildTypeId=Groovy_Website&guest=1
+:gradle: http://www.gradle.org
+:markupte: http://docs.groovy-lang.org/latest/html/documentation/markup-template-engine.html
+
+[.left.text-left]
+image::http://groovy-lang.org/img/groovy-logo.png[]
+{groovy-www}[Groovy] is an agile and dynamic language for the Java Virtual Machine. It builds upon the strengths of Java, but has additional power features inspired by languages like Python, Ruby and Smalltalk.
+
+Groovy makes modern programming features available to Java developers with almost-zero learning curve as well as supports Domain-Specific Languages and other compact syntax so your code becomes easy to read and maintain.
+
+Groovy makes writing shell and build scripts easy with its powerful processing primitives, OO abilities and an Ant DSL.
+
+It also increases developer productivity by reducing scaffolding code when developing web, GUI, database or console applications. Groovy simplifies testing by supporting unit testing and mocking out-of-the-box. Groovy also seamlessly integrates with all existing Java classes and libraries and compiles straight to Java bytecode so you can use it anywhere you can use Java.
+
+== Sources for the Groovy website
+
+This project builds the Groovy website. It is using {gradle}[Gradle] and is fully statically generated.
+
+Build is image:{build-icon}[build status, link={groovy-ci}].
+
+== Generating the site
+
+----
+git clone https://github.com/groovy/groovy-website
+cd groovy-website
+./gradlew webzip
+----
+
+The output can be found in the `build` directory:
+
+----
+build
+  |---- site            : the generated static website
+  |---- reports         : deadlinks report
+  |---- distributions   : zip of the website
+----
+
+== Contributing
+
+The website is generated thanks to Gradle and makes use of the {markupte}[Markup Template Engine]. The structure of the
+project consists of two modules:
+
+----
+generator                       : utility classes and model for generating the website
+site                            : the website itself
+----
+
+The website subproject consists of:
+
+----
+src/main/site                   : sources for the static website
+          |--- assets           : static resources such as images, CSS files, ...
+          |--- html             : elements that templates include as raw HTML contents
+          |--- includes         : includes used by templates
+          |--- layouts          : layouts for the various pages
+          |--- pages            : individual pages
+build.gradle                    : website weaving logic
+----
+
+Additional details can be found in this http://melix.github.io/blog/2014/07/new-groovy-website.html[blog post].
+
+== Continuous Integration
+
+The official CI server runs {groovy-ci}[here] (login as user guest and leave the password blank) and is sponsored by http://www.jetbrains.com[JetBrains].
+
+WARNING: The website is continuously updated from the _master_ branch. This means that *every merge on master is immediately published*. Changes that need to be
+applied on a specific date need to be done on a dedicated branch.
+
+== License
+
+Groovy is licensed under the terms of the http://www.apache.org/licenses/LICENSE-2.0.html[Apache License, Version 2.0]

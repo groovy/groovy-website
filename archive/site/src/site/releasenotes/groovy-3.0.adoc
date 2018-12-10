@@ -1,0 +1,494 @@
+:source-highlighter: pygments
+:pygments-style: emacs
+:icons: font
+
+[width="80%",align="center"]
+|===
+a| NOTE: _WARNING:_
+Material on this page is still under development! We are currently creating alpha versions of Groovy 3.0 with a goal of gathering feedback on the language changes from our community. In addition, the alpha versions assist other projects and tool vendors within the Groovy ecosystem to begin assessing the impact of moving to/supporting Groovy 3.0. Caution should be exercised if using new features as the details may change before final release.)
+|===
+
+[[Groovy3.0releasenotes-Parrot]]
+== Parrot Parser
+
+Groovy 3.0, has a new parser that is far more flexible and maintainable than the parser in previous versions of Groovy. It's called the Parrot parser because in the early days of creating the parser, the goal was for the new parser's output to be an exact echo of what the old parser produced. The new parser has since been extended to support additional syntax options and language features.
+
+=== Disabling the parser
+
+The new parser is enabled by default in Groovy 3.0.
+You can disable the new parser by using a system property.
+Use `-Dgroovy.antlr4=false` (set via `JAVA_OPTS` if needed).
+It is not envisaged that this property would be needed in normal
+use. However, at least initially, if you have a problematic source
+file that doesn't seem to work with the new parser, you may be
+able to revert to the old parser to compile just that file.
+You won't be able to use any of the new language features with the
+old parser. The old parser will be deprecated and eventually removed
+in future Groovy versions.
+
+=== do/while loop
+
+Java's class do/while loop is now supported. Example:
+
+[source,groovy]
+--------------------------------------
+// classic Java-style do..while loop
+def count = 5
+def fact = 1
+do {
+    fact *= count--
+} while(count > 1)
+assert fact == 120
+--------------------------------------
+
+=== Enhanced classic Java-style for loop
+
+The more elaborate form of Java's classic for loop with comma-separate expressions
+is now supported. Example:
+
+[source,groovy]
+--------------------------------------
+def facts = []
+def count = 5
+for (int fact = 1, i = 1; i <= count; i++, fact *= i) {
+    facts << fact
+}
+assert facts == [1, 2, 6, 24, 120]
+--------------------------------------
+
+=== Multi-assignment in combination with for loop
+
+Groovy has supported multi-assignment statements since Groovy 1.6:
+
+[source,groovy]
+--------------------------------------
+// multi-assignment with types
+def (String x, int y) = ['foo', 42]
+assert "$x $y" == 'foo 42'
+--------------------------------------
+
+These can now appear in for loops:
+
+[source,groovy]
+--------------------------------------
+// multi-assignment goes loopy
+def baNums = []
+for (def (String u, int v) = ['bar', 42]; v < 45; u++, v++) {
+    baNums << "$u $v"
+}
+assert baNums == ['bar 42', 'bas 43', 'bat 44']
+--------------------------------------
+
+=== Java-style array initialization
+
+Groovy has always supported literal list/array definitions using square brackets
+and has avoided Java-style curly braces so as not to conflict with closure definitions.
+In the case where the curly braces come immediately after an array type declaration however,
+there is no ambiguity with closure definitions, so the Java style is now also supported.
+
+Examples:
+
+[source,groovy]
+--------------------------------------
+def primes = new int[] {2, 3, 5, 7, 11}
+assert primes.size() == 5 && primes.sum() == 28
+assert primes.class.name == '[I'
+
+def pets = new String[] {'cat', 'dog'}
+assert pets.size() == 2 && pets.sum() == 'catdog'
+assert pets.class.name == '[Ljava.lang.String;'
+
+// traditional Groovy alternative still supported
+String[] groovyBooks = [ 'Groovy in Action', 'Making Java Groovy' ]
+assert groovyBooks.every{ it.contains('Groovy') }
+--------------------------------------
+
+=== Java-style Lambda syntax
+
+The Java syntax for lambda expressions is now supported.
+
+[width="80%",align="center"]
+|===
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, lambda expressions are turned into equivalent Groovy closures. An advantage of this approach is that it works even when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE) but it doesn't easily enable the same level of type inference and checking that Java 8 offers even when using `@TypeChecked` or `@CompileStatic` and might be much less performant in a range of scenarios. We are currently exploring supporting native lambda expression either instead of, or in addition to, conversion to closures. If we change the implementation, most users would experience no behavioral differences in their programs though a native implementation would likely be faster but only work on JDK8+. Our goal is to clarify this aspect of the language before reaching release candidate status.
+|===
+
+Examples:
+
+[source,groovy]
+--------------------------------------
+import static java.util.stream.Collectors.toList
+
+(1..10).forEach((it) -> { println it })
+
+assert (1..10).stream()
+        .filter((it) -> it % 2 == 0)
+        .map((it) -> it * 2)
+        .collect(toList()) == [4, 8, 12, 16, 20]
+--------------------------------------
+
+The normal variants are supported and Groovy adds additional features such as default parameter values:
+
+[source,groovy]
+--------------------------------------
+// general form
+def add = (int x, int y) -> { def z = y; return x + z }
+assert add(3, 4) == 7
+
+// curly braces are optional for a single expression
+def sub = (int x, int y) -> x - y
+assert sub(4, 3) == 1
+
+// parameter types are optional
+def mult = (x, y) -> x * y
+assert mult(3, 4) == 12
+
+// no parentheses required for a single parameter with no type
+def isEven = n -> n % 2 == 0
+assert isEven(6)
+assert !isEven(7)
+
+// no arguments case
+def theAnswer = () -> 42
+assert theAnswer() == 42
+
+// any statement requires braces
+def checkMath = () -> { assert 1 + 1 == 2 }
+checkMath()
+
+// example showing default parameter values (no Java equivalent)
+def addWithDefault = (int x, int y = 100) -> x + y
+assert addWithDefault(1, 200) == 201
+assert addWithDefault(1) == 101
+--------------------------------------
+
+=== Method references
+
+The Java 8 method reference syntax using the double colon syntax is now supported.
+
+[width="80%",align="center"]
+|===
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, a method reference is turned into a Groovy method closure. This means that it even works when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native method references either instead of, or in addition to, method closures. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.  Our goal is to clarify this aspect of the language before reaching release candidate status.
+|===
+
+The following examples illustrate referencing both static and instance methods of a class:
+
+[source,groovy]
+--------------------------------------
+import java.util.stream.Stream
+import static java.util.stream.Collectors.toList
+
+// class::staticMethod
+assert ['1', '2', '3'] ==
+        Stream.of(1, 2, 3)
+                .map(String::valueOf)
+                .collect(toList())
+
+// class::instanceMethod
+assert ['A', 'B', 'C'] ==
+        ['a', 'b', 'c'].stream()
+                .map(String::toUpperCase)
+                .collect(toList())
+--------------------------------------
+
+The following examples illustrate referencing methods of instance variables:
+
+[source,groovy]
+--------------------------------------
+// instance::instanceMethod
+def sizeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'::length
+assert sizeAlphabet() == 26
+
+// instance::staticMethod
+def hexer = 42::toHexString
+assert hexer(127) == '7f'
+--------------------------------------
+
+The following examples illustrate referencing constructors:
+
+[source,groovy]
+--------------------------------------
+// normal constructor
+def r = Random::new
+assert r().nextInt(10) in 0..9
+
+// array constructor refs are handy when working with various Java libraries, e.g. streams
+assert [1, 2, 3].stream().toArray().class.name == '[Ljava.lang.Object;'
+assert [1, 2, 3].stream().toArray(Integer[]::new).class.name == '[Ljava.lang.Integer;'
+
+// works with multi-dimensional arrays too
+def make2d = String[][]::new
+def tictac = make2d(3, 3)
+tictac[0] = ['X', 'O', 'X']
+tictac[1] = ['X', 'X', 'O']
+tictac[2] = ['O', 'X', 'O']
+assert tictac*.join().join('\n') == '''
+XOX
+XXO
+OXO
+'''.trim()
+
+// also useful for your own classes
+import groovy.transform.Canonical
+import java.util.stream.Collectors
+
+@Canonical
+class Animal {
+    String kind
+}
+
+def a = Animal::new
+assert a('lion').kind == 'lion'
+
+def c = Animal
+assert c::new('cat').kind == 'cat'
+
+def pets = ['cat', 'dog'].stream().map(Animal::new)
+def names = pets.map(Animal::toString).collect(Collectors.joining( "," ))
+assert names == 'Animal(cat),Animal(dog)'
+--------------------------------------
+
+=== !in and !instanceof operators
+
+When wanting the negated form, rather than having to bracket expressions containing
+the `in` and `instanceof` infix operators and placing the exclamation operator in
+front of the brackets, an inline variant is now also supported. Examples:
+
+[source,groovy]
+--------------------------------------
+/* assert !(45 instanceof Date) // old form */
+assert 45 !instanceof Date
+
+assert 4 !in [1, 3, 5, 7]
+--------------------------------------
+
+=== Elvis assignment operator
+
+Groovy introduced the Elvis operator Example:
+
+[source,groovy]
+--------------------------------------
+import groovy.transform.ToString
+
+@ToString
+class Element {
+    String name
+    int atomicNumber
+}
+
+def he = new Element(name: 'Helium')
+he.with {
+    name = name ?: 'Hydrogen'   // existing Elvis operator
+    atomicNumber ?= 2           // new Elvis assignment shorthand
+}
+assert he.toString() == 'Element(Helium, 2)'
+--------------------------------------
+
+=== Identity comparison operators
+
+Both `===` and `!==` are supported which are the same as calling the `is()` method.
+
+[source,groovy]
+--------------------------------------
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode
+class Creature { String type }
+
+def cat = new Creature(type: 'cat')
+def copyCat = cat
+def lion = new Creature(type: 'cat')
+
+assert cat.equals(lion) // Java logical equality
+assert cat == lion      // Groovy shorthand operator
+
+assert cat.is(copyCat)  // Groovy identity
+assert cat === copyCat  // operator shorthand
+assert cat !== lion     // negated operator shorthand
+--------------------------------------
+
+=== Safe indexing
+
+[source,groovy]
+--------------------------------------
+String[] array = ['a', 'b']
+assert 'b' == array?[1]      // get using normal array index
+array?[1] = 'c'              // set using normal array index
+assert 'c' == array?[1]
+
+array = null
+assert null == array?[1]     // return null for all index values
+array?[1] = 'c'              // quietly ignore attempt to set value
+assert null == array?[1]
+
+def personInfo = [name: 'Daniel.Sun', location: 'Shanghai']
+assert 'Daniel.Sun' == personInfo?['name']      // get using normal map index
+personInfo?['name'] = 'sunlan'                  // set using normal map index
+assert 'sunlan' == personInfo?['name']
+
+personInfo = null
+assert null == personInfo?['name']              // return null for all map values
+personInfo?['name'] = 'sunlan'                  // quietly ignore attempt to set value
+assert null == personInfo?['name']
+--------------------------------------
+
+=== ARM Try with resources
+
+Groovy often provides better alternatives to Java 7's `try`-with-resources statement for Automatic Resource Management (ARM).
+That syntax is now supported for Java programmers migrating to Groovy and still wanting to use the old style:
+
+[source,groovy]
+--------------------------------------
+class FromResource extends ByteArrayInputStream {
+    @Override
+    void close() throws IOException {
+        super.close()
+        println "FromResource closing"
+    }
+
+    FromResource(String input) {
+        super(input.toLowerCase().bytes)
+    }
+}
+
+class ToResource extends ByteArrayOutputStream {
+    @Override
+    void close() throws IOException {
+        super.close()
+        println "ToResource closing"
+    }
+}
+
+def wrestle(s) {
+    try (
+            FromResource from = new FromResource(s)
+            ToResource to = new ToResource()
+    ) {
+        to << from
+        return to.toString()
+    }
+}
+
+assert wrestle("ARM was here!").contains('arm')
+--------------------------------------
+Which yields the following output:
+--------------------------------------
+ToResource closing
+FromResource closing
+--------------------------------------
+
+=== Nested code blocks
+
+An infrequently used structure within Java is the anonymous code block.
+It's generally not encouraged as it's often a sign that refactoring the
+related code into a method is in order. But it's sometimes useful to
+restrict scoping and is now available in Groovy:
+
+[source,groovy]
+--------------------------------------
+{
+    def a = 1
+    a++
+    assert 2 == a
+}
+try {
+    a++ // not defined at this point
+} catch(MissingPropertyException ex) {
+    println ex.message
+}
+{
+    {
+        // inner nesting is another scope
+        def a = 'banana'
+        assert a.size() == 6
+    }
+    def a = 1
+    assert a == 1
+}
+--------------------------------------
+
+Be aware though that in Groovy having a code block looking structure after any method
+call will be seen as an attempt to pass a closure as the last parameter in the method call.
+This happens even after a new line. So it's safe to start an anonymous code block after any other
+block (e.g. an if-then-else statement or another anonymous code block). Anywhere else and
+you might need to terminate the previous statement with a semicolon. In which case, see the
+note above about refactoring your code! :-)
+
+===  Interface default methods
+
+Java 8 supports adding default implementations to interfaces. Groovy now supports this too:
+
+[source,groovy]
+--------------------------------------
+interface Greetable {
+    String target()
+
+    default String salutation() {
+        'Greetings'
+    }
+
+    default String greet() {
+        "${salutation()}, ${target()}"
+    }
+}
+
+class Greetee implements Greetable {
+    String name
+    @Override
+    String target() { name }
+}
+
+def daniel = new Greetee(name: 'Daniel')
+assert 'Greetings, Daniel' == "${daniel.salutation()}, ${daniel.target()}"
+assert 'Greetings, Daniel' == daniel.greet()
+--------------------------------------
+
+[width="80%",align="center"]
+|===
+a| NOTE: _Experimental Status:_ While this feature will remain, we regard its current implementation as experimental. Currently, interface default methods are implemented using traits. This means that they work even when using JDK7 (i.e. using Groovy 2.6 with Parrot parser enabled on a version 7 JRE). We are currently exploring supporting native default methods in interfaces instead of, or in addition to, the trait implementation. If we change the implementation, we would expect no change in logical behavior though the new implementation may have different performance characteristics in some circumstances and the native implementation would only work on JDK8+.  Our goal is to clarify this aspect of the language before reaching release candidate status.
+|===
+
+[[Groovy3.0releasenotes-Miscimprovements]]
+== Miscellaneous improvements
+
+=== Embedded GroovyDoc
+
+You can now embed Groovydoc in various ways.
+
+It can be attached to the AST as node metadata and available during compilation for use by for instance
+AST transformations or other tools. This is enabled using the `groovy.attach.groovydoc` system property.
+
+It can also be embedded into the class file via an annotation and available at runtime for access
+via reflection or via other tools. This is enabled using the 'groovy.attach.runtime.groovydoc' system property
+to globally enable the attachment of all Groovydoc or by using a special `@Groovydoc` tag/annotation at
+the start of any Groovydoc comment. You normally don't deal with the annotation directly - the compiler handles
+proper placement of the annotation and an extension method allows easy access to the Groovydoc comment value.
+Here is a typical example:
+
+[source,groovy]
+--------------------------------------
+/** fee fi */
+class Foo {
+    /** @Groovydoc fo fum */
+    def bar() { }
+}
+// next line assumes groovy.attach.runtime.groovydoc system property is true
+assert Foo.class.groovydoc.content.contains('fee fi')
+def bar = Foo.methods.find{ it.name == 'bar' }
+// next line always true due to explicit @Groovydoc
+assert bar.groovydoc.content.contains('@Groovydoc fo fum')
+--------------------------------------
+
+=== JSR308 improvements (work in progress)
+
+Groovy has been improving JSR-308 support over recent versions.
+As part of implementing the new grammar, additional support has been added.
+
+== JDK requirements
+
+Groovy 3.0 requires JDK8+ to build and JDK8 is the minimum version of the JRE that we support. As additional Java 9/10 support is added, the version
+required to build may be bumped to JDK9.
+
+[[Groovy3.0releasenotes-Moreinformation]]
+== More information
+
+You can browse all the link:../changelogs/changelog-3.0.0-alpha-1.html[tickets closed for Groovy 3.0 in JIRA]. Note: some of the tickets relevant for this release are contained in the link:../changelogs/changelog-2.6.0-alpha-1.html[tickets closed for Groovy 2.6].

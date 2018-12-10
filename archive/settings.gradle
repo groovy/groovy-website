@@ -1,0 +1,3 @@
+rootProject.name = 'groovy-website'
+
+include 'generator','site-dev','site-user'

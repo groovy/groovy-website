@@ -1,0 +1,49 @@
+:source-highlighter: pygments
+:pygments-style: emacs
+:icons: font
+
+[width="80%",align="center"]
+|===
+a| NOTE: _WARNING:_
+The Groovy 2.6 version of Groovy has been retired to focus on faster delivery of Groovy 3.0.
+|===
+
+Groovy 2.6 was intended to be a back-port of Groovy 3.0 for JDK7 but with
+features requiring JDK 8 removed. Alpha versions have been released which support
+the new Parrot parser (when enabled) but these versions are not feature complete wrt Groovy 3.0 functionality.
+We have left the alpha versions available to help people wanting to port towards Groovy 3.0
+but who are stuck on JDK7. However, we strongly encourage all users on JDK8 or above
+to move directly to Groovy 3.0.
+You should consult the link:../groovy-3.0.html[Groovy 3.0 release notes] for a list of supported language changes.
+Only differences with 3.0 due to the different JVM requirements are reported here.
+
+[[Groovy2.6releasenotes-Parrot]]
+== Parrot Parser
+
+Groovy 2.6 defaults to using the old parser but you can enable the Parrot parser which supports additional syntax options and language features.
+
+=== Enabling the parser
+
+For Groovy 3.0, the new parser is enabled by default.
+However, for Groovy 2.6, you enable the new parser using a system property.
+Use `-Dgroovy.antlr4=true` (set via `JAVA_OPTS` if needed).
+
+If building from source, you need to provide Gradle with `-PuseAntlr4`
+in order to include the classes which support the new parser.
+
+== Feature differences with Groovy 3.0
+
+Groovy 2.6 doesn't support native lambdas.
+
+== Bundled dependencies
+
+Groovy 2.6 optionally uses an earlier version of Ant (vs a later version in Groovy 3.0 which requires JDK8).
+
+== JDK requirements
+
+Groovy 2.6 requires JDK8+ to build and JDK7 (vs JDK8 for Groovy 3.0) is the minimum version of the JRE that we support.
+
+[[Groovy2.6releasenotes-Moreinformation]]
+== More information
+
+You can browse all the link:../changelogs/changelog-2.6.0-alpha-1.html[tickets closed for Groovy 2.6 in JIRA].

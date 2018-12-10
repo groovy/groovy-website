@@ -1,0 +1,8 @@
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+    compile 'com.yahoo.platform.yui:yuicompressor:2.4.7'
+}

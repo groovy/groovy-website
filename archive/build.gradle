@@ -1,0 +1,23 @@
+// Grab the plugin from a Maven Repo automatically
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.yahoo.platform.yui:yuicompressor:2.4.7'
+    }
+}
+
+plugins {
+    id 'com.gradle.build-scan' version '1.0'
+}
+
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+    licenseAgree = 'yes'
+}
+
+allprojects {
+    apply plugin: 'idea'
+}
+

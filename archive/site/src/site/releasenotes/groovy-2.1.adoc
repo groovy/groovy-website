@@ -1,0 +1,963 @@
+With this new 2.1 release, Groovy:
+
+* has *full support for the JDK 7 `invoke dynamic`* instruction and
+API,
+* goes beyond conventional static type checking capabilities with a
+*special annotation for closure delegate based Domain-Specific
+Languages* and *static type checker extensions*,
+* provides *additional compilation customization* options,
+* and features a *meta-annotation facility* for combining annotations
+elegantly.
+
+[[Groovy21releasenotes-Fullinvokedynamicsupport]]
+== Full invoke dynamic support
+
+With Groovy 2.0, we introduced support for JDK 7’s `invoke dynamic`
+bytecode instruction and API to benefit from the dedicated support and
+performance improvements for dynamic languages starting with JDK
+7. Groovy 2.1 brings *full support for `invokedynamic`* (aka
+`indy`), completing the work introduced in 2.0. 
+
+In Groovy 2.0, most method calls were using the `invokedynamic`
+instruction, but there have been exceptions: constructor calls
+or "spread calls" (where you pass arguments with the "spread
+operator"). Groovy 2.1 completes the implementation started in 2.0.
+Now, code compiled with the `invokedynamic` JAR on JDK 7 will not be
+using the old "call site caching" code which served us well for
+getting good performance for Groovy prior to JDK 7. If you are lucky
+enough to be using JDK 7 in production, be sure to use the Groovy 2.1
+`indy` JAR to benefit from the full `invokedynamic` support. The
+`indy` version is bundled with the binary download package and can be
+obtained via Maven (all JARs with `invokedynamic` support are
+postfixed with `-indy`).
+
+You can link:../indy.html[learn more about the invoke dynamic support].
+
+[[Groovy21releasenotes-GPars10]]
+== GPars 1.0
+
+Groovy 2.1’s distribution *bundles the recently released GPars 1.0*, the
+one-stop shop for all your concurrency needs. This new version comes
+with various enhancements in the asynchronous
+functions, link:http://www.jroller.com/vaclav/entry/broken_promises[promises],
+parallel collections, actors, dataflow
+support, link:http://www.jroller.com/vaclav/entry/gpars_actors_and_dataflow_for[Google App Engine support], etc.
+
+Be sure to check
+the link:http://www.jroller.com/vaclav/entry/i_like_the_smell_of[release announcement] and read the “what’s new section”
+of the GPars user guide.
+You can also have a look at the
+detailed link:https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12318123&version=17007[JIRA release notes].
+
+[[Groovy21releasenotes-DelegatesToannotation]]
+== @DelegatesTo annotation
+
+Authoring Domain-Specific Languages (DSLs) has always been a sweet spot
+for Groovy, and the availability of closures and the malleable syntax of
+the language has allowed DSL implementors to build nice mini-languages
+like "builders", to represent configuration or hierarchical data.
+
+Thanks to the various delegation strategies of
+the `groovy.lang.Closure` class, a range of very powerful techniques can
+be used when building DSLs. Due to different implementation techniques,
+inferring type information within the DSL has not been straightforward.
+This is especially an issue when DSLs should have proper IDE support
+(e.g. code completion).
+
+The very popular and powerful link:http://www.gradle.org[Gradle] build
+automation system uses its own DSL for build script specifications. On
+the DSL implementation layer are various methods taking closures as
+arguments, and with special delegation strategies delegating to some
+other parameter passed to them. Providing good IDE support for Groovy
+DSLs — like the one in Gradle — has presented a few challenges. Hence
+the need for the `@DelegatesTo` annotation.
+
+Groovy 2.1 introduces the *`@groovy.lang.DelegatesTo` annotation* as
+a *documentation mechanism* for DSL users and maintainers, as an *IDE
+hint for providing better coding assistance*, and as additional
+information that can be *taken into account by the static type checker
+and static compilation* introduced in Groovy 2.0. Let’s see that in
+action with some examples.
+
+A closure delegate based method usage might look like the following:
+
+[source,groovy]
+------------
+exec {
+    launch()
+}
+------------
+
+The `exec()` method takes a closure as parameter, and the
+actual `launch()` call inside that closure is delegated to some
+particular object (the closure delegate), instead of being dispatched to
+the enclosing class. The above code would only fail at runtime (not at
+compile-time!), as the `launch()` method can not be found in the closure
+context. In order to delegate method calls within the closure’s code
+block to another object instance, we need to set the closure delegate.
+
+Setting a closure delegate is as easy as
+invoking `Closure#setDelegate(Object)`: 
+
+[source,groovy]
+-------------------------------
+void exec(Closure c) {
+    c.delegate = new Executor()
+    c()
+}
+-------------------------------
+
+The delegate can be set to an arbitrary object instance (here, an
+instance of an `Executor` class that has a `launch()` method). When the
+delegate is set accordingly, we can execute the closure code.
+
+Note that usually, to avoid odd behavior if the closure is used in
+multiple threads, we tend to clone that closure.
+
+The problem with delegate objects are IDEs not knowing about them. Given
+our example, most IDEs will underline the `launch()` method as being an
+unknown method in this context.
+
+This is where `@DelegatesTo` comes into play. By adding
+the `@DelegatesTo` annotation to DSL methods like `exec(Closure)`, IDEs
+get the actual delegate type and other meta-data.
+
+A future update might let GroovyDoc show the details about the
+annotation usage to help users know what methods they can call, what
+properties they can access, etc.
+
+Here’s what your `exec()` method will look like with the annotation:
+
+[source,groovy]
+---------------------------------------------
+void exec(@DelegatesTo(Executor) Closure c) {
+    c.delegate = new Executor()
+    c()
+}
+---------------------------------------------
+
+Besides specifying the actual delegate type, `@DelegatesTo`  can be used
+to hint at the actual resolve strategy. The resolve strategy determines
+the order in which non-closure method / property calls are looked up. In
+our example, `Closure.DELEGATE_FIRST` will be used. This indicates the
+closure will attempt to resolve against the given delegate object in
+first place, followed by the owner object:
+
+[source,groovy]
+--------------------------------------------------------------------------------
+import static groovy.lang.Closure.*
+// ...
+void exec(@DelegatesTo(strategy = DELEGATE_FIRST, value = Executor) Closure c) {
+    c.delegate = new Executor()
+    c.resolveStrategy = DELEGATE_FIRST
+    c()
+}
+--------------------------------------------------------------------------------
+
+IDE support is not the only reason to use `@DelegatesTo`. The *static
+type checker and static compiler take the additional meta-data specified
+by the @DelegatesTo annotation into account*. If there is a typo in the
+closure code block, the type checker will complain. And if you use the
+static compilation capability introduced in Groovy 2.0, the calls will
+be compiled statically.
+
+Let’s say we wouldn’t call `launch()` but `launchr()` in the closure
+code block, we would get a message like:
+
+----------------------------------------------------------------------------------
+[Static type checking] - Cannot find matching method DelegatesToSamples#launchr().
+Please check if the declared type is right and if the method exists.
+----------------------------------------------------------------------------------
+
+*Static type checks for custom Domain-Specific Languages* is a very
+convenient feature in Groovy 2.1!
+
+In addition, Groovy 2.1 features other abilities for even further type
+checking your DSLs, as you shall see in the following section.
+
+Before moving on, let’s mention a few closing details
+about `@DelegatesTo`.
+
+`@DelegatesTo` allows to specify the receiver calls are delegated to.
+For instance, when a delegate calls a method or property on another
+method parameter. Imagine our `exec()` method taking
+the `Executor` argument instance as delegate:
+
+[source,groovy]
+----------------------------------------------------------
+void exec(Executor ex, @DelegatesTo(Executor) Closure c) {
+    c.delegate = ex
+    c()
+}
+----------------------------------------------------------
+
+In this example, the information is lost that the call is delegated to
+the `ex` parameter. Thanks to the `@DelegatesTo.Target` annotation we
+can specify ex as target for being the delegate object:
+
+[source,groovy]
+--------------------------------------------------------------------
+void exec(@DelegatesTo.Target Executor ex, @DelegatesTo Closure c) {
+    c.delegate = ex
+    c()
+}
+--------------------------------------------------------------------
+
+What if we had several `Executor` parameters, how would we differentiate
+which one we’re targeting?
+
+[source,groovy]
+------------------------------------------------------
+void exec(
+    @DelegatesTo.Target('param1') Executor ex,
+    @DelegatesTo(target = 'param1') Closure c) { ... }
+------------------------------------------------------
+
+The delegation "target" can be specified with an arbitrary id. In the
+example above it is `param1`.
+
+One last very nice little feature: if you are using static type
+checking, you can omit the type of the parameter
+and `@DelegatesTo` combined with "flow typing" (the ability of
+following the current type of an untyped variable) would still know if
+method calls are valid:
+
+[source,groovy]
+-----------------------------------------------------------
+void exec(@DelegatesTo.Target ex, @DelegatesTo Closure c) {
+    c.delegate = ex
+    c()
+}
+
+class Executor {
+    void launch() {}
+}
+
+def ex = new Executor()
+
+exec(ex) {
+    launch()
+}
+-----------------------------------------------------------
+
+We’ve seen that the `@DelegatesTo` helps documenting, tooling, and
+checking Domain-Specific Languages in the specific context of closure
+delegate based methods, but we hinted at the fact we can go beyond, in
+terms of static type checking for your DSLs.
+
+For more details take a look at
+the link:{DOCS_BASEURL}/html/documentation/#__code_delegatesto_code[@DelegatesTo documentation].
+
+[[Groovy21releasenotes-Typecheckerextensions]]
+== Type checker extensions
+
+Static type checking was introduced in Groovy 2.0, but Groovy 2.1 goes
+beyond built-in type checks and offers a way to *create type checker
+extensions*. This is great news for Groovy scripts, configuration files,
+or Domain-Specific Languages implementations as they can can be "type
+checked" with more advanced, domain-specific rules. As an example, it
+would be possible to create a custom DSL type checker that throws
+compilation errors when certain verbs of the DSL are not recognized, or
+tells this other noun is allowed even if it’s a dynamic name bound at
+runtime, or type checks literal strings containing SQL code to see if
+the syntax is correct, and more.
+
+Imagine a script, where we define a small robot class and instantiate
+it:
+
+[source,groovy]
+----------------------------------------------------
+class Robot {
+    void move(String dist) { println "Moved $dist" }
+}
+
+robot = new Robot()
+----------------------------------------------------
+
+And we want to operate our robot in the `operate()` method, but we want
+this method to be type checked:
+
+[source,groovy]
+-----------------------------
+@groovy.transform.TypeChecked
+void operate() {
+    robot.move "left"
+}
+
+operate()
+-----------------------------
+
+The static type checker will complain as it doesn’t understand where the
+`robot` variable is coming from, as it’s going through the binding of
+the script — note that we could teach the type checker to figure out
+binding-bound variables. It will throw an error telling us that
+the robot variable was undeclared.
+
+But by utilizing type checker extensions, we can hook into the type
+checking process to teach it how to handle unresolved variables! In
+order to do that, we’ll specify an extension script through the newly
+introduced `extensions` annotation parameter of
+the `@TypeChecked` annotation:
+
+[source,groovy]
+---------------------------------------------
+@TypeChecked(extensions = 'RobotMove.groovy')
+void operate() {
+    robot.move "left"
+}
+---------------------------------------------
+
+Now it’s time to define the type checker extension script
+called `RobotMove.groovy`. The type checker extension script is written
+by applying a new DSL — the "type checking DSL". The DSL provides
+various hooks for type checker extensions to register to. Going back to
+the example above, we register for unresolved variables using
+the `unresolvedVariable` hook:
+
+[source,groovy]
+-------------------------------------------------------------------------------
+unresolvedVariable { VariableExpression var ->
+    if ('robot' == var.name) {
+        def robotClass = context.source.AST.classes.find { it.name == 'Robot' }
+        storeType(var, robotClass)
+        handled = true
+    }
+}
+-------------------------------------------------------------------------------
+
+The type checker extension script needs to be on the classpath. If this
+is the case, the script gets notified during compile-time when the
+static type checker encounters an unresolved variable. The unresolved
+variable closure is handed over a `VariableExpression`.
+
+The `VariableExpression` is an object directly from Groovy’s AST
+(Abstract Syntax Tree). It is a representation of the unresolved
+variable expression. The script checks if the variable is named `robot`,
+if this is the case, we lookup a `ClassNode` representing
+the `Robot` class, and store the type of that variable back in the AST.
+At the end, the `handled` property is set to true, to indicate the type
+checker already managed that variable. As a consequence, you won’t get
+the compilation error about that undeclared variable.
+
+To continue the journey, let’s consider the case where the user enters a
+wrong direction string. We could of course use an enum or some other
+class containing direction constants, but for the sake of the example,
+we’ll have a look at how we can teach the type checker to inspect
+strings and how you can actually throw your own compilation errors.
+
+For that purpose, let’s say a robot can only move left, right, forward
+and backward. And now, let’s change our robot move instruction to:
+
+[source,groovy]
+---------------------
+robot.move "sideways"
+---------------------
+
+The robot is not allowed to move sideways, so we should instruct the
+type checker to throw a compilation error if it encounters a direction
+the robot will not be able to understand. Here’s how we can achieve our
+goal, by adding a new event handler to our `RobotMove.groovy` script:
+
+[source,groovy]
+---------------------------------------------------------------------------------------
+afterMethodCall { MethodCall mc ->
+    def method = getTargetMethod(mc)
+    if (mc.objectExpression.name == 'robot' && method.name == 'move') {
+        def args = getArguments(mc)
+        if (args && isConstantExpression(args[0]) && args[0].value instanceof String) {
+            def content = args[0].text
+            if (!(content in ['left', 'right', 'backward', 'forward'])) {
+                addStaticTypeError("'${content}' is not a valid direction", args[0])
+            }
+        }
+    }
+}
+---------------------------------------------------------------------------------------
+
+This handler receives a `MethodCall` expression. We are using
+the `getTargetMethod()` utility method to retrieve the
+corresponding `MethodNode`. We check that the method call is a call to
+our `robot`, and that the name of the method corresponds to
+themove method. Then, we fetch the arguments passed to that method call,
+and if we’re passed a direction in the form of a string constant, we are
+checking that the direction is an actual allowed direction. If this is
+not the case, we are adding a new static typing compilation error into
+the mix, so that the compiler will yell at the poor user because he used
+a direction which is forbidden and not understood by our robot.
+
+This second example is also interesting in a way that it shows how you
+can even add compilation checks on things like literal strings on a
+domain-specific level, paving the way for possible checks on sprintf
+strings, on SQL or HQL code in strings, etc, allowing you to go even
+further that what the Java compiler actually checks.
+
+The extension script can make use of various event oriented extension
+points and utility methods coming from the `TypeCheckingExtension` class
+from Groovy, such as:
+
+* unresolvedVariable
+* unresolvedProperty
+* unresolvedAttribute
+* methodNotFound
+* incompatibleAssignment
+* beforeVisitMethod
+* afterVisitMethod
+* beforeVisitClass
+* afterVisitClass
+* beforeMethodCall
+* afterMethodCall
+* onMethodSelection
+* setup
+* finish
+
+The two examples are just the tip of the iceberg, but we will work out
+more complete documentation of the various extension points and utility
+methods going forward.
+
+For more details take a look at
+the link:http://docs.groovy-lang.org/latest/html/documentation/type-checking-extensions.html[type checking extensions documentation].
+
+[[Groovy21releasenotes-Compile-time-Meta-annotations]]
+== Compile-time Meta-annotations
+
+Annotations are a great way to add supplementary meta-data to classes,
+methods, fields, and other source code elements, thus frameworks,
+libraries, and even Groovy’s homegrown AST transformations can take
+advantage of them to do some special treatments to the corresponding AST
+nodes. Every now and then the use case arises to reuse a combination of
+annotations, potentially at the expense of a galore of at-signs that
+obscure the general intent of that particular combination.
+
+To group annotations together, to make the intent clearer or to
+streamline your code, Groovy 2.1 offers a *meta-annotation system, which
+allows to combine other annotations into one "alias" annotation*.
+
+Imagine we are using some annotations defining constraints on properties
+of your class, like `@NotNull`, `@Length`, or `@Pattern`, which could be
+defined as follows:
+
+[source,groovy]
+-------------------------------
+@interface NotNull {}
+
+@interface Length {
+    int value() default 0
+}
+
+@interface Pattern {
+    String value() default ".*"
+}
+-------------------------------
+
+An example of how to annotate an `ISBN` property with those annotations
+could look like this:
+
+[source,groovy]
+---------------------------
+class Book {
+    @NotNull
+    @Length(10)
+    @Pattern(/\d{9}(\d|X)/)
+    String isbn10
+}
+---------------------------
+
+For a single property, that’s quite a bit of annotation overload! And it
+could be the case of other domain classes with properties having the
+same validation rules as the ISBN property, where we would need to
+duplicate that pattern.
+
+As of Groovy 2.1, `@groovy.transform.AnnotationCollector` can be used to
+solve code duplication for this use case. `@AnnotationCollector` can be
+specified on annotation types and acts as meta-annotation. Whenever an
+annotation marked with it is found, it is replaced with its own
+annotations. Let’s illustrate this with our ISBN example.
+
+We will create a new annotation combination for the 13-digit ISBN
+standard, but this time, using
+the `@AnnotationCollector` meta-annotation:
+
+[source,groovy]
+-------------------------------------
+@NotNull
+@Length(13)
+@Pattern(/\d{12}(\d|X)/)
+@groovy.transform.AnnotationCollector
+@interface ISBN13 {}
+-------------------------------------
+
+`@ISBN13` as a single annotation can now be applied on code elements,
+instead of applying the entire annotation gang::
+
+[source,groovy]
+-----------------
+class Book {
+    // ...
+    @ISBN13
+    String isbn13
+}
+-----------------
+
+What is particularly interesting with such *meta-annotations* is that
+they are actually *replaced at compilation time with
+the _real_ annotations*. So if you counted the number of annotations on
+the `isbn13` property, you would count 3
+(`@NotNull`, `@Length` and `@Pattern`). Thus, your underlying framework
+doesn’t need to know about that meta-annotation solution and act
+accordingly.
+
+[[Groovy21releasenotes-Alternatenotation]]
+=== Alternate notation
+
+In our example above, we annotated our meta-annotation with the
+annotations that are then combined together. But for annotations for
+which you don’t need to specify arguments, you could have also passed
+the names of the annotations to combine as parameters to the annotation
+collector:
+
+[source,groovy]
+------------------------------------------------------------
+import groovy.transform.*
+@groovy.transform.AnnotationCollector([ToString, Singleton])
+@interface ChattySingleton {}
+------------------------------------------------------------
+
+In the above case, we combine
+the `@Singleton` and `@ToString` transformation into a meta-annotation
+called `@ChattySingleton`.
+
+[[Groovy21releasenotes-Passingparameters]]
+=== Passing parameters
+
+If you need to pass some specific parameter to one of the underlying
+annotations which are combined, you can still do so by passing the
+parameter to the meta-annotation.
+
+Let’s assume we need to combine the following annotations:
+
+[source,groovy]
+-------------------------------------------
+@interface Service {}
+
+@interface Transactional {
+    String propagation() default "required"
+}
+-------------------------------------------
+
+We define the meta-annotation combining both the above annotations:
+
+[source,groovy]
+---------------------------------------------------------------
+@groovy.transform.AnnotationCollector([Service, Transactional])
+@interface TransactionalService {}
+---------------------------------------------------------------
+
+But we want to change the propagation strategy for the
+underlying `@Transactional` annotation, we do so by passing the
+parameter to the meta-annotation:
+
+[source,groovy]
+------------------------------------------------
+@TransactionalService(propagation = "mandatory")
+class BankingService { }
+------------------------------------------------
+
+Note that if two combined annotations share the same parameter name, the
+last annotation declared wins and gets the parameter passed to the
+meta-annotation.
+
+[[Groovy21releasenotes-Customprocessor]]
+=== Custom processor
+
+If you need even more flexibility, meta-annotations allow you to define
+custom processors. The role of the custom processor is to go beyond the
+simple exchange of the meta-annotation with the combined annotations, to
+further customize the logic of that transformation.
+
+Custom processors must be precompiled to take action, so we’ll create
+our processor, and then evaluate our final example with `GroovyShell`,
+but first, let’s talk about the use case.
+
+We have two validation annotations for defining a minimum and maximum
+value for an integer property:
+
+[source,groovy]
+---------------------------
+@interface Min {
+    int value() default 0
+}
+
+@interface Max {
+    int value() default 100
+}
+---------------------------
+
+If we want to define a range of values, with a lower and an upper bound,
+we could define a new annotation and implement the associated validation
+logic, or we could use custom meta-annotation processors to replace a
+range annotation with a minimum and a maximum one.
+
+So instead of writing:
+
+[source,groovy]
+-----------------------
+class Room {
+    @Min(1)
+    @Max(4)
+    int numberOfPersons
+}
+-----------------------
+
+We could write:
+
+[source,groovy]
+----------------------------
+class Room {
+    @Range(from = 1, to = 4)
+    int numberOfPersons
+}
+----------------------------
+
+With the normal replacement logic, there’s no way we can map the lower
+and upper bound values to the minimum and maximum annotation element
+default values. That is where custom processors come into play.
+
+Our meta-annotation definition will look like this:
+
+[source,groovy]
+------------------------------------------------------------
+@Min @Max
+@AnnotationCollector(processor = 'RangeAnnotationProcessor')
+@interface Range {}
+------------------------------------------------------------
+
+Notice how we specify that the `@Range` annotation is a combination
+of `@Min` and `@Max`, and more importantly, how we pass a processor
+parameter to the `@AnnotationCollector` to instruct it about our custom
+meta-annotation processing logic.
+
+In order to create a custom processor, you have to extend
+the `AnnotationCollectorTransform` class and override
+the `visit()` method:
+
+[source,groovy]
+-------------------------------------------------------------------------------
+import org.codehaus.groovy.transform.AnnotationCollectorTransform
+import org.codehaus.groovy.ast.*
+import org.codehaus.groovy.control.SourceUnit
+
+class RangeAnnotationProcessor extends AnnotationCollectorTransform {
+    List<AnnotationNode> visit(AnnotationNode collector,
+                               AnnotationNode usage,
+                               AnnotatedNode annotated,
+                               SourceUnit src) {
+
+        def minExpr = usage.getMember('from')
+        def maxExpr = usage.getMember('to')
+
+        def (minAnno, maxAnno) = getTargetAnnotationList(collector, usage, src)
+
+        minAnno.addMember('value', minExpr)
+        maxAnno.addMember('value', maxExpr)
+
+        usage.members.remove('from')
+        usage.members.remove('to')
+
+        return [minAnno, maxAnno]
+    }
+}
+-------------------------------------------------------------------------------
+
+A few words about the parameters : the `collector` corresponds to
+the `@Range` annotation definition, `usage` to the actual usage of
+the `@Range` annotation, `annotated` is the annotated class,
+and `src` is script being compiled.
+
+We start our implementation of the processor by retrieving the numeric
+expressions of the bounds defined as the from and to annotation
+parameters, because we’ll pass those values back to the
+underlying `@Min` and `@Max` combined annotations. In order to do that,
+we retrieve the `@Min` and `@Max` combined annotations thanks to
+the `getTargetAnnotationList()` method. We then set the values of
+the `@Min` and `@Max` annotations to the expressions we’ve retrieved
+before. We remove the from and to bounds from
+the `@Range` meta-annotation since those parameters
+aren’t really defined on a real annotation but on a meta-annotation. And
+last, we return the two `@Min` and `@Max` annotations. If you wanted the
+Groovy compiler to do its usual replacement logic, you could have also
+called `super.visit(...)`, but in our case it wasn’t needed.
+
+The full example can be found in this Gist on
+Github: https://gist.github.com/4563430
+
+Additional details can be found in the
+link:http://www.groovy-lang.org/objectorientation.html#_meta_annotations[meta-annotations documentation].
+
+[[Groovy21releasenotes-Compilationcustomization]]
+== Compilation customization
+
+[[Groovy21releasenotes-Custombasescriptclassflag]]
+=== Custom base script class flag
+
+When integrating and evaluating Groovy scripts in an application for
+business rules or Domain-Specific Languages, it is often valuable to
+define a base script class, in order to add various utility methods,
+properties, or interception mechanisms for missing methods or
+properties.
+
+The `CompilerConfiguration` object, that you can pass
+to `GroovyShell` and other integration mechanisms, allows you to specify
+a base script class with the `setScriptBaseClass()` method.
+
+As of Groovy 2.1, we introduce the ability to define a base script class
+reference for your scripts via an additional command-line option `-b` /
+ `--basescript` for the `groovyc` command, as well as for
+the `groovy` command.
+
+Here’s an example using a script called `businessRule.groovy`:
+
+[source,groovy]
+-----------------------------------
+assert lookupRate(EUR, USD) == 1.33
+-----------------------------------
+
+In the above script, we notice two things: the usage of
+a `lookupRate()` method, and two undeclared variables: `EUR` and `USD`.
+Neither the method, nor the variables have been defined in our script.
+Instead, they are provided by a base script class, which can look like
+the following `ExchangeRateBaseScript.groovy` class:
+
+[source,groovy]
+--------------------------------------------------------
+abstract class ExchangeRateBaseScript extends Script {
+    def lookupRate(String currency1, String currency2) {
+        if (currency1 == 'EUR' && currency2 == 'USD')
+            return 1.33
+        else return 1
+    }
+
+    def getProperty(String name) { name }
+}
+--------------------------------------------------------
+
+The `lookupRate()` method used in our script is declared in the the base
+class, and the two currencies are retrieved via
+the `getProperty()` method.
+
+Now it’s time to wire them together, by instructing the groovyc compiler
+or the `groovy` command line launcher to use our base script class for
+all `groovy.lang.Script` descendants:
+
+---------------------------------------------------------------------
+groovy --basescript ExchangeRateBaseScript.groovy businessRule.groovy
+---------------------------------------------------------------------
+
+[[Groovy21releasenotes-Compilerconfigurationscript]]
+=== Compiler configuration script
+
+Similarly to the `--basescript` flag, there’s another new option for
+the `groovy` and `groovyc` commands: the `--configscript` flag. Its
+purpose is to let you further configure the compiler, in a configuration
+script, by parameterizing the `CompilerConfiguration` object used for
+the compilation.
+
+With a `CompilerConfiguration`, you can customize the various aspects of
+the Groovy compilation process. For example, you can specify various
+compilation customizers introduced in Groovy 1.8. Imagine you want to
+add a new default import to your classes, like importing
+all `java.lang.Math` functions and constants, so that your scripts and
+classes don’t have to prefix those functions and constants all the time,
+and to avoid having to do that import wherever needed. Here’s how you
+can proceed.
+
+At first, your script, `mathFormula.groovy`, contains the following
+lines:
+
+[source,groovy]
+------------------------------
+import static java.lang.Math.*
+
+assert sin(PI/2) == 1
+------------------------------
+
+For evaluating such math expressions, you wish to make the static import
+implicit, so that the final script will actually look like this:
+
+[source,groovy]
+---------------------
+assert sin(PI/2) == 1
+---------------------
+
+If you’d run it as is, you’d get an error message saying:
+
+-------------------------------------------
+No such property: PI for class: mathFormula
+-------------------------------------------
+
+We need to use `CompilerConfiguration` to do add an `ImportCustomizer`.
+We’ll create ai `mportConfigurer.groovy` script with the content below:
+
+[source,groovy]
+---------------------------------------------------------------
+import org.codehaus.groovy.control.customizers.ImportCustomizer
+
+def importCustomizer = new ImportCustomizer()
+importCustomizer.addStaticStar('java.lang.Math')
+
+configuration.addCompilationCustomizers(importCustomizer)
+---------------------------------------------------------------
+
+We import and then instantiate an `ImportCustomizer`, on which we ask
+for a static star import of the methods and constants of
+the `java.lang.Math` class. Eventually, we pass that customizer to
+the `configuration` variable, which is an instance
+of `CompilerConfiguration` that will be used for the compilation of your
+math formula.
+
+Now, we are able to execute your formula with the following
+command-line:
+
+----------------------------------------------------------------
+groovy --configscript importConfigurer.groovy mathFormula.groovy
+----------------------------------------------------------------
+
+[[Groovy21releasenotes-Source-awarecustomizer]]
+=== Source-aware customizer
+
+If you use the groovy compiler to compile all your classes, one drawback
+of the approach above is that the customization applies globally to all
+classes that are going to be compiled. You may want to add certain
+default imports only in certain classes (ie. scripts containing math),
+but you might want to do something different for other classes, like
+adding a `@ToString` transformation to all the domain classes of your
+application. For that purpose, a new customizer was created,
+the `SourceAwareCustomizer`, to let you filter which classes should be
+impacted by particular compilation customizations, such as filtering by
+class name, by file extension, or by a custom logic.
+
+Coming back to our previous example, let’s add the default import to
+our `mathFormula.groovy` script, but add a `@ToString` transformation to
+the `MyDomain.groovy` class:
+
+[source,groovy]
+--------------------------------------------------------------------------
+import org.codehaus.groovy.control.customizers.*
+import groovy.transform.ToString
+
+def importCustomizer = new ImportCustomizer()
+importCustomizer.addStaticStar('java.lang.Math')
+
+configuration.addCompilationCustomizers(
+    new SourceAwareCustomizer(new ASTTransformationCustomizer(ToString)) {
+        boolean acceptBaseName(baseName) { baseName ==~ 'MyDomain' }
+    },
+    new SourceAwareCustomizer(importCustomizer) {
+        boolean acceptBaseName(baseName) { baseName ==~ 'mathFormula' }
+    })
+--------------------------------------------------------------------------
+
+[[Groovy21releasenotes-Compilercustomizationbuilder]]
+=== Compiler customization builder
+
+The more complex the customization becomes, the more cumbersome the
+above configuration becomes to write too, that’s why Groovy 2.1 also
+provides a builder for building these types of configurations.
+
+The builder allows you to use a familiar declarative syntax and saves
+you from adding manually various imports. Let’s adapt our example above
+with the builder:
+
+[source,groovy]
+---------------------------------------------------------------
+withConfig(configuration) {
+    source(basenameValidator: { it.endsWith('MyDomain') }) {
+        ast(ToString)
+    }
+    source(basenameValidator: { it.endsWith('mathFormula') }) {
+        imports {
+            staticStar 'java.lang.Math'
+        }
+    }
+}
+---------------------------------------------------------------
+
+The configuration code is easier to read and maintain, thanks to the
+clarity brought by the builder approach. But we’ve only seen a couple
+examples of customization, and you should have a look at the other
+customizations available in the
+org.codehaus.groovy.control.customizers.builder package to learn more
+about them.
+
+More details can be found in the
+link:http://www.groovy-lang.org/dsls.html#compilation-customizers[compilation customizers documentation].
+
+[[Groovy21releasenotes-OtherMinorEnhancements]]
+== Other Minor Enhancements
+
+[[Groovy21releasenotes-AdditionalDGMmethods]]
+=== Additional DGM methods
+
+There are now `leftShift` and `withFormatter` methods for `Appendable`
+objects. +
+There are now methods for creating temporary directories and determining
+the total size of all files in a directory. +
+There is now a `collectMany` for maps (has been backported to earlier
+versions of Groovy too). +
+There is now a `closeStreams()` method for `Process` objects.
+
+[[Groovy21releasenotes-GroovyDoc]]
+=== GroovyDoc
+
+You can now explicitly set a file encoding.
+
+[[Groovy21releasenotes-Command-line]]
+=== Command-line
+
+There is support for using a `jar:` prefix when running a script from
+a URL, in addition to the `file:` and `http:`.
+
+[[Groovy21releasenotes-XMLProcessing]]
+=== XML Processing
+
+There is a method for escaping / encoding XML entities in Strings. +
+There is a convenience method for serializing `Elements` objects.  +
+You can now clone `Node` and `NodeList` objects.  +
+The name() method now works for all `Node` objects, not just `Element`
+objects. 
+
+[[Groovy21releasenotes-ConfigSlurper]]
+=== ConfigSlurper
+
+Multiple environments blocks are now supported and merged.
+
+[[Groovy21releasenotes-Delegate]]
+=== @Delegate
+
+Can now carry over annotations if desired for methods and method
+parameters.
+
+[[Groovy21releasenotes-ToString]]
+=== @ToString
+
+You can now cache the `toString` value. This is useful for immutable
+objects.
+
+[[Groovy21releasenotes-EqualsAndHashCode]]
+=== @EqualsAndHashCode
+
+You can now cache the calculated hashCode value. This is useful for
+immutable objects.
+
+[[Groovy21releasenotes-Immutable]]
+=== @Immutable
+
+You can now specify `knownImmutables`. This is useful when you know you
+are using an immutable object, but its type isn’t one of the known
+immutable types.
+
+[[Groovy21releasenotes-AutoClone]]
+=== @AutoClone
+
+There is now a `SIMPLE` `AutoCloneStyle` which avoids some annoyances
+with Java’s cloning behavior from `Object`. Those who need to clone
+Grails domain objects might find this useful.

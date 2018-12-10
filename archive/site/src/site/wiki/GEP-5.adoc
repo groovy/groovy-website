@@ -1,0 +1,49 @@
+= GEP-5: File extension dependent AST transformations
+
+:icons: font
+
+.Metadata
+****
+[horizontal,options="compact"]
+*Number*:: GEP-5
+*Title*:: File extension dependent AST transformations
+*Version*:: 2
+*Type*:: Feature
+*Status*:: Rejected
+*Comment*:: A general compiler configuration mechanism was adopted instead and delivered in Groovy 1.8
+*Leader*:: Alex Tkachman
+*Created*:: 2010-02-26
+*Last modification*&#160;:: 2018-10-12
+****
+
+== Abstract: What is a file extension dependent AST transformations?
+
+AST transformations is powerful tool for creating DSLs. Two ways to define AST transformations exist today - via annotation and global transformation, which apply to everything. This proposal introduce new type - transformations, which apply only to source files with given extension.
+
+Such approach gives possibility to have better and unified way to organize code base containing groovy based DSLs.
+
+=== How to implement?
+
+There are two problems to be addressed:
+
+* how to make AST transformation extension aware
+* how to make Groovyc or FileSystemCompiler or even IDE aware about additional (to *.groovy) extensions to be compiled
+Interesting that first problem doesn't require any specific handling at all. Global AST transformation can use name of SourceUnit to filter what files to process.
+
+For second problem file `META-INF/services/org.codehaus.groovy.transform.ASTTransformation` where global AST transformations normally defined can be used. To keep things backward compatible following syntax is suggested
+```
+#files:<ext1>,<ext2>...
+```
+The main benefit of using configuration files are:
+
+* new frameworks using AST based transformations make compiler aware about files to be compiled just by dropping in to classpath
+* it is very easy for any incarnation of compiler (FileSystemCompiler or Groovyc or whatever) to scan classpath and find extensions to be compiled
+
+== URLs
+
+https://groovy.markmail.org/thread/jahqbj6su5ddvuah[groovy-dev: GEP 5 - file extension based AST transformations]
+
+== Update history
+
+1 (2010-02-16):: Version as extracted from Codehaus wiki
+2 (2018-10-14):: Numerous minor tweaks

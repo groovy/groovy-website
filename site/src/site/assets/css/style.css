@@ -812,8 +812,8 @@ html.noScroll body, html.noScroll .st-container, html.noScroll .st-pusher, html.
 .st-container {
     position: relative;
     overflow: hidden;
-    -webkit-transition: margin .25s, -webkit-transform .25s;
-    transition: margin .25s, transform .25s
+    -webkit-transition: margin .5s, -webkit-transform .5s;
+    transition: margin .5s, transform .5s
 }
 
 .st-container.st-menu-open {

@@ -1,5 +1,0 @@
-script: ./gradlew -q -s generate
-jdk:
-- openjdk7
-
-
